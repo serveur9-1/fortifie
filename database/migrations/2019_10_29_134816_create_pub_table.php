@@ -16,6 +16,7 @@ class CreatePubTable extends Migration
         Schema::create('pubs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('img')->unique();
+            $table->string('url',100);
             $table->boolean('is_active')->default(true);
             $table->boolean('is_banner')->default(false);
             $table->date('debut');

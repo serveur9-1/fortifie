@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Article;
 use App\Category;
 use App\Diocese;
 use App\Repository\CategoryRepository;
@@ -28,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->share([
             'category' => Category::all(),
-            'diocese' => Diocese::all()
+            'diocese' => Diocese::all(),
+            'article' => Article::all()
         ]);
     }
 }
