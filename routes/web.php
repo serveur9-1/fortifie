@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('site.index');
-});
+Route::get('/',[
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
+
+
 
 Route::get('/description', function () {
     return view('site.annonce_desc');

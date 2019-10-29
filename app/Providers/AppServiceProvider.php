@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Category;
+use App\Diocese;
+use App\Repository\CategoryRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share([
+            'category' => Category::all(),
+            'diocese' => Diocese::all()
+        ]);
     }
 }
