@@ -17,6 +17,7 @@ class CreateArticleTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('titre',200);
+            $table->string('description',1000);
             $table->bigInteger('id_category')->unsigned()->index();
             $table->foreign('id_category')
                 ->references('id')

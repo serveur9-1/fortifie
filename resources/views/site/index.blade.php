@@ -39,13 +39,17 @@
 
                             <!--================Blog Post Area =================-->
                             <div class="blog_left_sidebar">
-                                <article class="row blog_item">
+                                @for($i=0; $i<20; $i++)
+                                @foreach($article as $a)
+                                    <article class="row blog_item">
                                     <div class="col-md-9">
                                         <div class="blog_post">
-                                            <img src="{{ asset('/assets/image/blog/main-blog/m-blog-1.jpg') }}" alt="">
+                                            <img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">
                                             <div class="blog_details">
-                                                <a href=""><h2>Astronomy Binoculars A Great Alternative</h2></a>
-                                                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
+                                                <a href=""><h2>{{ $a->titre }}</h2></a>
+                                                <p>
+                                                    {{ $a->description }}
+                                                </p>
                                                 <a href="" class="view_btn button_hover">VOIR DETAILS</a>
                                             </div>
                                         </div>
@@ -61,44 +65,16 @@
                                             <ul class="blog_meta list_style">
                                                 <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
                                                 <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                                <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                                <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                                <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
-                                                <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="row blog_item">
-                                    <div class="col-md-9">
-                                        <div class="blog_post">
-                                            <img src="{{ asset('/assets/image/blog/main-blog/m-blog-1.jpg') }}" alt="">
-                                            <div class="blog_details">
-                                                <a href="#"><h2>Astronomy Binoculars A Great Alternative</h2></a>
-                                                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p>
-                                                <a href="#" class="view_btn button_hover">VOIR DETAILS</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="blog_info text-right">
-                                            <div class="post_tag">
-                                                <a href="#">Food,</a>
-                                                <a href="#">Technology,</a>
-                                                <a href="#">Politics,</a>
-                                                <a href="#">Lifestyle</a>
-                                            </div>
-                                            <ul class="blog_meta list_style">
-                                                <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
                                                 <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
                                                 <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                                <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
                                                 <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
                                                 <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </article>
+                                @endforeach
+                                @endfor
                                 <nav class="blog-pagination justify-content-center d-flex">
                                     <ul class="pagination">
                                         <li class="page-item">
@@ -150,27 +126,17 @@
                             <!--============= PUB AREA HERE  ===================-->
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">Annonces populaires</h3>
-                                <div class="media post_item">
-                                    <img src="{{ asset('/assets/image/blog/post1.jpg') }}" alt="post">
-                                    <div class="media-body">
-                                        <a href=""><h3>Space The Final Frontier</h3></a>
-                                        <p>Il y a 2 min</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="{{ asset('/assets/image/blog/post1.jpg') }}" alt="post">
-                                    <div class="media-body">
-                                        <a href=""><h3>Space The Final Frontier</h3></a>
-                                        <p>Il y a 2 min</p>
-                                    </div>
-                                </div>
-                                <div class="media post_item">
-                                    <img src="{{ asset('/assets/image/blog/post1.jpg') }}" alt="post">
-                                    <div class="media-body">
-                                        <a href=""><h3>Space The Final Frontier</h3></a>
-                                        <p>Il y a 2 min</p>
-                                    </div>
-                                </div>
+                                @for($i=0; $i<5; $i++)
+                                    @foreach($article as $a)
+                                        <div class="media post_item">
+                                            <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="post">
+                                            <div class="media-body">
+                                                <a href=""><h3>{{ $a->titre }}</h3></a>
+                                                <p>Il y a 2 min</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endfor
 
                                 <div class="br"></div>
                             </aside>

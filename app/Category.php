@@ -10,4 +10,9 @@ class Category extends Model
         'libelle',
         'img'
     ];
+
+    public function article()
+    {
+        return $this->hasMany('App\Article');
+    }
 }
