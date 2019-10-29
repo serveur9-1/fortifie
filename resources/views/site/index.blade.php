@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title','Accueil Fortifietoi')
 @section('content')
-    
+
     <!--================Blog Area =================-->
         <section class="blog_area">
             <div class="container">
@@ -20,36 +20,18 @@
                                 </div>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-4 mb-4">
+                                        @foreach($category as $cat)
+                                            <div class="col-lg-4 mb-4">
                                             <div class="categories_post">
-                                                <img src="{{ asset('/assets/image/blog/cat-post/cat-post-3.jpg') }}" alt="post">
+                                                <img src='{{ asset("/assets/image/blog/cat-post/$cat->img") }}' alt="post">
                                                 <div class="categories_details">
                                                     <div class="categories_text">
-                                                        <a href=""><h5>Evengelisation</h5></a>
+                                                        <a href=""><h5>{{ $cat->libelle }}</h5></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 mb-4">
-                                            <div class="categories_post">
-                                                <img src="{{ asset('/assets/image/blog/cat-post/cat-post-3.jpg') }}" alt="post">
-                                                <div class="categories_details">
-                                                    <div class="categories_text">
-                                                        <a href=""><h5>Prière matinale</h5></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 mb-4">
-                                            <div class="categories_post">
-                                                <img src="{{ asset('/assets/image/blog/cat-post/cat-post-3.jpg') }}" alt="post">
-                                                <div class="categories_details">
-                                                    <div class="categories_text">
-                                                        <a href=""><h5>Social Life</h5></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </section>
@@ -161,7 +143,7 @@
                                             <p>Lifestyle</p>
                                             <p>24</p>
                                         </a>
-                                    </li>                                                           
+                                    </li>
                                 </ul>
                                 <div class="br"></div>
                             </aside>
@@ -197,7 +179,7 @@
                                 <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
                                 <div class="br"></div>
                             </aside>
-                            
+
                             <aside class="single_sidebar_widget ads_widget">
                                 <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
                                 <div class="br"></div>
@@ -216,8 +198,8 @@
                                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
                                     </div>
                                     <a href="#" class="bbtns">S'abonner</a>
-                                </div>  
-                                <div class="br"></div>                          
+                                </div>
+                                <div class="br"></div>
                             </aside>
                             <aside class="single-sidebar-widget tag_cloud_widget">
                                 <h4 class="widget_title">Tags</h4>
