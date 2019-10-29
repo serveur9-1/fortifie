@@ -1,5 +1,5 @@
 <!--================Header Area =================-->
-        <header class="header_area">
+        <header class="header_area" style="background: #fff !important">
             <nav class="navbar navbar-expand-lg navbar-light haut">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +23,7 @@
                         </div>
                     </div>
             </nav>
-            <div class="container">
+            <div class="container" style="background: #ffffff !important">
                 <div class="row">
                     <div class="row col-lg-11">
                         <input style="border-radius: 4px 0 0 4px;" type="text" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="name" placeholder="Enter your name">

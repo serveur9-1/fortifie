@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Accueil Fortifietoi')
+@section('title','Contact')
 @section('content')
     
     <!--================Breadcrumb Area =================-->
