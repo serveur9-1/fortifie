@@ -70,10 +70,73 @@
                     display: flex;
                     flex-wrap: nowrap;
                     flex-direction: row;
-                    max-width: 1200px;
-                    overflow-y: hidden;
+                    overflow-y: auto;
                     overflow-x: auto;
                 }
+                li{
+                    margin-right: 15px;
+                }
+
+                @media (min-width: 1200px) {
+                    .flex-container {
+                        max-width: 1200px;
+                    }
+                }
+
+                @media (max-width: 1200px) {
+                    .flex-container {
+                       width: 1000px;
+                    }
+                }
+
+                @media (max-width: 1000px) {
+                    .flex-container {
+                        width: 900px;
+                    }
+                }
+
+                @media (max-width: 900px) {
+                    .flex-container {
+                        width: 800px;
+                    }
+                }
+
+                @media (max-width: 800px) {
+                    .flex-container {
+                        width: 700px;
+                    }
+                }
+
+                @media (max-width: 700px) {
+                    .flex-container {
+                        width: 600px;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .flex-container {
+                        width: 500px;
+                    }
+                }
+
+                @media (max-width: 500px) {
+                    .flex-container {
+                        width: 400px;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    .flex-container {
+                        width: 330px;
+                    }
+                }
+
+                @media (max-width: 300px) {
+                    .flex-container {
+                        width: 300px;
+                    }
+                }
+
             </style>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">

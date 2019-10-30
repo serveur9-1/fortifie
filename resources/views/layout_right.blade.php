@@ -11,12 +11,13 @@
     <body>
 
     @include('site.share.header')
-    
+
     @yield('bread')
-        
+
         <!--================Blog Area =================-->
         <section class="blog_area single-post-area">
             <div class="container">
+
                 <div class="row">
                     @yield('content')
 
@@ -25,9 +26,9 @@
             </div>
         </section>
         <!--================Blog Area =================-->
-    
+
     @include('site.share.footer')
-  
+
 
     @include('site.share.script')
 

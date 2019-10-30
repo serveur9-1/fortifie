@@ -50,4 +50,8 @@ Route::get('/publier', function () {
     return view('site.publier');
 });
 
+Route::get('/modify', function () {
+    return view('site.modify');
+});
+
 

@@ -1,4 +1,4 @@
-@extends('layout-right')
+@extends('layout_right')
 @section('title','Description')
 @section('bread')
         <!--================Breadcrumb Area =================-->
@@ -23,7 +23,7 @@
                             <div class="col-lg-12">
                                 <div class="feature-img">
                                     <img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">
-                                </div>                                  
+                                </div>
                             </div>
                             <div class="col-lg-3  col-md-3">
                                 <div class="blog_info text-right">
