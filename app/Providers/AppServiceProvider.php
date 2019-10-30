@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share([
-            'category' => Category::all(),
-            'diocese' => Diocese::all(),
-            'article' => Article::all()
-        ]);
+        // view()->share([
+        //     'category' => Category::all(),
+        //     'diocese' => Diocese::all(),
+        //     'article' => Article::all()
+        // ]);
     }
 }
