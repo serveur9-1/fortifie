@@ -5,18 +5,14 @@
         <aside class="single_sidebar_widget post_category_widget">
             <h4 class="widget_title">Toutes les catégories</h4>
             <ul class="list_style cat-list">
+                @foreach($category as $c)
                 <li>
                     <a href="#" class="d-flex justify-content-between">
-                        <p>Technology</p>
-                        <p>37</p>
+                        <p>{{ $c->libelle }}</p>
+                        <p>{{ $c->article->count() }}</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="d-flex justify-content-between">
-                        <p>Lifestyle</p>
-                        <p>24</p>
-                    </a>
-                </li>
+                @endforeach
             </ul>
             <div class="br"></div>
         </aside>
