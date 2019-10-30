@@ -20,6 +20,7 @@
                                 </div>
                                 <div class="container">
                                     <div class="row">
+                                    @if($category->count() > 0)
                                         @foreach($category as $cat)
                                             <div class="col-lg-4 mb-4">
                                             <div class="categories_post">
@@ -32,6 +33,11 @@
                                             </div>
                                         </div>
                                         @endforeach
+                                    @else
+                                        =   =   =   =   =   =
+                                        =   Aucune categorie   =
+                                        =   =   =   =   =   =
+                                    @endif
                                     </div>
                                 </div>
                             </section>
@@ -39,65 +45,94 @@
 
                             <!--================Blog Post Area =================-->
                             <div class="blog_left_sidebar">
-                                @for($i=0; $i<20; $i++)
-                                @foreach($article as $a)
-                                    <article class="row blog_item">
-                                    <div class="col-md-9">
-                                        <div class="blog_post">
-                                            <img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">
-                                            <div class="blog_details">
-                                                <a href=""><h2>{{ $a->titre }}</h2></a>
-                                                <p>
-                                                    {{ $a->description }}
-                                                </p>
-                                                <a href="" class="view_btn button_hover">VOIR DETAILS</a>
+                                @if($article->count() > 0)
+                                    @for($i=0; $i<20; $i++)
+                                    @foreach($article as $a)
+                                        <article class="row blog_item">
+                                        <div class="col-md-9">
+                                            <div class="blog_post">
+                                                <img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">
+                                               {{-- <div class="social-buttons">
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
+                                                       target="_blank">
+                                                        <i class="fa fa-facebook-official"></i>
+                                                    </a>
+                                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($url) }}"
+                                                       target="_blank">
+                                                        <i class="fa fa-twitter-square"></i>
+                                                    </a>
+                                                    <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
+                                                       target="_blank">
+                                                        <i class="fa fa-google-plus-square"></i>
+                                                    </a>
+                                                    <a href="https://pinterest.com/pin/create/button/?{{
+                                                        http_build_query([
+                                                            'url' => $url,
+                                                            'media' => $image,
+                                                            'description' => $description
+                                                        ])
+                                                        }}" target="_blank">
+                                                        <i class="fa fa-pinterest-square"></i>
+                                                    </a>
+                                                </div>--}}
+                                                <div class="blog_details">
+                                                    <a href=""><h2>{{ $a->titre }}</h2></a>
+                                                    <p>
+                                                        {{ Str::limit($a->description, 400) }}
+                                                    </p>
+                                                    <a href="" class="view_btn button_hover">VOIR DETAILS</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="blog_info text-right">
-                                            <div class="post_tag">
-                                                <a href="#">Food,</a>
-                                                <a href="#">Technology,</a>
-                                                <a href="#">Politics,</a>
-                                                <a href="#">Lifestyle</a>
+                                        <div class="col-md-3">
+                                            <div class="blog_info text-right">
+                                                <div class="post_tag">
+                                                    <a href="#">Food,</a>
+                                                    <a href="#">Technology,</a>
+                                                    <a href="#">Politics,</a>
+                                                    <a href="#">Lifestyle</a>
+                                                </div>
+                                                <ul class="blog_meta list_style">
+                                                    <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
+                                                    <li><a href="#">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                                    <li><a href="#">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                                    <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                                    <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
+                                                    <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
+                                                </ul>
                                             </div>
-                                            <ul class="blog_meta list_style">
-                                                <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
-                                                <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                                <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
-                                                <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                                <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
-                                                <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
-                                            </ul>
                                         </div>
-                                    </div>
-                                </article>
-                                @endforeach
-                                @endfor
-                                <nav class="blog-pagination justify-content-center d-flex">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a href="#" class="page-link" aria-label="Previous">
+                                    </article>
+                                    @endforeach
+                                    @endfor
+                                    <nav class="blog-pagination justify-content-center d-flex">
+                                            <ul class="pagination">
+                                                <li class="page-item">
+                                                    <a href="#" class="page-link" aria-label="Previous">
                                                 <span aria-hidden="true">
                                                     <span class="lnr lnr-chevron-left"></span>
                                                 </span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a href="#" class="page-link">01</a></li>
-                                        <li class="page-item active"><a href="#" class="page-link">02</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">03</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">04</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">09</a></li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link" aria-label="Next">
+                                                    </a>
+                                                </li>
+                                                <li class="page-item"><a href="#" class="page-link">01</a></li>
+                                                <li class="page-item active"><a href="#" class="page-link">02</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">03</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">04</a></li>
+                                                <li class="page-item"><a href="#" class="page-link">09</a></li>
+                                                <li class="page-item">
+                                                    <a href="#" class="page-link" aria-label="Next">
                                                 <span aria-hidden="true">
                                                     <span class="lnr lnr-chevron-right"></span>
                                                 </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                @else
+                                    =   =   =   =   =   =
+                                    =   Aucun article   =
+                                    =   =   =   =   =   =
+                                @endif
                             </div>
                             <!--================End Blog Post Area =================-->
                     </div>
@@ -132,7 +167,7 @@
                                             <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="post">
                                             <div class="media-body">
                                                 <a href=""><h3>{{ $a->titre }}</h3></a>
-                                                <p>Il y a 2 min</p>
+                                                <p>{{ Carbon\Carbon::now()->diffForHumans($a->created_at) }}</p>
                                             </div>
                                         </div>
                                     @endforeach

@@ -14,10 +14,10 @@ class CreateGestionnaireParoisseTable extends Migration
     public function up()
     {
         Schema::create('gestionnaire_paroisse', function (Blueprint $table) {
-            $table->bigInteger('id_gestionnaire')->unsigned()->index();
-            $table->bigInteger('id_paroisse')->unsigned()->index();
-            $table->foreign('id_gestionnaire')->references('id')->on('gestionnaires')->onDelete('cascade');
-            $table->foreign('id_paroisse')->references('id')->on('paroisses')->onDelete('cascade');
+            $table->bigInteger('gestionnaire_id')->unsigned()->index();
+            $table->bigInteger('paroisse_id')->unsigned()->index();
+            $table->foreign('gestionnaire_id')->references('id')->on('gestionnaires')->onDelete('cascade');
+            $table->foreign('paroisse_id')->references('id')->on('paroisses')->onDelete('cascade');
         });
     }
 

@@ -14,14 +14,14 @@ class CreateCategoryNewsletterTable extends Migration
     public function up()
     {
         Schema::create('category_newsletter', function (Blueprint $table) {
-            $table->bigInteger('id_category')->unsigned()->index();
-            $table->bigInteger('id_newsletter')->unsigned()->index();
-            $table->foreign('id_category')
+            $table->bigInteger('category_id')->unsigned()->index();
+            $table->bigInteger('newsletter_id')->unsigned()->index();
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
 
-            $table->foreign('id_newsletter')
+            $table->foreign('newsletter_id')
                 ->references('id')
                 ->on('newsletters')
                 ->onDelete('cascade');

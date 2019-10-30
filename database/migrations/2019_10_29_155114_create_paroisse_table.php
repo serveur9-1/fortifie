@@ -16,8 +16,8 @@ class CreateParoisseTable extends Migration
         Schema::create('paroisses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom',100);
-            $table->bigInteger('id_diocese')->unsigned()->index();
-            $table->foreign('id_diocese')
+            $table->bigInteger('diocese_id')->unsigned()->index();
+            $table->foreign('diocese_id')
                 ->references('id')
                 ->on('dioceses')
                 ->onDelete('cascade');

@@ -18,8 +18,9 @@ class CreateArticleTable extends Migration
             $table->bigIncrements('id');
             $table->string('titre',200);
             $table->string('description',1000);
-            $table->bigInteger('id_category')->unsigned()->index();
-            $table->foreign('id_category')
+            $table->string('slug',100);
+            $table->bigInteger('category_id')->unsigned()->index();
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
@@ -30,15 +31,15 @@ class CreateArticleTable extends Migration
             $table->date('debut');
             $table->date('fin');
 
-            $table->bigInteger('id_user')->unsigned()->index();
+            $table->bigInteger('user_id')->unsigned()->index();
 
-            $table->foreign('id_user')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->bigInteger('id_diocese')->unsigned()->index();
-            $table->foreign('id_diocese')
+            $table->bigInteger('diocese_id')->unsigned()->index();
+            $table->foreign('diocese_id')
                 ->references('id')
                 ->on('dioceses')
                 ->onDelete('cascade');

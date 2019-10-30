@@ -16,7 +16,7 @@ class CreateVisiteurTable extends Migration
         Schema::create('visiteurs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('ip',300);
-            $table->bigInteger('id_article')->nullable();
+            $table->bigInteger('article_id')->nullable();
             $table->timestamps();
         });
     }
