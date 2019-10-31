@@ -18,17 +18,17 @@ Route::get('/',[
 
 Route::get('/publier',[
     'as' => 'publier',
-    'uses' => 'ArticleController@publier'
+    'uses' => 'HomeController@publier'
 ]);
 
 Route::get('/description',[
     'as' => 'description',
-    'uses' => 'ArticleController@description'
+    'uses' => 'HomeController@description'
 ]);
 
 Route::get('/myAnnonce',[
     'as' => 'myAnnonce',
-    'uses' => 'ArticleController@myAnnonce'
+    'uses' => 'HomeController@myAnnonce'
 ]);
 
 Route::get('/profil',[
