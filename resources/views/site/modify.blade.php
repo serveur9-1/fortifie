@@ -29,6 +29,7 @@
                             <div class="panel-heading text-center">
                                 <h3 class="panel-title">Informations Personnelle</h3>
                             </div>
+                            <form class="contact_form">
                             <div class="panel-body">
                                 <div class="card">
                                     <div class="card-body">

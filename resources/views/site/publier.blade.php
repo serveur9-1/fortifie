@@ -1,5 +1,22 @@
 @extends('layout_right')
 @section('title','publication')
+@section('bread')
+        <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area blog_banner_two">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle f_48">Publier une annonce</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="">Accueil</a></li>
+                        <li><a href="">Annonce</a></li>
+                        <li class="active">Publier annonce</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!--================Breadcrumb Area =================-->
+@endsection
 @section('content')
     <div class="col-lg-8">
         <div class="blog_left_sidebar">
@@ -25,7 +42,7 @@
                     </div>
                 </div>
 
-                <form role="form">
+                <form role="form" class="contact_form">
                     <div class="panel panel-primary setup-content" id="step-1">
                         <div class="panel-heading">
                              <h3 class="panel-title">Thème <span style="color: red">*</span></h3>

@@ -18,17 +18,12 @@ Route::get('/',[
 
 
 
-Route::get('/description', function () {
-    return view('site.annonce_desc');
-});
 
-Route::get('/contact', function () {
-    return view('site.contact');
-});
+Route::get('/','HomeController@index');
 
-Route::get('/galerie', function () {
-    return view('site.galerie');
-});
+Route::get('contact','ContactController@contact');
+
+Route::get('galerie', 'GalleryController@gallery');
 
 Route::get('/inscription', function () {
     return view('site.inscription');

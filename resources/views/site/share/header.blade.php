@@ -11,10 +11,33 @@
                         </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav menu_nav ml-auto">
+                            <!-- <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li class="nav-item"><a class="nav-link text_white" href="#">Se connecter</a></li>
                                 <li class="nav-item"><a class="nav-link text_white" href="#">S'inscrire</a></li>
+                            </ul> -->
+
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li  class="dropdown nav-item">
+                                  <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>
+                                    
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li class="dropdown-item">
+                                        <a href="https://fortifietoi.ci/utilisateur/annonces">Mes annonces(10) </a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="https://fortifietoi.ci/utilisateur">Mon profil </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="dropdown-item">
+                                      <a href="#">
+                                        Déconnexion
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </li>
                             </ul>
+
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="nav-item">
                                     <a href="#" class="genric-btn radius" style="background: #5fc6c9"><strong class="text-white">Publier</strong></a>
@@ -72,6 +95,7 @@
                     flex-direction: row;
                     overflow-y: auto;
                     overflow-x: auto;
+                    overflow: hidden visible;
                 }
                 li{
                     margin-right: 15px;

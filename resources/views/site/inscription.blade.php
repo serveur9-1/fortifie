@@ -7,7 +7,7 @@
         <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
         <div class="container">
             <div class="page-cover text-center">
-                <h2 class="page-cover-tittle f_48">Connexion</h2>
+                <h2 class="page-cover-tittle f_48">Inscription</h2>
                 <ol class="breadcrumb">
                     <li><a href="#">Accueil</a></li>
                     <li><a href="#">Catégorie</a></li>
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6>Inscription</h6>
-                    <form method="POST">
+                    <form method="POST" class="contact_form">
 
                         <div class="form-group" style="width: 100%">
                             <label for="">Diocèse rattaché</label>

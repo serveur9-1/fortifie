@@ -27,6 +27,7 @@
                             <div class="panel-heading">
                                  <h3 class="panel-title">Connexion </h3>
                             </div>
+                            <form class="contact_form">
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label for="">Adresse e_mail <em style="color:red;">*</em> </label>
@@ -46,6 +47,7 @@
                                 </div>
                                 <button class="btn btn-success pull-right stepp mt-3" type="button">Connexion</button>
                             </div>
+                        </form>
                         </div>
                </div>
             </div>
