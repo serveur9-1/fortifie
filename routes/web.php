@@ -26,7 +26,7 @@ Route::get('/description',[
     'uses' => 'HomeController@description'
 ]);
 
-Route::get('/myAnnonce',[
+Route::get('/mes_annonces',[
     'as' => 'myAnnonce',
     'uses' => 'HomeController@myAnnonce'
 ]);
@@ -36,7 +36,7 @@ Route::get('/profil',[
     'uses' => 'UserController@profil'
 ]);
 
-Route::get('/modify',[
+Route::get('/modification',[
     'as' => 'modify',
     'uses' => 'UserController@modify'
 ]);

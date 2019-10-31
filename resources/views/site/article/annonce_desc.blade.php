@@ -8,7 +8,7 @@
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
                     <ol class="breadcrumb">
-                        <li><a href="">Accueil</a></li>
+                        <li><a href="{{ route('index')}}">Accueil</a></li>
                         <li><a href="">Annonce</a></li>
                         <li class="active">Detail Annonce</li>
                     </ol>
