@@ -21,7 +21,8 @@
                             @foreach($category as $cat)
                                 <div class="col-lg-4 mb-4">
                                 <div class="categories_post">
-                                    <img src='{{ asset("/assets/image/blog/cat-post/$cat->img") }}' alt="post">
+                                    {{--<img src='{{ asset("/assets/image/blog/cat-post/$cat->img") }}' alt="post">--}}
+                                    <img src='{{ $cat->slug }}' alt="post">
                                     <div class="categories_details">
                                         <div class="categories_text">
                                             <a href=""><h5>{{ $cat->libelle }}</h5></a>
@@ -42,13 +43,22 @@
 
                 <!--================Blog Post Area =================-->
                 <div class="blog_left_sidebar">
+                    <style>
+                        .article-img{
+                            transition: all .2s;
+                        }
+                        .article-img:hover{
+                            transform: scale(1.05);
+                            transition: all .5s;
+                        }
+                    </style>
                     @if($article->count() > 0)
-                        @for($i=0; $i<20; $i++)
                         @foreach($article as $a)
                             <article class="row blog_item">
                             <div class="col-md-9">
                                 <div class="blog_post">
-                                    <img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">
+                                    {{--<img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">--}}
+                                    <img class="article-img" src='{{ $a->img }}' alt="">
                                    {{-- <div class="social-buttons">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
                                            target="_blank">
@@ -73,7 +83,7 @@
                                         </a>
                                     </div>--}}
                                     <div class="blog_details">
-                                        <a href=""><h2>{{ $a->titre }}</h2></a>
+                                        <a href=""><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
                                         <p>
                                             {{ Str::limit($a->description, 400) }}
                                         </p>
@@ -84,10 +94,7 @@
                             <div class="col-md-3">
                                 <div class="blog_info text-right">
                                     <div class="post_tag">
-                                        <a href="#">Food,</a>
-                                        <a href="#">Technology,</a>
-                                        <a href="#">Politics,</a>
-                                        <a href="#">Lifestyle</a>
+                                        <a href="#">{{ $a->category->libelle }}</a>
                                     </div>
                                     <ul class="blog_meta list_style">
                                         <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
@@ -101,7 +108,6 @@
                             </div>
                         </article>
                         @endforeach
-                        @endfor
                         <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
                                     <li class="page-item">

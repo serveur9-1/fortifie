@@ -1,7 +1,8 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+
+use App\Article;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,14 +17,17 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Article::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'img' =>$faker->imageUrl(50,50),
-        'is_admin' =>$faker->boolean($chanceOfGettingTrue = 10),
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'titre' => $faker->text(20),
+        'description' => $faker->text(400),
+        'slug' => $faker->slug,
+        'category_id' => $faker->numberBetween(1,10),
+        'img' => $faker->imageUrl(555,280),
+        'is_active' => true,
+        'debut' => $faker->date(),
+        'fin' => $faker->date(),
+        'user_id' => $faker->numberBetween(1, 50),
+        'diocese_id' => $faker->numberBetween(3,5)
     ];
 });

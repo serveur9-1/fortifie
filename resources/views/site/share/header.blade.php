@@ -166,11 +166,9 @@
                 <div class="container">
                     <div>
                         <ul class="flex-container nav navbar-nv mr-auto">
-                            @for($i=0; $i<15; $i++)
                                 @foreach($category as $cat)
-                                    <li class="nav-item"><a class="nav-link" href="#">{{ $cat->libelle }}({{ $cat->count() }})</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">{{ $cat->libelle }}</a></li>
                                 @endforeach
-                            @endfor
                         </ul>
                     </div>
                 </div>
