@@ -16,14 +16,11 @@ Route::get('/',[
     'uses' => 'HomeController@index'
 ]);
 
+Route::get('/contact','ContactController@contact');
 
 
 
-Route::get('/','HomeController@index');
-
-Route::get('contact','ContactController@contact');
-
-Route::get('galerie', 'GalleryController@gallery');
+Route::get('/galerie', 'GalleryController@gallery');
 
 Route::get('/inscription', function () {
     return view('site.inscription');

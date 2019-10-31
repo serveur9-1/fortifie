@@ -18,4 +18,15 @@ class Article extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function diocese()
+    {
+        return $this->belongsTo('App\Diocese');
+    }
+
+    public function visiteur()
+    {
+        return $this->hasMany('App\Visiteur');
+    }
+
 }

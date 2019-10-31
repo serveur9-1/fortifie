@@ -197,3 +197,6 @@
                 display: none;
             }
         </style>
+
+
+        <script src="{{ asset('js/share.js') }}"></script>
