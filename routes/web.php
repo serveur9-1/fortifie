@@ -16,9 +16,19 @@ Route::get('/',[
     'uses' => 'HomeController@index'
 ]);
 
-Route::get('/contact',[
-    'as' => 'contact',
-    'uses' => 'ContactController@contact'
+Route::get('/publier',[
+    'as' => 'publier',
+    'uses' => 'ArticleController@publier'
+]);
+
+Route::get('/description',[
+    'as' => 'description',
+    'uses' => 'ArticleController@description'
+]);
+
+Route::get('/myAnnonce',[
+    'as' => 'myAnnonce',
+    'uses' => 'ArticleController@myAnnonce'
 ]);
 
 Route::get('/profil',[
@@ -29,4 +39,14 @@ Route::get('/profil',[
 Route::get('/modify',[
     'as' => 'modify',
     'uses' => 'UserController@modify'
+]);
+
+Route::get('/contact',[
+    'as' => 'contact',
+    'uses' => 'ContactController@contact'
+]);
+
+Route::get('/galerie',[
+    'as' => 'galerie',
+    'uses' => 'GalleryController@gallery'
 ]);
