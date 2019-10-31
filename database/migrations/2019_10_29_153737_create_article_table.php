@@ -17,6 +17,9 @@ class CreateArticleTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('titre',200);
+            $table->string('contact_telephone',15)->nullable();
+            $table->string('contact_fixe',15)->nullable();
+            $table->string('contact_email',50)->nullable();
             $table->string('description',1000);
             $table->string('slug',100);
             $table->bigInteger('category_id')->unsigned()->index();

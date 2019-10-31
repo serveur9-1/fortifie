@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('site.index',[
+        return view('site.article.index',[
             'article' => $this->a->getArticle(),
             'popcategory' => $this->r->getCategory()
         ]);
@@ -33,14 +33,21 @@ class HomeController extends Controller
 
     public function description()
     {
-        return view('site.annonce_desc',[
+        return view('site.article.annonce_desc',[
         
         ]);
     }
 
     public function myAnnonce()
     {
-        return view('site.mesAnnonce',[
+        return view('site.article.mesAnnonce',[
+        
+        ]);
+    }
+
+    public function publier()
+    {
+        return view('site.article.publier',[
         
         ]);
     }
