@@ -31,4 +31,18 @@ class HomeController extends Controller
         ]);
     }
 
+    public function description()
+    {
+        return view('site.annonce_desc',[
+        
+        ]);
+    }
+
+    public function myAnnonce()
+    {
+        return view('site.mesAnnonce',[
+        
+        ]);
+    }
+
 }

@@ -95,7 +95,7 @@
                     flex-direction: row;
                     overflow-y: auto;
                     overflow-x: auto;
-                    overflow: hidden visible;
+                    
                 }
                 li{
                     margin-right: 15px;
