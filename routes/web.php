@@ -16,10 +16,10 @@ Route::get('/',[
     'uses' => 'HomeController@index'
 ]);
 
-
-
-
-Route::get('/','HomeController@index');
+Route::get('/contact',[
+    'as' => 'contact',
+    'uses' => 'ContactController@contact'
+]);
 
 Route::get('contact','ContactController@contact');
 
