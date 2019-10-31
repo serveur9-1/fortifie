@@ -26,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('site.index',[
-            'article' => $this->a->getArticle()
+            'article' => $this->a->getArticle(),
+            'popcategory' => $this->r->getCategory()
         ]);
     }
 

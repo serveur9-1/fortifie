@@ -19,6 +19,7 @@ class CategoryRepository
     {
         return $this->c->newQuery()
             ->select()
+            ->limit(3)
             ->orderBy('libelle','ASC')
             ->get();
 

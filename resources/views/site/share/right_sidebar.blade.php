@@ -19,17 +19,15 @@
         <!--============= PUB AREA HERE  ===================-->
         <aside class="single_sidebar_widget popular_post_widget">
             <h3 class="widget_title">Annonces populaires</h3>
-            @for($i=0; $i<5; $i++)
-                @foreach($article as $a)
+                @foreach($p_article as $a)
                     <div class="media post_item">
-                        <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="post">
+                        <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/m-blog-5.jpg") }}' alt="post">
                         <div class="media-body">
-                            <a href=""><h3>{{ $a->titre }}</h3></a>
-                            <p>{{ Carbon\Carbon::now()->diffForHumans($a->created_at) }}</p>
+                            <a href=""><h3>{{ $a->article->titre }}</h3></a>
+                            <p>{{ Carbon\Carbon::now()->diffForHumans($a->article->created_at) }}</p>
                         </div>
                     </div>
                 @endforeach
-            @endfor
 
             <div class="br"></div>
         </aside>
@@ -77,5 +75,18 @@
                 <li><a href="#">Voir plus</a></li>
             </ul>
         </aside>
+
+        <!--============= PUB AREA HERE  ===================-->
+        <aside class="single_sidebar_widget ads_widget">
+            <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
+            <div class="br"></div>
+        </aside>
+
+        <aside class="single_sidebar_widget ads_widget">
+            <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
+            <div class="br"></div>
+        </aside>
+        <!--============= END PUB AREA HERE  ===================-->
+
     </div>
 </div>

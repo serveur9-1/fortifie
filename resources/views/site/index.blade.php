@@ -17,15 +17,15 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                        @if($category->count() > 0)
-                            @foreach($category as $cat)
+                        @if($visiteur->count() > 0)
+                            @foreach($visiteur as $v)
                                 <div class="col-lg-4 mb-4">
                                 <div class="categories_post">
                                     {{--<img src='{{ asset("/assets/image/blog/cat-post/$cat->img") }}' alt="post">--}}
-                                    <img src='{{ $cat->slug }}' alt="post">
+                                    <img src='{{ $v->article->category->slug }}' alt="post">
                                     <div class="categories_details">
                                         <div class="categories_text">
-                                            <a href=""><h5>{{ $cat->libelle }}</h5></a>
+                                            <a href=""><h5>{{ $v->article->category->libelle }}</h5></a>
                                         </div>
                                     </div>
                                 </div>
@@ -42,13 +42,13 @@
                 <!--================Blog Categorie Area =================-->
 
                 <!--================Blog Post Area =================-->
-                <div class="blog_left_sidebar">
+                <div class="blog_left_sidebar mt-5">
                     <style>
                         .article-img{
                             transition: all .2s;
                         }
                         .article-img:hover{
-                            transform: scale(1.05);
+                            transform: scale(1.03);
                             transition: all .5s;
                         }
                     </style>
@@ -84,6 +84,13 @@
                                     </div>--}}
                                     <div class="blog_details">
                                         <a href=""><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
+                                        {{--{!!
+                                            Share::page('http://jorenvanhocht.be', 'Share title', ['class' => 'text_danger'])
+                                            ->facebook()
+                                            ->twitter()
+                                            ->linkedin('Extra linkedin summary can be passed here')
+                                            ->whatsapp();
+                                        !!}--}}
                                         <p>
                                             {{ Str::limit($a->description, 400) }}
                                         </p>
@@ -97,10 +104,10 @@
                                         <a href="#">{{ $a->category->libelle }}</a>
                                     </div>
                                     <ul class="blog_meta list_style">
-                                        <li><a href="#">Mark wiens <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
+                                        <li><a href="#">{{ $a->diocese->nom }} <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
                                         <li><a href="#">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                        <li><a href="#">{{ $a->visiteur->count() }} Vues<i class="lnr lnr-eye"></i></a></li>
                                         <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
                                         <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
                                     </ul>
