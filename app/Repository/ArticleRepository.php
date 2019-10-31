@@ -20,8 +20,7 @@ class ArticleRepository
     {
         return $this->art->newQuery()
             ->select()
-            ->orderBy('created_at','DESC')
-            ->get();
+            ->orderBy('created_at','DESC')->paginate(10);
 
     }
 }
