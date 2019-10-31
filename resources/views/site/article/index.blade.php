@@ -25,7 +25,7 @@
                                     <img src='{{ $v->article->category->slug }}' alt="post">
                                     <div class="categories_details">
                                         <div class="categories_text">
-                                            <a href=""><h5>{{ $v->article->category->libelle }}</h5></a>
+                                            <a href="{{ route('description')}}"><h5>{{ $v->article->category->libelle }}</h5></a>
                                         </div>
                                     </div>
                                 </div>

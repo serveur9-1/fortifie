@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,41 +11,42 @@
 |
 */
 
-Route::get('/', [
+Route::get('/',[
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
 
-Route::get('/contact', [
+Route::get('/publier',[
+    'as' => 'publier',
+    'uses' => 'HomeController@publier'
+]);
+
+Route::get('/description',[
+    'as' => 'description',
+    'uses' => 'HomeController@description'
+]);
+
+Route::get('/mes_annonces',[
+    'as' => 'myAnnonce',
+    'uses' => 'HomeController@myAnnonce'
+]);
+
+Route::get('/profil',[
+    'as' => 'profil',
+    'uses' => 'UserController@profil'
+]);
+
+Route::get('/modification',[
+    'as' => 'modify',
+    'uses' => 'UserController@modify'
+]);
+
+Route::get('/contact',[
     'as' => 'contact',
     'uses' => 'ContactController@contact'
 ]);
 
-Route::get('contact', 'ContactController@contact');
-
-Route::get('galerie', 'GalleryController@gallery');
-
-Route::get('/inscription', function () {
-    return view('site.inscription');
-});
-
-Route::get('/connexion', function () {
-    return view('site.connexion');
-});
-
-Route::get('/mesAnnonce', function () {
-    return view('site.mesAnnonce');
-});
-
-Route::get('/profil', function () {
-    return view('site.profil');
-});
-
-Route::get('/publier', function () {
-    return view('site.publier');
-});
-
-Route::get('/modify', function () {
-    return view('site.modify');
-});
-
+Route::get('/galerie',[
+    'as' => 'galerie',
+    'uses' => 'GalleryController@gallery'
+]);

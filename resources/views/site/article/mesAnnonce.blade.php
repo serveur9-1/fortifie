@@ -1,6 +1,22 @@
 @extends('layout_right')
 @section('title','Mes Annonces')
 @section('bread')
+
+    <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area blog_banner_two">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ route('index')}}">Accueil</a></li>
+                        <li class="active">Detail Annonce</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!--================Breadcrumb Area =================-->
+        
     <!-- Modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">

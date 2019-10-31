@@ -9,7 +9,6 @@
                     <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{ route('index')}}">Accueil</a></li>
-                        <li><a href="">Annonce</a></li>
                         <li class="active">Detail Annonce</li>
                     </ol>
                 </div>
@@ -72,26 +71,26 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                     <div class="thumb">
-                        <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/prev.jpg') }}" alt=""></a>
+                        <a href="{{ route('description')}}"><img class="img-fluid" src="{{ asset('/assets/image/blog/prev.jpg') }}" alt=""></a>
                     </div>
                     <div class="arrow">
-                        <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                        <a href="{{ route('description')}}"><span class="lnr text-white lnr-arrow-left"></span></a>
                     </div>
                     <div class="detials">
                         <p>Prev Post</p>
-                        <a href="#"><h4>Space The Final Frontier</h4></a>
+                        <a href="{{ route('description')}}"><h4>Space The Final Frontier</h4></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                     <div class="detials">
                         <p>Next Post</p>
-                        <a href="#"><h4>Telescopes 101</h4></a>
+                        <a href="{{ route('description')}}"><h4>Telescopes 101</h4></a>
                     </div>
                     <div class="arrow">
-                        <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                        <a href="{{ route('description')}}"><span class="lnr text-white lnr-arrow-right"></span></a>
                     </div>
                     <div class="thumb">
-                        <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/next.jpg') }}" alt=""></a>
+                        <a href="{{ route('description')}}"><img class="img-fluid" src="{{ asset('/assets/image/blog/next.jpg') }}" alt=""></a>
                     </div>
                 </div>
             </div>
