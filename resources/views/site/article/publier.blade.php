@@ -69,31 +69,15 @@
                         </div>
                         <div class="panel-body">
                             <div id="list-example" class="list-group">
-                                        <div class="list-group-item list-group-item-action" disabled>Evangélisation
-                                            <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                                <input type="radio" id="un-radio" name="test" checked>
-                                                <label for="un-radio"></label>
-                                            </div>
+                                @foreach($category as $c)
+                                    <div class="list-group-item list-group-item-action" disabled>{{ $c->libelle }}
+                                        <div class="primary-radio" style="float: right;background-color: #5fc6c9">
+                                            <input value="{{ $c->id }}" type="radio" id="{{ $c->id }}" name="category" checked>
+                                            <label for="{{ $c->id }}"></label>
                                         </div>
-                                        <div class="list-group-item list-group-item-action" disabled>Evangélisation
-                                            <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                                <input type="radio" id="deux-radio" name="test" checked>
-                                                <label for="deux-radio"></label>
-                                            </div>
-                                        </div>
-                                        <div class="list-group-item list-group-item-action" disabled>Evangélisation
-                                            <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                                <input type="radio" id="trois-radio" name="test" checked>
-                                                <label for="trois-radio"></label>
-                                            </div>
-                                        </div>
-                                        <div class="list-group-item list-group-item-action" disabled>Prière
-                                            <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                                <input type="radio" id="quatre-radio" name="test" checked>
-                                                <label for="quatre-radio"></label>
-                                            </div>
-                                        </div>
-                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                             <button class="btn stepp nextBtn pull-right mt-3" type="button">Next</button>
                         </div>
                     </div>
@@ -120,29 +104,30 @@
                                                 <select class="form-control" name="HeureDebut" id="heure_debut">
                                                     <option value="">Choisir</option>
                                                     <option value="00:00">00:00</option> <option value="00:30">00:30</option>
-                            <option value="01:00">01:00</option> <option value="01:30">01:30</option>
-                            <option value="02:00">02:00</option> <option value="02:30">02:30</option>
-                            <option value="03:00">03:00</option> <option value="03:30">03:30</option>
-                            <option value="04:00">04:00</option> <option value="04:30">04:30</option>
-                            <option value="05:00">05:00</option> <option value="05:30">05:30</option>
-                            <option value="06:00">06:00</option> <option value="06:30">06:30</option>
-                            <option value="07:00">07:00</option> <option value="07:30">07:30</option>
-                            <option value="08:00">08:00</option> <option value="08:30">08:30</option>
-                            <option value="09:00">09:00</option> <option value="09:30">09:30</option>
-                            <option value="10:00">10:00</option> <option value="10:30">10:30</option>
-                            <option value="11:00">11:00</option> <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option> <option value="12:30">12:30</option>
-                            <option value="13:00">13:00</option> <option value="13:30">13:30</option>
-                            <option value="14:00">14:00</option> <option value="14:30">14:30</option>
-                            <option value="15:00">15:00</option> <option value="15:30">15:30</option>
-                            <option value="16:00">16:00</option> <option value="16:30">16:30</option>
-                            <option value="17:00">17:00</option> <option value="17:30">17:30</option>
-                            <option value="18:00">18:00</option> <option value="18:30">18:30</option>
-                            <option value="19:00">19:00</option> <option value="19:30">19:30</option>
-                            <option value="20:00">20:00</option> <option value="20:30">20:30</option>
-                            <option value="21:00">21:00</option> <option value="21:30">21:30</option>
-                            <option value="22:00">22:00</option> <option value="22:30">22:30</option>
-                            <option value="23:00">23:00</option> <option value="23:30">23:30</option>                     </select>
+                                                        <option value="01:00">01:00</option> <option value="01:30">01:30</option>
+                                                        <option value="02:00">02:00</option> <option value="02:30">02:30</option>
+                                                        <option value="03:00">03:00</option> <option value="03:30">03:30</option>
+                                                        <option value="04:00">04:00</option> <option value="04:30">04:30</option>
+                                                        <option value="05:00">05:00</option> <option value="05:30">05:30</option>
+                                                        <option value="06:00">06:00</option> <option value="06:30">06:30</option>
+                                                        <option value="07:00">07:00</option> <option value="07:30">07:30</option>
+                                                        <option value="08:00">08:00</option> <option value="08:30">08:30</option>
+                                                        <option value="09:00">09:00</option> <option value="09:30">09:30</option>
+                                                        <option value="10:00">10:00</option> <option value="10:30">10:30</option>
+                                                        <option value="11:00">11:00</option> <option value="11:30">11:30</option>
+                                                        <option value="12:00">12:00</option> <option value="12:30">12:30</option>
+                                                        <option value="13:00">13:00</option> <option value="13:30">13:30</option>
+                                                        <option value="14:00">14:00</option> <option value="14:30">14:30</option>
+                                                        <option value="15:00">15:00</option> <option value="15:30">15:30</option>
+                                                        <option value="16:00">16:00</option> <option value="16:30">16:30</option>
+                                                        <option value="17:00">17:00</option> <option value="17:30">17:30</option>
+                                                        <option value="18:00">18:00</option> <option value="18:30">18:30</option>
+                                                        <option value="19:00">19:00</option> <option value="19:30">19:30</option>
+                                                        <option value="20:00">20:00</option> <option value="20:30">20:30</option>
+                                                        <option value="21:00">21:00</option> <option value="21:30">21:30</option>
+                                                        <option value="22:00">22:00</option> <option value="22:30">22:30</option>
+                                                        <option value="23:00">23:00</option> <option value="23:30">23:30</option>
+                                                </select>
                                             </div>
                                             <div class="col-lg-1 col-sm-12">
                                                 <label for="">&nbsp;</label>
@@ -158,29 +143,30 @@
                                                     <option value="">Choisir</option>
                                                     <option value="00:00">00:00</option>
                                                     <option value="00:30">00:30</option>
-                <option value="01:00">01:00</option> <option value="01:30">01:30</option>
-                <option value="02:00">02:00</option> <option value="02:30">02:30</option>
-                <option value="03:00">03:00</option> <option value="03:30">03:30</option>
-                <option value="04:00">04:00</option> <option value="04:30">04:30</option>
-                <option value="05:00">05:00</option> <option value="05:30">05:30</option>
-                <option value="06:00">06:00</option> <option value="06:30">06:30</option>
-                <option value="07:00">07:00</option> <option value="07:30">07:30</option>
-                <option value="08:00">08:00</option> <option value="08:30">08:30</option>
-                <option value="09:00">09:00</option> <option value="09:30">09:30</option>
-                <option value="10:00">10:00</option> <option value="10:30">10:30</option>
-                <option value="11:00">11:00</option> <option value="11:30">11:30</option>
-                <option value="12:00">12:00</option> <option value="12:30">12:30</option>
-                <option value="13:00">13:00</option> <option value="13:30">13:30</option>
-                <option value="14:00">14:00</option> <option value="14:30">14:30</option>
-                <option value="15:00">15:00</option> <option value="15:30">15:30</option>
-                <option value="16:00">16:00</option> <option value="16:30">16:30</option>
-                <option value="17:00">17:00</option> <option value="17:30">17:30</option>
-                <option value="18:00">18:00</option> <option value="18:30">18:30</option>
-                <option value="19:00">19:00</option> <option value="19:30">19:30</option>
-                <option value="20:00">20:00</option> <option value="20:30">20:30</option>
-                <option value="21:00">21:00</option> <option value="21:30">21:30</option>
-                <option value="22:00">22:00</option> <option value="22:30">22:30</option>
-                <option value="23:00">23:00</option> <option value="23:30">23:30</option>                                </select>
+                                                    <option value="01:00">01:00</option> <option value="01:30">01:30</option>
+                                                    <option value="02:00">02:00</option> <option value="02:30">02:30</option>
+                                                    <option value="03:00">03:00</option> <option value="03:30">03:30</option>
+                                                    <option value="04:00">04:00</option> <option value="04:30">04:30</option>
+                                                    <option value="05:00">05:00</option> <option value="05:30">05:30</option>
+                                                    <option value="06:00">06:00</option> <option value="06:30">06:30</option>
+                                                    <option value="07:00">07:00</option> <option value="07:30">07:30</option>
+                                                    <option value="08:00">08:00</option> <option value="08:30">08:30</option>
+                                                    <option value="09:00">09:00</option> <option value="09:30">09:30</option>
+                                                    <option value="10:00">10:00</option> <option value="10:30">10:30</option>
+                                                    <option value="11:00">11:00</option> <option value="11:30">11:30</option>
+                                                    <option value="12:00">12:00</option> <option value="12:30">12:30</option>
+                                                    <option value="13:00">13:00</option> <option value="13:30">13:30</option>
+                                                    <option value="14:00">14:00</option> <option value="14:30">14:30</option>
+                                                    <option value="15:00">15:00</option> <option value="15:30">15:30</option>
+                                                    <option value="16:00">16:00</option> <option value="16:30">16:30</option>
+                                                    <option value="17:00">17:00</option> <option value="17:30">17:30</option>
+                                                    <option value="18:00">18:00</option> <option value="18:30">18:30</option>
+                                                    <option value="19:00">19:00</option> <option value="19:30">19:30</option>
+                                                    <option value="20:00">20:00</option> <option value="20:30">20:30</option>
+                                                    <option value="21:00">21:00</option> <option value="21:30">21:30</option>
+                                                    <option value="22:00">22:00</option> <option value="22:30">22:30</option>
+                                                    <option value="23:00">23:00</option> <option value="23:30">23:30</option>
+                                                </select>
                                             </div>
 
                                         </div>
@@ -193,112 +179,9 @@
                                     <div class="form-group">
                                         <label for="" style="margin-bottom: 10px">Ville <em style="color:red;">*</em></label>
                                         <select id="communes" name="commune_id" required class="form-control col-lg-12 col-sm-12">
-                                            <option value="1">Abengourou</option>
-                                            <option value="2">Abobo</option>
-                                            <option value="3">Adjame</option>
-                                            <option value="4">Alepe</option>
-                                            <option value="5">Anyama</option>
-                                            <option value="6">Attecoube</option>
-                                            <option value="7">Attinguie</option>
-                                            <option value="8">Bingerville</option>
-                                            <option value="9">Brofodoume</option>
-                                            <option value="10">Cocody</option>
-                                            <option value="11">Marcory</option>
-                                            <option value="12">M&#039;Bonoua</option>
-                                            <option value="13">Oghlwapo</option>
-                                            <option value="14">Plateau</option>
-                                            <option value="15">Treichville</option>
-                                            <option value="16">Agboville</option>
-                                            <option value="17">Adzope</option>
-                                            <option value="18">Akoupe</option>
-                                            <option value="19">Agou</option>
-                                            <option value="20">Tiassale</option>
-                                            <option value="21">N&#039;Douci</option>
-                                            <option value="22">Taabo</option>
-                                            <option value="23">Yakasse Attobrou</option>
-                                            <option value="24">Aboisso</option>
-                                            <option value="25">Adiake</option>
-                                            <option value="26">Port-Bouet</option>
-                                            <option value="27">Koumassi</option>
-                                            <option value="28">Grand-Bassam</option>
-                                            <option value="29">Bonoua</option>
-                                            <option value="30">Tiapoum</option>
-                                            <option value="31">Adiapodoume</option>
-                                            <option value="32">Becedi-Brignan</option>
-                                            <option value="33">Dabou</option>
-                                            <option value="34">Jacqueville</option>
-                                            <option value="35">Sikensi</option>
-                                            <option value="36">Songon</option>
-                                            <option value="37">Toupah</option>
-                                            <option value="38">Yopougon</option>
-                                            <option value="39">Beoumi</option>
-                                            <option value="40">Botro</option>
-                                            <option value="41">Bouaké</option>
-                                            <option value="42">Daoukro</option>
-                                            <option value="43">Djebonoua</option>
-                                            <option value="44">Mbahiakro</option>
-                                            <option value="45">Ouelle</option>
-                                            <option value="46">Prikro</option>
-                                            <option value="47">Sakassou</option>
-                                            <option value="48">Abongoua</option>
-                                            <option value="49">Agnibilekro</option>
-                                            <option value="50">Arrah</option>
-                                            <option value="51">Bettie</option>
-                                            <option value="52">Bongouanou</option>
-                                            <option value="53">Koun-Fao</option>
-                                            <option value="54">Niable</option>
-                                            <option value="55">Bondoukou</option>
-                                            <option value="56">Bouna</option>
-                                            <option value="57">Doropo</option>
-                                            <option value="58">Nassian</option>
-                                            <option value="59">Sandegue</option>
-                                            <option value="60">Tanda</option>
-                                            <option value="61">Transua</option>
-                                            <option value="62">Attiegouakro</option>
-                                            <option value="63">Bocanda</option>
-                                            <option value="64">Didievi</option>
-                                            <option value="65">Dimbokro</option>
-                                            <option value="66">Kossou</option>
-                                            <option value="67">Kouassi Kouassikro</option>
-                                            <option value="68">Mbato</option>
-                                            <option value="69">Tiebissou</option>
-                                            <option value="70">Toumodi</option>
-                                            <option value="71">Yamoussoukro</option>
-                                            <option value="72">Bayota</option>
-                                            <option value="73">Divo</option>
-                                            <option value="74">Fresco</option>
-                                            <option value="75">Grand Lahou</option>
-                                            <option value="76">Guitry</option>
-                                            <option value="77">Lakota</option>
-                                            <option value="78">Oume</option>
-                                            <option value="79">Bouafle</option>
-                                            <option value="80">Daloa</option>
-                                            <option value="81">Gohitafla</option>
-                                            <option value="82">Issia</option>
-                                            <option value="83">Sinfra</option>
-                                            <option value="84">Vavoua</option>
-                                            <option value="85">Zoukougbeu</option>
-                                            <option value="86">Zuenoula</option>
-                                            <option value="87">Gueyo</option>
-                                            <option value="88">San-Pedro</option>
-                                            <option value="89">Sassandra</option>
-                                            <option value="90">Soubre</option>
-                                            <option value="91">Tabou</option>
-                                            <option value="92">Dikodougou</option>
-                                            <option value="93">Tingrela</option>
-                                            <option value="94">Korhogo</option>
-                                            <option value="95">sinematiali</option>
-                                            <option value="96">Dabakala</option>
-                                            <option value="97">Ferkessedougou</option>
-                                            <option value="98">Katiola</option>
-                                            <option value="99">Kong</option>
-                                            <option value="100">Niakaramadougou</option>
-                                            <option value="101">Kani</option>
-                                            <option value="102">Koro</option>
-                                            <option value="103">Mankono</option>
-                                            <option value="104">Odiénné</option>
-                                            <option value="105">Seguéla</option>
-                                            <option value="106">Touba</option>
+                                            @foreach($ville as $v)
+                                                <option value="{{ $v->id }}">{{ $v->libelle }}</option>
+                                            @endforeach
                                     </select>
                                     </div>
                                 </div>
@@ -402,7 +285,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Description </label>
-                                        <textarea rows="4" id="desc" class="form-control" name="description" placeholder="Description" disabled>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        <textarea rows="4" maxlength="999" id="desc" class="form-control" name="description" placeholder="Description" disabled>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                         tempor incididunt ut labore et dolore magna.</textarea>
 
                                     </div>

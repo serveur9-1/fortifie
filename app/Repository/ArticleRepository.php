@@ -75,7 +75,6 @@ class ArticleRepository
                     ->where('user_id',$user_id)
                     ->where('diocese_id', $diocese_id)
                     ->where('is_active', false)
-                    ->orWhereDate('fin', '<', Carbon::now())
                     ->orderBy('id','DESC')
                     ->paginate($this->perPage);
 
@@ -86,7 +85,6 @@ class ArticleRepository
                     ->where('user_id',$user_id)
                     ->where('diocese_id', $diocese_id)
                     ->where('is_active', true)
-                    ->whereDate('fin', '>=', Carbon::now())
                     ->orderBy('id','DESC')
                     ->paginate($this->perPage);
             }
@@ -111,16 +109,14 @@ class ArticleRepository
                 ->select()
                 ->where('user_id',$user_id)
                 ->where('diocese_id', $diocese_id)
-                ->where('is_active', true)
-                ->orWhereDate('fin', '>', Carbon::now());
+                ->where('is_active', true);
         }else{
 
             return $this->art->newQuery()
                 ->select()
                 ->where('user_id',$user_id)
                 ->where('diocese_id', $diocese_id)
-                ->where('is_active', false)
-                ->orWhereDate('fin', '<', Carbon::now());
+                ->where('is_active', false);
 
         }
     }
@@ -161,9 +157,10 @@ class ArticleRepository
 
     public function deleteArticle($user_id, $diocese_id, $article_id)
     {
-        $usr = $this->user->newQuery()
-                ->findOrFail($user_id)
-                ->get();
+        return $this->art->newQuery()
+                ->findOrFail($article_id)
+                ->delete();
+
     }
 
 
@@ -171,6 +168,15 @@ class ArticleRepository
 
 
     //Recherche
+
+    public function searchOnDashboard($q, $user_id)
+    {
+        return $this->art->newQuery()
+            ->select()
+            ->where('titre','LIKE',"%$q%")
+            ->where('user_id',$user_id)
+            ->paginate($this->perPage);
+    }
 
     public function search($q, $category_id, $diocese_id)
     {

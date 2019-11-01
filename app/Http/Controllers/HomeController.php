@@ -5,23 +5,29 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Ville;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     private $r;
     private $a;
+    private $auth;
 
-    public function __construct(CategoryRepository $r, ArticleRepository $art)
+    public function __construct(CategoryRepository $r, ArticleRepository $art, AuthManager $auth)
     {
+        //$this->middleware('auth');
         $this->r = $r;
         $this->a = $art;
+        $this->auth = $auth;
     }
 
-/*    public function index()
-    {
-        return view('site.index');
-    }*/
+    /*    public function index()
+        {
+            return view('site.index');
+        }*/
 
     public function index()
     {
@@ -39,6 +45,12 @@ class HomeController extends Controller
         ]);
     }
 
+    public function deleteArticle($id)
+    {
+        $this->a->deleteArticle(42, 3, $id);
+        return redirect()->back()->with('success','Vous avez bien supprimé l\'annonce ');
+    }
+
     public function myAnnonce(Request $request)
     {
 
@@ -51,8 +63,9 @@ class HomeController extends Controller
 
     public function publier()
     {
+        $v = new Ville();
         return view('site.article.publier',[
-
+            'ville' => $v->newQuery()->select()->orderBy('libelle','ASC')->get()
         ]);
     }
 
@@ -65,6 +78,20 @@ class HomeController extends Controller
         return view('site.article.index',[
             'article' => $this->a->search($request['title'], $request['category'], $request['diocese'])
         ]);
+    }
+
+    // Recherche my annonce
+
+
+
+    public function searchAnnonce(Request $request)
+    {
+        return view('site.article.mesAnnonce',[
+            'my_article_a' => $this->a->countArticle(42, 3),
+            'my_article_i' => $this->a->countArticle(42, 3, false),
+            'my_article' => $this->a->searchOnDashboard($request['word'], 42)
+        ]);
+
     }
 
 }

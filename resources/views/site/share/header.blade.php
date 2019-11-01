@@ -65,7 +65,7 @@
                                         <li data-value="" class="option">Toutes les catégories</li>
                                     @foreach($category as $cat)
                                             <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
-                                        @endforeach
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>

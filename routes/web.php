@@ -61,7 +61,12 @@ Route::get('/paroisse/{id}',[
     'uses' => 'ParoisseController@index'
 ])->where('id','[0-9]+');
 
+//Action article
 
+Route::get('article/delete/{id}',[
+    'as' => 'article.delete',
+    'uses' => 'HomeController@deleteArticle'
+])->where('id','[0-9]+');
 
 
 //Query Rechercher
@@ -71,3 +76,12 @@ Route::get('/query',[
     'uses' => 'HomeController@query'
 ]);
 
+Route::get('/q',[
+    'as' => 'q',
+    'uses' => 'HomeController@searchAnnonce'
+]);
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
