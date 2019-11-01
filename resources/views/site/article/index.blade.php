@@ -32,9 +32,11 @@
                             </div>
                             @endforeach
                         @else
-                            =   =   =   =   =   =
-                            =   Aucune categorie   =
-                            =   =   =   =   =   =
+                            <div class="col-12">
+                                <div class="quotes" style="text-align: center; font-size: 30px">
+                                    Aucune Catégorie                                    
+                                </div>
+                           </div>
                         @endif
                         </div>
                     </div>
@@ -141,9 +143,12 @@
                                 </ul>
                             </nav>
                     @else
-                        =   =   =   =   =   =
-                        =   Aucun article   =
-                        =   =   =   =   =   =
+                        <div class="col-12">
+                            <div class="quotes" style="text-align: center; font-size: 30px">
+                                <span class="fa fa-trash mb-4" style="font-size: 80px "></span><br>
+                                Aucun Article                                    
+                            </div>
+                       </div>
                     @endif
                 </div>
                 <!--================End Blog Post Area =================-->

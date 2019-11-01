@@ -1,3 +1,34 @@
+         <style type="text/css">
+          /** scroll to top page **/
+        #bouton_haut {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: #5fc6c9;
+          color: white;
+          cursor: pointer;
+          padding: 8px;
+          width: 45px;
+          height: 45px;
+          border-radius: 4px;
+        }
+
+        #bouton_haut:hover {
+          background-color: #6b2f90;
+        }
+      </style> 
+        <div class="container">
+            <button onclick="topFunction()" id="bouton_haut" title="Vers le haut">
+            <i class="fa fa-arrow-up"></i>
+            </button>
+        </div>
+        <!--================Blog Area =================-->
+
 
         <div class="container mb-5">
             <h4>Nos partenaires</h4>
@@ -18,13 +49,13 @@
                 <div class="row">
                     <div class="col-lg-3  col-md-6 col-sm-6">
                         <div class="single-footer-widget">
-                            <h6 class="footer_title">A propos de nous</h6>
+                            <h6 class="footer_title">A propos de FORTIFIE-TOI</h6>
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
+                                        <li><a href="#">A propos de nous</a></li>
+                                        <li><a href="#">Avantage de l'inscription</a></li>
+                                        <li><a href="#">Nous contacter</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,9 +67,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
+                                        <li><a href="#">Condition d'utilisation</a></li>
+                                        <li><a href="#">Politique de confidentialité</a></li>
+                                        <li><a href="#">Règle d'affichage</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,9 +81,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
+                                        <li><a href="#">Conférence épiscopale de CI</a></li>
+                                        <li><a href="#">Notre Galérie</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -64,9 +94,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
-                                        <li><a href="#">Lien 1</a></li>
+                                        <li><a href="#">Centre d'Aide</a></li>
                                     </ul>
                                 </div>
                             </div>

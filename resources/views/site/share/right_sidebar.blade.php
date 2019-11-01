@@ -23,8 +23,8 @@
                     <div class="media post_item">
                         <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/m-blog-5.jpg") }}' alt="post">
                         <div class="media-body">
-                            <a href="{{ route('description', ['id' => $a->id]) }}"><h3>{{ $a->article->titre }}</h3></a>
-                            <p>{{ Carbon\Carbon::now()->diffForHumans($a->article->created_at) }}</p>
+                            <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>
+                            <p>{{ Carbon\Carbon::now()->diffForHumans($a->article['created_at']) }}</p>
                         </div>
                     </div>
                 @endforeach

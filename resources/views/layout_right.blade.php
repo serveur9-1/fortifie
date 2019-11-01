@@ -25,7 +25,6 @@
                 </div>
             </div>
         </section>
-        <!--================Blog Area =================-->
 
     @include('site.share.footer')
 

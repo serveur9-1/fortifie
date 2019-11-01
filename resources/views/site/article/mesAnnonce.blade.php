@@ -17,37 +17,6 @@
         </section>
         <!--================Breadcrumb Area =================-->
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Information Annonce</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <div class="col-lg-12 col-sm-12 m-0 p-0">
-                <div class="event_post">
-                    <img src="{{ asset('/assets/image/blog1.jpg') }}" alt="">
-                    <a href="event-details.html"><h2 class="event_title">Restauration divine</h2></a>
-                    <ul class="list_style sermons_category event_category">
-                        <li><i class="lnr lnr-user"></i>Samedi, 5 mai, 2018</li>
-                        <li><i class="lnr lnr-apartment"></i>Rocky beach Church</li>
-                        <li><i class="lnr lnr-location"></i>Santa monica, Los Angeles, USA</li>
-                    </ul>
-                    <a href="#" class="btn_hover">View Details</a>
-                </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--================Blog Area =================-->
 @endsection
 
 @section('content')
@@ -98,9 +67,9 @@
                             <td title="{{ $a->titre }}">{{ Str::limit($a->titre, 20) }}</td>
                             <td>{{ $a->category->libelle }}</td>
                             <td>{{ Carbon\Carbon::create("$a->created_at")->toFormattedDateString() }}</td>
-                            <td>00:00:00</td>
+                            <td>{{ $a->created_at->format('hh:mm:ss') }}</td>
                             <td>
-                                <a href="#" class="view" title="View" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="material-icons">&#xE417;</i></a>
+                                <a target="_blank" href="{{ route('description', ['id'=> $a->id]) }}" class="view" title="View" class="btn btn-primary"><i class="material-icons">&#xE417;</i></a>
                                 <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>

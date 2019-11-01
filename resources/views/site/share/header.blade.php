@@ -1,6 +1,6 @@
 <!--================Header Area =================-->
         <header class="header_area" style="background: #fff !important">
-            <nav class="navbar navbar-expand-lg navbar-light haut">
+            <nav class="navbar navbar-expand-lg navbar-light haut" id="dispa">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <a class="navbar-brand logo_h" href="#"><img style="width: 200px" src="{{ asset('/assets/image/Logo.png') }}" alt=""></a>
@@ -46,12 +46,13 @@
                         </div>
                     </div>
             </nav>
-            <div class="container" style="background: #ffffff !important">
+            <div class="container" id="dispa1" style="background: #ffffff !important">
+                <form class="contact_form">
                 <div class="row">
                     <form class="col-md-12 col-lg-12 p-0" action="{{ route('query') }}" method="get">
                         <div class="row col-lg-11">
                             <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="title" placeholder="Entrez le titre">
-                            <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0" id="default-select2">
+                            <div style="border-radius: 0%; border:1px solid #ced4da" class="form_hidden col-lg-4 form-select d-inline-block ml-0 mr-0" id="default-select2">
                                 <select name="category" style="display: none;">
                                     <option value="">Toutes les catégories</option>
                                 @foreach($category as $cat)
@@ -88,11 +89,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row col-lg-1">
-                            <button type="submit" style="border-radius:0 4px 4px 0;" class="col-12 btn"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="row col-lg-1">
+                        <button type="submit" style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
+                        color: #fff" class="col-12 btn"><i class="fa fa-search"></i></button>
+                    </div>
+
                 </div>
+                </form>
             </div>
             <style>
                 .flex-container {
@@ -141,11 +145,17 @@
                     .flex-container {
                         width: 600px;
                     }
+                    .form_hidden{
+                        display: none
+                    }
                 }
 
                 @media (max-width: 600px) {
                     .flex-container {
                         width: 500px;
+                    }
+                    .form_hidden{
+                        display: none
                     }
                 }
 
@@ -153,17 +163,26 @@
                     .flex-container {
                         width: 400px;
                     }
+                    .form_hidden{
+                        display: none
+                    }
                 }
 
                 @media (max-width: 400px) {
                     .flex-container {
                         width: 330px;
                     }
+                    .form_hidden{
+                        display: none
+                    }
                 }
 
                 @media (max-width: 300px) {
                     .flex-container {
                         width: 300px;
+                    }
+                    .form_hidden{
+                        display: none
                     }
                 }
 

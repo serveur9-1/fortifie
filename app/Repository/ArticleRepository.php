@@ -157,6 +157,16 @@ class ArticleRepository
     }
 
 
+    //DELETE ARTICLE
+
+    public function deleteArticle($user_id, $diocese_id, $article_id)
+    {
+        $usr = $this->user->newQuery()
+                ->findOrFail($user_id)
+                ->get();
+    }
+
+
 
 
 

@@ -1,17 +1,17 @@
 @extends('layout_right')
 @section('title','Description')
 @section('bread')
-    <!--================Breadcrumb Area =================-->
-    <section class="breadcrumb_area blog_banner_two">
-        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
-        <div class="container">
-            <div class="page-cover text-center">
-                <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
-                <ol class="breadcrumb">
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Annonce</a></li>
-                    <li class="active">Detail Annonce</li>
-                </ol>
+        <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area blog_banner_two">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ route('home')}}">Accueil</a></li>
+                        <li class="active">Detail Annonce</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </section>
