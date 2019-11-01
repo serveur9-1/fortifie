@@ -9,14 +9,14 @@
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
                     <ol class="breadcrumb">
-                        <li><a href="{{ route('index')}}">Accueil</a></li>
+                        <li><a href="{{ route('home')}}">Accueil</a></li>
                         <li class="active">Detail Annonce</li>
                     </ol>
                 </div>
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
-        
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -64,8 +64,8 @@
                     </div>
                     <div class="row mt-3 mb-3">
                         <div class="col-12">
-                            <a href="#" class="btn btn-light">Annonces actives (0 )</a> |
-                            <a href="#" class="btn btn-light">Annonces inactives (0)</a>
+                            <a href="{{ route('myAnnonce') }}" class="btn btn-light">Annonces actives ({{ $my_article_a->count() }})</a> |
+                            <a href="{{ route('myAnnonce',['active'=>false]) }}" class="btn btn-light">Annonces inactives ({{ $my_article_i->count() }})</a>
                         </div>
                     </div>
                     <div class="row">
@@ -79,6 +79,7 @@
                     </div>
 
                 </div>
+                @if($my_article->count() > 0)
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
@@ -91,54 +92,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($my_article as $a)
                         <tr>
-                            <td>1</td>
-                            <td>restauration divine</td>
-                            <td>évengelisation</td>
-                            <td>17/10/19</td>
-                            <td>18:18</td>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td title="{{ $a->titre }}">{{ Str::limit($a->titre, 20) }}</td>
+                            <td>{{ $a->category->libelle }}</td>
+                            <td>{{ Carbon\Carbon::create("$a->created_at")->toFormattedDateString() }}</td>
+                            <td>00:00:00</td>
                             <td>
                                 <a href="#" class="view" title="View" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="material-icons">&#xE417;</i></a>
                                 <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>restauration divine</td>
-                            <td>évengelisation</td>
-                            <td>17/10/19</td>
-                            <td>18:18</td>
-                            <td>
-                                <a href="#" class="view" title="View" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="material-icons">&#xE417;</i></a>
-                                <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>restauration divine</td>
-                            <td>évengelisation</td>
-                            <td>17/10/19</td>
-                            <td>18:18</td>
-                            <td>
-                                <a href="#" class="view" title="View" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="material-icons">&#xE417;</i></a>
-                                <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>restauration divine</td>
-                            <td>évengelisation</td>
-                            <td>17/10/19</td>
-                            <td>18:18</td>
-                            <td>
-                                <a href="#" class="view" title="View" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><i class="material-icons">&#xE417;</i></a>
-                                <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
@@ -154,6 +121,9 @@
                         <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
                     </ul>
                 </div>
+                @else
+                    ========Aucune annonce==========
+                @endif
             </div>
     </div>
 @endsection

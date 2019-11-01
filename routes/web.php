@@ -21,10 +21,10 @@ Route::get('/publier',[
     'uses' => 'HomeController@publier'
 ]);
 
-Route::get('/description',[
+Route::get('/description/{id}',[
     'as' => 'description',
     'uses' => 'HomeController@description'
-]);
+])->where('id','[0-9]+');
 
 Route::get('/mes_annonces',[
     'as' => 'myAnnonce',
@@ -50,3 +50,24 @@ Route::get('/galerie',[
     'as' => 'galerie',
     'uses' => 'GalleryController@gallery'
 ]);
+
+Route::get('/categorie/{id}',[
+    'as' => 'categorie',
+    'uses' => 'CategorieController@categorie'
+])->where('id','[0-9]+');
+
+Route::get('/paroisse/{id}',[
+    'as' => 'paroisse',
+    'uses' => 'ParoisseController@index'
+])->where('id','[0-9]+');
+
+
+
+
+//Query Rechercher
+
+Route::get('/query',[
+    'as' => 'query',
+    'uses' => 'HomeController@query'
+]);
+

@@ -19,7 +19,7 @@
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li  class="dropdown nav-item">
                                   <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>
-                                    
+
                                   </a>
                                   <ul class="dropdown-menu" role="menu">
                                     <li class="dropdown-item">
@@ -48,44 +48,50 @@
             </nav>
             <div class="container" style="background: #ffffff !important">
                 <div class="row">
-                    <div class="row col-lg-11">
-                        <input style="border-radius: 4px 0 0 4px;" type="text" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="name" placeholder="Enter your name">
-                        <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0" id="default-select2">
-                            <select style="display: none;">
+                    <form class="col-md-12 col-lg-12 p-0" action="{{ route('query') }}" method="get">
+                        <div class="row col-lg-11">
+                            <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="title" placeholder="Entrez le titre">
+                            <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0" id="default-select2">
+                                <select name="category" style="display: none;">
+                                    <option value="">Toutes les catégories</option>
                                 @foreach($category as $cat)
-                                    <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
-                                @endforeach
-                            </select>
-                            <div class="nice-select" tabindex="0">
-                                <span class="current">Categorie</span>
-                                <ul class="list">
+                                        <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="nice-select" tabindex="0">
+                                    <span class="current">Categorie</span>
+                                    <ul class="list">
+                                        <li data-value="" class="option">Toutes les catégories</li>
                                     @foreach($category as $cat)
-                                        <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
+                                            <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4" id="default-select2">
+                                <select name="diocese" style="display: none;">
+                                    @foreach($diocese as $d)
+                                        <option value="">Tous les diocèse</option>
+                                    @foreach($diocese as $d)
+                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
+                                        @endforeach
                                     @endforeach
-                                </ul>
+                                </select>
+                                <div class="nice-select" tabindex="0">
+                                    <span class="current" disabled="">Diocèse</span>
+                                    <ul class="list">
+                                        <li data-value="" class="option">Tous les diocèses</li>
+                                    @foreach($diocese as $d)
+                                            <li data-value="{{ $d->id }}" class="option">{{ $d->nom }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4" id="default-select2">
-                            <select style="display: none;">
-                                @foreach($diocese as $d)
-                                    @foreach($diocese as $d)
-                                        <option value="1">{{ $d->nom }}</option>
-                                    @endforeach
-                                @endforeach
-                            </select>
-                            <div class="nice-select" tabindex="0">
-                                <span class="current" disabled="">Diocèse</span>
-                                <ul class="list">
-                                    @foreach($diocese as $d)
-                                        <li data-value="1" class="option">{{ $d->nom }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        <div class="row col-lg-1">
+                            <button type="submit" style="border-radius:0 4px 4px 0;" class="col-12 btn"><i class="fa fa-search"></i></button>
                         </div>
-                    </div>
-                    <div class="row col-lg-1">
-                        <button style="border-radius:0 4px 4px 0;" class="col-12 btn"><i class="fa fa-search"></i></button>
-                    </div>
+                    </form>
                 </div>
             </div>
             <style>
@@ -95,7 +101,7 @@
                     flex-direction: row;
                     overflow-y: auto;
                     overflow-x: auto;
-                    
+
                 }
                 li{
                     margin-right: 15px;
@@ -167,7 +173,7 @@
                     <div>
                         <ul class="flex-container nav navbar-nv mr-auto">
                                 @foreach($category as $cat)
-                                    <li class="nav-item"><a class="nav-link" href="#">{{ $cat->libelle }}</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('categorie', [ 'id' => $cat->id]) }}">{{ $cat->libelle }}</a></li>
                                 @endforeach
                         </ul>
                     </div>

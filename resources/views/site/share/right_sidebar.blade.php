@@ -7,7 +7,7 @@
             <ul class="list_style cat-list">
                 @foreach($category as $c)
                 <li>
-                    <a href="#" class="d-flex justify-content-between">
+                    <a href="{{ route('categorie', [ 'id' => $c->id]) }}" class="d-flex justify-content-between">
                         <p>{{ $c->libelle }}</p>
                         <p>{{ $c->article->count() }}</p>
                     </a>
@@ -23,7 +23,7 @@
                     <div class="media post_item">
                         <img style="width: 100px" src='{{ asset("/assets/image/blog/main-blog/m-blog-5.jpg") }}' alt="post">
                         <div class="media-body">
-                            <a href=""><h3>{{ $a->article->titre }}</h3></a>
+                            <a href="{{ route('description', ['id' => $a->id]) }}"><h3>{{ $a->article->titre }}</h3></a>
                             <p>{{ Carbon\Carbon::now()->diffForHumans($a->article->created_at) }}</p>
                         </div>
                     </div>

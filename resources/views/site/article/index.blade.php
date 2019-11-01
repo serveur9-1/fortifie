@@ -25,7 +25,7 @@
                                     <img src='{{ $v->article->category->slug }}' alt="post">
                                     <div class="categories_details">
                                         <div class="categories_text">
-                                            <a href="{{ route('description')}}"><h5>{{ $v->article->category->libelle }}</h5></a>
+                                            <a href="#"><h5>{{ $v->article->category->libelle }}</h5></a>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                         </a>
                                     </div>--}}
                                     <div class="blog_details">
-                                        <a href=""><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
+                                        <a href="{{ route('description',['id' => $a->id])}}"><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
                                         {{--{!!
                                             Share::page('http://jorenvanhocht.be', 'Share title', ['class' => 'text_danger'])
                                             ->facebook()
@@ -94,7 +94,7 @@
                                         <p>
                                             {{ Str::limit($a->description, 400) }}
                                         </p>
-                                        <a href="" class="view_btn button_hover">VOIR DETAILS</a>
+                                        <a href="{{ route('description',['id' => $a->id])}}" class="view_btn button_hover">VOIR DETAILS</a>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,9 @@
                                         <a href="#">{{ $a->category->libelle }}</a>
                                     </div>
                                     <ul class="blog_meta list_style">
-                                        <li><a href="#">{{ $a->diocese->nom }} <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
+                                        @foreach($a->diocese->paroisse  as $p)
+                                        <li><a href="#">{{ $p->nom }} <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
+                                        @endforeach
                                         <li><a href="#">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
                                         <li><a href="#">{{ $a->visiteur->count() }} Vues<i class="lnr lnr-eye"></i></a></li>
