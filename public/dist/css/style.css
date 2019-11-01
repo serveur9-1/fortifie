@@ -52,6 +52,28 @@ Table of Content:
   color: #ffffff !important;
 }
 
+/** scroll to top page **/
+                #myBtn {
+                  display: block;
+                  position: fixed;
+                  bottom: 20px;
+                  right: 30px;
+                  z-index: 99;
+                  font-size: 18px;
+                  border: none;
+                  outline: none;
+                  background-color: #007bff;
+                  color: white;
+                  cursor: pointer;
+                  padding: 8px;
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 4px;
+                }
+
+            #myBtn:hover {
+              background-color: #6b2f90;
+            }
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .list_style {

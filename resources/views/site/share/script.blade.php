@@ -13,6 +13,33 @@
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+        <!-- scroll to the top page -->
+        <script>
+          // When the user scrolls down 20px from the top of the document, show the button
+          window.onscroll = function() {scrollFunction()};
+
+          function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                  // document.getElementById("dispa").style.display = "none";
+                  document.getElementById("dispa1").style.display = "none";
+                  document.getElementById("bouton_haut").style.display = "block";
+              }else {
+                  // document.getElementById("dispa").style.display = "block";
+                  document.getElementById("dispa1").style.display = "block";
+                  document.getElementById("bouton_haut").style.display = "none";
+              }
+
+             
+          }
+          // When the user clicks on the button, scroll to the top of the document
+          function topFunction() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+          }
+
+         
+        </script>
         <script type="text/javascript">
             $(document).ready(function () {
 

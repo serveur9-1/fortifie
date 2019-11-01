@@ -25,16 +25,18 @@
                                     <img src='{{ $v->article->category->slug }}' alt="post">
                                     <div class="categories_details">
                                         <div class="categories_text">
-                                            <a href="{{ route('description')}}"><h5>{{ $v->article->category->libelle }}</h5></a>
+                                            <a href=""><h5>{{ $v->article->category->libelle }}</h5></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         @else
-                            =   =   =   =   =   =
-                            =   Aucune categorie   =
-                            =   =   =   =   =   =
+                            <div class="col-12">
+                                <div class="quotes" style="text-align: center; font-size: 30px">
+                                    Aucune Catégorie                                    
+                                </div>
+                           </div>
                         @endif
                         </div>
                     </div>
@@ -139,9 +141,12 @@
                                 </ul>
                             </nav>
                     @else
-                        =   =   =   =   =   =
-                        =   Aucun article   =
-                        =   =   =   =   =   =
+                        <div class="col-12">
+                            <div class="quotes" style="text-align: center; font-size: 30px">
+                                <span class="fa fa-trash mb-4" style="font-size: 80px "></span><br>
+                                Aucun Article                                    
+                            </div>
+                       </div>
                     @endif
                 </div>
                 <!--================End Blog Post Area =================-->
