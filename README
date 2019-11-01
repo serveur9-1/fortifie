@@ -22,3 +22,13 @@ php artisan db:seed --class=ArticleableSeeder
 
 #7  Article
 php artisan db:seed --class=VisiteurableSeeder
+
+
+
+###NE PAS UTILISER
+
+composer require laravel/ui
+
+php artisan ui vue --auth
+
+
