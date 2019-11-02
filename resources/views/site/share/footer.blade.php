@@ -53,9 +53,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">A propos de nous</a></li>
+                                        <li><a href="{{ route('contact')}}">A propos de nous</a></li>
                                         <li><a href="#">Avantage de l'inscription</a></li>
-                                        <li><a href="#">Nous contacter</a></li>
+                                        <li><a href="{{ route('contact')}}">Nous contacter</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                 <div class="col-12">
                                     <ul class="list_style">
                                         <li><a href="#">Conférence épiscopale de CI</a></li>
-                                        <li><a href="#">Notre Galérie</a></li>
+                                        <li><a href="{{ route('galerie')}}">Notre Galérie</a></li>
                                     </ul>
                                 </div>
                             </div>
