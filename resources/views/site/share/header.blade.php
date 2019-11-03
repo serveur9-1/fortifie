@@ -182,12 +182,12 @@
                 }
                 
             </style>
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light" id="nav_cat" style="height: 30px ; overflow: hidden;padding-top: 15px">
                 <div class="container">
                     <div>
                         <ul class="flex-container nav navbar-nv mr-auto">
                                 @foreach($category as $cat)
-                                    <li class="nav-item"><a class="nav-link" href="#">{{ $cat->libelle }}</a></li>
+                                    <li class="nav-item" id="color"><a class="nav-link" href="#">{{ $cat->libelle }}</a></li>
                                 @endforeach
                         </ul>
                     </div>

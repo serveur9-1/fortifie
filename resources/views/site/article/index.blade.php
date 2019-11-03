@@ -33,7 +33,7 @@
                             @endforeach
                         @else
                             <div class="col-12">
-                                <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.4">
+                                <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">
                                     Aucune Catégorie                                    
                                 </div>
                            </div>
@@ -142,7 +142,7 @@
                             </nav>
                     @else
                         <div class="col-12">
-                            <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.4">
+                            <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">
                                 <span class="fa fa-home mb-4" style="font-size: 80px "></span><br>
                                 Aucun Article                                    
                             </div>
