@@ -50,8 +50,8 @@
                 <form class="contact_form">
                 <div class="row">
                     
-                    <div class="row col-lg-11">
-                        <input style="border-radius: 4px 0 0 4px;" type="text" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="name" placeholder="Enter your name">
+                    <div class="row col-lg-11 col-11 col-md-12">
+                        <input style="border-radius: 4px 0 0 4px;" type="text" class="col-lg-4  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="name" placeholder="Enter your name">
                         <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
                             <select style="display: none;">
                                 @foreach($category as $cat)
@@ -67,7 +67,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4" id="default-select2">
+                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4 form_hidden" id="default-select2">
                             <select style="display: none;">
                                 @foreach($diocese as $d)
                                     @foreach($diocese as $d)
@@ -85,9 +85,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row col-lg-1">
+                    <div class="row col-lg-1 col-2">
                         <button style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
-                        color: #fff" class="col-12 btn"><i class="fa fa-search"></i></button>
+                        color: #fff;text-align: center;margin:0px !important " class="col-12 btn"><i class="fa fa-search"></i></button>
                     </div>
 
                 </div>
@@ -141,7 +141,10 @@
                         width: 600px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -150,7 +153,10 @@
                         width: 500px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -159,7 +165,10 @@
                         width: 400px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -168,7 +177,10 @@
                         width: 330px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -177,7 +189,10 @@
                         width: 300px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
                 

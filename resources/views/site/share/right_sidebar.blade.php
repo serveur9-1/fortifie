@@ -58,23 +58,6 @@
             </div>
             <div class="br"></div>
         </aside>
-        <aside class="single-sidebar-widget tag_cloud_widget">
-            <h4 class="widget_title">Tags</h4>
-            <ul class="list_style">
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Architecture</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Voir plus</a></li>
-            </ul>
-        </aside>
 
         <!--============= PUB AREA HERE  ===================-->
         <aside class="single_sidebar_widget ads_widget">
