@@ -1,0 +1,36 @@
+<?php
+
+
+namespace App\Repository;
+
+
+use Illuminate\Auth\AuthManager;
+
+class UserRepository
+{
+    private $auth;
+
+    public function __construct(AuthManager $c)
+    {
+        $this->auth = $c;
+    }
+
+
+
+    // USER INFO ##########
+
+    public function getUserDioceseId()
+    {
+        return $this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id;
+    }
+
+    public function getGUserId()
+    {
+        return $this->auth->user()->id;
+    }
+
+
+
+
+
+}

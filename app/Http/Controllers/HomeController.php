@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
+use App\Repository\VisiteurRepository;
 use App\Ville;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -15,30 +18,34 @@ class HomeController extends Controller
     private $r;
     private $a;
     private $auth;
+    private $visite;
 
-    public function __construct(CategoryRepository $r, ArticleRepository $art, AuthManager $auth)
+    public function __construct(CategoryRepository $r, ArticleRepository $art, UserRepository $auth, VisiteurRepository $v)
     {
         //$this->middleware('auth');
         $this->r = $r;
         $this->a = $art;
         $this->auth = $auth;
+
+        $this->visite = $v;
     }
 
-    /*    public function index()
-        {
-            return view('site.index');
-        }*/
 
     public function index()
     {
+        $this->visite->visitedSite();
+
         return view('site.article.index',[
             'article' => $this->a->getArticle(),
             'popcategory' => $this->r->getCategory()
         ]);
+
     }
 
     public function description($id)
     {
+        $this->visite->visitedArticle($id);
+
         return view('site.article.annonce_desc',[
             'article' => $this->a->getArticleWithId($id),
             'otherArticle' => $this->a->getSomeArticleOf($id, $this->a->getArticleWithId($id)->diocese->id, $this->a->getArticleWithId($id)->category->id)
@@ -47,7 +54,7 @@ class HomeController extends Controller
 
     public function deleteArticle($id)
     {
-        $this->a->deleteArticle(42, 3, $id);
+        $this->a->deleteArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), $id);
         return redirect()->back()->with('success','Vous avez bien supprimé l\'annonce ');
     }
 
@@ -55,9 +62,9 @@ class HomeController extends Controller
     {
 
         return view('site.article.mesAnnonce',[
-            'my_article_a' => $this->a->countArticle(42, 3),
-            'my_article_i' => $this->a->countArticle(42, 3, false),
-            'my_article' => $this->a->getMyArticle(42, 3, $request['active'])
+            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId()),
+            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false),
+            'my_article' => $this->a->getMyArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), $request['active'])
         ]);
     }
 
@@ -87,11 +94,12 @@ class HomeController extends Controller
     public function searchAnnonce(Request $request)
     {
         return view('site.article.mesAnnonce',[
-            'my_article_a' => $this->a->countArticle(42, 3),
-            'my_article_i' => $this->a->countArticle(42, 3, false),
-            'my_article' => $this->a->searchOnDashboard($request['word'], 42)
+            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId()),
+            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false),
+            'my_article' => $this->a->searchOnDashboard($request['word'], $this->auth->getGUserId())
         ]);
 
     }
+
 
 }

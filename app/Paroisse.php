@@ -12,4 +12,9 @@ class Paroisse extends Model
     {
         return $this->belongsTo('App\Diocese');
     }
+
+    public function gestionnaire()
+    {
+        return $this->belongsToMany('App\Gestionnaire');
+    }
 }

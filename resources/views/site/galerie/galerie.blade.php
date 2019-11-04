@@ -1,8 +1,8 @@
 @extends('layout')
 @section('title','Galerie')
 @section('content')
-    
-        
+
+
         <!--================Breadcrumb Area =================-->
         <section class="breadcrumb_area br_image">
             <div class="container">
@@ -16,60 +16,25 @@
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
-       
+
         <!--================Breadcrumb Area =================-->
         <section class="gallery_area section_gap">
             <div class="container">
                 <div class="row imageGallery1" id="gallery">
+                @if($gallery->count() > 0)
+                    @foreach($gallery as $g)
                     <div class="col-md-4 gallery_item">
                         <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/01.jpg') }}" alt="">
+                            <img title="{{ $g->legende }}" src="{{ asset("/assets/image/gallery/$g->img") }}" alt="">
                             <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/01.jpg') }}"><i class="fa fa-expand"></i></a>
+                                <a title="{{ $g->legende }}" class="light" href="{{ asset("/assets/image/gallery/$g->img") }}"><i class="fa fa-expand"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 gallery_item">
-                        <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/02.jpg') }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/02.jpg') }}"><i class="fa fa-expand"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 gallery_item">
-                        <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/03.jpg') }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/03.jpg') }}"><i class="fa fa-expand"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 gallery_item">
-                        <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/04.jpg') }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/04.jpg') }}"><i class="fa fa-expand"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 gallery_item">
-                        <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/06.jpg') }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/05.jpg') }}"><i class="fa fa-expand"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 gallery_item">
-                        <div class="gallery_img">
-                            <img src="{{ asset('/assets/image/gallery/05.jpg') }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ asset('/assets/image/gallery/06.jpg') }}"><i class="fa fa-expand"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                @else
+                    ####Aucune image
+                @endif
                 </div>
             </div>
         </section>

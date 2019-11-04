@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Article;
 use App\Category;
 use App\Diocese;
-use App\Repository\CategoryRepository;
+use App\Partenaire;
+use App\Pub;
+use App\Repository\PubRepository;
 use App\Visiteur;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
         $cat = new Category();
         $dio = new Diocese();
         $vi = new Visiteur();
+
+        $pu = new Pub();
+
         view()->share([
             'category' => $cat->newQuery()->select()->orderBy('libelle')->get(),
            'diocese' => $dio->newQuery()->select()->orderBy('nom')->get(),
@@ -47,7 +51,12 @@ class AppServiceProvider extends ServiceProvider
                 ->groupBy('id', 'article_id')
                 ->orderBy('nb','DESC')
                 ->limit(3)
-                ->get()
+                ->get(),
+            'g_pub' => $pu->newQuery()->select()
+                ->where('is_active',true)
+                ->whereDate('debut','<=', Carbon::now()->format('Y-m-d'))
+                ->whereDate('fin','>=', Carbon::now()->format('Y-m-d'))->get(),
+            'g_partenaire' => Partenaire::all()
         ]);
     }
 }

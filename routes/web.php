@@ -46,10 +46,38 @@ Route::get('/contact',[
     'uses' => 'ContactController@contact'
 ]);
 
+//Gallery
+
 Route::get('/galerie',[
     'as' => 'galerie',
     'uses' => 'GalleryController@gallery'
 ]);
+
+
+Route::get('/galerie/delete/{id}',[
+    'as' => 'galerie.delete',
+    'uses' => 'GalleryController@delete'
+])->where('id', '[0-9]+');
+
+Route::get('/galerie/update/{id}',[
+    'as' => 'galerie.update',
+    'uses' => 'GalleryController@update'
+])->where('id', '[0-9]+');
+
+
+//Pubs
+
+Route::get('/pub/delete/{id}',[
+    'as' => 'pub.delete',
+    'uses' => 'PubController@delete'
+])->where('id', '[0-9]+');
+
+Route::get('/pub/update/{id}',[
+    'as' => 'pub.update',
+    'uses' => 'PubController@update'
+])->where('id', '[0-9]+');
+
+
 
 Route::get('/categorie/{id}',[
     'as' => 'categorie',
@@ -81,7 +109,20 @@ Route::get('/q',[
     'uses' => 'HomeController@searchAnnonce'
 ]);
 
+//Authentification
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+//NEWSLETTER
+
+Route::post('/newsletter',[
+    'as' => 'newsletter',
+    'uses' => 'NewsletterController@suscribe'
+]);
+
+
+Route::get('/unsuscribe',[
+    'as' => 'unsuscribe',
+    'uses' => 'NewsletterController@unsuscribe'
+]);

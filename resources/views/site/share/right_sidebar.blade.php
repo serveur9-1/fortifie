@@ -32,48 +32,43 @@
             <div class="br"></div>
         </aside>
         <!--============= PUB AREA HERE  ===================-->
-        <aside class="single_sidebar_widget ads_widget">
-            <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
-            <div class="br"></div>
-        </aside>
-
-        <aside class="single_sidebar_widget ads_widget">
-            <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/add.jpg') }}" alt=""></a>
-            <div class="br"></div>
-        </aside>
+        @if($g_pub->count() > 0)
+            @foreach($g_pub as $p)
+                <aside class="single_sidebar_widget ads_widget">
+                    <a target="_blank" href="{{ $p->url }}"><img class="img-fluid" src="{{ asset("/assets/image/pubs/$p->img") }}" alt=""></a>
+                    <div class="br"></div>
+                </aside>
+            @endforeach
+        @else
+            <aside class="single_sidebar_widget ads_widget">
+                <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/pubs/add.jpg') }}" alt=""></a>
+                <div class="br"></div>
+            </aside>
+        @endif
         <!--============= END PUB AREA HERE  ===================-->
         <aside class="single-sidebar-widget newsletter_widget">
             <h4 class="widget_title">Newsletter</h4>
             <p>
                 Abonnez-vous à la newsletter pour être informé de toutes les nouvelles informations à tout moment.
             </p>
+            @error('email')
+            <p class="text-warning" role="alert">
+                <strong>{{ $message }}</strong>
+            </p>
+            @enderror
             <div class="form-group d-flex flex-row">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <form action="{{ route('newsletter') }}" method="post" class="col-12 d-inline-flex">
+                    @csrf
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                        </div>
+                        <input name="email" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrer email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer email'">
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
-                </div>
-                <a href="#" class="bbtns">S'abonner</a>
+                    <button type="submit" href="#" class="btn bbtns">S'abonner</button>
+                </form>
             </div>
             <div class="br"></div>
-        </aside>
-        <aside class="single-sidebar-widget tag_cloud_widget">
-            <h4 class="widget_title">Tags</h4>
-            <ul class="list_style">
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Architecture</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Voir plus</a></li>
-            </ul>
         </aside>
 
         <!--============= PUB AREA HERE  ===================-->

@@ -2,26 +2,26 @@
 
 
 #1  Utilisateur
-php artisan db:seed --class=UserTableSeeder
+php artisan db:seed --class=UsersTableSeeder
 
 
 #2  Ville
-php artisan db:seed --class=VilleTableSeeder
+php artisan db:seed --class=VillesTableSeeder
 
 #3  Diocese
-php artisan db:seed --class=DioceseTableSeeder
+php artisan db:seed --class=DiocesesTableSeeder
 
 #4  Paroisse
 php artisan db:seed --class=ParoisseTableSeeder
 
 #5  Category
-php artisan db:seed --class=CategoryTableSeeder
+php artisan db:seed --class=CategoriesTableSeeder
 
 #6  Article
-php artisan db:seed --class=ArticleableSeeder
+php artisan db:seed --class=ArticlesTableSeeder
 
 #7  Article
-php artisan db:seed --class=VisiteurableSeeder
+php artisan db:seed --class=VisiteursTableSeeder
 
 
 

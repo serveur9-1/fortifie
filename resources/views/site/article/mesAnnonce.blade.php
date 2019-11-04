@@ -70,7 +70,7 @@
                             <td title="{{ $a->titre }}">{{ Str::limit($a->titre, 20) }}</td>
                             <td>{{ $a->category->libelle }}</td>
                             <td>{{ Carbon\Carbon::create("$a->created_at")->toFormattedDateString() }}</td>
-                            <td>{{ $a->created_at->format('h:m:s') }}</td>
+                            <td>{{ $a->created_at->format('H:m:s') }}</td>
                             <td>
                                 <a target="_blank" href="{{ route('description', ['id'=> $a->id]) }}" class="view" title="View" class="btn btn-primary"><i class="material-icons">&#xE417;</i></a>
                                 <a href="#" class="edit" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
