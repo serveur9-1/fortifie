@@ -37,7 +37,7 @@ class HomeController extends Controller
 
         return view('site.article.index',[
             'article' => $this->a->getArticle(),
-            'popcategory' => $this->r->getCategory()
+            'popcategory' => $this->r->getMostPopulateCategory()
         ]);
 
     }

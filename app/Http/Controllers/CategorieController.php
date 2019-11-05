@@ -19,4 +19,5 @@ class CategorieController extends Controller
             'article' => $this->a->getArticleByCategory($id),
         ]);
     }
+
 }

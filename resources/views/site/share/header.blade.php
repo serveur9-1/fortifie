@@ -93,7 +93,7 @@
                     <div class="row col-lg-1">
                         <button type="submit" style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
                         color: #fff" class="col-12 btn"><i class="fa fa-search"></i></button>
-                    </div>
+    </div>
 
                 </div>
                 </form>

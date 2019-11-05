@@ -17,6 +17,7 @@ class CreateConfigTable extends Migration
             $table->bigIncrements('id');
             $table->string('telephone');
             $table->string('email');
+            $table->string('localite')->nullable();
         });
     }
 

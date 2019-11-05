@@ -14,13 +14,22 @@ class GalleryRepository
         $this->g = $g;
     }
 
-    public function getGallery()
+    public function getGallery($is_admin)
     {
-        return $this->g->newQuery()
-            ->select()
-            ->limit(10)
-            ->orderBy('id','DESC')
-            ->get();
+        if(!$is_admin)
+        {
+            return $this->g->newQuery()
+                ->select()
+                ->limit(10)
+                ->orderBy('id','DESC')
+                ->get();
+        }else{
+            return $this->g->newQuery()
+                ->select()
+                ->orderBy('id','DESC')
+                ->get();
+        }
+
 
     }
 
@@ -31,13 +40,13 @@ class GalleryRepository
         $ga->delete();
     }
 
-    public function updateGallery($id, $img, $legende)
+    public function updateGallery($id, $array)
     {
         $ga = $this->g->newQuery()->findOrFail($id);
 
         $ga->update([
-            'img' => $img,
-            'legende' => $legende
+            'img' => $array['img'],
+            'legende' => $array['legende']
         ]);
     }
 }

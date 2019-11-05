@@ -72,7 +72,7 @@ Route::get('/pub/delete/{id}',[
     'uses' => 'PubController@delete'
 ])->where('id', '[0-9]+');
 
-Route::get('/pub/update/{id}',[
+Route::get('/pubcategorie/update/{id}',[
     'as' => 'pub.update',
     'uses' => 'PubController@update'
 ])->where('id', '[0-9]+');

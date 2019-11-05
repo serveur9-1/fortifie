@@ -32,17 +32,17 @@ class PubRepository
         $ga->delete();
     }
 
-    public function updatePub($id, $img, $url, $is_active, $is_banner, $debut, $fin)
+    public function updatePub($id, $array)
     {
         $ga = $this->p->newQuery()->findOrFail($id);
 
         $ga->update([
-            'img' => $img,
-            'url' => $url,
-            'is_active' => $is_active,
-            'is_banner' => $is_banner,
-            'debut' => $debut,
-            'fin' => $fin
+            'img' => $array['img'],
+            'url' => $array['url'],
+            'is_active' => $array['is_active'],
+            'is_banner' => $array['is_banner'],
+            'debut' => $array['debut'],
+            'fin' => $array['fin']
         ]);
     }
 }

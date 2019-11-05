@@ -5,6 +5,8 @@ namespace App\Repository;
 
 
 use App\Category;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class CategoryRepository
 {
@@ -15,7 +17,13 @@ class CategoryRepository
         $this->c = $c;
     }
 
-    public function getCategory()
+    /*
+     *
+     * ###################################################"
+     * #################################################
+     * */
+
+    public function getMostPopulateCategory()
     {
         return $this->c->newQuery()
             ->select()
@@ -23,5 +31,53 @@ class CategoryRepository
             ->orderBy('libelle','ASC')
             ->get();
 
+    }
+
+
+    public function getCategory()
+    {
+        return $this->c->newQuery()
+            ->select()
+            ->orderBy('libelle','ASC')
+            ->get();
+
+    }
+
+/*    public function getCategory()
+    {
+        return $this->c->newQuery()
+            ->select()
+            ->orderBy('libelle','ASC')
+            ->paginate(15);
+
+    }*/
+
+
+    public function createCategory($array)
+    {
+        $cat = $this->c->newQuery()->create([
+            'libelle' => $array['libelle'],
+            'slug' => Str::slug($array['libelle'].".".time())
+        ]);
+    }
+
+
+    public function deleteCategory($id)
+    {
+        $cat = $this->c->newQuery()->findOrFail($id);
+
+        $cat->delete();
+    }
+
+    public function updateCategory($id, $array)
+    {
+        $cat = $this->c->newQuery()->findOrFail($id);
+
+        $cat->libelle = $array['libelle'];
+        $cat->slug = Str::slug($array['libelle'].".".time());
+
+        //$cat->img = $array['libelle'];
+
+        $cat->save();
     }
 }

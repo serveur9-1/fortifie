@@ -51,6 +51,23 @@ class NewsletterRepository
 
     }
 
+    public function getNewsletterSuscriber()
+    {
+        return $this->n->newQuery()->select()->orderBy('id','DESC')->get();
+    }
+
+    public function deleteNewsletterSuscriber($id)
+    {
+        $nls = $this->n->newQuery()->findOrFail($id);
+
+        $nls->delete();
+    }
+
+    public function sendNewsletterMail()
+    {
+        return true;
+    }
+
 
 
 
