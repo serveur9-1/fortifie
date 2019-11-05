@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title','Contact')
 @section('content')
-    
+
     <!--================Breadcrumb Area =================-->
         <section class="breadcrumb_area br_image" style="height: 200px">
             <div class="container">
@@ -15,7 +15,7 @@
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
-        
+
         <!--================Contact Area =================-->
         <section class="contact_area section_gap">
 
@@ -27,7 +27,7 @@
                                 <blockquote class="generic-blockquote">
                                     “Pour une quelconque préoccupation vous pouvez nous laisser un message afin que nous remedions a votre preoccupation au plus vite.
                                     nous sommes disponibles du lundi au vendredi entre 7h et 17h .
-                                    Merci de bien vouloir renseigner se formulaire afin que nous sachons votre preoccuapation.” 
+                                    Merci de bien vouloir renseigner se formulaire afin que nous sachons votre preoccuapation.”
                                 </blockquote>
                             </div>
                         </div>
@@ -53,21 +53,42 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row contact_form" action="{{ route('sendMail') }}" method="post" id="contactForm">
+                            @csrf
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Entrez votre nom">
+                                    <input type="text" class="form-control" id="name" name="senderName" placeholder="Entrez votre nom">
+                                    @error('senderName')
+                                        <small class="text-warning" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Entrer votre adresse e-mail">
+                                    <input type="email" class="form-control" id="email" name="senderEmail" placeholder="Entrer votre adresse e-mail">
+                                    @error('senderEmail')
+                                    <small class="text-warning" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Entrer un sujet">
+                                    @error('subject')
+                                    <small class="text-warning" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter votre Message"></textarea>
+                                    <textarea maxlength="500" class="form-control" name="message" id="message" rows="1" placeholder="Enter votre Message"></textarea>
+                                    @error('message')
+                                    <small class="text-warning" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">

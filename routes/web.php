@@ -126,3 +126,11 @@ Route::get('/unsuscribe',[
     'as' => 'unsuscribe',
     'uses' => 'NewsletterController@unsuscribe'
 ]);
+
+
+// CONTACTEZ NOUS
+
+Route::post('/contact/send',[
+    'as' => 'sendMail',
+    'uses' => 'ContactController@sendContactMail'
+]);
