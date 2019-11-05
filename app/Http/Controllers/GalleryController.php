@@ -34,4 +34,16 @@ class GalleryController extends Controller
 
         return redirect()->back()->with('success',"Vous avez bien modifié l'image de la galérie");
     }
+
+    //administration
+    
+    public function listGalleryAdmin()
+    {
+        return view('admin.gallerie.listGallerie');
+    }
+
+    public function addGalleryAdmin()
+    {
+        return view('admin.gallerie.addGallerie');
+    }
 }

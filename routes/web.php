@@ -134,3 +134,116 @@ Route::post('/contact/send',[
     'as' => 'sendMail',
     'uses' => 'ContactController@sendContactMail'
 ]);
+
+
+//administration
+
+Route::get('/diocese',[
+    'as' => 'listDiocese',
+    'uses' => 'DioceseController@listDiocese'
+]);
+
+Route::get('/addDiocese',[
+    'as' => 'addDiocese',
+    'uses' => 'DioceseController@addDiocese'
+]);
+
+Route::get('/listCategorie',[
+    'as' => 'listCategorie',
+    'uses' => 'CategorieController@listCategorie'
+]);
+
+Route::get('/listSousCategorie',[
+    'as' => 'listSousCategorie',
+    'uses' => 'CategorieController@listSousCategorie'
+]);
+
+Route::get('/addSousCategorie',[
+    'as' => 'addSousCategorie',
+    'uses' => 'CategorieController@addSousCategorie'
+]);
+
+Route::get('/addCategorie',[
+    'as' => 'addCategorie',
+    'uses' => 'CategorieController@addCategorie'
+]);
+
+Route::get('/listAnnonce',[
+    'as' => 'listAnnonce',
+    'uses' => 'ArticleController@listAnnonce'
+]);
+
+Route::get('/addAnnonce',[
+    'as' => 'addAnnonce',
+    'uses' => 'ArticleController@addAnnonce'
+]);
+
+Route::get('/listUsers',[
+    'as' => 'listUsers',
+    'uses' => 'UserController@listUsers'
+]);
+
+Route::get('/addUsers',[
+    'as' => 'addUsers',
+    'uses' => 'UserController@addUsers'
+]);
+
+Route::get('/listPub',[
+    'as' => 'listPub',
+    'uses' => 'PubliciteController@listPub'
+]);
+
+Route::get('/addPub',[
+    'as' => 'addPub',
+    'uses' => 'PubliciteController@addPub'
+]);
+
+Route::get('/listPartner',[
+    'as' => 'listPartner',
+    'uses' => 'PartenaireController@listPartner'
+]);
+
+Route::get('/addPartner',[
+    'as' => 'addPartner',
+    'uses' => 'PartenaireController@addPartner'
+]);
+
+Route::get('/listVille',[
+    'as' => 'listVille',
+    'uses' => 'VilleController@listVille'
+]);
+
+Route::get('/addVille',[
+    'as' => 'addVille',
+    'uses' => 'VilleController@addVille'
+]);
+
+Route::get('/listGallerie',[
+    'as' => 'listGallerie',
+    'uses' => 'GalleryController@listGalleryAdmin'
+]);
+
+Route::get('/addGallerie',[
+    'as' => 'addGallerie',
+    'uses' => 'GalleryController@addGalleryAdmin'
+]);
+
+Route::get('/listParoisse',[
+    'as' => 'listParoisse',
+    'uses' => 'ParoisseController@listParoisse'
+]);
+
+Route::get('/addParoisse',[
+    'as' => 'addParoisse',
+    'uses' => 'ParoisseController@addParoisse'
+]);
+
+Route::get('/newsletter',[
+    'as' => 'newsletter',
+    'uses' => 'NewsletterController@newslettersAdmin'
+]);
+
+Route::get('/Accueil',[
+    'as' => 'Accueil',
+    'uses' => 'HomeController@admin'
+]);

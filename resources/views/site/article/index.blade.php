@@ -15,7 +15,7 @@
                             <p class="float-right"><a href="#">Voir tous</a></p>
                         </div>
                     </div>
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="row">
                         @if($visiteur->count() > 0)
                             @foreach($visiteur as $v)
@@ -39,7 +39,7 @@
                            </div>
                         @endif
                         </div>
-                    </div>
+                    </div> -->
                 </section>
                 <!--================Blog Categorie Area =================-->
 

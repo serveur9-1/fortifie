@@ -20,4 +20,26 @@ class CategorieController extends Controller
         ]);
     }
 
+    //administration
+    
+    public function listCategorie()
+    {
+        return view('admin.categorie.listCategorie');
+    }
+
+    public function addCategorie()
+    {
+        return view('admin.categorie.addCategorie');
+    }
+
+    public function listSousCategorie()
+    {
+        return view('admin.sousCategories.listSousCategorie');
+    }
+
+    public function addSousCategorie()
+    {
+        return view('admin.sousCategories.addSousCategorie');
+    }
+
 }

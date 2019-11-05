@@ -22,4 +22,16 @@ class ParoisseController extends Controller
             'paroisse' => $this->p->getArticleByParoisse($id)
         ]);
     }
+
+
+    //administatration
+    public function listParoisse()
+    {
+        return view('admin.paroisse.listParoisse');
+    }
+
+    public function addParoisse()
+    {
+        return view('admin.paroisse.addParoisse');
+    }
 }

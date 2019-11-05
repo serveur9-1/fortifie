@@ -102,4 +102,12 @@ class HomeController extends Controller
     }
 
 
+    //administration
+
+    public function admin()
+    {
+        return view('admin.Accueil');
+    }
+
+
 }

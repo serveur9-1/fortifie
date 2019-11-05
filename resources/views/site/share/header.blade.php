@@ -49,10 +49,10 @@
             <div class="container" id="dispa1" style="background: #ffffff !important">
                 <form class="contact_form">
                 <div class="row">
-                    <form class="col-md-12 col-lg-12 p-0" action="{{ route('query') }}" method="get">
-                        <div class="row col-lg-11">
-                            <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0" id="name" name="title" placeholder="Entrez le titre">
-                            <div style="border-radius: 0%; border:1px solid #ced4da" class="form_hidden col-lg-4 form-select d-inline-block ml-0 mr-0" id="default-select2">
+                    <form class="" action="{{ route('query') }}" method="get">
+                        <div class="row col-lg-11 col-11 col-md-12">
+                            <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
+                            <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
                                 <select name="category" style="display: none;">
                                     <option value="">Toutes les catégories</option>
                                 @foreach($category as $cat)
@@ -69,7 +69,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4" id="default-select2">
+                            <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4 form_hidden" id="default-select2">
                                 <select name="diocese" style="display: none;">
                                     @foreach($diocese as $d)
                                         <option value="">Tous les diocèse</option>
@@ -90,11 +90,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row col-lg-1">
-                        <button type="submit" style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
-                        color: #fff" class="col-12 btn"><i class="fa fa-search"></i></button>
-    </div>
-
+                    <div class="row col-lg-1 col-2">
+                        <button style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
+                        color: #fff;text-align: center;margin:0px !important " class="col-12 btn"><i class="fa fa-search"></i></button>
+                    </div>
                 </div>
                 </form>
             </div>
@@ -105,7 +104,7 @@
                     flex-direction: row;
                     overflow-y: auto;
                     overflow-x: auto;
-
+                    
                 }
                 li{
                     margin-right: 15px;
@@ -146,7 +145,10 @@
                         width: 600px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -155,7 +157,10 @@
                         width: 500px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -164,7 +169,10 @@
                         width: 400px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -173,7 +181,10 @@
                         width: 330px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
 
@@ -182,12 +193,15 @@
                         width: 300px;
                     }
                     .form_hidden{
-                        display: none
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
                     }
                 }
-
+                
             </style>
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light" id="nav_cat" style="height: 30px ; overflow: hidden;padding-top: 15px">
                 <div class="container">
                     <div>
                         <ul class="flex-container nav navbar-nv mr-auto">

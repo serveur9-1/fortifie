@@ -19,4 +19,15 @@ class UserController extends Controller
         
         ]);
     }
+
+    //administration
+    public function listUsers()
+    {
+        return view('admin.compte.listUsers');
+    }
+
+    public function addUsers()
+    {
+        return view('admin.compte.addUsers');
+    }
 }

@@ -26,4 +26,15 @@ class PubController extends Controller
 
         return redirect()->back()->with('success',"Vous avez bien modifié l'image de la galérie");
     }
+
+    //administration
+    public function listPub()
+    {
+        return view('admin.publicite.listPub');
+    }
+
+      public function addPub()
+    {
+        return view('admin.publicite.addPub');
+    }
 }
