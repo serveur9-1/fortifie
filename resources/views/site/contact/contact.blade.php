@@ -35,21 +35,20 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="contact_info">
-                            <div class="info_item">
+                            @foreach($config as $c)
+                            <div class="info_item mb-2">
                                 <i class="lnr lnr-home"></i>
-                                <h6>Abidjan, Côte d'Ivoire</h6>
-                                <p>Eglise Catholique</p>
+                                <h6>{{ $c->localite }}</h6>
                             </div>
-                            <div class="info_item">
+                            <div class="info_item mb-2">
                                 <i class="lnr lnr-phone-handset"></i>
-                                <h6><a href="#">00 (440) 9865 562</a></h6>
-                                <p>Lun au ven 9h à 17h</p>
+                                <h6><a href="#">(+255) {{ $c->telephone }}</a></h6>
                             </div>
-                            <div class="info_item">
+                            <div class="info_item mb-2">
                                 <i class="lnr lnr-envelope"></i>
-                                <h6><a href="#">support@fortifietoi.com</a></h6>
-                                <p>Disponible chaque jours!</p>
+                                <h6><a href="#">{{ $c->email }}</a></h6>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -92,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
-                                <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer le message</button>
+                                <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
                             </div>
                         </form>
                     </div>
@@ -100,36 +99,5 @@
             </div>
         </section>
         <!--================Contact Area =================-->
-               <!--================Contact Success and Error message Area =================-->
-        <div id="success" class="modal modal-message fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-close"></i>
-                        </button>
-                        <h2>Thank you</h2>
-                        <p>Your message is successfully sent...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modals error -->
-
-        <div id="error" class="modal modal-message fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-close"></i>
-                        </button>
-                        <h2>Sorry !</h2>
-                        <p> Something went wrong </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--================End Contact Success and Error message Area =================-->
 
 @endsection
