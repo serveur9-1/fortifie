@@ -138,7 +138,7 @@ Route::post('/contact/send',[
 
 //administration
 
-Route::ressources(['prefix'=> 'admin'],function(){
+Route::group(['prefix'=> 'admin'],function(){
 
 
     Route::get('/diocese',[
