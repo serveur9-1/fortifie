@@ -37,7 +37,81 @@ class ArticleRepository
     {
         return $this->art->newQuery()
             ->select()
+            ->where('is_active',true)
             ->orderBy('created_at','DESC')->paginate($this->perPage);
+
+    }
+
+
+    public function createArticle($array)
+    {
+
+        $this->art->newQuery()
+            ->create([
+                'titre' => $array->titre,
+                'description' => $array->description,
+                'category_id' => $array->category,
+                'paroisse_id' => $array->paroisse,
+                'user_id' => 1,
+                'contact_telephone' => $array->contact_telephone,
+                'contact_email' => $array->contact_email,
+                'contact_fixe' => $array->contact_fixe,
+                'img' => $array->img,
+                'debut' => $array->debut,
+                'heure_debut' => $array->heure_debut,
+                'fin' => $array->fin,
+                'heure_fin' => $array->heure_fin
+            ]);
+    }
+
+
+    public function updateArticle($id, $array)
+    {
+
+        $this->art->newQuery()->findOrFail($id)
+            ->update([
+                'titre' => $array->titre,
+                'description' => $array->description,
+                'category_id' => $array->category_id,
+                'paroisse_id' => $array->paroisse_id,
+                'user_id' => $array->user_id,
+                'contact_telephone' => $array->contact_telephone,
+                'contact_email' => $array->contact_email,
+                'contact_fixe' => $array->contact_fixe,
+                'img' => $array->img,
+                'debut' => $array->debut,
+                'fin' => $array->fin
+            ]);
+    }
+
+    public function getArticleAdmin()
+    {
+        return $this->art->newQuery()
+            ->select()
+            ->orderBy('created_at','DESC')->get();
+    }
+
+    public function enableOrDisableArticle($id, $enable)
+    {
+        $a = $this->art->newQuery()->findOrFail($id);
+
+        if(true){
+
+            $a->update([
+                'is_active' => false
+            ]);
+
+
+        }else{
+
+            $a->update([
+                'is_active' => true
+            ]);
+        }
+
+        $a->update([
+            'is_active' => $enable
+        ]);
 
     }
 
@@ -53,6 +127,7 @@ class ArticleRepository
 
         return $this->art->newQuery()
             ->select()
+            ->where('is_active',true)
             ->where('category_id',$id)
             ->get();
     }
@@ -74,6 +149,7 @@ class ArticleRepository
                     ->select()
                     ->where('user_id',$user_id)
                     ->where('diocese_id', $diocese_id)
+                    ->where('is_active',true)
                     ->where('is_active', false)
                     ->orderBy('id','DESC')
                     ->paginate($this->perPage);
@@ -84,6 +160,7 @@ class ArticleRepository
                     ->select()
                     ->where('user_id',$user_id)
                     ->where('diocese_id', $diocese_id)
+                    ->where('is_active',true)
                     ->where('is_active', true)
                     ->orderBy('id','DESC')
                     ->paginate($this->perPage);
@@ -131,6 +208,7 @@ class ArticleRepository
         return $this->art->newQuery()
             ->findOrFail($id)
             ->where('diocese_id', $diocese_id)
+            ->where('is_active',true)
             ->orWhere('category_id', $category_id)
             ->orderBy('id','DESC')
             ->limit(6)
@@ -148,6 +226,7 @@ class ArticleRepository
         return $this->paro->newQuery()
             ->select()
             ->where('id', $paroisse_id)
+            ->where('is_active',true)
             ->orderBy('id','DESC')
             ->get();
     }
@@ -155,7 +234,7 @@ class ArticleRepository
 
     //DELETE ARTICLE
 
-    public function deleteArticle($user_id, $diocese_id, $article_id)
+    public function deleteArticle($article_id)
     {
         return $this->art->newQuery()
                 ->findOrFail($article_id)
@@ -173,6 +252,7 @@ class ArticleRepository
     {
         return $this->art->newQuery()
             ->select()
+            ->where('is_active',true)
             ->where('titre','LIKE',"%$q%")
             ->where('user_id',$user_id)
             ->paginate($this->perPage);
@@ -188,6 +268,7 @@ class ArticleRepository
 
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
                 ->where('category_id',$category_id)
                 ->where('diocese_id', $diocese_id)
@@ -198,6 +279,7 @@ class ArticleRepository
             $this->verifyId($category_id);
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
                 ->where('category_id',$category_id)
                 ->paginate($this->perPage);
@@ -209,6 +291,7 @@ class ArticleRepository
 
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
                 ->where('diocese_id', $diocese_id)
                 ->paginate($this->perPage);
@@ -231,6 +314,7 @@ class ArticleRepository
 
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('category_id',$category_id)
                 ->paginate($this->perPage);
 
@@ -240,6 +324,7 @@ class ArticleRepository
 
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('diocese_id',$diocese_id)
                 ->paginate($this->perPage);
 
@@ -247,6 +332,7 @@ class ArticleRepository
 
             $this->query = $this->art->newQuery()
                 ->select()
+                ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
                 ->paginate($this->perPage);
         }

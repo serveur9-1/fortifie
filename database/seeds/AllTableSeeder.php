@@ -21,7 +21,7 @@ class AllTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class,200)->create();
+        factory(User::class,50)->create();
         factory(Ville::class, 50)->create();
         factory(Diocese::class,20)->create();
         factory(Paroisse::class, 40)->create();

@@ -20,7 +20,7 @@ class HomeController extends Controller
     private $auth;
     private $visite;
 
-    public function __construct(CategoryRepository $r, ArticleRepository $art, UserRepository $auth, VisiteurRepository $v)
+    public function __construct(CategoryRepository $r, ArticleRepository $art,UserRepository $auth, VisiteurRepository $v)
     {
         //$this->middleware('auth');
         $this->r = $r;

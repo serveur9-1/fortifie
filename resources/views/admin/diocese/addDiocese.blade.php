@@ -7,35 +7,56 @@
         <div class="container-fluid">
           <div class="x_panel">
            <div class="x_title">
-              <h2><small>Ajouter un diocèse</small></h2>
+              <h2><small>@if($edit) Modifier @else Ajouter @endif un diocèse</small></h2>
               <a href="#" class="btn btn-danger btn-sm pull-right mb-4" style="float: right;"><i class="fa fa-eye"></i> Liste des diocèses</a>
               <div class="clearfix"></div>
             </div>
           </div>
           <div class="card mb-4">
             <div class="card-header">
-              Ajout de diocèse
+                @if($edit) Modification @else Ajout @endif de diocèse
             </div>
             <div class="card-body">
               <div class="x_content">
-                <form action="http://fortifietoi.ci/laravel-admin/region" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                <form @if(!$edit) action="{{ route('validDiocese') }}" @else action="{{ route('updateDiocese', ['id' => $diocese->id ]) }}" @endif method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                  @csrf
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Ville <em style="color:red;">*</em>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="ville_id" required="required" class="form-control col-md-9 col-xs-12">
-                          <option value="2">diocèse 1</option>
-                          <option value="6">Promotion</option>
-                         </select>
-                      </div>
-                    </div>
-                  <div class="form-group">
                     <label class="control-label col-md-12 col-sm-2 col-xs-12" for="last-name">Nom <em style="color:red;">*</em>
                      </label>
                       <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="text" id="last-name" name="nom " required="required" class="form-control col-md-9 col-xs-12">
+                      @if($edit)
+                          <input type="text" value="{{ $diocese->nom }}" id="last-name" name="nom" required="required" class=" @error('nom') is-invalid @enderror form-control col-md-9 col-xs-12">
+                      @else
+                          <input type="text" value="{{ old('nom') }}" id="last-name" name="nom" required="required" class=" @error('nom') is-invalid @enderror form-control col-md-9 col-xs-12">
+                      @endif
+                          @error('nom')
+                              <p class="text-danger" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </p>
+                          @enderror
                       </div>
                    </div>
+                    <div class="form-group">
+                        <label class="col-md-8 col-sm-8 col-xs-12" for="last-name">Ville<em style="color:red;">*</em>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="ville" required="required" class="@error('ville') is-invalid @enderror form-control col-md-12 col-xs-12">
+                                <option selected disabled>Choisir une ville</option>
+                                @foreach($ville as $v)
+                                    @if($edit)
+                                        <option @if($v->id == $diocese->ville_id ) selected @endif value="{{ $v->id }}">{{ $v->libelle }}</option>
+                                    @else
+                                        <option value="{{ $v->id }}">{{ $v->libelle }}</option>
+                                    @endif
+                                    @endforeach
+                            </select>
+                            @error('ville')
+                            <p class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </p>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
                         <input type="submit" class="btn btn-success" value="Enregistrer">

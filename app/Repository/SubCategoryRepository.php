@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\SubCategory;
 
-class UserRepository
+class SubCategoryRepository
 {
     private $subC;
 

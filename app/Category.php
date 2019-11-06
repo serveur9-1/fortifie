@@ -20,4 +20,9 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Newsletter');
     }
+
+    public function subCategory()
+    {
+        return $this->hasMany('App\SubCategory');
+    }
 }

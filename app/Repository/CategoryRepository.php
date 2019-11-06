@@ -55,9 +55,10 @@ class CategoryRepository
 
     public function createCategory($array)
     {
+        $slug = Str::slug($array['libelle'].".".time());
         $cat = $this->c->newQuery()->create([
             'libelle' => $array['libelle'],
-            'slug' => Str::slug($array['libelle'].".".time())
+            'slug' => $slug
         ]);
     }
 
@@ -72,12 +73,9 @@ class CategoryRepository
     public function updateCategory($id, $array)
     {
         $cat = $this->c->newQuery()->findOrFail($id);
+        $cat->update([
+            'libelle' => $array['libelle']
+        ]);
 
-        $cat->libelle = $array['libelle'];
-        $cat->slug = Str::slug($array['libelle'].".".time());
-
-        //$cat->img = $array['libelle'];
-
-        $cat->save();
     }
 }

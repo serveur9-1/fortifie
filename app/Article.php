@@ -9,9 +9,18 @@ class Article extends Model
     protected $fillable = [
         'titre',
         'is_active',
+        'description',
+        'category_id',
+        'paroisse_id',
+        'user_id',
+        'contact_telephone',
+        'contact_email',
+        'contact_fixe',
         'img',
         'debut',
-        'fin'
+        'fin',
+        'heure_debut',
+        'heure_fin'
     ];
 
     public function category()
@@ -22,6 +31,11 @@ class Article extends Model
     public function diocese()
     {
         return $this->belongsTo('App\Diocese');
+    }
+
+    public function paroisse()
+    {
+        return $this->belongsTo('App\Paroisse');
     }
 
     public function visiteur()

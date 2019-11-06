@@ -17,52 +17,64 @@
             </div>
             <div class="card-body">
               <div class="x_content">
-                <form action="#" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
-                  <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Téléphone<em style="color:red;">*</em>
+                <form action="{{ route('validAnnonce') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                @csrf
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Titre<em style="color:red;">*</em>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="titre" name="titre" class="form-control col-md-9 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Description<em style="color:red;">*</em>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea rows="10" type="text" id="last-name" name="description" required="required" class="form-control col-md-9 col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Téléphone
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="contact_telephone" required="required" class="form-control col-md-9 col-xs-12">
+                          <input type="text" id="last-name" name="contact_telephone" class="form-control col-md-9 col-xs-12">
                       </div>
                    </div>
                    <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fixe<em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fixe
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="contact_fixe" required="required" class="form-control col-md-9 col-xs-12">
+                          <input type="text" id="last-name" name="contact_fixe"  class="form-control col-md-9 col-xs-12">
                       </div>
                    </div>
                    <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">E-mail<em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">E-mail
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="contact_email" required="required" class="form-control col-md-9 col-xs-12">
-                      </div>
-                   </div>
-                   <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Description<em style="color:red;">*</em>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea type="text" id="last-name" name="description" required="required" class="form-control col-md-9 col-xs-12"></textarea> 
+                          <input type="text" id="last-name" name="contact_email" class="form-control col-md-9 col-xs-12">
                       </div>
                    </div>
                    <div class="form-group">
                       <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Catégorie <em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="categorie_id" required="required" class="form-control col-md-9 col-xs-12">
-                            <option value="2">Evengelisation</option>
-                            <option value="6">Promotion</option>
+                          <select name="category" required="required" class="form-control col-md-9 col-xs-12">
+                            <option>Sélectionnez une catégorie</option>
+                          @foreach($category as $c)
+                            <option value="{{ $c->id }}">{{ $c->libelle }}</option>
+                          @endforeach
                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Diocèse <em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Paroisse <em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="diocese_id" required="required" class="form-control col-md-9 col-xs-12">
-                            <option value="2">diocèse 1</option>
-                            <option value="6">Promotion</option>
+                          <select name="paroisse" required="required" class="form-control col-md-9 col-xs-12">
+                            <option>Sélectionnez paroisse</option>
+                          @foreach($paroisse as $p)
+                            <option value="{{ $p->id }}">{{ $p->nom }}</option>
+                          @endforeach
                            </select>
                         </div>
                     </div>
@@ -77,16 +89,34 @@
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Date debut<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="datetime-local" id="last-name" name="debut" required="required" class="form-control col-md-9 col-xs-12">
+                          <input type="date" id="last-name" name="debut" required="required" class="form-control col-md-9 col-xs-12">
                       </div>
                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Heure debut<em style="color:red;">*</em>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="time" id="last-name" name="heure_debut" required="required" class="form-control col-md-9 col-xs-12">
+                        </div>
+                    </div>
+
                    <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Date de fin<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="datetime-local" id="last-name" name="fin" required="required" class="form-control col-md-9 col-xs-12">
+                          <input type="date" id="last-name" name="fin" required="required" class="form-control col-md-9 col-xs-12">
                       </div>
-                   </div><br><br>
+                   </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Heure fin<em style="color:red;">*</em>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="time" id="last-name" name="heure_fin" required="required" class="form-control col-md-9 col-xs-12">
+                        </div>
+                    </div>
+
+                    <br><br>
                    <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
                           <input type="submit" class="btn btn-success" value="Enregistrer">

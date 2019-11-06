@@ -151,9 +151,54 @@ Route::group(['prefix'=> 'admin'],function(){
         'uses' => 'DioceseController@addDiocese'
     ]);
 
+    Route::post('/validDiocese',[
+        'as' => 'validDiocese',
+        'uses' => 'DioceseController@validDiocese'
+    ]);
+
+    Route::get('/diocese/edit/{id}',[
+        'as' => 'editDiocese',
+        'uses' => 'DioceseController@editDiocese'
+    ])->where('id','[0-9]+');
+
+    Route::post('/updateDiocese/{id}',[
+        'as' => 'updateDiocese',
+        'uses' => 'DioceseController@updateDiocese'
+    ])->where('id','[0-9]+');
+
+    Route::get('/deleteDiocese/{id}',[
+        'as' => 'deleteDiocese',
+        'uses' => 'DioceseController@deleteDiocese'
+    ])->where('id','[0-9]+');
+
     Route::get('/listCategorie',[
         'as' => 'listCategorie',
         'uses' => 'CategorieController@listCategorie'
+    ]);
+
+    Route::get('/addCategorie',[
+        'as' => 'addCategorie',
+        'uses' => 'CategorieController@addCategorie'
+    ]);
+
+    Route::get('/Categorie/edit/{id}',[
+        'as' => 'editCategorie',
+        'uses' => 'CategorieController@editCategorie'
+    ])->where('id','[0-9]+');
+
+    Route::post('/updateCategorie/{id}',[
+        'as' => 'updateCategorie',
+        'uses' => 'CategorieController@updateCategorie'
+    ])->where('id','[0-9]+');
+
+    Route::get('/deleteCategorie/{id}',[
+        'as' => 'deleteCategorie',
+        'uses' => 'CategorieController@deleteCategorie'
+    ])->where('id','[0-9]+');
+
+    Route::post('/validCategorie',[
+        'as' => 'validCategorie',
+        'uses' => 'CategorieController@validCategorie'
     ]);
 
     Route::get('/listSousCategorie',[
@@ -166,20 +211,58 @@ Route::group(['prefix'=> 'admin'],function(){
         'uses' => 'CategorieController@addSousCategorie'
     ]);
 
-    Route::get('/addCategorie',[
-        'as' => 'addCategorie',
-        'uses' => 'CategorieController@addCategorie'
+    Route::get('/deleteSousCategorie/{id}',[
+        'as' => 'deleteSousCategorie',
+        'uses' => 'CategorieController@deleteSousCategorie'
+    ])->where('id','[0-9]+');
+
+
+    Route::post('/validSousCategorie',[
+        'as' => 'validSousCategorie',
+        'uses' => 'CategorieController@validSousCategorie'
     ]);
+
+
+    Route::get('/sousCategorie/edit/{id}',[
+        'as' => 'editSousCategorie',
+        'uses' => 'CategorieController@editSousCategorie'
+    ])->where('id','[0-9]+');
+
+    Route::post('/updateSousCategorie/{id}',[
+        'as' => 'updateSousCategorie',
+        'uses' => 'CategorieController@updateSousCategorie'
+    ])->where('id','[0-9]+');
+
+//  ANNONCES
 
     Route::get('/listAnnonce',[
         'as' => 'listAnnonce',
         'uses' => 'ArticleController@listAnnonce'
     ]);
 
+    Route::post('/listAnnonce/changeState/{id}/{enable}',[
+        'as' => 'enableOrdisableArticle',
+        'uses' => 'ArticleController@enableOrdisableArticle'
+    ])->where('id','[0-9]+');
+
+    Route::get('/deleteAnnonce/{id}',[
+        'as' => 'deleteAnnonce',
+        'uses' => 'ArticleController@deleteAnnonce'
+    ])->where('id','[0-9]+');
+
+
+
     Route::get('/addAnnonce',[
         'as' => 'addAnnonce',
         'uses' => 'ArticleController@addAnnonce'
     ]);
+
+    Route::post('/validAnnonce',[
+        'as' => 'validAnnonce',
+        'uses' => 'ArticleController@validAnnonce'
+    ]);
+
+
 
     Route::get('/listUsers',[
         'as' => 'listUsers',
@@ -193,12 +276,12 @@ Route::group(['prefix'=> 'admin'],function(){
 
     Route::get('/listPub',[
         'as' => 'listPub',
-        'uses' => 'PubliciteController@listPub'
+        'uses' => 'PubController@listPub'
     ]);
 
     Route::get('/addPub',[
         'as' => 'addPub',
-        'uses' => 'PubliciteController@addPub'
+        'uses' => 'PubController@addPub'
     ]);
 
     Route::get('/listPartner',[
@@ -246,7 +329,12 @@ Route::group(['prefix'=> 'admin'],function(){
         'uses' => 'NewsletterController@newslettersAdmin'
     ]);
 
-    Route::get('/Accueil',[
+    Route::get('/',[
+        'as' => 'Accueil',
+        'uses' => 'HomeController@admin'
+    ]);
+
+    Route::get('/accueil',[
         'as' => 'Accueil',
         'uses' => 'HomeController@admin'
     ]);

@@ -21,7 +21,7 @@ class CreateArticleTable extends Migration
             $table->string('contact_fixe',15)->nullable();
             $table->string('contact_email',50)->nullable();
             $table->string('description',1000);
-            $table->string('slug',100);
+            $table->string('slug',100)->nullable();
             $table->bigInteger('category_id')->unsigned()->index();
             $table->foreign('category_id')
                 ->references('id')
@@ -31,8 +31,11 @@ class CreateArticleTable extends Migration
             $table->string('img',300)->nullable();
             $table->boolean('is_active')->default(true);
 
-            $table->date('debut');
-            $table->date('fin');
+            $table->dateTime('debut');
+            $table->dateTime('fin');
+
+            $table->dateTime('heure_debut');
+            $table->dateTime('heure_fin');
 
             $table->bigInteger('user_id')->unsigned()->index();
 
@@ -41,10 +44,10 @@ class CreateArticleTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->bigInteger('diocese_id')->unsigned()->index();
-            $table->foreign('diocese_id')
+            $table->bigInteger('paroisse_id')->unsigned()->index();
+            $table->foreign('paroisse_id')
                 ->references('id')
-                ->on('dioceses')
+                ->on('paroisses')
                 ->onDelete('cascade');
 
             $table->timestamps();

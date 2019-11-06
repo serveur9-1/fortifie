@@ -28,6 +28,6 @@ $factory->define(Article::class, function (Faker $faker) {
         'debut' => $faker->date(),
         'fin' => $faker->date(),
         'user_id' => $faker->numberBetween(1, 50),
-        'diocese_id' => $faker->numberBetween(3,5)
+        'paroisse_id' => $faker->numberBetween(1,9)
     ];
 });

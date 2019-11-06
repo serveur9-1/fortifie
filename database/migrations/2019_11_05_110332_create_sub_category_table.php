@@ -16,7 +16,7 @@ class CreateSubCategoryTable extends Migration
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('libelle',50);
-            $table->string('slug',100);
+            $table->string('slug',100)->nullable();
             $table->bigInteger('category_id')->unsigned()->index();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

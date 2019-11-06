@@ -20,7 +20,7 @@ class VilleRepository
 
     public function getVille()
     {
-        return $this->v->newQuery()->select()->orderBy('libelle','ASC');
+        return $this->v->newQuery()->select()->orderBy('libelle','ASC')->get();
     }
 
 
