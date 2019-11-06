@@ -36,7 +36,7 @@
                 @foreach($g_partenaire as $p)
                 <a target="_blank" href="{{ $p->url }}">
                     <div class="slide"
-                        style="height: 100px ;background: url({{ asset('/assets/image/partners/'.$p->logo) }});">
+                        style="height: 50px ;background: url({{ asset('/assets/image/partners/'.$p->logo) }});">
                     </div>
                 </a>
                 @endforeach

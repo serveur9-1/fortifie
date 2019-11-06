@@ -25,11 +25,11 @@
                     <div class="stepwizard-row setup-panel">
                         <div class="stepwizard-step col-xs-3">
                             <a href="#step-1" type="button" class="btn btn-success stepp">1</a>
-                            <p><small>Thème</small></p>
+                            <p><small>Catégories</small></p>
                         </div>
                         <div class="stepwizard-step col-xs-3">
                             <a href="#step-2" type="button" class="btn stepp" disabled="disabled">2</a>
-                            <p><small>Catégorie</small></p>
+                            <p><small>Sous-catégories</small></p>
                         </div>
                         <div class="stepwizard-step col-xs-3">
                             <a href="#step-3" type="button" class="btn tn-circle stepp" disabled="disabled">3</a>
@@ -45,27 +45,26 @@
                 <form role="form" class="contact_form">
                     <div class="panel panel-primary setup-content" id="step-1">
                         <div class="panel-heading">
-                             <h3 class="panel-title">Thème <span style="color: red">*</span></h3>
+                             <h3 class="panel-title"> Catégories <span style="color: red">*</span></h3>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                <input type="text" class="form-control" required name="titre" placeholder="Entre le thème ici">
+                            <div id="list-example" class="list-group">
+                                @foreach($category as $c)
+                                    <div class="list-group-item list-group-item-action" disabled>{{ $c->libelle }}
+                                        <div class="primary-radio" style="float: right;background-color: #5fc6c9">
+                                            <input value="{{ $c->id }}" type="radio" id="{{ $c->id }}" name="category" checked>
+                                            <label for="{{ $c->id }}"></label>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="form-group">
-                                <div class="alert alert-primary" style="text-align:center;" role="alert">
-                                    Plus le texte est descriptif, plus l'annonce est comprehensive
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <center><a href="">Votre annonce n'a pas de thème? </a></center>
-                            </div>
-                            <button class="btn nextBtn pull-right stepp mt-3" type="button">Next</button>
+                            <button class="btn stepp nextBtn pull-right mt-3" type="button">Next</button>
                         </div>
                     </div>
 
                     <div class="panel panel-primary setup-content" id="step-2">
                          <div class="panel-heading">
-                             <h3 class="panel-title">Catégories <span style="color: red">*</span></h3>
+                             <h3 class="panel-title">Sous-Catégories <span style="color: red">*</span></h3>
                         </div>
                         <div class="panel-body">
                             <div id="list-example" class="list-group">
@@ -100,16 +99,16 @@
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <label for="">Heure debut <em style="color:red;">*</em> </label>
-                                                <input type="time" id="date_debut" required class="datepicker form-control" name="heure_fin" placeholder="Heure debut">
+                                                <input type="time" id="date_debut" required class="datepicker form-control" name="date_debut" placeholder="Heure debut">
                                             </div>
                                             
                                             <div class="col-lg-3 col-sm-6">
                                                 <label for="">Heure fin <em style="color:red;">*</em></label>
-                                                <input type="time" id="heure_fin" required class=" form-control" name="dateFin" placeholder="Heure fin">
+                                                <input type="time" id="heure_fin" required class=" form-control" name="heure_fin" placeholder="Heure fin">
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <label for="">Date fin <em style="color:red;">*</em></label>
-                                                <input type="date" id="date_fin" required class=" form-control" name="dateFin" placeholder="Heure fin">
+                                                <input type="date" id="date_fin" required class=" form-control" name="date_fin" placeholder="Heure fin">
                                             </div>
 
                                         </div>
@@ -200,11 +199,11 @@
                                 <div class="card-body">
                                     <h6> 1- Détails de l'annonce</h6><hr>
                                     <div class="form-group">
-                                        <label for="">Thème </label>
+                                        <label for="">Catégories </label>
                                         <input type="text" class="form-control" id="theme" name="libelle" value="theme" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Catégorie </label>
+                                        <label for="">Sous-Catégorie </label>
                                         <input type="text" class="form-control" id="theme" name="libelle" value="évengelisation" disabled>
                                     </div>
                                     <div class="form-group">

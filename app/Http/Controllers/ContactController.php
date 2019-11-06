@@ -28,4 +28,10 @@ class ContactController extends Controller
 
         return redirect()->back()->with('success','Votre message a bien été envoyé.');
     }
+
+
+    public function contactme()
+    {
+        return view('emails.contact');
+    }
 }

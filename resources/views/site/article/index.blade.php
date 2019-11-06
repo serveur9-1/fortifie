@@ -15,7 +15,7 @@
                             <p class="float-right"><a href="#">Voir tous</a></p>
                         </div>
                     </div>
-                    <!-- <div class="container">
+                    <div class="container">
                         <div class="row">
                         @if($visiteur->count() > 0)
                             @foreach($visiteur as $v)
@@ -39,7 +39,7 @@
                            </div>
                         @endif
                         </div>
-                    </div> -->
+                    </div>
                 </section>
                 <!--================Blog Categorie Area =================-->
 
@@ -56,8 +56,8 @@
                     </style>
                     @if($article->count() > 0)
                         @foreach($article as $a)
-                            <article class="row blog_item">
-                            <div class="col-md-9">
+                            <article class="row blog_item" style="background: #fff">
+                            <div class="col-md-12">
                                 <div class="blog_post">
                                     {{--<img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">--}}
                                     <img class="article-img" src='{{ $a->img }}' alt="">
@@ -93,14 +93,22 @@
                                             ->linkedin('Extra linkedin summary can be passed here')
                                             ->whatsapp();
                                         !!}--}}
+                                        <ul class="blog_meta list_style mb-4" style="display: flex;">
+                                            @foreach($a->diocese->paroisse  as $p)
+                                            <li><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $p->nom }}</a></li>
+                                            @endforeach
+                                            <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
+                                            <li>Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
+                                            <li> <i class="fa fa-eye w-8"></i> {{ $a->visiteur->count() }}</li>
+                                        </ul>
                                         <p>
                                             {{ Str::limit($a->description, 400) }}
                                         </p>
-                                        <a href="{{ route('description',['id' => $a->id])}}" class="view_btn button_hover">VOIR DETAILS</a>
+                                        <a href="{{ route('description',['id' => $a->id])}}" class="view_btn button_hover btn btn-primary mb-4">VOIR DETAILS</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="blog_info text-right">
                                     <div class="post_tag">
                                         <a href="#">{{ $a->category->libelle }}</a>
@@ -116,7 +124,7 @@
                                         <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </article>
                         @endforeach
                         <nav class="blog-pagination justify-content-center d-flex">

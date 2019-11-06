@@ -37,6 +37,11 @@ class NewsletterController extends Controller
         return 'ok' /*redirect('/')->with('success','Vous êtes maintenant désabonné à la catégorie.')*/;
     }
 
+    public function newsletterMail()
+    {
+        return view('emails.newsletter');
+    }
+
     //administration
     public function newslettersAdmin()
     {

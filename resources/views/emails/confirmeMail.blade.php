@@ -1,18 +1,4 @@
-<!-- @extends('layout_mail')
-
-@section('content')
-<div style="padding:25px;">
-<h3 style="color:#6b2f90"> Salut, </h3>
-<p>Une nouvelle annonce a laquelle vous ètes abonnés a été enregistré sur Fortifie-toi</p>
-<p><a href="#">Cliquez ici pour visiter les détails de l'annonce </a></p>
-<p>Pour vous désabonner à cette catégorie d'annonce cliquez sur ce lien
-	<a href="#">gdfhjjklhgghjkjhghjkjhjkjhuiokj</a></p>
-<p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
-</div>
-@stop
- -->
-
- @extends('layouts.email')
+@extends('layouts.email')
 
 @section('content')
     <div style="padding:25px;">

@@ -1,6 +1,7 @@
 
         <link rel="icon" href="{{ asset('/assets/image/favicon.png') }}" type="image/png">
         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ asset('/dist/css/bootstrap-social.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/vendors/linericon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/font-awesome.min.css') }}">
@@ -10,4 +11,5 @@
         <!-- main css -->
         <link rel="stylesheet" href="{{ asset('/dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/responsive.css') }}">
+
 

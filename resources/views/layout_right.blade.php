@@ -29,6 +29,7 @@
     @include('site.share.footer')
 
     @include('site.share.script')
+    
     @yield('decompte')
 
     </body>
