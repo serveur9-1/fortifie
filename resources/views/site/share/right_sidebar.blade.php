@@ -21,7 +21,7 @@
             <h3 class="widget_title">Annonces populaires</h3>
                 @foreach($p_article as $a)
                     <div class="media post_item">
-                        <div style="width: 100px;height: 60px ;background: url('{{ $article->img }}') no-repeat;background-size: cover;"></div>
+                        <div style="width: 100px;height: 60px ;background: url('{{ $a->article['img'] }}') no-repeat;background-size: cover;"></div>
                         <div class="media-body">
                             <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>
                             <p>{{ Carbon\Carbon::now()->diffForHumans($a->article['created_at']) }}</p>

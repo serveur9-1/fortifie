@@ -34,7 +34,7 @@
                         @else
                             <div class="col-12">
                                 <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">
-                                    Aucune Catégorie                                    
+                                    Aucune Catégorie
                                 </div>
                            </div>
                         @endif
@@ -59,31 +59,7 @@
                             <article class="row blog_item" style="background: #fff">
                             <div class="col-md-12">
                                 <div class="blog_post">
-                                    {{--<img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">--}}
-                                    <div style="width: 100%;height: 300px ;background: url('{{ $a->img }}') no-repeat;background-size: cover;"></div>
-                                   {{-- <div class="social-buttons">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
-                                           target="_blank">
-                                            <i class="fa fa-facebook-official"></i>
-                                        </a>
-                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode($url) }}"
-                                           target="_blank">
-                                            <i class="fa fa-twitter-square"></i>
-                                        </a>
-                                        <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
-                                           target="_blank">
-                                            <i class="fa fa-google-plus-square"></i>
-                                        </a>
-                                        <a href="https://pinterest.com/pin/create/button/?{{
-                                            http_build_query([
-                                                'url' => $url,
-                                                'media' => $image,
-                                                'description' => $description
-                                            ])
-                                            }}" target="_blank">
-                                            <i class="fa fa-pinterest-square"></i>
-                                        </a>
-                                    </div>--}}
+                                    <div class="article-img" style="width: 555px;height: 280px ;background: url('{{ $a->img }}') no-repeat;background-size: cover;"></div>
                                     <div class="blog_details">
                                         <a href="{{ route('description',['id' => $a->id])}}"><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
                                         {{--{!!
@@ -94,37 +70,18 @@
                                             ->whatsapp();
                                         !!}--}}
                                         <ul class="blog_meta list_style mb-4" style="display: flex;">
-                                            @foreach($a->diocese->paroisse  as $p)
-                                            <li><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $p->nom }}</a></li>
-                                            @endforeach
+                                            <li><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $a->paroisse->nom }}</a></li>
                                             <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
                                             <li>Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
                                             <li> <i class="fa fa-eye w-8"></i> {{ $a->visiteur->count() }}</li>
                                         </ul>
                                         <p>
-                                            {{ Str::limit($a->description, 400) }}
+                                            {{ Str::limit($a->description, 300) }}
                                         </p>
                                         <a href="{{ route('description',['id' => $a->id])}}" class="view_btn button_hover btn btn-primary mb-4">VOIR DETAILS</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">{{ $a->category->libelle }}</a>
-                                    </div>
-                                    <ul class="blog_meta list_style">
-                                        @foreach($a->diocese->paroisse  as $p)
-                                        <li><a href="#">{{ $p->nom }} <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""></a></li>
-                                        @endforeach
-                                        <li><a href="#">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}<i class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">{{ $a->visiteur->count() }} Vues<i class="lnr lnr-eye"></i></a></li>
-                                        <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-facebook-official text-primary"></i></a></li>
-                                        <li class="mt-3"><a href="#"><i style="font-size: 40px" class="fa fa-whatsapp text-success"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
                         </article>
                         @endforeach
                         <nav class="blog-pagination justify-content-center d-flex">
@@ -154,7 +111,7 @@
                         <div class="col-12">
                             <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">
                                 <span class="fa fa-home mb-4" style="font-size: 80px "></span><br>
-                                Aucun Article                                    
+                                Aucun Article
                             </div>
                        </div>
                     @endif

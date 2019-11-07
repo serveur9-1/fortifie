@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use Illuminate\Auth\AuthManager;
 
-class UserRepository
+class UsersRepository
 {
     private $auth;
 

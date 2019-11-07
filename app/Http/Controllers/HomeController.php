@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
-use App\Repository\UserRepository;
+use App\Repository\UsersRepository;
 use App\Repository\VisiteurRepository;
 use App\Ville;
 use Illuminate\Auth\AuthManager;
@@ -20,7 +20,7 @@ class HomeController extends Controller
     private $auth;
     private $visite;
 
-    public function __construct(CategoryRepository $r, ArticleRepository $art,UserRepository $auth, VisiteurRepository $v)
+    public function __construct(CategoryRepository $r, ArticleRepository $art, UsersRepository $auth, VisiteurRepository $v)
     {
         //$this->middleware('auth');
         $this->r = $r;
