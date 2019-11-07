@@ -19,7 +19,7 @@
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li  class="dropdown nav-item">
                                   <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>
-                                    
+
                                   </a>
                                   <ul class="dropdown-menu" role="menu">
                                     <li class="dropdown-item">
@@ -49,7 +49,7 @@
             <div class="container" id="dispa1" style="background: #ffffff !important">
                 <form class="contact_form" action="{{ route('query') }}" method="get">
                 <div class="row">
-                    
+
                     <div class="row col-lg-11 col-11 col-md-12">
                         <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
                         <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
@@ -104,7 +104,7 @@
                     flex-direction: row;
                     overflow-y: auto;
                     overflow-x: auto;
-                    
+
                 }
                 li{
                     margin-right: 15px;
@@ -199,14 +199,14 @@
                         padding: 0px !important
                     }
                 }
-                
+
             </style>
             <nav class="navbar navbar-expand-lg navbar-light" id="nav_cat" style="height: 30px ; overflow: hidden;padding-top: 15px;border-bottom: 2px solid #8e5bac">
                 <div class="container">
                     <div>
                         <ul class="flex-container nav navbar-nv mr-auto">
                                 @foreach($category as $cat)
-                                    <li class="nav-item" id="color"><a class="nav-link" href="#">{{ $cat->libelle }}</a></li>
+                                    <li class="nav-item" id="color"><a class="nav-link" href="{{ route('categorie', ['id' => $cat->id]) }}">{{ $cat->libelle }}</a></li>
                                 @endforeach
                         </ul>
                     </div>

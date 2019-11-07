@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Diocese;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\UsersRepository;
 use App\Repository\VisiteurRepository;
+use App\Shared\ArticleViewFormat;
 use App\Ville;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class HomeController extends Controller
     private $auth;
     private $visite;
 
-    public function __construct(CategoryRepository $r, ArticleRepository $art, UsersRepository $auth, VisiteurRepository $v)
+    public function __construct(CategoryRepository $r, ArticleRepository $art, UsersRepository $auth, VisiteurRepository $v, ArticleViewFormat $avf)
     {
         //$this->middleware('auth');
         $this->r = $r;
@@ -28,6 +30,8 @@ class HomeController extends Controller
         $this->auth = $auth;
 
         $this->visite = $v;
+
+        $this->avf = $avf;
     }
 
 
@@ -48,6 +52,7 @@ class HomeController extends Controller
 
         return view('site.article.annonce_desc',[
             'article' => $this->a->getArticleWithId($id),
+            'vue' => $this->avf->number_format_short($this->a->getArticleWithId($id)->visiteur->count()),
             'otherArticle' => $this->a->getSomeArticleOf($id, $this->a->getArticleWithId($id)->paroisse->diocese->id, $this->a->getArticleWithId($id)->category->id)
         ]);
     }
@@ -60,11 +65,10 @@ class HomeController extends Controller
 
     public function myAnnonce(Request $request)
     {
-
         return view('site.article.mesAnnonce',[
-            'my_article' => $this->a->getMyArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), $request['active']),
-            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId()),
-            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false)
+            'my_article' => $this->a->getMyArticle($this->auth->getGUserId(), $this->auth->getUserParoisseId(), $request['active']),
+            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserParoisseId()),
+            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserParoisseId(), false)
         ]);
     }
 
@@ -82,8 +86,9 @@ class HomeController extends Controller
 
     public function query(Request $request)
     {
+
         return view('site.article.index',[
-            'article' => $this->a->search($request['title'], $request['category'], $request['diocese'])
+            'article' => $this->a->search($request['title'], $request['category'], $request->diocese )
         ]);
     }
 
@@ -94,8 +99,8 @@ class HomeController extends Controller
     public function searchAnnonce(Request $request)
     {
         return view('site.article.mesAnnonce',[
-            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId()),
-            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false),
+            'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserParoisseId()),
+            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserParoisseId(), false),
             'my_article' => $this->a->searchOnDashboard($request['word'], $this->auth->getGUserId())
         ]);
 

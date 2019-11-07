@@ -73,7 +73,6 @@
                                             <li><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $a->paroisse->nom }}</a></li>
                                             <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
                                             <li>Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
-                                            <li> <i class="fa fa-eye w-8"></i> {{ $a->visiteur->count() }}</li>
                                         </ul>
                                         <p>
                                             {{ Str::limit($a->description, 300) }}

@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Article;
 use App\Category;
+use App\Diocese;
 use App\Paroisse;
 use App\User;
 use Carbon\Carbon;
@@ -260,23 +261,21 @@ class ArticleRepository
 
     public function search($q, $category_id, $diocese_id)
     {
-/*
+
         if( isset($q) && isset($category_id) && isset($diocese_id))
         {
-            $this->verifyId($category_id);
-            $this->verifyId($diocese_id);
+            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
 
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
                 ->where('category_id',$category_id)
-                ->where('diocese_id', $diocese_id)
+                ->whereIn('paroisse_id', $diocese_id)
                 ->paginate($this->perPage);
 
         }elseif (isset($q) && isset($category_id) )
         {
-            $this->verifyId($category_id);
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
@@ -286,32 +285,28 @@ class ArticleRepository
 
         }elseif (isset($q) && isset($diocese_id))
         {
-            $this->verifyId($q);
-            $this->verifyId($diocese_id);
+            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
 
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
                 ->where('titre','LIKE',"%$q%")
-                ->where('diocese_id', $diocese_id)
+                ->whereIn('paroisse_id', $diocese_id)
                 ->paginate($this->perPage);
 
         }elseif (isset($category_id) && isset($diocese_id))
         {
-            $this->verifyId($category_id);
-            $this->verifyId($diocese_id);
+            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
 
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('category_id',$category_id)
-                ->where('diocese_id', $diocese_id)
+                ->whereIn('paroisse_id', $diocese_id)
                 ->paginate($this->perPage);
 
 
         }elseif (isset($category_id))
         {
-            $this->verifyId($category_id);
-
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
@@ -320,12 +315,12 @@ class ArticleRepository
 
         }elseif (isset($diocese_id))
         {
-            $this->verifyId($diocese_id);
+            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
 
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
-                ->where('diocese_id',$diocese_id)
+                ->whereIn('paroisse_id',$diocese_id)
                 ->paginate($this->perPage);
 
         }else{
@@ -336,7 +331,7 @@ class ArticleRepository
                 ->where('titre','LIKE',"%$q%")
                 ->paginate($this->perPage);
         }
-        return $this->query;*/
+        return $this->query;
     }
 
     //verifie le bon id de l'article

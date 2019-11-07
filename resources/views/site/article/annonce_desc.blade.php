@@ -27,22 +27,22 @@
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 blog_details">
-                <h2>{{ $article->titre }}</h2>
-                <h5>{{ $article->category->libelle }}</h5>
+                <h2 class="text-uppercase">{{ $article->titre }}</h2>
+                <h5 class="text-uppercase">Catégorie: <a href="{{ route('categorie', ['id' => $article->category->id ]) }}">{{ $article->category->libelle }}</a></h5>
                 <div class="post_tag mb-4">
 
                     <ul class="blog_meta list_style" style="display: flex">
 
-                        <li> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""> {{ $article->diocese->nom }}</li>
+                        <li> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""> {{ $article->paroisse->diocese->nom }}</li>
 
                         <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
 
-                        <li>Au  {{ Carbon\Carbon::create($article->fin)->toFormattedDateString()  }}</li>
+                        <li>Au  {{ Carbon\Carbon::create($article->fin)->toFormattedDateString()  }} </li>
 
-                        <li>{{ $article->visiteur->count() }} <i class="fa fa-eye w-8"></i></li>
+                        <li>{{ $vue }} {{ Str::plural('vue', $article->visiteur->count() ) }} </li>
 
                     </ul>
-                    
+
                 </div>
                 <div style="height: 30px; display: flex;color: #fff" class="mb-3 col-lg-12 col-md-12">
                     <div class="col-lg-3 col-md-3">
@@ -64,8 +64,8 @@
                         </a>
                     </div>
                 </div>
-                        
-                <p class="excert">
+
+                <p class="excert mt-5">
                     {{ $article->description }}
                 </p>
             </div>
@@ -89,7 +89,7 @@
             background-color: #00e676;
         }
     </style>
-    
+
 @endsection
 
 @section('decompte')
@@ -97,14 +97,14 @@
 
             countdownManager = {
             // Configuration
-            targetTime: new Date('2020-01-01 00:00:00'), // Date cible du compte à rebours (00:00:00)
+            targetTime: new Date("{{ Carbon\Carbon::create($article->fin)->format('Y-m-d')  }} {{ Carbon\Carbon::create($article->fin)->format('H:m:s')  }}"), // Date cible du compte à rebours (00:00:00)
             displayElement: { // Elements HTML où sont affichés les informations
                 day:  null,
                 hour: null,
                 min:  null,
                 sec:  null
             },
-             
+
             // Initialisation du compte à rebours (à appeler 1 fois au chargement de la page)
             init: function(){
                 // Récupération des références vers les éléments pour l'affichage
@@ -113,36 +113,36 @@
                 this.displayElement.hour = jQuery('#countdown_hour');
                 this.displayElement.min  = jQuery('#countdown_min');
                 this.displayElement.sec  = jQuery('#countdown_sec');
-                 
+
                 // Lancement du compte à rebours
                 this.tick(); // Premier tick tout de suite
                 window.setInterval("countdownManager.tick();", 1000); // Ticks suivant, répété toutes les secondes (1000 ms)
             },
-             
+
             // Met à jour le compte à rebours (tic d'horloge)
             tick: function(){
             // Instant présent
             var timeNow  = new Date();
-             
+
             // On s'assure que le temps restant ne soit jamais négatif (ce qui est le cas dans le futur de targetTime)
             if( timeNow > this.targetTime ){
                 timeNow = this.targetTime;
             }
-             
+
             // Calcul du temps restant
             var diff = this.dateDiff(timeNow, this.targetTime);
-             
+
             this.displayElement.day.text(  diff.day  );
             this.displayElement.hour.text( diff.hour );
             this.displayElement.min.text(  diff.min  );
             this.displayElement.sec.text(  diff.sec  );
             },
-         
+
                 // Calcul la différence entre 2 dates, en jour/heure/minute/seconde
                 dateDiff: function(date1, date2){
                     var diff = {}                           // Initialisation du retour
                     var tmp = date2 - date1;
-             
+
                     tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
                     diff.sec = tmp % 60;                    // Extraction du nombre de secondes
                     tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
@@ -151,11 +151,11 @@
                     diff.hour = tmp % 24;                   // Extraction du nombre d'heures
                     tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
                     diff.day = tmp;
-             
+
                     return diff;
                 }
             };
-         
+
                 jQuery(function($){
                     // Lancement du compte à rebours au chargement de la page
                     countdownManager.init();
