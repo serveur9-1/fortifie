@@ -59,7 +59,7 @@
                             <article class="row blog_item" style="background: #fff">
                             <div class="col-md-12">
                                 <div class="blog_post">
-                                    <div class="article-img" style="width: 555px;height: 280px ;background: url('{{ $a->img }}') no-repeat;background-size: cover;"></div>
+                                    <div class="article-img" style="width: 100%;height:300px ;background: url('{{ $a->img }}') no-repeat;background-size: cover;"></div>
                                     <div class="blog_details">
                                         <a href="{{ route('description',['id' => $a->id])}}"><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
                                         {{--{!!
@@ -69,10 +69,9 @@
                                             ->linkedin('Extra linkedin summary can be passed here')
                                             ->whatsapp();
                                         !!}--}}
-                                        <ul class="blog_meta list_style mb-4" style="display: flex;">
-                                            <li><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $a->paroisse->nom }}</a></li>
-                                            <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
-                                            <li>Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
+                                        <ul class="col-12 blog_meta list_style mb-4 d-block">
+                                            <li class="col-sm-4"><a href=""> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">{{ $a->paroisse->nom }}</a></li>
+                                            <li class="col-sm-8"><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }} Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
                                         </ul>
                                         <p>
                                             {{ Str::limit($a->description, 300) }}
@@ -84,6 +83,7 @@
                         </article>
                         @endforeach
                         <nav class="blog-pagination justify-content-center d-flex">
+<<<<<<< HEAD
                                 <ul class="pagination">
                                     <li class="page-item">
                                         <a href="#" class="page-link" aria-label="Previous">
@@ -106,6 +106,10 @@
                                     </li>
                                 </ul>
                             </nav>
+=======
+                            {{ $article->links() }}
+                        </nav>
+>>>>>>> 723d00357046628035cfdeca85c21e7d4054e737
                     @else
                         <div class="col-12">
                             <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">

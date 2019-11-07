@@ -102,7 +102,7 @@
                                                 <label for="">Heure debut <em style="color:red;">*</em> </label>
                                                 <input type="time" id="date_debut" required class="datepicker form-control" name="heure_fin" placeholder="Heure debut">
                                             </div>
-                                            
+
                                             <div class="col-lg-3 col-sm-6">
                                                 <label for="">Heure fin <em style="color:red;">*</em></label>
                                                 <input type="time" id="heure_fin" required class=" form-control" name="dateFin" placeholder="Heure fin">
@@ -299,7 +299,7 @@
 
         <style type="text/css">
 
-            
+
             .stepwizard-step p {
                 margin-top: 0px;
                 color:#666;

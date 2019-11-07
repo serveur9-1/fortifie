@@ -52,6 +52,17 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
+=======
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    {{ $my_article->links() }}
+                </div>
+                @else
+                    ========Aucune annonce==========
+                @endif
+>>>>>>> 723d00357046628035cfdeca85c21e7d4054e737
             </div>
             @if($my_article->count() > 0)
             <table class="table table-striped table-hover table-bordered">
