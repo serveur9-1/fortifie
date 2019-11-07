@@ -60,7 +60,7 @@
                             <div class="col-md-12">
                                 <div class="blog_post">
                                     {{--<img src='{{ asset("/assets/image/blog/main-blog/$a->img") }}' alt="">--}}
-                                    <img class="article-img" src='{{ $a->img }}' alt="">
+                                    <div style="width: 100%;height: 300px ;background: url('{{ $a->img }}') no-repeat;background-size: cover;"></div>
                                    {{-- <div class="social-buttons">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
                                            target="_blank">

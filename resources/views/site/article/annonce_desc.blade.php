@@ -23,13 +23,10 @@
             <div class="col-lg-12">
                 <div class="feature-img">
                     {{--<img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">--}}
-                    <img class="img-fluid" src="{{ $article->img }}" alt="">
+                    <div style="width: 100%;height: 300px ;background: url('{{ $article->img }}') no-repeat;background-size: cover;"></div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 blog_details">
-                <a class="btn btn-block btn-social btn-facebook">
-                            <span class="fa fa-facebook-official"></span>
-                        </a>
                 <h2>{{ $article->titre }}</h2>
                 <h5>{{ $article->category->libelle }}</h5>
                 <div class="post_tag mb-4">
@@ -42,13 +39,30 @@
 
                         <li>Au  {{ Carbon\Carbon::create($article->fin)->toFormattedDateString()  }}</li>
 
-                        <li></a>{{ $article->visiteur->count() }} <i class="fa fa-eye w-8"></i></li>
+                        <li>{{ $article->visiteur->count() }} <i class="fa fa-eye w-8"></i></li>
 
-                        <li><a href="#"><i style="font-size: 20px" class="fa fa-facebook-official text-primary"></i></a></li>
-
-                        <li><a href="#"><i style="font-size: 20px" class="fa fa-whatsapp text-success"></i></a></li>
                     </ul>
                     
+                </div>
+                <div style="height: 30px; display: flex;color: #fff" class="mb-3 col-lg-12 col-md-12">
+                    <div class="col-lg-3 col-md-3">
+                        <a class="btn btn-block btn-social btn-facebook" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                            <i class="fa fa-facebook-f"></i>
+                            Facebook
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <a class="btn btn-block btn-social btn-twitter" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                            <i class="fa fa-twitter"></i>
+                            Twitter
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <a class="btn btn-block btn-social btn-success whatsapp" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                            <i class="fa fa-whatsapp"></i>
+                            Whatsapp
+                        </a>
+                    </div>
                 </div>
                         
                 <p class="excert">
@@ -69,36 +83,12 @@
             </div>
         </div>
 
-        <div class="navigation-area">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                    <div class="thumb">
-                        <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/prev.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="arrow">
-                        <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-                    </div>
-                    <div class="detials">
-                        <p>Prev Post</p>
-                        <a href="#"><h4>Space The Final Frontier</h4></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                    <div class="detials">
-                        <p>Next Post</p>
-                        <a href="#"><h4>Telescopes 101</h4></a>
-                    </div>
-                    <div class="arrow">
-                        <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                    </div>
-                    <div class="thumb">
-                        <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/blog/next.jpg') }}" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
+    <style type="text/css">
+        .whatsapp:hover{
+            background-color: #00e676;
+        }
+    </style>
     
 @endsection
 
