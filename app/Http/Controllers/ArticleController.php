@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Http\Requests\ArticleRequest;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
@@ -49,7 +50,8 @@ class ArticleController extends Controller
     {
         return view('admin.annonce.addAnnonce',[
             'paroisse' => $this->p->getParoisse(),
-            'category' => $this->c->getCategory()
+            'category' => $this->c->getCategory(),
+            'edit' => false
         ]);
     }
 
@@ -58,6 +60,24 @@ class ArticleController extends Controller
         $this->sv->saveImg($request);
         $request->img = $request->file('img')->getClientOriginalName();
         $this->a->createArticle($request);
+        return redirect()->back()->with('success',"Vous avez bien ajouté une nouvelle annonce");
+    }
+
+    public function editAnnonce($id)
+    {
+        return view('admin.annonce.addAnnonce',[
+            'paroisse' => $this->p->getParoisse(),
+            'category' => $this->c->getCategory(),
+            'article' => Article::findOrFail($id),
+            'edit' => true
+        ]);
+    }
+
+    public function updateAnnonce($id, ArticleRequest $request)
+    {
+        $this->sv->saveImg($request);
+        $request->img = $request->file('img')->getClientOriginalName();
+        $this->a->updateArticle($id, $request);
         return redirect()->back()->with('success',"Vous avez bien ajouté une nouvelle annonce");
     }
 }

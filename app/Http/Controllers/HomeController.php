@@ -48,7 +48,7 @@ class HomeController extends Controller
 
         return view('site.article.annonce_desc',[
             'article' => $this->a->getArticleWithId($id),
-            'otherArticle' => $this->a->getSomeArticleOf($id, $this->a->getArticleWithId($id)->diocese->id, $this->a->getArticleWithId($id)->category->id)
+            'otherArticle' => $this->a->getSomeArticleOf($id, $this->a->getArticleWithId($id)->paroisse->diocese->id, $this->a->getArticleWithId($id)->category->id)
         ]);
     }
 
@@ -62,9 +62,9 @@ class HomeController extends Controller
     {
 
         return view('site.article.mesAnnonce',[
+            'my_article' => $this->a->getMyArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), $request['active']),
             'my_article_a' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId()),
-            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false),
-            'my_article' => $this->a->getMyArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), $request['active'])
+            'my_article_i' => $this->a->countArticle($this->auth->getGUserId(), $this->auth->getUserDioceseId(), false)
         ]);
     }
 

@@ -133,7 +133,7 @@ class ArticleRepository
     }
 
 
-    public function getMyArticle($user_id, $diocese_id, $is_active = true)
+    public function getMyArticle($user_id, $paroisse_id, $is_active = true)
     {
         $usr = $this->user->newQuery()
                 ->findOrFail($user_id);
@@ -148,7 +148,7 @@ class ArticleRepository
                 $this->annonce = $this->art->newQuery()
                     ->select()
                     ->where('user_id',$user_id)
-                    ->where('diocese_id', $diocese_id)
+                    ->where('paroisse_id', $paroisse_id)
                     ->where('is_active',true)
                     ->where('is_active', false)
                     ->orderBy('id','DESC')
@@ -159,7 +159,7 @@ class ArticleRepository
                 $this->annonce = $this->art->newQuery()
                     ->select()
                     ->where('user_id',$user_id)
-                    ->where('diocese_id', $diocese_id)
+                    ->where('paroisse_id', $paroisse_id)
                     ->where('is_active',true)
                     ->where('is_active', true)
                     ->orderBy('id','DESC')
@@ -178,21 +178,21 @@ class ArticleRepository
     //count article
 
 
-    public function countArticle($user_id, $diocese_id, $is_active = true)
+    public function countArticle($user_id, $paroisse_id, $is_active = true)
     {
         if($is_active)
         {
             return $this->art->newQuery()
                 ->select()
                 ->where('user_id',$user_id)
-                ->where('diocese_id', $diocese_id)
+                ->where('paroisse_id', $paroisse_id)
                 ->where('is_active', true);
         }else{
 
             return $this->art->newQuery()
                 ->select()
                 ->where('user_id',$user_id)
-                ->where('diocese_id', $diocese_id)
+                ->where('paroisse_id', $paroisse_id)
                 ->where('is_active', false);
 
         }
@@ -203,11 +203,11 @@ class ArticleRepository
  * PAS ENCORE UTILISER
  *
  * */
-    public function getSomeArticleOf($id, $diocese_id, $category_id)
+    public function getSomeArticleOf($id, $paroisse_id, $category_id)
     {
         return $this->art->newQuery()
             ->findOrFail($id)
-            ->where('diocese_id', $diocese_id)
+            ->where('paroisse_id', $paroisse_id)
             ->where('is_active',true)
             ->orWhere('category_id', $category_id)
             ->orderBy('id','DESC')
@@ -260,7 +260,7 @@ class ArticleRepository
 
     public function search($q, $category_id, $diocese_id)
     {
-
+/*
         if( isset($q) && isset($category_id) && isset($diocese_id))
         {
             $this->verifyId($category_id);
@@ -336,7 +336,7 @@ class ArticleRepository
                 ->where('titre','LIKE',"%$q%")
                 ->paginate($this->perPage);
         }
-        return $this->query;
+        return $this->query;*/
     }
 
     //verifie le bon id de l'article

@@ -65,7 +65,7 @@
 
                       <td>
                           <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
-                          <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                          <a href="{{ route("editAnnonce", ['id' => $a->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
                   @endforeach

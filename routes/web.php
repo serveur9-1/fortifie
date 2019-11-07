@@ -262,6 +262,16 @@ Route::group(['prefix'=> 'admin'],function(){
         'uses' => 'ArticleController@validAnnonce'
     ]);
 
+    Route::get('/annonce/edit/{id}',[
+        'as' => 'editAnnonce',
+        'uses' => 'ArticleController@editAnnonce'
+    ])->where('id','[0-9]+');
+
+    Route::post('/updateAnnonce',[
+        'as' => 'updateAnnonce',
+        'uses' => 'ArticleController@updateAnnonce'
+    ])->where('id','[0-9]+');
+
 
 
     Route::get('/listUsers',[

@@ -21,7 +21,8 @@ class UsersRepository
 
     public function getUserDioceseId()
     {
-        return $this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id;
+        dd($this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id);
+        //return $this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id;
     }
 
     public function getGUserId()
