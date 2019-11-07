@@ -116,7 +116,7 @@ Auth::routes();
 
 //NEWSLETTER
 
-Route::post('/newsletter',[
+Route::post('/newsletter/send',[
     'as' => 'newsletter',
     'uses' => 'NewsletterController@suscribe'
 ]);
@@ -335,7 +335,7 @@ Route::group(['prefix'=> 'admin'],function(){
     ]);
 
     Route::get('/newsletter',[
-        'as' => 'newsletter',
+        'as' => 'newsletterAdmin',
         'uses' => 'NewsletterController@newslettersAdmin'
     ]);
 

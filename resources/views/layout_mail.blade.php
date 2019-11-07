@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <meta name="theme-color" content="#6c3191">
     <meta name="author" content="GAYATECH +225 77832982">
     <link rel="icon" href="{{{ asset('assets/image/favicon.png')}}}">
     <title>Fortifie-toi </title>
@@ -34,9 +35,9 @@
         <p>©
             @if( date('Y') == 2018 )
                 {{ date('Y')}}
-            @else 
-                {{ '2018 - ' .date('Y') }} 
-            @endif 
+            @else
+                {{ '2018 - ' .date('Y') }}
+            @endif
             Copyright: Fortifie-toi
         </p>
     </div>

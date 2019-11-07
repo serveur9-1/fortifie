@@ -44,24 +44,27 @@
                     </ul>
 
                 </div>
-                <div style="height: 30px; display: flex;color: #fff" class="mb-3 col-lg-12 col-md-12">
-                    <div class="col-lg-3 col-md-3">
-                        <a class="btn btn-block btn-social btn-facebook" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
-                            <i class="fa fa-facebook-f"></i>
-                            Facebook
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-3">
-                        <a class="btn btn-block btn-social btn-twitter" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
-                            <i class="fa fa-twitter"></i>
-                            Twitter
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-3">
-                        <a class="btn btn-block btn-social btn-success whatsapp" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
-                            <i class="fa fa-whatsapp"></i>
-                            Whatsapp
-                        </a>
+                <div style="height: 30px;color: #fff" class="mb-3 col-lg-12 col-md-12">
+                    <div class="col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('description',['id' => $article->id]) }}" class="btn btn-block btn-social btn-facebook" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                                <i class="fa fa-facebook-f"></i>
+                                Facebook
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="https://twitter.com/intent/tweet?text={{ $article->titre }}&amp;url={{ route('description',['id' => $article->id]) }}"  class="btn btn-block btn-social btn-twitter" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                                <i class="fa fa-twitter"></i>
+                                Twitter
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="https://wa.me/?text=https://www.google.com" class="btn btn-block btn-social btn-success whatsapp" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                                <i class="fa fa-whatsapp"></i>
+                                Whatsapp
+                            </a>
+                        </div>
+                        {!! Share::page('http://jorenvanhocht.be', 'Share title')->whatsapp() !!}
                     </div>
                 </div>
 
