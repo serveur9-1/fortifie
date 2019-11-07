@@ -7,7 +7,7 @@
           <div class="x_panel">
            <div class="x_title">
               <h2><small>Ajouter Publicité</small></h2>
-              <a href="#" class="btn btn-danger btn-sm pull-right mb-4" style="float: right;"><i class="fa fa-eye"></i> Liste des Publicités</a>
+              <a href="{{ route('listPub') }}" class="btn btn-danger btn-sm pull-right mb-4" style="float: right;"><i class="fa fa-eye"></i> Liste des Publicités</a>
               <div class="clearfix"></div>
             </div>
           </div>

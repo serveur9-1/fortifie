@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos sous-categories ({{ $subCategory->count() }})</h6>
-              <a href="add_diocese.html" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une sous-categorie</a>
+              <a href="{{ route('addSousCategorie') }}" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une sous-categorie</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

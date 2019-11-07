@@ -19,6 +19,9 @@
             <div class="container">
 
                 <div class="row">
+
+                	@include('site.share.alert')
+                	
                     @yield('content')
 
                     @include('site.share.right_sidebar')

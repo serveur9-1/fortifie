@@ -74,6 +74,9 @@ Table of Content:
     height: 45px;
     border-radius: 4px;
   }
+  html{
+    scroll-behavior: smooth;
+  }
 
   #myBtn:hover {
     background-color: #6b2f90;

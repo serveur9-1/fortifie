@@ -87,9 +87,9 @@
                                 <ul class="pagination">
                                     <li class="page-item">
                                         <a href="#" class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">
-                                        <span class="lnr lnr-chevron-left"></span>
-                                    </span>
+                                            <span aria-hidden="true">
+                                                <span class="lnr lnr-chevron-left"></span>
+                                            </span>
                                         </a>
                                     </li>
                                     <li class="page-item"><a href="#" class="page-link">01</a></li>

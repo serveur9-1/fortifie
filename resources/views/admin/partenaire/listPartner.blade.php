@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Partenaires</h6>
-              <a href="add_diocese.html" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter un partenaire</a>
+              <a href="{{ route('addPartner') }}" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter un partenaire</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

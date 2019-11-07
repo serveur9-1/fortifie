@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Publicité</h6>
-              <a href="add_diocese.html" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Publicité</a>
+              <a href="{{ route('addPub') }}" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Publicité</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

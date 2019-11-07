@@ -12,6 +12,8 @@
 
     @include('site.share.header')
     
+    @include('site.share.alert')
+    
     @yield('content')
     
     @include('site.share.footer')
