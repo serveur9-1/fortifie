@@ -23,7 +23,7 @@
             <div class="col-lg-12">
                 <div class="feature-img">
                     {{--<img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">--}}
-                    <div style="width: 100%;height: 300px ;background: url('{{ $article->img }}') no-repeat;background-size: cover;"></div>
+                    <div style="width: 100%;height: 300px ;background: url('{{ asset("assets/img/articles/$article->img") }}') no-repeat;background-size: cover;background-position: center"></div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 blog_details">
@@ -33,7 +33,8 @@
 
                     <ul class="blog_meta list_style" style="display: flex">
 
-                        <li> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt=""> {{ $article->paroisse->diocese->nom }}</li>
+                        <li> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">
+                            <a href="{{ route('paroisse',['id' => $article->paroisse->id]) }}">{{ $article->paroisse->nom }}</a></li>
 
                         <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
 
@@ -42,29 +43,45 @@
                         <li>{{ $vue }} {{ Str::plural('vue', $article->visiteur->count() ) }} </li>
 
                     </ul>
+                    <h4 class="mt-4"> <i class="fa fa-phone"></i> : +225 {{ $article->contact_telephone }}</h4>
 
                 </div>
-                <div style="height: 30px;color: #fff" class="mb-3 col-lg-12 col-md-12">
-                    <div class="col-sm-12">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('description',['id' => $article->id]) }}" class="btn btn-block btn-social btn-facebook" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                <div style="height: 30px;color: #fff" class="mb-3 col-lg-12 col-md-12" id="desktop">
+                    <div class=" row col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 share">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('description',['id' => $article->id]) }}" class="btn btn-block btn-social btn-facebook">
                                 <i class="fa fa-facebook-f"></i>
                                 Facebook
                             </a>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <a href="https://twitter.com/intent/tweet?text={{ $article->titre }}&amp;url={{ route('description',['id' => $article->id]) }}"  class="btn btn-block btn-social btn-twitter" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                        <div class="col-lg-3 col-md-3 col-sm-3 share">
+                            <a href="https://twitter.com/intent/tweet?text={{ $article->titre }}&amp;url={{ route('description',['id' => $article->id]) }}"  class="btn btn-block btn-social btn-twitter">
                                 <i class="fa fa-twitter"></i>
                                 Twitter
                             </a>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <a href="https://wa.me/?text=https://www.google.com" class="btn btn-block btn-social btn-success whatsapp" style="width: 150px;height: 20px;font-size: 15px;padding-bottom: 30px">
+                        <div class="col-lg-3 col-md-3 col-sm-3 share">
+                            <a href="https://wa.me/?text=https://www.google.com" class="btn btn-block btn-social btn-success whatsapp">
                                 <i class="fa fa-whatsapp"></i>
                                 Whatsapp
                             </a>
                         </div>
-                        {!! Share::page('http://jorenvanhocht.be', 'Share title')->whatsapp() !!}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12" id="mobile" style="display: none">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('description',['id' => $article->id]) }}" class="btn btn-facebook" style="font-size: 15px">
+                                <i class="fa fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?text={{ $article->titre }}&amp;url={{ route('description',['id' => $article->id]) }}"  class="btn btn-twitter" style="font-size: 15px">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="https://wa.me/?text=https://www.google.com" class="btn btn-success whatsapp" style="
+                            font-size: 15px">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -84,13 +101,46 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
+                <a href="#">
+                    <img src="{{ asset('/assets/image/blog/main-blog/m-blog-2.jpg') }}" style="height: 110px;width: 100%">
+                </a>
+            </div>
         </div>
 
     </div>
-    <style type="text/css">
+    <style>
+
+        @media (max-width: 760px) {
+            #desktop {
+                display: none !important;
+            }
+            #mobile{
+                display: block !important
+            }
+
+            /* Style the input fields */
+            .input-field {
+                font-size: 17px !important;
+            }
+        }
+
         .whatsapp:hover{
             background-color: #00e676;
         }
+        .share{
+            width: 150px;
+            height: 20px;
+            font-size: 15px;
+            padding-bottom: 30px;
+            margin-right: 5px
+        }
+        .blog_meta{
+            display: inline-block;
+        }
+
+
     </style>
 
 @endsection

@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Catégories ({{ $category->count() }})</h6>
-              <a href="{{ route('addCategorie') }}" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Catégorie</a>
+              <a href="{{ route('addCategorie') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Catégorie</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -38,10 +38,10 @@
                           <td>{{ $c->libelle }}</td>
                           <td>{{ $c->created_at->format('d-m-Y h:m:s') }}</td>
                           <td>
-                              <a href="{{ route('deleteCategorie', ['id' => $c->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette CAtégorie ?') ">
+                              <a href="{{ route('deleteCategorie', ['id' => $c->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette CAtégorie ?') ">
                                   <i class="fa fa-trash"></i>
                               </a>
-                              <a href="{{ route('editCategorie', ['id' => $c->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                              <a href="{{ route('editCategorie', ['id' => $c->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                           </td>
                         </tr>
                     @endforeach

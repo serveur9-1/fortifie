@@ -20,6 +20,7 @@ class GalleryRepository
         {
             return $this->g->newQuery()
                 ->select()
+                ->where('is_active', true)
                 ->limit(10)
                 ->orderBy('id','DESC')
                 ->get();
@@ -33,6 +34,27 @@ class GalleryRepository
 
     }
 
+    public function enableOrDisableGalleryImage($id, $enable)
+    {
+
+        $a = $this->g->newQuery()->select()->where('id',$id);
+
+        if($enable){
+
+            $a->update([
+                'is_active' => false
+            ]);
+
+
+        }else{
+
+            $a->update([
+                'is_active' => true
+            ]);
+        }
+
+    }
+
     public function deleteGallery($id)
     {
         $ga = $this->g->newQuery()->findOrFail($id);
@@ -40,13 +62,21 @@ class GalleryRepository
         $ga->delete();
     }
 
+    public function createGallery($array)
+    {
+        $this->g->newQuery()->create([
+            'img' => $array->img,
+            'legende' => $array->legende
+        ]);
+    }
+
     public function updateGallery($id, $array)
     {
         $ga = $this->g->newQuery()->findOrFail($id);
 
         $ga->update([
-            'img' => $array['img'],
-            'legende' => $array['legende']
+            'img' => $array->img,
+            'legende' => $array->legende
         ]);
     }
 }

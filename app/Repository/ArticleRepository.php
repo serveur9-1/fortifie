@@ -7,9 +7,13 @@ namespace App\Repository;
 use App\Article;
 use App\Category;
 use App\Diocese;
+use App\Mail\ArticleEnableOrDisableMail;
+use App\Mail\NewsletterMail;
 use App\Paroisse;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleRepository
 {
@@ -46,16 +50,24 @@ class ArticleRepository
 
     public function createArticle($array)
     {
+        $sans_titre = false;
 
-        $this->art->newQuery()
+        if($array->sans_titre){
+            $sans_titre = true;
+        }else{
+            $sans_titre = false;
+        }
+
+        $new_a = $this->art->newQuery()
             ->create([
                 'titre' => $array->titre,
                 'description' => $array->description,
                 'category_id' => $array->category,
                 'paroisse_id' => $array->paroisse,
-                'user_id' => 1,
+                'user_id' => auth()->user()->id,
                 'contact_telephone' => $array->contact_telephone,
                 'contact_email' => $array->contact_email,
+                'sans_titre' => $sans_titre,
                 'contact_fixe' => $array->contact_fixe,
                 'img' => $array->img,
                 'debut' => $array->debut,
@@ -63,19 +75,44 @@ class ArticleRepository
                 'fin' => $array->fin,
                 'heure_fin' => $array->heure_fin
             ]);
+
+
+        //  ENVOYER MESSAGE A TOUS LES ABONNES DE CETTE CATEGORIE
+        $data = []; 
+        /*$new_cat = new Category();
+        $data = Arr::add($data, 'category', $new_cat->newQuery()->select()->where('id', $array["category"])->get());
+        $data = Arr::add($data,'suscribers', Category::findOrFail($array["category"])->newsletter->get());
+        $data = Arr::add($data,'access_link', url()->route('description',['id' => $new_a->id ])); */
+        // encrypt and decrypt
+        //http://127.0.0.1:8000/unsuscribe?c=1&e=alexis.yoboue%40uvci.edu.ci 
+
+/*        $data = Arr::add($data,'disable_link', url()->route('unsuscribe',['c' => encrypt($new_a->id), 'e' => encrypt('alexis.yoboue%40uvci.edu.ci')]));
+        if($data['suscribers']->count() > 0){
+            Mail::send(new NewsletterMail($array));
+        }else{
+            dd('not send !');
+        }*/
     }
 
 
     public function updateArticle($id, $array)
     {
+        $sans_titre = false;
+
+        if($array->sans_titre){
+            $sans_titre = true;
+        }else{
+            $sans_titre = false;
+        }
 
         $this->art->newQuery()->findOrFail($id)
             ->update([
                 'titre' => $array->titre,
                 'description' => $array->description,
-                'category_id' => $array->category_id,
-                'paroisse_id' => $array->paroisse_id,
-                'user_id' => $array->user_id,
+                'category_id' => $array->category,
+                'paroisse_id' => $array->paroisse,
+                'user_id' => auth()->user()->id,
+                'sans_titre' => $sans_titre,
                 'contact_telephone' => $array->contact_telephone,
                 'contact_email' => $array->contact_email,
                 'contact_fixe' => $array->contact_fixe,
@@ -92,27 +129,51 @@ class ArticleRepository
             ->orderBy('created_at','DESC')->get();
     }
 
-    public function enableOrDisableArticle($id, $enable)
+    public function enableOrDisableArticle($id, $enable, $data)
     {
-        $a = $this->art->newQuery()->findOrFail($id);
 
-        if(true){
+        $a = $this->art->newQuery()->select()->where('id',$id);
+        $ars = $a->get();
+
+
+        if($enable){
 
             $a->update([
                 'is_active' => false
             ]);
 
+            $data->subject = "Votre annonce est desactivée";
+            $data->is_enable = true;
 
         }else{
 
             $a->update([
                 'is_active' => true
             ]);
+
+            $data->subject = "Votre annonce est activée";
+            $data->is_enable = false;
+
         }
 
-        $a->update([
-            'is_active' => $enable
-        ]);
+        foreach ($ars[0]->paroisse->gestionnaire as $k){
+
+            $data->receiver = $k->user->email;
+            $data->user = $k->user->name;
+
+        }
+
+        //dd($ars[0]->paroisse->gestionnaire[0]);
+        $data->titre = $ars[0]->titre;
+        $data->img = $ars[0]->img;
+        $data->url = route('description', ['id' => $id]);
+
+        if($ars[0]->paroisse->gestionnaire[0] != null){
+
+            Mail::send(new ArticleEnableOrDisableMail($data));
+
+        }
+
 
     }
 
@@ -130,7 +191,7 @@ class ArticleRepository
             ->select()
             ->where('is_active',true)
             ->where('category_id',$id)
-            ->get();
+            ->paginate($this->perPage);
     }
 
 
@@ -150,10 +211,9 @@ class ArticleRepository
                     ->select()
                     ->where('user_id',$user_id)
                     ->where('paroisse_id', $paroisse_id)
-                    ->where('is_active',true)
                     ->where('is_active', false)
                     ->orderBy('id','DESC')
-                    ->paginate($this->perPage);
+                    ->get();
 
             }else{
 
@@ -161,10 +221,9 @@ class ArticleRepository
                     ->select()
                     ->where('user_id',$user_id)
                     ->where('paroisse_id', $paroisse_id)
-                    ->where('is_active',true)
                     ->where('is_active', true)
                     ->orderBy('id','DESC')
-                    ->paginate($this->perPage);
+                    ->get();
             }
 
             return $this->annonce;
@@ -224,12 +283,12 @@ class ArticleRepository
         $this->paro->newQuery()
             ->findOrFail($paroisse_id);
 
-        return $this->paro->newQuery()
+        return $this->art->newQuery()
             ->select()
-            ->where('id', $paroisse_id)
+            ->where('paroisse_id', $paroisse_id)
             ->where('is_active',true)
             ->orderBy('id','DESC')
-            ->get();
+            ->paginate($this->perPage);
     }
 
 
@@ -246,25 +305,55 @@ class ArticleRepository
 
 
 
-
-    //Recherche
-
-    public function searchOnDashboard($q, $user_id)
-    {
-        return $this->art->newQuery()
-            ->select()
-            ->where('is_active',true)
-            ->where('titre','LIKE',"%$q%")
-            ->where('user_id',$user_id)
-            ->paginate($this->perPage);
-    }
-
-    public function search($q, $category_id, $diocese_id)
+    public function search($q, $category_id, $diocese_id, $date)
     {
 
-        if( isset($q) && isset($category_id) && isset($diocese_id))
+        if( isset($q) && isset($category_id) && isset($diocese_id) && isset($date))
         {
-            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('titre','LIKE',"%$q%")
+                ->where('category_id',$category_id)
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->whereIn('paroisse_id', $diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($q) && isset($diocese_id) && isset($date)){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('titre','LIKE',"%$q%")
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->whereIn('paroisse_id', $diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($category_id) && isset($q) && isset($date)){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('titre','LIKE',"%$q%")
+                ->where('category_id',$category_id)
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($category_id) && isset($diocese_id) && isset($date)){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('category_id',$category_id)
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->whereIn('paroisse_id', $diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($q) && isset($category_id) && isset($diocese_id )){
 
             $this->query = $this->art->newQuery()
                 ->select()
@@ -272,6 +361,36 @@ class ArticleRepository
                 ->where('titre','LIKE',"%$q%")
                 ->where('category_id',$category_id)
                 ->whereIn('paroisse_id', $diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($diocese_id) && isset($date) ){
+
+            $this->query = $this->art->newQuery()
+            ->select()
+                ->where('is_active',true)
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->whereIn('paroisse_id', $diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif ( isset($category_id) && isset($date) ){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
+                ->where('category_id',$category_id)
+                ->paginate($this->perPage);
+
+        }elseif (isset($q) && isset($date) ){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('is_active',true)
+                ->where('titre','LIKE',"%$q%")
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
                 ->paginate($this->perPage);
 
         }elseif (isset($q) && isset($category_id) )
@@ -313,14 +432,21 @@ class ArticleRepository
                 ->where('category_id',$category_id)
                 ->paginate($this->perPage);
 
-        }elseif (isset($diocese_id))
-        {
+        }elseif (isset($diocese_id)){
             $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
 
             $this->query = $this->art->newQuery()
                 ->select()
                 ->where('is_active',true)
                 ->whereIn('paroisse_id',$diocese_id)
+                ->paginate($this->perPage);
+
+        }elseif (isset($date)){
+
+            $this->query = $this->art->newQuery()
+                ->select()
+                ->where('debut','<=',$date)
+                ->where('fin','>=',$date)
                 ->paginate($this->perPage);
 
         }else{

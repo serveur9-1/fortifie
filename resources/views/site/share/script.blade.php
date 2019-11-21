@@ -13,6 +13,12 @@
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+        <!-- Page level plugins -->
+        <script src="{{ asset('/dist/vendors/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('/dist/vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{{ asset('/dist/js/demo/datatables-demo.js') }}"></script>
 
         <!-- scroll to the top page -->
         <script>
@@ -30,7 +36,7 @@
                   document.getElementById("bouton_haut").style.display = "none";
               }
 
-             
+
           }
           // When the user clicks on the button, scroll to the top of the document
           function topFunction() {
@@ -38,7 +44,7 @@
               document.documentElement.scrollTop = 0;
           }
 
-         
+
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -108,4 +114,40 @@
                 });
             });
         </script>
-        
+        <script type="text/javascript">
+          $(document).ready(function(){
+             $("#confirmer").click(function () {
+                $("#theme1").val(
+                    $("#theme").val()
+                );
+                $("#cat1").val(
+                    $("input[name=category]:checked").attr('categorie')
+                );
+                $("#date1").text(
+                    $("#date_debut").val()
+                );
+                $("#heure1").text(
+                    $("#heure_debut").val()
+                );
+                $("#heure2").text(
+                    $("#heure_fin").val()
+                );
+                $("#date2").text(
+                    $("#date_fin").val()
+                );
+                $("#desc1").text(
+                    $("#desc").val()
+                );
+
+                $("#contact1").val(
+                    $("#contacts").val()
+                );
+                $("#email1").val(
+                    $("#email").val()
+                );
+                $("#subCat1").val(
+                    $("input[class=js--subcategorie]:checked").attr('subcategorie')
+                );
+            });
+         });
+         </script>

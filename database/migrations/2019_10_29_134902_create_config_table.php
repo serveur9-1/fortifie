@@ -15,9 +15,9 @@ class CreateConfigTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('telephone');
-            $table->string('email');
-            $table->string('localite')->nullable();
+            $table->string('telephone')->default('09004930');
+            $table->string('email')->default('contact@fortifietoi.ci');
+            $table->string('localite')->default('Abidjan, Treichville')->nullable();
         });
     }
 

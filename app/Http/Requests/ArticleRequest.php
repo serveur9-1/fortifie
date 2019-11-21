@@ -24,17 +24,19 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
+            'titre' => 'required',
             'description' => 'required | max:1000',
             'category' => 'required',
-            'paroisse' => 'required',
-            'contact_telephone' => 'nullable | max:8',
+            'contact_telephone' => 'nullable|max:8|min:8',
             'contact_email' => 'nullable | max:50 | email',
             'contact_fixe' => 'nullable | max:8',
+            'sans_titre' => 'nullable',
             'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'debut' => 'required',
             'fin' => 'required',
             'heure_debut' => 'required',
             'heure_fin' => 'required'
+
         ];
     }
 }

@@ -10,7 +10,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Nos Abonnés</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Nos Abonnés ({{ $newsletter->count() }})</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -18,45 +18,30 @@
                   <thead>
                     <tr>
                       <th>Email</th>
-                      <th>date d'abonnement</th>
-                      
+                      <th>Date d'abonnement</th>
+
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>email</th>
-                      <th>date d'abonnement</th>
-                      
+                      <th>E-mail</th>
+                      <th>Date d'abonnement</th>
+
                       <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
+                  @foreach($newsletter as $n)
                     <tr>
-                      <td>nda@fortifie.ci</td>
-                      <td>27-10-2019</td>
-                      
-                      <td><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                      <td>{{ $n->email }}</td>
+                      <td>{{ $n->created_at->format('d-m-Y') }}</td>
+
+                      <td>
+                          <a href="{{ route('deleteNewsletter', ['id' => $n->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cet abonné ?') "><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>nda@fortifie.ci</td>
-                      <td>27-10-2019</td>
-                      
-                      <td><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>nda@fortifie.ci</td>
-                      <td>27-10-2019</td>
-                      
-                      <td width="100"><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                      </td>
-                    </tr>
-                    
+                  @endforeach
                   </tbody>
                 </table>
               </div>

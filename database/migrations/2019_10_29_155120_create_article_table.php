@@ -29,13 +29,15 @@ class CreateArticleTable extends Migration
                 ->onDelete('cascade');
 
             $table->string('img',300)->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
 
-            $table->dateTime('debut');
-            $table->dateTime('fin');
+            $table->boolean('sans_titre')->nullable()->default(false);
 
-            $table->dateTime('heure_debut');
-            $table->dateTime('heure_fin');
+            $table->date('debut');
+            $table->date('fin');
+
+            $table->time('heure_debut');
+            $table->time('heure_fin');
 
             $table->bigInteger('user_id')->unsigned()->index();
 

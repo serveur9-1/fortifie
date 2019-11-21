@@ -30,13 +30,13 @@
         <!--================Blog Area =================-->
 
 
-        <div class="container mb-5">
+        <div class="container mb-5" style="margin-top: 100px">
             <h4>Nos partenaires</h4>
-            <section class="customer-logos slider">
+            <section class="customer-logos slider mt-5">
                 @foreach($g_partenaire as $p)
                 <a target="_blank" href="{{ $p->url }}">
                     <div class="slide"
-                        style="height: 50px ;background: url({{ asset('/assets/image/partners/'.$p->logo) }});">
+                        style='height: 60px ;background: url({{ asset("/assets/img/partenaires/$p->logo") }}); background-repeat: no-repeat; background-position: center; background-size: contain'>
                     </div>
                 </a>
                 @endforeach

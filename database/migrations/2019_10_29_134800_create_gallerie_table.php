@@ -17,6 +17,7 @@ class CreateGallerieTable extends Migration
             $table->bigIncrements('id');
             $table->string('img')->unique();
             $table->string('legende',200);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

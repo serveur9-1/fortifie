@@ -10,8 +10,8 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Nos Paroisse</h6>
-              <a href="{{ route('addParoisse') }}" class="btn btn-danger pull-right" style="float: right;"><i class="fa fa-plus"></i> Ajouter une paroisse</a>
+              <h6 class="m-0 font-weight-bold text-primary">Nos Paroisses ({{ $paroisse->count() }})</h6>
+              <a href="{{ route('addParoisse') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une paroisse</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -24,7 +24,7 @@
                       <th>email</th>
                       <th>Diocèse</th>
                       <th>date d'ajout</th>
-                      
+
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -36,48 +36,26 @@
                       <th>email</th>
                       <th>Diocèse</th>
                       <th>date d'ajout</th>
-                      
+
                       <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
+                  @foreach($paroisse as $p)
                     <tr>
-                      <td>Notre Dame de l'Assemption Koumassi</td>
-                      <td>+225 77889944</td>
-                      <td>+225 22887788</td>
-                      <td>nda@fortifie.ci</td>
-                      <td>Diocèse de Grand-Bassam</td>
-                      <td>27-10-2019</td>
-                      
-                      <td><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                      <td>{{ $p->nom }}</td>
+                      <td>{{ $p->telephone }}</td>
+                      <td>{{ $p->fixe }}</td>
+                      <td>{{ $p->email }}</td>
+                      <td>{{ $p->diocese->nom }}</td>
+                      <td>{{ $p->created_at->format('d-m-Y') }}</td>
+
+                      <td>
+                          <a href="{{ route('deleteParoisse', ['id' => $p->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette paroisse ?') "><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('editParoisse', ['id' => $p->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>Notre Dame de l'Assemption Koumassi</td>
-                      <td>+225 77889944</td>
-                      <td>+225 22887788</td>
-                      <td>nda@fortifie.ci</td>
-                      <td>Diocèse de Grand-Bassam</td>
-                      <td>27-10-2019</td>
-                      
-                      <td><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Notre Dame de l'Assemption Koumassi</td>
-                      <td>+225 77889944</td>
-                      <td>+225 22887788</td>
-                      <td>nda@fortifie.ci</td>
-                      <td>Diocèse de Grand-Bassam</td>
-                      <td>27-10-2019</td>
-                      
-                      <td width="100"><button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></button>
-                        <a href="http://fortifietoi.ci/laravel-admin/region/2/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                      </td>
-                    </tr>
-                    
+                  @endforeach
                   </tbody>
                 </table>
               </div>

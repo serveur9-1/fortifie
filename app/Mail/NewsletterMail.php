@@ -16,9 +16,9 @@ class NewsletterMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event)
     {
-        //
+        $this->event = $event;
     }
 
     /**
@@ -28,6 +28,13 @@ class NewsletterMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+/*        return $this->from("contact@fortifietoi.ci", "L'équipe Fortifie toi")
+                    ->subject("Nouvelle annonce publiée")
+                    ->to("ymjm97@gmail.com")
+                    ->markdown('emails.newsletter');*/
+
+
+        return $this->from(explode(",", $this->event->suscribers), "L'équipe Fortifie toi")->subject("Nouvelle annonce récommandée pour vous")->to("ymjm97@gmail.com")
+            ->markdown('emails.newsletter');
     }
 }

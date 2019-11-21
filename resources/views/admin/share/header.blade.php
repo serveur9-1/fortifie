@@ -27,7 +27,7 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-bank"></i>
       <span>Diocèse</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -41,7 +41,7 @@
   <!-- Nav Item - Utilities Collapse Menu -->
  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-copy"></i>
       <span>Catégories</span>
     </a>
     <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -54,20 +54,20 @@
   </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapse8">
-            <i class="fa fa-fw fa-cog"></i>
+            <i class="fa fa-fw fa-list-ul"></i>
             <span>Sous-Catégories</span>
         </a>
         <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
-                <a class="collapse-item" href="{{ route('listSousCategorie') }}">liste des sous-catégories</a>
-                <a class="collapse-item" href="{{ route('addSousCategorie') }}">Ajouter une sous-catégories</a>
+                <a class="collapse-item" href="{{ route('listSousCategorie') }}">liste des sous catégories</a>
+                <a class="collapse-item" href="{{ route('addSousCategorie') }}">Ajouter une sous catégorie</a>
             </div>
         </div>
     </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-desktop"></i>
       <span>Annonce</span>
     </a>
     <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -75,12 +75,13 @@
 
         <a class="collapse-item" href="{{ route('listAnnonce') }}">liste des Annonces</a>
         <a class="collapse-item" href="{{ route('addAnnonce') }}">Ajouter une annonce</a>
+          <a class="collapse-item" href="{{ route('annonceSignale') }}">Annonces signalées</a>
       </div>
     </div>
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-user"></i>
     <span>Compte</span>
     </a>
     <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -90,10 +91,15 @@
         <a class="collapse-item" href="{{ route('addUsers') }}">Ajouter comptes</a>
       </div>
     </div>
+   <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+       <div class="bg-white py-2 collapse-inner rounded">
+           <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
+       </div>
+   </div>
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-bullhorn"></i>
       <span>Publicité</span>
     </a>
     <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -106,7 +112,7 @@
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-suitcase"></i>
       <span>Partenaires</span>
     </a>
     <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -119,7 +125,7 @@
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse0" aria-expanded="true" aria-controls="collapse0">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-hospital-o"></i>
       <span>Ville</span>
     </a>
     <div id="collapse0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -132,7 +138,7 @@
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-picture-o"></i>
       <span>Gallerie</span>
     </a>
     <div id="collapse9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -145,7 +151,7 @@
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
-      <i class="fa fa-fw fa-cog"></i>
+      <i class="fa fa-fw fa-plus"></i>
       <span>Paroisse</span>
     </a>
     <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -157,9 +163,9 @@
     </div>
   </li>
    <li class="nav-item">
-        <a class="nav-link" href="{{ route('newsletter') }}">
-      <i class="fa fa-fw fa-home"></i>
-      <span>Abonnés a la newsletter</span></a>
+        <a class="nav-link" href="{{ route('newsletterAdmin') }}">
+      <i class="fa fa-fw fa-envelope-o"></i>
+      <span>Abonnés à la newsletter</span></a>
   </li>
 
 
@@ -173,5 +179,5 @@
 
 </ul>
 <style type="text/css">
-  
+
 </style>

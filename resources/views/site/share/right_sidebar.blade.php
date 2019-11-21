@@ -21,7 +21,6 @@
             <h3 class="widget_title">Annonces populaires</h3>
                 @foreach($p_article as $a)
                     <div class="media post_item">
-                        <div style="width: 100px;height: 60px ;background: url('{{ $a->article['img'] }}') no-repeat;background-size: cover;"></div>
                         <div class="media-body">
                             <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>
                             <p>{{ Carbon\Carbon::now()->diffForHumans($a->article['created_at']) }}</p>
@@ -35,13 +34,13 @@
         @if($g_pub->count() > 0)
             @foreach($g_pub as $p)
                 <aside class="single_sidebar_widget ads_widget">
-                    <a target="_blank" href="{{ $p->url }}"><img class="img-fluid" src="{{ asset("/assets/image/pubs/$p->img") }}" alt=""></a>
+                    <a target="_blank" href="{{ $p->url }}"><img class="img-fluid" src="{{ asset("/assets/img/pubs/$p->img") }}" alt=""></a>
                     <div class="br"></div>
                 </aside>
             @endforeach
         @else
             <aside class="single_sidebar_widget ads_widget">
-                <a href="#"><img class="img-fluid" src="{{ asset('/assets/image/pubs/add.jpg') }}" alt=""></a>
+                <a href="#"><img class="img-fluid" src="{{ asset('/assets/img/pubs/add.jpg') }}" alt=""></a>
                 <div class="br"></div>
             </aside>
         @endif

@@ -28,30 +28,56 @@
                 </form>
               </div>
             </li>
+              <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bell fa-fw"></i>
+                      <!-- Counter - Alerts -->
+                      <span class="badge @if($new_account_today->count() > 0) badge-danger @else badge-default @endif badge-counter"> @if($new_account_today->count() > 0) {{ $new_account_today->count() }} @endif</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  @if($new_account_today->count() > 0)
+                      @foreach($new_account_today as $nat)
+                      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                          <h6 class="dropdown-header">
+                              Demande du jour
+                          </h6>
+                          <a class="dropdown-item d-flex align-items-center" href="#">
+                              <div>
+                                  <div class="small text-gray-500">Aujourd'hui - {{ $nat->created_at->format('h:m') }}</div>
+                                  <span class="font-weight-bold">{{ $nat->email }} fait une demande de création du compte de la {{ $nat->gestionnaire[0]->paroisse->nom }}</span>
+                              </div>
+                          </a>
+                          <a class="dropdown-item text-center small text-gray-500" href="{{ route('askList') }}">Voir toutes les demandes</a>
+                      </div>
+                      @endforeach
+                  @endif
+              </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrateur</span>
-                <span class="fa fa-user w-5"  aria-hidden="true"></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                <div style="background: url('{{ asset("assets/img/users/") }}/{{  auth()->user()->img }} ') ;background-size: cover; background-repeat: no-repeat; width: 40px; height: 40px; border-radius: 50%">
+                </div>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('profil') }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Mon compte
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Déconnexion
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
               </div>
             </li>
 

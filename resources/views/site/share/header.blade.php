@@ -11,11 +11,8 @@
                         </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <!-- <ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item"><a class="nav-link text_white" href="#">Se connecter</a></li>
-                                <li class="nav-item"><a class="nav-link text_white" href="#">S'inscrire</a></li>
-                            </ul> -->
 
+                        @auth
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li  class="dropdown nav-item">
                                   <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>
@@ -23,26 +20,37 @@
                                   </a>
                                   <ul class="dropdown-menu" role="menu">
                                     <li class="dropdown-item">
-                                        <a href="https://fortifietoi.ci/utilisateur/annonces">Mes annonces(10) </a>
+                                        <a href="{{ route('myAnnonce') }}">Mes annonces </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="https://fortifietoi.ci/utilisateur">Mon profil </a>
+                                        <a href="{{ route("profil") }}">Mon profil </a>
                                     </li>
                                     <li class="dropdown-divider"></li>
                                     <li class="dropdown-item">
-                                      <a href="#">
+                                      <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                         Déconnexion
                                       </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
                                     </li>
                                   </ul>
                                 </li>
                             </ul>
-
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="nav-item">
                                     <a href="{{ route('publier') }}" class="genric-btn radius" style="background: #5fc6c9"><strong class="text-white">Publier</strong></a>
                                 </li>
                             </ul>
+                        @endauth
+                        @guest
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item"><a class="nav-link text_white" href="{{ route('login') }}">Se connecter</a></li>
+                                <li class="nav-item"><a class="nav-link text_white" href="{{ route('register') }}">S'inscrire</a></li>
+                            </ul>
+                        @endguest
+
                         </div>
                     </div>
             </nav>
@@ -51,33 +59,36 @@
                 <div class="row">
 
                     <div class="row col-lg-11 col-11 col-md-12">
-                        <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-4  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
-                        <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-4 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
+                        <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
+
+                        <input style="border-radius: 4px 0 0 4px;" type="date" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12 form_hidden" name="date">
+
+                        <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
                             <select name="category" style="display: none;">
-                                    <option value="">Toutes les catégories</option>
+                                <option value="">Toutes les catégories</option>
                                 @foreach($category as $cat)
-                                        <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
-                                    @endforeach
-                                </select>
+                                    <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
+                                @endforeach
+                            </select>
                             <div class="nice-select" tabindex="0">
-                                    <span class="current">Categorie</span>
-                                    <ul class="list">
-                                        <li data-value="" class="option">Toutes les catégories</li>
+                                <span class="current">Categorie</span>
+                                <ul class="list">
+                                    <li data-value="" class="option">Toutes les catégories</li>
                                     @foreach($category as $cat)
-                                            <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
+                                        <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
                                     @endforeach
-                                    </ul>
-                                </div>
+                                </ul>
+                            </div>
                         </div>
-                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-4 form_hidden" id="default-select2">
+                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-3 form_hidden" id="default-select2">
                             <select name="diocese" style="display: none;">
+                                @foreach($diocese as $d)
+                                    <option value="">Tous les diocèse</option>
                                     @foreach($diocese as $d)
-                                        <option value="">Tous les diocèse</option>
-                                        @foreach($diocese as $d)
-                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                        @endforeach
+                                        <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                     @endforeach
-                                </select>
+                                @endforeach
+                            </select>
                             <div class="nice-select" tabindex="0">
                                 <span class="current" disabled="">Diocèse</span>
                                 <ul class="list">

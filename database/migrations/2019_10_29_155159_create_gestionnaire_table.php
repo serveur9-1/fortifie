@@ -24,6 +24,12 @@ class CreateGestionnaireTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
+            $table->bigInteger('paroisse_id')->unsigned()->index();
+            $table->foreign('paroisse_id')
+                ->references('id')
+                ->on('paroisses')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

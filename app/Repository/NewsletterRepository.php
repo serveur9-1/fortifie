@@ -9,6 +9,9 @@ use App\Newsletter;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Arr;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewsletterSuscribedMail;
+
 class NewsletterRepository
 {
     private $n;
@@ -24,17 +27,26 @@ class NewsletterRepository
 
 
 
-    public function suscribeTo($email)
+    public function suscribeTo($data)
     {
         $cat = $this->c->newQuery()->select('id')->get();
         //dd(Arr::flatten($cat->toArray()));
         $s = $this->n->newQuery()
             ->create([
-                'email' => $email
+                'email' => $data->email
             ]);
         //A REVOIR PLUTARD ====================================
 
         $s->category()->sync(Arr::flatten($cat->toArray()));
+
+
+        //Send Mail
+
+        $data->subject ="Abonné à la newsletter";
+        $data->receiver = $data->email;
+
+        Mail::send(new NewsletterSuscribedMail($data));
+        
     }
 
     public function unsuscribeTo($email, $category_id)

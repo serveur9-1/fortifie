@@ -18,7 +18,7 @@ class NewsletterController extends Controller
 
     public function suscribe(NewsletterRequest $request)
     {
-        $this->new->suscribeTo($request['email']);
+        $this->new->suscribeTo($request);
 
         return redirect()->back()->with('success','Vous êtes maintenant abonné à la newsletter.');
         //dd($request['email']);
@@ -27,6 +27,7 @@ class NewsletterController extends Controller
     public function unsuscribe(Request $request)
     {
         //http://127.0.0.1:8000/unsuscribe?c=1&e=alexis.yoboue%40uvci.edu.ci
+
         // encrypt and decrypt
 
         $email = $request['e'];
@@ -45,7 +46,16 @@ class NewsletterController extends Controller
     //administration
     public function newslettersAdmin()
     {
-        return view('admin.newsletter.newsletters');
+        return view('admin.newsletter.newsletters',[
+            'newsletter' => $this->new->getNewsletterSuscriber()
+        ]);
+    }
+
+    public function deleteNewsletter($id)
+    {
+        $this->new->deleteNewsletterSuscriber($id);
+
+        return redirect()->back()->with('success',"Vous vez bien supprimé un abonné newsletter.");
     }
 }
 

@@ -33,6 +33,13 @@ class VilleRepository
     }
 
 
+    public function createVille($array)
+    {
+        $this->v->newQuery()->create([
+            'libelle' => $array['libelle']
+        ]);
+    }
+
     public function updateVille($id, $array)
     {
         $v = $this->v->newQuery()->findOrFail($id);

@@ -25,15 +25,20 @@
                     @foreach($gallery as $g)
                     <div class="col-md-4 gallery_item">
                         <div class="gallery_img">
-                            <img title="{{ $g->legende }}" src="{{ asset("/assets/image/gallery/$g->img") }}" alt="">
+                            <img title="{{ $g->legende }}" src='{{ asset("/assets/img/galeries/$g->img") }}' alt="">
                             <div class="hover">
-                                <a title="{{ $g->legende }}" class="light" href="{{ asset("/assets/image/gallery/$g->img") }}"><i class="fa fa-expand"></i></a>
+                                <a title="{{ $g->legende }}" class="light" href='{{ asset("/assets/img/galeries/$g->img") }}'><i class="fa fa-expand"></i></a>
                             </div>
                         </div>
                     </div>
                     @endforeach
                 @else
-                    ####Aucune image
+                    <div class="col-12">
+                        <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.3">
+                            <span class="fa fa-picture-o mb-4" style="font-size: 80px "></span><br>
+                            Aucune image dans la galérie
+                        </div>
+                    </div>
                 @endif
                 </div>
             </div>

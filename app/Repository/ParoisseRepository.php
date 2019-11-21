@@ -34,11 +34,11 @@ class ParoisseRepository
     public function createParoisse($array)
     {
         $this->p->newQuery()->create([
-            'nom' => $array['nom'],
-            'telephone' => $array['telephone'],
-            'fixe' => $array['fixe'],
-            'email' => $array['email'],
-            'diocese_id' => $array['diocese']
+            'nom' => $array->nom,
+            'telephone' => $array->telephone,
+            'fixe' => $array->fixe,
+            'email' => $array->email,
+            'diocese_id' => $array->diocese
         ]);
     }
 
@@ -48,11 +48,11 @@ class ParoisseRepository
         $pa = $this->p->newQuery()->findOrFail($id);
 
         $pa->update([
-            'nom' => $array['nom'],
-            'telephone' => $array['telephone'],
-            'fixe' => $array['fixe'],
-            'email' => $array['email'],
-            'diocese_id' => $array['diocese']
+            'nom' => $array->nom,
+            'telephone' => $array->telephone,
+            'fixe' => $array->fixe,
+            'email' => $array->email,
+            'diocese_id' => $array->diocese
         ]);
     }
 

@@ -107,7 +107,7 @@
 
         <!-- Topbar -->
        @include('admin.share.topbar')
-       
+
        @include('site.share.alert')
 
        @yield('content')

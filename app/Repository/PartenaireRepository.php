@@ -19,7 +19,7 @@ class PartenaireRepository
 
     public function getPartenaire()
     {
-        return $this->p->newQuery()->select()->orderBy('nom','ASC');
+        return $this->p->newQuery()->select()->orderBy('nom','ASC')->get();
     }
 
     public function deletePartenaire($id)
@@ -33,9 +33,9 @@ class PartenaireRepository
     public function createPartenaire($array)
     {
         $this->p->newQuery()->create([
-            'nom' => $array['nom'],
-            'url' => $array['url'],
-            'logo' => $array['logo']
+            'nom' => $array->nom,
+            'url' => $array->url,
+            'logo' => $array->logo
         ]);
     }
 
@@ -44,9 +44,9 @@ class PartenaireRepository
         $pa = $this->p->newQuery()->findOrFail($id);
 
         $pa->update([
-            'nom' => $array['nom'],
-            'url' => $array['url'],
-            'logo' => $array['logo']
+            'nom' => $array->nom,
+            'url' => $array->url,
+            'logo' => $array->logo
         ]);
     }
 

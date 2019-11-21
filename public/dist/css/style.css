@@ -225,6 +225,10 @@ button:focus {
   color: #5fc6c9;
 }
 
+.btnadmin{
+  background-color: #55acee !important;
+}
+
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .header_area {
@@ -828,7 +832,7 @@ h3 {
 }
 
 .blog_banner_two .bg-parallax {
-  background: url("../../assets/image/blog/banner-2.jpg") no-repeat scroll center top/cover;
+  background: url("../../assets/image/breadcrumb.jpg") no-repeat scroll center top/cover;
 }
 
 /*=============End Blog Banner css =============*/

@@ -26,7 +26,9 @@ $factory->define(Article::class, function (Faker $faker) {
         'img' => $faker->imageUrl(555,280),
         'is_active' => true,
         'debut' => $faker->date(),
+        'heure_debut' => "10:00",
         'fin' => $faker->date(),
+        'heure_fin' => "01:00",
         'user_id' => $faker->numberBetween(1, 50),
         'paroisse_id' => $faker->numberBetween(1,9)
     ];

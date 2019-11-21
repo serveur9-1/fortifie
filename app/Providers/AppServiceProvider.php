@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Article;
 use App\Category;
 use App\Diocese;
 use App\Partenaire;
 use App\Pub;
 use App\Repository\PubRepository;
+use App\User;
 use App\Visiteur;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -32,23 +34,26 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $cat = new Category();
+        $a = new Article();
         $dio = new Diocese();
         $vi = new Visiteur();
+
+        $dmd = new User();
 
         $pu = new Pub();
 
         view()->share([
             'category' => $cat->newQuery()->select()->orderBy('libelle')->get(),
-           'diocese' => $dio->newQuery()->select()->orderBy('nom')->get(),
+            'diocese' => $dio->newQuery()->select()->orderBy('nom')->get(),
             'p_article' => $vi->newQuery()
-                ->select(array(DB::raw('id, article_id, COUNT(id) as nb')))
-                ->groupBy('id', 'article_id')
+                ->select(array(DB::raw('article_id, COUNT(id) as nb')))
+                ->where('article_id','!=', null)
+                ->groupBy('article_id')
                 ->orderBy('nb','DESC')
                 ->limit(5)
                 ->get(),
-            'visiteur' => $vi->newQuery()
-                ->select(array(DB::raw('id, article_id, COUNT(id) as nb')))
-                ->groupBy('id', 'article_id')
+            'p_category' => $a->newQuery()->select(array(DB::raw('category_id, COUNT(id) as nb')))
+                ->groupBy('category_id')
                 ->orderBy('nb','DESC')
                 ->limit(3)
                 ->get(),
@@ -56,7 +61,8 @@ class AppServiceProvider extends ServiceProvider
                 ->where('is_active',true)
                 ->whereDate('debut','<=', Carbon::now()->format('Y-m-d'))
                 ->whereDate('fin','>=', Carbon::now()->format('Y-m-d'))->get(),
-            'g_partenaire' => Partenaire::all()
+            'g_partenaire' => Partenaire::all(),
+            'new_account_today' => $dmd->newQuery()->select()->where('is_new',true)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get()
         ]);
     }
 }

@@ -28,30 +28,53 @@
                 <div class="card-body">
                     <h6>Inscription</h6>
                     <form method="POST" class="contact_form">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group col-md-6 col-lg-6" style="float: left">
+                                <label for="">Diocèse rattaché</label>
+                                <div class="form-group">
+                                    <select class="form-control" >
+                                    <option value="2">Abengourou</option>
+                                    <option value="10">Abidjan</option>
+                                    <option value="11">Agboville</option>
+                                    <option value="3">Bondoukou</option>
+                                    <option value="14">Bouaké</option>
+                                    <option value="6">Daloa</option>
+                                    <option value="5">Gagnoa</option>
+                                    <option value="12">Grand-Bassam</option>
+                                    <option value="9">Katiola</option>
+                                    <option value="8">Korhogo</option>
+                                    <option value="15">Odiénné</option>
+                                    <option value="7">San-Pedro</option>
+                                    <option value="4">Yamoussoukro</option>
+                                    <option value="13">Yopougon</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6 col-lg-6" style="float: right">
+                                <label for="">Paroisse rattachée</label>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                    <option value="2">Abengourou</option>
+                                    <option value="10">Abidjan</option>
+                                    <option value="11">Agboville</option>
+                                    <option value="3">Bondoukou</option>
+                                    <option value="14">Bouaké</option>
+                                    <option value="6">Daloa</option>
+                                    <option value="5">Gagnoa</option>
+                                    <option value="12">Grand-Bassam</option>
+                                    <option value="9">Katiola</option>
+                                    <option value="8">Korhogo</option>
+                                    <option value="15">Odiénné</option>
+                                    <option value="7">San-Pedro</option>
+                                    <option value="4">Yamoussoukro</option>
+                                    <option value="13">Yopougon</option>
+                                </select>
+                                </div><br>
+                            </div>
 
-                        <div class="form-group" style="width: 100%">
-                            <label for="">Diocèse rattaché</label>
-                            <div class="form-group">
-                                <select class="form-control" style="width: 100% !important">
-                                <option value="2">Abengourou</option>
-                                <option value="10">Abidjan</option>
-                                <option value="11">Agboville</option>
-                                <option value="3">Bondoukou</option>
-                                <option value="14">Bouaké</option>
-                                <option value="6">Daloa</option>
-                                <option value="5">Gagnoa</option>
-                                <option value="12">Grand-Bassam</option>
-                                <option value="9">Katiola</option>
-                                <option value="8">Korhogo</option>
-                                <option value="15">Odiénné</option>
-                                <option value="7">San-Pedro</option>
-                                <option value="4">Yamoussoukro</option>
-                                <option value="13">Yopougon</option>
-                            </select>
-                            </div><br>
                         </div>
                         <div class="form-group">
-                            <label for="">Nom de la Paroisse</label>
+                            <label for="">Nom de la communauté ou église</label>
                             <input type="text" name="paroisse" class="form-control" placeholder="Notre Dame de l'Assomption de Koumassi">
 
                         </div>
