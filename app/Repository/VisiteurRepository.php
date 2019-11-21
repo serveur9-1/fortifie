@@ -71,15 +71,6 @@ class VisiteurRepository
             ->orderBy('m', 'ASC')
             ->get()->toArray();
 
-        $data1 = $this->a->newQuery()->select(array(DB::raw("count(id) as d, MONTH(created_at) AS m")))
-        
-        ->whereYear('created_at', Carbon::now()->format('Y'))
-        ->groupBy("m")
-        ->orderBy('m', 'ASC')
-        ->get()->toArray();    
-
-            dd($data1);
-
         return $data;
 
         //dd($data);
