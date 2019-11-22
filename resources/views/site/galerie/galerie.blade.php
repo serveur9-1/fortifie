@@ -7,10 +7,11 @@
         <section class="breadcrumb_area br_image">
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Image Gallery</h2>
+                    <h2 class="page-cover-tittle">Photos</h2>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Gallery</li>
+                        <li><a href="{{ route('home') }}">Accueil</a></li>
+                        <li><a href="{{ route('album') }}">Album</a></li>
+                        <li class="active">Galerie</li>
                     </ol>
                 </div>
             </div>

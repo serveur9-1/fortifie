@@ -10,8 +10,7 @@
                 <h2 class="page-cover-tittle f_48">Inscription</h2>
                 <ol class="breadcrumb">
                     <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Catégorie</a></li>
-                    <li class="active">Publication</li>
+                    <li class="active">Inscription</li>
                 </ol>
             </div>
         </div>

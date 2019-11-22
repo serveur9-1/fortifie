@@ -4,17 +4,17 @@
         <!--================Breadcrumb Area =================-->
         <section class="breadcrumb_area blog_banner_two">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
-            <div class="container">
-                <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle f_48">Thème de l'annonce</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ route('home')}}">Accueil</a></li>
-                        <li class="active">Detail Annonce</li>
-                    </ol>
+                <div class="container">
+                    <div class="page-cover text-center">
+                        <h2 class="page-cover-tittle f_48">Détail de l'annonce</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="{{ route('home')}}">Accueil</a></li>
+                            <li class="active">Detail Annonce</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     <!--================Breadcrumb Area =================-->
 @endsection
 @section('content')
@@ -101,6 +101,53 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+               <div class="row mt-2">
+                    <div class="col-md-12 ml-3">
+                        <div class="clearfix"></div>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                  <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Signaler cette annonce
+                                    </a>
+                                  </h4>
+                                  </div>
+                                  <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                     <form class="row contact_form" style="display: " action="{{ route('sendMail') }}" method="post" id="contactForm">
+                                        <div class="col-md-12 col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                <textarea maxlength="500" class="form-control" name="message" id="message" rows="1" placeholder="donner le motif de cette dénonciation"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-right">
+                                            <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Signaler</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-12">
+                <div class="col-md-12 col-lg-12">
+                     <a href="#" class="btn_hover btn_hover_two" onclick="denoncer()">Dénoncer cette annonce</a>
+                </div>
+                <form class="row contact_form" style="display: " action="{{ route('sendMail') }}" method="post" id="contactForm">
+                    <div class="col-md-12 col-lg-12 mt-3">
+                        <div class="form-group">
+                            <textarea maxlength="500" class="form-control" name="message" id="message" rows="1" placeholder="donner le motif de cette dénonciation"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Dénoncer</button>
+                    </div>
+                </form>
+            </div> -->
 
             <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
                 <a href="#">

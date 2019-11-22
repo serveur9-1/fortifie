@@ -53,8 +53,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="{{ route('contact')}}">A propos de nous</a></li>
-                                        <li><a href="#">Avantage de l'inscription</a></li>
+                                        <li><a href="{{ route('faq')}}">A propos de nous</a></li>
+                                        <li><a href="{{ route('faq')}}">Avantage de l'inscription</a></li>
                                         <li><a href="{{ route('contact')}}">Nous contacter</a></li>
                                     </ul>
                                 </div>
@@ -67,9 +67,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Condition d'utilisation</a></li>
-                                        <li><a href="#">Politique de confidentialité</a></li>
-                                        <li><a href="#">Règle d'affichage</a></li>
+                                        <li><a href="{{ route('faq')}}">Condition d'utilisation</a></li>
+                                        <li><a href="{{ route('faq')}}">Politique de confidentialité</a></li>
+                                        <li><a href="{{ route('faq')}}">Règle d'affichage</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Conférence épiscopale de CI</a></li>
+                                        <li><a href="{{ route('faq')}}">Conférence épiscopale de CI</a></li>
                                         <li><a href="{{ route('galerie')}}">Notre Galérie</a></li>
                                     </ul>
                                 </div>
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="#">Centre d'Aide</a></li>
+                                        <li><a href="{{ route('faq')}}">Centre d'Aide</a></li>
                                     </ul>
                                 </div>
                             </div>

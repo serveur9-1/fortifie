@@ -34,4 +34,9 @@ class ContactController extends Controller
     {
         return view('emails.contact');
     }
+
+    public function faq()
+    {
+        return view('site.faqs.faq');
+    }
 }

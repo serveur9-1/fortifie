@@ -1,8 +1,8 @@
-@extends('layouts.email')
+@extends('layout_mail')
 
 @section('content')
     <div style="padding:25px;">
-        <h3 style="color:#6b2f90">Salut Sande</h3>
+        <h3 style="color:#6b2f90">Salut {{ $user }},</h3>
 
         <p>Félicitations! Vous ètes à quelques quelque étapes de la finalisation de votre compte</p>
 

@@ -120,4 +120,11 @@ class GalleryController extends Controller
         return redirect()->back()->with('success',"Vous avez bien modifié une image.");
     }
 
+    //album
+
+    public function album()
+    {
+        return view('site.galerie.album');
+    }
+
 }

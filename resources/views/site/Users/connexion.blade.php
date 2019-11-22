@@ -10,8 +10,7 @@
                     <h2 class="page-cover-tittle f_48">Connexion</h2>
                     <ol class="breadcrumb">
                         <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Catégorie</a></li>
-                        <li class="active">Publication</li>
+                        <li class="active">Connexion</li>
                     </ol>
                 </div>
             </div>

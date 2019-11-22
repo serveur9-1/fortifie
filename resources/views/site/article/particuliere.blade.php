@@ -1,5 +1,5 @@
 @extends('layout_right')
-@section('title','publication')
+@section('title','publication sans thème')
 @section('bread')
         <!--================Breadcrumb Area =================-->
         <section class="breadcrumb_area blog_banner_two">
@@ -10,7 +10,7 @@
                     <ol class="breadcrumb">
                         <li><a href="">Accueil</a></li>
                         <li><a href="">Annonce</a></li>
-                        <li class="active">Publier annonce</li>
+                        <li class="active">Publier une annonce</li>
                     </ol>
                 </div>
             </div>
@@ -50,10 +50,10 @@
                         </div>
                         <div class="panel-body">
                             <div id="list-example" class="list-group">
-                                @foreach($category as $c)
-                                    <div class="list-group-item list-group-item-action">{{ $c->libelle }}
+                                @foreach($subCategory as $c)
+                                    <div class="list-group-item list-group-item-action">{{ $c->category->libelle }}
                                         <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                            <input value="{{ $c->id }}" type="radio" id="{{ $c->id }}" name="category" @if($edit)  @if($c->id == $a->category->id) checked @endif @endif >
+                                            <input value="{{ $c->id }}" class="js--categorie" categorie="{{ $c->libelle }}" type="radio" id="{{ $c->id }}" name="category" @if($edit)  @if($c->id == $a->category->id) checked @endif @endif >
                                             <label for="{{ $c->id }}"></label>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                 @foreach($subCategory as $c)
                                     <div class="list-group-item list-group-item-action">{{ $c->libelle }}
                                         <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                            <input value="{{ $c->libelle }}" @if($edit)  @if($c->libelle == $a->titre) checked @endif @endif type="radio" id="{{ $c->libelle }}" name="titre">
+                                            <input value="{{ $c->libelle }}" class="js--subcategorie" subcategorie="{{ $c->libelle }}" @if($edit)  @if($c->libelle == $a->titre) checked @endif @endif type="radio" id="{{ $c->libelle }}" name="titre">
                                             <label for="{{ $c->libelle }}"></label>
                                         </div>
                                     </div>
@@ -100,41 +100,154 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h6> 1- Détails de l'annonce</h6><hr>
-                                    <div class="form-group">
+                                    <div class="form-group mb-4">
+                                        <label for="">Durée de l'annonce</label>
                                         <div class="row">
+                                            <div class="col-lg-12">
+                                               <div class="row mt-2">
+                                                    <div class="col-md-12 ml-3">
+                                                        <div class="clearfix"></div>
+                                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                        <div class="panel panel-default">
+                                                              <div class="panel-heading" role="tab" id="headingTwoo">
+                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo"><label for="">Durée précise </label>
+                                                                </a>
+                                                              </div>
+                                                              <div id="collapseTwoo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwoo">
+                                                                <div class="panel-body">
+                                                                 <div class="row">
 
-                                            <div class="col-lg-3 col-sm-6">
-                                                <label for="">Date debut <em style="color:red;">*</em></label>
-                                                <input @if($edit) value="{{ $a->debut }}" @else {{ old('debut') }} @endif type="date" id="date_debut" required class="datepicker form-control @error('debut') is-invalid @enderror" name="debut" placeholder="Date debut">
-                                                @error('debut')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @enderror
+                                                                    <div class="col-lg-3 col-sm-6">
+                                                                        <label for="">Date debut <em style="color:red;">*</em></label>
+                                                                        <input @if($edit) value="{{ $a->debut }}" @else {{ old('debut') }} @endif type="date" id="date_debut" required class="datepicker form-control @error('debut') is-invalid @enderror" name="debut" placeholder="Date debut">
+                                                                        @error('debut')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-sm-6">
+                                                                        <label for="">Heure debut <em style="color:red;">*</em> </label>
+                                                                        <input @if($edit) value="{{ $a->heure_debut }}" @else {{ old('heure_debut') }} @endif type="time" id="heure_debut" required class="datepicker form-control @error('heure_debut') is-invalid @enderror" name="heure_debut" placeholder="Heure debut">
+                                                                        @error('heure_debut')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-sm-6">
+                                                                        <label for="">Date fin <em style="color:red;">*</em></label>
+                                                                        <input @if($edit) value="{{ $a->fin }}" @else {{ old('fin') }} @endif  type="date" id="date_fin" required class=" form-control @error('fin') is-invalid @enderror" name="fin" placeholder="Heure fin">
+                                                                        @error('fin')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-sm-6">
+                                                                        <label for="">Heure fin <em style="color:red;">*</em></label>
+                                                                        <input @if($edit) value="{{ $a->heure_fin }}" @else {{ old('heure_fin') }} @endif  type="time" id="heure_fin" required class=" form-control @error('heure_fin') is-invalid @enderror" name="heure_fin" placeholder="Heure fin">
+                                                                        @error('heure_fin')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                </div>
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                               <div class="row mt-2">
+                                                    <div class="col-md-12 ml-3">
+                                                        <div class="clearfix"></div>
+                                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                        <div class="panel panel-default">
+                                                              <div class="panel-heading" role="tab" id="headingThree">
+                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><label for="">Durée étendue </label>
+                                                                </a>
+                                                              </div>
+                                                              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                                                                <div class="panel-body">
+                                                                 <div class="row text-center">
+                                                                    <h5>Tous les :</h5>
 
-                                            <div class="col-lg-3 col-sm-6">
-                                                <label for="">Heure debut <em style="color:red;">*</em> </label>
-                                                <input @if($edit) value="{{ $a->heure_debut }}" @else {{ old('heure_debut') }} @endif type="time" id="date_debut" required class="datepicker form-control @error('heure_debut') is-invalid @enderror" name="heure_debut" placeholder="Heure debut">
-                                                @error('heure_debut')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @enderror
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Lundi</p>
+                                                                        <div class="confirm-checkbox ml-0">
+                                                                            <input type="checkbox" id="confirm-checkbox1">
+                                                                            <label for="confirm-checkbox1"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Mardi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox2">
+                                                                            <label for="confirm-checkbox2"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Mercredi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox3">
+                                                                            <label for="confirm-checkbox3"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>jeudi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox4">
+                                                                            <label for="confirm-checkbox4"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Vendredi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox5">
+                                                                            <label for="confirm-checkbox5"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Samedi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox6">
+                                                                            <label for="confirm-checkbox6"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-2 col_sm-2">
+                                                                        <div class="switch-wrap d-flex justify-content-between ">
+                                                                        <p>Samedi</p>
+                                                                        <div class="confirm-checkbox">
+                                                                            <input type="checkbox" id="confirm-checkbox7">
+                                                                            <label for="confirm-checkbox7"></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                            <div class="col-lg-3 col-sm-6">
-                                                <label for="">Date fin <em style="color:red;">*</em></label>
-                                                <input @if($edit) value="{{ $a->fin }}" @else {{ old('fin') }} @endif  type="date" id="date_fin" required class=" form-control @error('fin') is-invalid @enderror" name="fin" placeholder="Heure fin">
-                                                @error('fin')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-lg-3 col-sm-6">
-                                                <label for="">Heure fin <em style="color:red;">*</em></label>
-                                                <input @if($edit) value="{{ $a->heure_fin }}" @else {{ old('heure_fin') }} @endif  type="time" id="heure_fin" required class=" form-control @error('heure_fin') is-invalid @enderror" name="heure_fin" placeholder="Heure fin">
-                                                @error('heure_fin')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -205,7 +318,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn stepp nextBtn pull-right mt-3" type="button">Suivant</button>
+                            <button class="btn stepp nextBtn pull-right mt-3" type="button" id="confirmer">Suivant</button>
                         </div>
                     </div>
 
@@ -218,58 +331,39 @@
                                <div class="card-body">
                                    <h6> 1- Détails de l'annonce</h6><hr>
                                    <div class="form-group">
-                                       <label for="">Thème </label>
-                                       <input type="text" class="form-control" disabled>
+                                       <label for="">Catégorie </label>
+                                       <input type="text" id="cat1" class="form-control" disabled>
                                    </div>
                                    <div class="form-group">
-                                       <label for="">Catégorie </label>
-                                       <input type="text" class="form-control" disabled>
+                                       <label for="">Sous-catégorie </label>
+                                       <input type="text" id="subCat1" class="form-control" disabled>
                                    </div>
                                    <div class="form-group">
                                        <div class="row">
                                            <div class="col-lg-3 col-sm-6">
                                                <label for="">Date début</label>
-                                               <h5 href="#"> <i class="lnr lnr-calendar-full"></i> 12-01-2018</h5>
+                                               <h5 href="#" id="date1"> <i class="fa fa-calendar-full"></i> 12-01-2018</h5>
                                            </div>
 
                                            <div class="col-lg-3 col-sm-6">
                                                <label for="">Heure début</label>
-                                               <h5 href="#"> <i class="lnr lnr-clock"></i> 08:10</h5>
+                                               <h5 href="#" id="heure1"> <i class="fa fa-clock"></i> 08:10</h5>
                                            </div>
                                            <div class="col-lg-3 col-sm-6">
                                                <label for="">Date Fin</label>
-                                               <h5 href="#"> <i class="lnr lnr-calendar-full"></i> 12-01-2019</h5>
+                                               <h5 href="#" id="date2"> <i class="fa fa-calendar-full"></i> 12-01-2019</h5>
                                            </div>
                                            <div class="col-lg-2 col-sm-6">
                                                <label for="">Heure fin </label>
-                                               <h5 href="#"> <i class="lnr lnr-clock"></i> 18:10</h5>
+                                               <h5 href="#" id="heure2"> <i class="fa fa-clock"></i> 18:10</h5>
                                            </div>
 
                                        </div>
                                    </div>
                                    <div class="form-group">
                                        <label for="">Description </label>
-                                       <p>
-                                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eaque esse, eum molestiae similique sint. Doloribus facere facilis id laudantium libero, magnam modi nesciunt non numquam quasi quod sapiente similique.
-                                       </p>
+                                       <p id="desc1"> </p>
 
-                                   </div>
-                               </div>
-                           </div>
-                           <br>
-                           <div class="card">
-                               <div class="card-body">
-                                   <h6>2- Médias <em style="color:red;">*</em> </h6>
-                                   <hr>
-                                   <p>Votre image qui sera affiché en entète de votre annonce afin de donner un appercu sur votre annonce.</p>
-                                   <div class="form-group">
-                                       <div class="container">
-                                           <div class="row">
-                                               <div class="col-lg-12 col-sm-12">
-                                                   <img src="{{ asset('/assets/image/blog/post4.jpg') }}" alt="post">
-                                               </div>
-                                           </div>
-                                       </div>
                                    </div>
                                </div>
                            </div>
@@ -279,11 +373,11 @@
                                    <h6>3- Coordonnées (Ces informations seront affichées sur l'annonce)</h6><hr>
                                    <div class="form-group">
                                        <label for="">Numéro de téléphone</label>
-                                       <input type="text" class="form-control" disabled>
+                                       <input type="text" id="contact1" class="form-control" disabled>
                                    </div>
                                    <div class="form-group">
                                        <label for="">Adresse email de l'annonce</label>
-                                       <input type="email" class="form-control" disabled>
+                                       <input type="email" id="email1" class="form-control" disabled>
                                    </div>
 
                                </div>

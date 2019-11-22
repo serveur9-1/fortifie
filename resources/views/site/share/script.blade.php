@@ -13,12 +13,6 @@
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-        <!-- Page level plugins -->
-        <script src="{{ asset('/dist/vendors/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('/dist/vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="{{ asset('/dist/js/demo/datatables-demo.js') }}"></script>
 
         <!-- scroll to the top page -->
         <script>
@@ -36,7 +30,7 @@
                   document.getElementById("bouton_haut").style.display = "none";
               }
 
-
+             
           }
           // When the user clicks on the button, scroll to the top of the document
           function topFunction() {
@@ -44,7 +38,7 @@
               document.documentElement.scrollTop = 0;
           }
 
-
+         
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -138,7 +132,7 @@
                 $("#desc1").text(
                     $("#desc").val()
                 );
-
+                
                 $("#contact1").val(
                     $("#contacts").val()
                 );
@@ -151,3 +145,30 @@
             });
          });
          </script>
+         <script type="text/javascript">
+            $(document).ready(function() {
+
+              $(".toggle-accordion").on("click", function() {
+                var accordionId = $(this).attr("accordion-id"),
+                  numPanelOpen = $(accordionId + ' .collapse.in').length;
+                
+                $(this).toggleClass("active");
+
+                if (numPanelOpen == 0) {
+                  openAllPanels(accordionId);
+                } else {
+                  closeAllPanels(accordionId);
+                }
+              })
+
+              openAllPanels = function(aId) {
+                console.log("setAllPanelOpen");
+                $(aId + ' .panel-collapse:not(".in")').collapse('show');
+              }
+              closeAllPanels = function(aId) {
+                console.log("setAllPanelclose");
+                $(aId + ' .panel-collapse.in').collapse('hide');
+              }
+                 
+            });
+        </script>

@@ -152,7 +152,10 @@ Route::post('/contact/send',[
     'uses' => 'ContactController@sendContactMail'
 ]);
 
-
+Route::get('/faqs',[
+    'as' => 'faq',
+    'uses' => 'ContactController@faq'
+]);
 
 
 //administration
@@ -489,7 +492,7 @@ Route::group(['prefix'=> 'admin'],function(){
             'uses' => 'GalleryController@listGalleryAdmin'
         ]);
 
-        Route::get('/album',[
+        Route::get('/createAlbum',[
             'as' => 'createAlbum',
             'uses' => 'GalleryController@createAlbum'
         ]);
@@ -632,7 +635,12 @@ Route::post('/validUsers',[
     'uses' => 'UserController@validUsers'
 ]);
 
+//album
 
+Route::get('/album',[
+    'as' => 'album',
+    'uses' => 'GalleryController@album'
+]);
 
 
 

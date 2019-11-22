@@ -12,13 +12,9 @@
     <body>
 
     @include('site.share.header')
-<<<<<<< HEAD
     
     @include('site.share.alert')
     
-=======
-
->>>>>>> 723d00357046628035cfdeca85c21e7d4054e737
     @yield('content')
 
     @include('site.share.footer')

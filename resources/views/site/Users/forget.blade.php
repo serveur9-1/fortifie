@@ -1,5 +1,5 @@
 @extends('layout_right')
-@section('title','Connexion')
+@section('title','Mot de passe oublié')
 @section('bread')
 
     <!--================Breadcrumb Area =================-->
@@ -10,8 +10,7 @@
                     <h2 class="page-cover-tittle f_48">Connexion</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li><a href="{{ route('home') }}">Catégorie</a></li>
-                        <li class="active">Publication</li>
+                        <li class="active">Mot de passe oublié</li>
                     </ol>
                 </div>
             </div>
