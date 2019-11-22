@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Annonces ({{ $article->count() }})</h6>
-              <a href="{{ route('addAnnonce') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une annonce</a>
+              <a href="{{ route('addAnnonce') }}" class="btn pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une annonce</a>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
@@ -77,8 +77,8 @@
                       <td>{{ $a->contact_fixe }} {{ $a->contact_telephone }}</td>
 
                       <td>
-                          <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
-                          <a href="{{ route('editAnnonce', ['id' => $a->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
+                          <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
+                          <a href="{{ route('editAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
                   @endforeach

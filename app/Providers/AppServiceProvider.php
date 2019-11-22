@@ -13,6 +13,7 @@ use App\Visiteur;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       Schema::defaultStringLength(191);
+    
         $cat = new Category();
         $a = new Article();
         $dio = new Diocese();

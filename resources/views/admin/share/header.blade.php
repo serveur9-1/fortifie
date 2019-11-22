@@ -89,13 +89,10 @@
 
         <a class="collapse-item" href="{{ route('listUsers') }}">liste des comptes</a>
         <a class="collapse-item" href="{{ route('addUsers') }}">Ajouter comptes</a>
+         <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
       </div>
     </div>
-   <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-       <div class="bg-white py-2 collapse-inner rounded">
-           <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
-       </div>
-   </div>
+   
   </li>
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
@@ -146,6 +143,7 @@
 
         <a class="collapse-item" href="{{ route('listGallerie') }}">liste des Images</a>
         <a class="collapse-item" href="{{ route('addGallerie') }}">Ajouter une image</a>
+        <a class="collapse-item" href="{{ route('createAlbum') }}">Créer Album</a>
       </div>
     </div>
   </li>

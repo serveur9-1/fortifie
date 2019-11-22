@@ -19,6 +19,10 @@
     .fileinput-upload{
         display: none;
     }
+    .tof{
+        
+        width: 100px;
+    }
 </style>
 
 
@@ -51,6 +55,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('/dist/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('/dist/js/chart-bar-demo.js') }}"></script>
 <script src="{{ asset('/dist/css/all.min.css') }}"></script>
 
 
@@ -60,3 +65,26 @@
 
 <!-- Page level custom scripts -->
 <script src="{{ asset('/dist/js/demo/datatables-demo.js') }}"></script>
+
+
+
+
+<!-- <script src="{{ asset('/dist/js/fileinput.js') }}"></script>
+<script src="{{ asset('/dist/js/theme.js') }}"></script>
+<script src="{{ asset('/dist/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('/dist/vendors/bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+
+<script src="{{ asset('/dist/vendors/jquery-easing/jquery.easing.min.js') }}"></script>
+
+
+<script src="{{ asset('/dist/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('/dist/css/all.min.css') }}"></script>
+
+
+
+<script src="{{ asset('/dist/vendors/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/dist/vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+<script src="{{ asset('/dist/js/demo/datatables-demo.js') }}"></script>
+ -->

@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Images ({{ $gallery->count() }})</h6>
-              <a href="{{ route('addGallerie') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une image</a>
+              <a href="{{ route('addGallerie') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une image</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -72,6 +72,25 @@
               </div>
             </div>
           </div>
+          <div class="card mb-4">
+            <div class="card-header">
+                Nom de l'album ouvert
+            </div>
+            <div class="card-body">
+                <div class="x_content d-inline-block">
+                    <div class="p-3 tof">
+                        <img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">
+                    </div>
+                    <p class="text-center"><i><small>retirer de l'album</small></i></p>
+                </div>
+                 <div class="x_content d-inline-block">
+                    <div class="p-3 tof">
+                        <img class="img-fluid" src="{{ asset('/assets/image/blog/author.png') }}" alt="">
+                    </div>
+                    <p class="text-center"><i><small>retirer de l'album</small></i></p>
+                </div>
+            </div>
+        </div>
 
         </div>
         <!-- /.container-fluid -->

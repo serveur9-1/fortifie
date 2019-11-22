@@ -28,6 +28,32 @@
                 </form>
               </div>
             </li>
+           <!-- notification annonces signalées -->
+            <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bullhorn fa-fw"></i>
+                      <!-- Counter - Alerts -->
+                      <span class="badge @if($new_account_today->count() > 0) badge-danger @else badge-default @endif badge-counter"> @if($new_account_today->count() > 0) {{ $new_account_today->count() }} @endif</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  @if($new_account_today->count() > 0)
+                      @foreach($new_account_today as $nat)
+                      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                          <h6 class="dropdown-header">
+                              Demande du jour
+                          </h6>
+                          <a class="dropdown-item d-flex align-items-center" href="#">
+                              <div>
+                                  <div class="small text-gray-500">Aujourd'hui - {{ $nat->created_at->format('h:m') }}</div>
+                                  <span class="font-weight-bold">{{ $nat->email }} fait une demande de création du compte de la {{ $nat->gestionnaire[0]->paroisse->nom }}</span>
+                              </div>
+                          </a>
+                          <a class="dropdown-item text-center small text-gray-500" href="{{ route('askList') }}">Voir toutes les demandes</a>
+                      </div>
+                      @endforeach
+                  @endif
+              </li>
+              <!-- notification annonces signalées -->
               <li class="nav-item dropdown no-arrow mx-1">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-bell fa-fw"></i>

@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Comptes ({{ $user->count() }})</h6>
-              <a href="{{ route('addUsers') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter un compte</a>
+              <a href="{{ route('addUsers') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter un compte</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -93,8 +93,8 @@
                       <td>{{ $u->created_at->format('d-m-Y') }}</td>
 
                       <td>
-                          <a href="{{ route("deleteUser", ["id" => $u->id ]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
-                          <a href="{{ route("editUser", ["id" => $u->id ]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
+                          <a href="{{ route("deleteUser", ["id" => $u->id ]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
+                          <a href="{{ route("editUser", ["id" => $u->id ]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
                       @endif
