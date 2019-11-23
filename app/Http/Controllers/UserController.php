@@ -94,14 +94,20 @@ class UserController extends Controller
         ]);
     }
 
-    public function validUsers(UserRequest $request)
+    public function validUsers(UserRequest $request, $standard=false)
     {
         $request->img = $request->file('img')->getClientOriginalName();
         $this->sv->saveImg($request, '/users', "img");
-        $this->u->createUser($request);
+        $this->u->createUser($request, $standard);
+
+        if($standard){
+            $msg = 'Vous avez bien crée un nouvel utilisateur.';
+        }else{
+            $msg = "Vous compte a bien été crée. Un mail de confirmation de compte vous sera envoyé à l'adresse e-mail renseignée";
+        }
 
 
-        return redirect()->back()->with('success', 'Vous avez bien crée un nouvel utilisateur.');
+        return redirect()->back()->with('success', $msg);
     }
 
     public function editUsers($id)

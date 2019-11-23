@@ -65,12 +65,12 @@
                       <td>{{ $u->email }}</td>
                     <td>
                         @foreach($u->gestionnaire as $g)
-                            {{ $g->paroisse->nom }}
+                            {{ $g->paroisse[0]->nom }}
                         @endforeach
                     </td>
                     <td>
                         @foreach($u->gestionnaire as $g)
-                            {{ $g->paroisse->diocese->nom }}
+                            {{ $g->paroisse[0]->diocese->nom }}
                         @endforeach
                     </td>
                       <td>

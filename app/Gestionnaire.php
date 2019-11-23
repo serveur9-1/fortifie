@@ -15,6 +15,12 @@ class Gestionnaire extends Model
 
     public function paroisse()
     {
-        return $this->belongsTo('App\Paroisse');
+        return $this->belongsToMany('App\Paroisse');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

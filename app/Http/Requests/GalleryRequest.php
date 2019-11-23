@@ -24,8 +24,9 @@ class GalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'legende' => 'required|max:200'
+            'img' => 'required',
+            'img.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'album' => 'required'
         ];
     }
 }

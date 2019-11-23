@@ -1,5 +1,5 @@
 @extends('layout_admin')
-@section('title','Liste des Villes')
+@section('title','Liste des Demandes de compte')
 
 @section('content')
  <!-- Begin Page Content -->

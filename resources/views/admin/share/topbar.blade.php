@@ -9,50 +9,6 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-           <!-- notification annonces signalées -->
-            <li class="nav-item dropdown no-arrow mx-1">
-                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-bullhorn fa-fw"></i>
-                      <!-- Counter - Alerts -->
-                      <span class="badge @if($new_account_today->count() > 0) badge-danger @else badge-default @endif badge-counter"> @if($new_account_today->count() > 0) {{ $new_account_today->count() }} @endif</span>
-                  </a>
-                  <!-- Dropdown - Alerts -->
-                  @if($new_account_today->count() > 0)
-                      @foreach($new_account_today as $nat)
-                      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                          <h6 class="dropdown-header">
-                              Demande du jour
-                          </h6>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                              <div>
-                                  <div class="small text-gray-500">Aujourd'hui - {{ $nat->created_at->format('h:m') }}</div>
-                                  <span class="font-weight-bold">{{ $nat->email }} fait une demande de création du compte de la {{ $nat->gestionnaire[0]->paroisse->nom }}</span>
-                              </div>
-                          </a>
-                          <a class="dropdown-item text-center small text-gray-500" href="{{ route('askList') }}">Voir toutes les demandes</a>
-                      </div>
-                      @endforeach
-                  @endif
-              </li>
               <!-- notification annonces signalées -->
               <li class="nav-item dropdown no-arrow mx-1">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,11 +25,64 @@
                           </h6>
                           <a class="dropdown-item d-flex align-items-center" href="#">
                               <div>
-                                  <div class="small text-gray-500">Aujourd'hui - {{ $nat->created_at->format('h:m') }}</div>
-                                  <span class="font-weight-bold">{{ $nat->email }} fait une demande de création du compte de la {{ $nat->gestionnaire[0]->paroisse->nom }}</span>
+                                  <div class="small text-gray-500">Aujourd'hui - {{ $nat->created_at->format('H:m') }}</div>
+                                  <span class="font-weight-bold">{{ $nat->email }} fait une demande de création du compte de la paroisse @foreach($nat->gestionnaire as $g) {{ $g->paroisse[0]->nom }} @endforeach</span>
                               </div>
                           </a>
                           <a class="dropdown-item text-center small text-gray-500" href="{{ route('askList') }}">Voir toutes les demandes</a>
+                      </div>
+                      @endforeach
+                  @endif
+              </li>
+              
+
+              <!-- notification annonces signalées -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bullhorn fa-fw"></i>
+                      <!-- Counter - Alerts -->
+                      <span class="badge @if($new_post_today->count() > 0) badge-danger @else badge-default @endif badge-counter"> @if($new_post_today->count() > 0) {{ $new_post_today->count() }} @endif</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  @if($new_post_today->count() > 0)
+                      @foreach($new_post_today as $p)
+                      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown1">
+                          <h6 class="dropdown-header">
+                          Annonce du jour
+                          </h6>
+                          <a class="dropdown-item d-flex align-items-center" href="#">
+                              <div>
+                                  <div class="small text-gray-500">Aujourd'hui - {{ $p->created_at->format('H:m') }}</div>
+                                  <span class="font-weight-bold">{{ $p->paroisse->nom }} vient de poster l'annonce << {{ $p->titre }} >></span>
+                              </div>
+                          </a>
+                          <a class="dropdown-item text-center small text-gray-500" href="{{ route('waitAnnonce') }}">Voir toutes les anonnces</a>
+                      </div>
+                      @endforeach
+                  @endif
+              </li>
+
+              <!-- notification annonces signalées -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-balance-scale fa-fw"></i>
+                      <!-- Counter - Alerts -->
+                      <span class="badge @if($new_denonciation_today->count() > 0) badge-danger @else badge-default @endif badge-counter"> @if($new_denonciation_today->count() > 0) {{ $new_denonciation_today->count() }} @endif</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  @if($new_denonciation_today->count() > 0)
+                      @foreach($new_denonciation_today as $den)
+                      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown2">
+                          <h6 class="dropdown-header">
+                              Denonciation du jour
+                          </h6>
+                          <a class="dropdown-item d-flex align-items-center" href="#">
+                              <div>
+                                  <div class="small text-gray-500">Aujourd'hui - {{ $den->created_at->format('H:m') }}</div>
+                                  <span class="font-weight-bold">L'annonce << {{ $den->article->titre }} >> vient d'être dénoncée</span>
+                              </div>
+                          </a>
+                          <a class="dropdown-item text-center small text-gray-500" href="{{ route('annonceSignale') }}">Voir toutes les denonciations</a>
                       </div>
                       @endforeach
                   @endif

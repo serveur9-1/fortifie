@@ -307,6 +307,13 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Numéro fixe</label>
+                                        <input @if($edit) value="{{ $a->contact_fixe }}" @else {{ old('contact_fixe') }} @endif type="number" id="contacts" name="contact_fixe" class="form-control @error('contact_telephone') is-invalid @enderror">
+                                        @error('contact_fixe')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="">Adresse email de l'annonce</label>
                                         <input @if($edit) value="{{ $a->contact_email }}" @else {{ old('contact_email') }} @endif type="email" id="email" name="contact_email" class=" @error('contact_email') is-invalid @enderror form-control">
                                         @error('contact_email')

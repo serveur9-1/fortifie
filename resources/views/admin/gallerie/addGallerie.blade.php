@@ -28,11 +28,11 @@
                       <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Sélectionner un album <em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="category" required="required" class="form-control col-md-9 col-xs-12">
-                            <option disabled >Sélectionnez un Album</option>
-                          
-                                <option>dzdd</option>
-                                <option>fzfgz</option>
+                          <select name="album" required="required" class="text-capitalize form-control col-md-9 col-xs-12">
+                            <option disabled >Sélectionnez un album</option>
+                            @foreach($album as $alb)
+                                <option value="{{ $alb->id }}">{{ $alb->libelle }}</option>
+                            @endforeach
                            </select>
                         </div>
                     </div>
@@ -40,14 +40,11 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 col-12 main-section">
-                                    <h1 class="text-center text-danger">Ajouter images de l'album</h1><br>
-                                    <form enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <div class="file-loading">
-                                                <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
-                                            </div>
+                                    <div class="form-group">
+                                        <div class="file-loading">
+                                            <input id="file-1" name="img[]" type="file" multiple="multiple" class="file" data-overwrite-initial="false" data-min-file-count="1">
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -56,6 +56,12 @@ Route::get('/description/{id}',[
 ])->where('id','[0-9]+');
 
 
+Route::post('/denonciation/valid/{id}',[
+    'as' => 'denoncer',
+    'uses' => 'ArticleController@validDenonciation'
+])->where('id','[0-9]+');
+
+
 
 Route::get('/modification',[
     'as' => 'modify',
@@ -328,6 +334,11 @@ Route::group(['prefix'=> 'admin'],function(){
             'uses' => 'ArticleController@annonceSignale'
         ]);
 
+          Route::get('/waitAnnonce',[
+            'as' => 'waitAnnonce',
+            'uses' => 'ArticleController@waitAnnonce'
+        ]);
+
 
         //USERS
 
@@ -497,6 +508,17 @@ Route::group(['prefix'=> 'admin'],function(){
             'uses' => 'GalleryController@createAlbum'
         ]);
 
+        Route::post('/addAlbum',[
+            'as' => 'addAlbum',
+            'uses' => 'GalleryController@validAlbum'
+        ]);
+
+
+        Route::get('/listAlbum/changeState/{id}/{enable}',[
+            'as' => 'enableOrDisableAlbum',
+            'uses' => 'GalleryController@enableOrDisableAlbum'
+        ])->where('id','[0-9]+');
+
 
 
         Route::post('/listGallery/changeState/{id}/{enable}',[
@@ -504,9 +526,17 @@ Route::group(['prefix'=> 'admin'],function(){
             'uses' => 'GalleryController@enableOrDisableGalleryImage'
         ])->where('id','[0-9]+');
 
+        
+
         Route::get('/deleteGallerie/{id}',[
             'as' => 'deleteGallerie',
             'uses' => 'GalleryController@deleteGallery'
+        ])->where('id','[0-9]+');
+
+
+        Route::get('/deleteAlbum/{id}',[
+            'as' => 'deleteAlbum',
+            'uses' => 'GalleryController@deleteAlbum'
         ])->where('id','[0-9]+');
 
 
@@ -641,6 +671,9 @@ Route::get('/album',[
     'as' => 'album',
     'uses' => 'GalleryController@album'
 ]);
+
+
+
 
 
 

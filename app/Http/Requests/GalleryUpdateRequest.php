@@ -25,7 +25,7 @@ class GalleryUpdateRequest extends FormRequest
     {
         return [
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'legende' => 'required|max:200'
+            'album' => 'required'
         ];
     }
 }

@@ -21,7 +21,7 @@
             <h3 class="widget_title">Annonces populaires</h3>
                 @foreach($p_article as $a)
                     <div class="media post_item">
-                        <div style="width: 100px;height: 60px ;background: url('{{ asset("assets/img/articles") }}/{{ $a->article->img }}') no-repeat;background-size: cover;"></div>
+                        <div style="width: 100px;height: 60px ;background: url('{{ asset("assets/img/articles") }}/{{ $a->article['img']  }}') no-repeat;background-size: cover;"></div>
                         <div class="media-body">
                             <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>
                             <p>{{ Carbon\Carbon::now()->diffForHumans($a->article['created_at']) }}</p>
@@ -30,6 +30,7 @@
                 @endforeach
 
             <div class="br"></div>
+            
         </aside>
         <!--============= PUB AREA HERE  ===================-->
         @if($g_pub->count() > 0)
@@ -47,9 +48,10 @@
         @endif
 
         <!--============= Galerie  ===================-->
-        <a href="{{ route('album') }}"><div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+        <aside class="single_sidebar_widget popular_post_widget ">
+            <h3 class="widget_title">Galérie</h3>
+            <a href="{{ route('album') }}"><div class="col-lg-12 col-md-12 col-sm-12 mb-5">
             <div class="single-footer-widget instafeed">
-                <h4 class="widget_title">Galerie</h4>
                 <ul class="list_style instafeed d-flex flex-wrap">
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-01.jpg')}}') no-repeat;background-size: cover;"></li>
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-02.jpg')}}') no-repeat;background-size: cover;"></li>
@@ -63,6 +65,9 @@
             </div>
         </div>
         </a> 
+            <div class="br"></div>
+            
+        </aside>
         <!--============= END PUB AREA HERE  ===================-->
         <aside class="single-sidebar-widget newsletter_widget">
             <h4 class="widget_title">Newsletter</h4>

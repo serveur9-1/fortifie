@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
+use App\Album;
 use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\GalleryUpdateRequest;
 use App\Repository\GalleryRepository;
@@ -19,11 +20,11 @@ class GalleryController extends Controller
         $this->sv = $sv;
     }
 
-    public function gallery()
+    public function gallery(Request $request)
 	{
 
 		return view('site.galerie.galerie',[
-		    'gallery' => $this->g->getGallery(false)
+		    'gallery' => $this->g->getGallery(false, $request)
         ]);
 	}
 
@@ -41,10 +42,31 @@ class GalleryController extends Controller
         return redirect()->back()->with('success',"Vous avez bien $state une image.");
     }
 
+
+    public function enableOrDisableAlbum($id,$enable)
+    {
+        $this->g->enableOrDisableAlbum($id, $enable);
+
+        if($enable){
+            $state = "désactivé";
+        }else{
+            $state = "activé";
+        }
+
+        return redirect()->back()->with('success',"Vous avez bien $state un album.");
+    }
+
+
 	public function delete($id)
     {
         $this->g->deleteGallery($id);
         return redirect()->back()->with('success',"Vous avez bien supprimé l'image de la galérie");
+    }
+
+    public function deleteAlbum($id)
+    {
+        $this->g->deleteAlbum($id);
+        return redirect()->back()->with('success',"Vous avez bien supprimé un album");
     }
 
     public function update($id, Request $request)
@@ -56,16 +78,11 @@ class GalleryController extends Controller
 
     //administration
 
-    public function listGalleryAdmin()
+    public function listGalleryAdmin(Request $request)
     {
         return view('admin.gallerie.listGallerie',[
-            'gallery' => $this->g->getGallery(true)
+            'gallery' => $this->g->getGallery(true, $request)
         ]);
-    }
-
-    public function createAlbum()
-    {
-        return view('admin.gallerie.createAlbum');
     }
 
 
@@ -79,19 +96,37 @@ class GalleryController extends Controller
     public function addGalleryAdmin()
     {
         return view('admin.gallerie.addGallerie',[
-            'edit' => false
+            'edit' => false,
+            "album" => $this->g->getAlbum(true)
         ]);
     }
 
 
     function validGallery(GalleryRequest $request)
     {
+        if($request->hasfile('img'))
 
-        $request->img = $request->file('img')->getClientOriginalName();
-        $this->sv->saveImg($request, '/galeries');
+         {
+
+            foreach($request->file('img') as $file)
+
+            {
+
+                $name=$file->getClientOriginalName(); 
+
+                $data[] = $name;  
+
+                $file->move("assets/img/galeries", $name);
+
+            }
+            //dd(json_encode($data));
+            $request->img = $data;
+
+         }
+
         $this->g->createGallery($request);
 
-        return redirect()->back()->with('success',"Vous avez bien ajouté une image.");
+        return redirect()->back()->with('success',"Vous avez bien ajouté des images.");
     }
 
 
@@ -124,7 +159,26 @@ class GalleryController extends Controller
 
     public function album()
     {
-        return view('site.galerie.album');
+        return view('site.galerie.album',[
+            "album" => $this->g->getAlbum(false)
+        ]);
+    }
+
+
+    public function createAlbum()
+    {
+        return view('admin.gallerie.createAlbum',[
+            "album" => $this->g->getAlbum(true)
+        ]);
+    }
+
+
+    public function validAlbum(Request $request)
+    {
+
+        $this->g->createAlbum($request);
+
+        return back()->with('success', "Vous avez bien ajouté un nouvel album");
     }
 
 }

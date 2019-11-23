@@ -76,6 +76,7 @@
         <a class="collapse-item" href="{{ route('listAnnonce') }}">liste des Annonces</a>
         <a class="collapse-item" href="{{ route('addAnnonce') }}">Ajouter une annonce</a>
           <a class="collapse-item" href="{{ route('annonceSignale') }}">Annonces signalées</a>
+          <a class="collapse-item" href="{{ route('waitAnnonce') }}"> En Attentes de Publication</a>
       </div>
     </div>
   </li>

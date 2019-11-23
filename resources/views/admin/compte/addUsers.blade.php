@@ -1,5 +1,5 @@
 @extends('layout_admin')
-@section('title','Ajouter Paroisse')
+@section('title','Ajouter Compte')
 
 @section('content')
  <!-- Begin Page Content -->

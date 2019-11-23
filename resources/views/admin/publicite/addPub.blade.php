@@ -7,7 +7,7 @@
           <div class="x_panel">
            <div class="x_title">
               <h2><small>@if(!$edit) Ajouter @else Modifier @endif Publicité</small></h2>
-              <a href="{{ route('listPub') }}" class="btn btn-danger btn-sm pull-right mb-4 btnadmin" style="float: right;"><i class="fa fa-eye"></i> Liste des Publicités</a>
+              <a href="{{ route('listPub') }}" class="btn  btn-sm pull-right mb-4 btnadmin" style="float: right;"><i class="fa fa-eye"></i> Liste des Publicités</a>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -66,8 +66,8 @@
                    </div>
                    <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
-                          <input type="submit" class="btn btn-success btnadmin" value="Enregistrer">
-                          <input type="reset" class="btn btn-danger btnad" value="Effacer le contenu">
+                          <input type="submit" class="btn  btnadmin" value="Enregistrer">
+                          <input type="reset" class="btn btnad" value="Effacer le contenu">
                       </div>
                     </div>
                 </form>

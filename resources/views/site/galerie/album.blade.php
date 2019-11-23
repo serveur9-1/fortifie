@@ -24,63 +24,31 @@
                     <p>Avez-vous des images d'un évènement à partager ? <br> Envoyez nous un message <a href="{{ route('contact') }}"> ici</a> afin que nous rentrons en contact avec vous pour les recuperer et les mettres dans la galerie.
                     </p>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="categories_post">
-                            
-                            <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
-                             <a href="{{ route('galerie') }}">
-                                <div class="categories_details">
-                                    <div class="categories_text">
-                                       <h5 class="mb-2">Historique de l'église Catholique</h5><h1>252</h1>
+                @if($album->count() > 0)
+                    <div class="row">
+                    @foreach($album as $alb)
+                        <div class="col-lg-4 mb-4">
+                            <div class="categories_post">
+                                <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
+                                <a href="{{ route('galerie',['folder'=>$alb->id]) }}">
+                                    <div class="categories_details">
+                                        <div class="categories_text">
+                                        <h5 class="mb-2">{{ $alb->libelle }}</h5><h1>{{ $alb->gallery->count() }}</h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="categories_post">
-                            <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
-                             <a href="{{ route('galerie') }}">
-                                <div class="categories_details">
-                                    <div class="categories_text">
-                                       <h5 class="mb-2">Historique de l'église Catholique</h5><h1>252</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="categories_post">
-                            <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
-                             <a href="{{ route('galerie') }}">
-                                <div class="categories_details">
-                                    <div class="categories_text">
-                                       <h5 class="mb-2">Historique de l'église Catholique</h5><h1>252</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="categories_post">
-                            <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
-                             <a href="{{ route('galerie') }}">
-                                <div class="categories_details">
-                                    <div class="categories_text">
-                                       <h5 class="mb-2">Historique de l'église Catholique</h5><h1>252</h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="col-12">
-                    <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.4">
-                        <span class="fa fa-folder mb-4" style="font-size: 150px "></span><br>
-                        Aucun Album dans la galerie
-                    </div>
+                    @endforeach
                 </div>
+                @else
+                    <div class="col-12">
+                        <div class="quotes" style="text-align: center; font-size: 30px;opacity: 0.4">
+                            <span class="fa fa-folder mb-4" style="font-size: 150px "></span><br>
+                            Aucun Album dans la galerie
+                        </div>
+                    </div>
+                @endif
             </div>
         </section>
         <!--================Gallery Area =================-->

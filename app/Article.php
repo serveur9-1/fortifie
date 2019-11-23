@@ -39,6 +39,11 @@ class Article extends Model
         return $this->belongsTo('App\Paroisse');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function visiteur()
     {
         return $this->hasMany('App\Visiteur');

@@ -23,6 +23,7 @@ class CreateArticleTable extends Migration
             $table->string('description',1000);
             $table->string('slug',100)->nullable();
             $table->bigInteger('category_id')->unsigned()->index();
+            
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
@@ -30,6 +31,7 @@ class CreateArticleTable extends Migration
 
             $table->string('img',300)->nullable();
             $table->boolean('is_active')->default(false);
+            $table->boolean('is_new')->default(true);
 
             $table->boolean('sans_titre')->nullable()->default(false);
 
@@ -38,6 +40,8 @@ class CreateArticleTable extends Migration
 
             $table->time('heure_debut');
             $table->time('heure_fin');
+
+            $table->string('date_string',50)->nullable();
 
             $table->bigInteger('user_id')->unsigned()->index();
 

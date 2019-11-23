@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Publicités ({{ $pub->count() }})</h6>
-              <a href="{{ route('addPub') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Publicité</a>
+              <a href="{{ route('addPub') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Publicité</a>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
@@ -72,8 +72,8 @@
                       <td>{{ $p->created_at->format('d-m-Y') }}</td>
 
                       <td>
-                        <a href="{{ route('deletePub' ,[ 'id' => $p->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette publicité ?') "><i class="fa fa-trash"></i></a>
-                        <a href="{{ route('editPub' ,[ 'id' => $p->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('deletePub' ,[ 'id' => $p->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette publicité ?') "><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('editPub' ,[ 'id' => $p->id]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
                   @endforeach

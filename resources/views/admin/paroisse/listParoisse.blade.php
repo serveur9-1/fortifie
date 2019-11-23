@@ -51,7 +51,7 @@
                       <td>{{ $p->created_at->format('d-m-Y') }}</td>
 
                       <td>
-                          <a href="{{ route('deleteParoisse', ['id' => $p->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette paroisse ?') "><i class="fa fa-trash"></i></a>
+                          <a href="{{ route('deleteParoisse', ['id' => $p->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette paroisse ?') "><i class="fa fa-trash"></i></a>
                         <a href="{{ route('editParoisse', ['id' => $p->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>

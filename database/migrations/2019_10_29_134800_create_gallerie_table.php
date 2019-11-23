@@ -16,8 +16,15 @@ class CreateGallerieTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('img')->unique();
-            $table->string('legende',200);
             $table->boolean('is_active')->default(true);
+
+            $table->bigInteger('album_id')->unsigned()->index();
+            $table->foreign('album_id')
+                  ->references('id')
+                  ->on('albums')
+                  ->onDelete('cascade');
+
+        
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Nos Images ({{ $gallery->count() }})</h6>
+              <h6 class="m-0 font-weight-bold text-primary">{{ $gallery->count() }} image(s) dans cet album</h6>
               <a href="{{ route('addGallerie') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une image</a>
             </div>
             <div class="card-body">
@@ -20,7 +20,6 @@
                     <tr>
                       <th>Image</th>
 
-                      <th>Legende de l'image</th>
                         <th>Activée</th>
                       <th>Date d'ajout</th>
 
@@ -31,7 +30,6 @@
                     <tr>
                       <th>Image</th>
 
-                      <th>Legende de l'image</th>
                       <th>Activée</th>
                       <th>Date d'ajout</th>
 
@@ -44,7 +42,6 @@
                       <td>
                         <img style="width: 100px" src='{{ asset("/assets/img/galeries/$g->img") }}' alt="post">
                       </td>
-                      <td>{{ $g->legende }}</td>
                       <td>
                             <div class="confirm-switch">
                                 <input onchange="change{{ $g->id }}()" type="checkbox" id="confirm-switch{{ $g->id }}" @if($g->is_active) checked @endif>
@@ -63,7 +60,7 @@
 
                       <td>
                           <a href="{{ route('deleteGallerie', ['id' => $g->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cette image ?') "><i class="fa fa-trash"></i></a>
-                          <a href="{{ route('editGallerie', ['id' => $g->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
+                          <!-- <a href="{{ route('editGallerie', ['id' => $g->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a> -->
                       </td>
                     </tr>
                   @endforeach
@@ -72,25 +69,6 @@
               </div>
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-header">
-                Nom de l'album ouvert
-            </div>
-            <div class="card-body">
-                <div class="x_content d-inline-block">
-                    <div class="p-3 tof">
-                        <img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">
-                    </div>
-                    <p class="text-center"><i><small>retirer de l'album</small></i></p>
-                </div>
-                 <div class="x_content d-inline-block">
-                    <div class="p-3 tof">
-                        <img class="img-fluid" src="{{ asset('/assets/image/blog/author.png') }}" alt="">
-                    </div>
-                    <p class="text-center"><i><small>retirer de l'album</small></i></p>
-                </div>
-            </div>
-        </div>
 
         </div>
         <!-- /.container-fluid -->

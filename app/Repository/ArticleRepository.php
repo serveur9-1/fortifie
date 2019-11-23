@@ -11,6 +11,7 @@ use App\Mail\ArticleEnableOrDisableMail;
 use App\Mail\NewsletterMail;
 use App\Paroisse;
 use App\User;
+use App\Denonciation;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
@@ -29,13 +30,15 @@ class ArticleRepository
 
     private $annonce;
 
-    public function __construct(Article $a, Category $c, Paroisse $pa, User $u)
+    public function __construct(Article $a, Category $c, Paroisse $pa, User $u, Denonciation $den)
     {
         $this->art = $a;
         $this->cat = $c;
         $this->paro = $pa;
 
         $this->user = $u;
+
+        $this->den = $den;
     }
 
     public function getArticle()
@@ -58,6 +61,7 @@ class ArticleRepository
             $sans_titre = false;
         }
 
+        
         $new_a = $this->art->newQuery()
             ->create([
                 'titre' => $array->titre,
@@ -136,6 +140,7 @@ class ArticleRepository
         $ars = $a->get();
 
 
+
         if($enable){
 
             $a->update([
@@ -160,6 +165,7 @@ class ArticleRepository
 
             $data->receiver = $k->user->email;
             $data->user = $k->user->name;
+
 
         }
 
@@ -467,6 +473,28 @@ class ArticleRepository
         return $this->art->newQuery()
             ->findOrFail($id);
     }
+
+
+    //Denonciation
+
+
+    public function getDenonciation()
+    {
+
+        return $this->den->newQuery()->select()->orderBy('created_at','DESC')->get();
+    }
+
+    public function denonciateArticle($id, $array)
+    {
+        $this->art->newQuery()->findOrFail($id);
+
+        $this->den->create([
+            'motif' => $array->content,
+            'article_id' => $id
+        ]);
+    }
+
+    
 
 
 

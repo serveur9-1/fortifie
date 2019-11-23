@@ -30,13 +30,13 @@ class UsersRepository
 
     public function getUserDioceseId()
     {
-        dd($this->auth->user()->gestionnaire[0]->paroisse->id);
-        //return $this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id;
+        //dd($this->auth->user()->gestionnaire[0]->paroisse->id);
+        return $this->auth->user()->gestionnaire[0]->paroisse[0]->diocese->id;
     }
 
     public function getUserParoisseId()
     {
-        return $this->auth->user()->gestionnaire[0]->paroisse->id;
+        return $this->auth->user()->gestionnaire[0]->paroisse[0]->id;
     }
 
     public function getGUserId()
@@ -100,12 +100,15 @@ class UsersRepository
             'password' => Hash::make($array->password),
         ]);
 
-        $this->g->newQuery()->create([
+        $n_ges = $this->g->newQuery()->create([
             'communaute' => $array->communaute,
             'paroisse_id' => $array->paroisse,
             'telephone' => $array->telephone,
             'user_id' => $n_user->id
         ]);
+
+
+        $n_ges->paroisse()->sync($array->paroisse);
 
     }
 

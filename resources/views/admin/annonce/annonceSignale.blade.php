@@ -15,54 +15,54 @@
                 <div class="alert alert-info">
                     <h5>INFORMATION</h5>
                     <ul class="list_style">
-                        <li>Lorsqu' une annonce est signalée, elle ne s'affiche pas sur le site</li>
+                        <li>Lorsqu' une annonce est bloquée, elle est automatique supprimée. Cliquez <a href="{{route('listAnnonce') }}">ici</a> pour plutôt désactiver</li>
                     </ul>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Titre</th>
+                            <th>Annonce</th>
 
-                            <th>catégorie</th>
-                            <th>paroisse</th>
-                            <th>email</th>
-                            <th>Date de creation</th>
-                            <th>Etat</th>
-                            <th>telephone</th>
+                            <th>Motif</th>
+                            <th>Date de dénonciation</th>
 
-                            <th>Action</th>
+                            <th>Activée?</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Titre</th>
+                            <th>Annonce</th>
 
-                            <th>Catégorie</th>
-                            <th>Paroisse</th>
-                            <th>Email</th>
-                            <th>Date de creation</th>
-                            <th>Etat</th>
-                            <th>Telephone</th>
+                            <th>Motif</th>
+                            <th>Date de dénonciation</th>
 
-                            <th>Action</th>
+                            <th>Activée?</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td><a href="#" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette CAtégorie ?') ">
-                                    bloquer
-                                </a>
-                                <a href="#" class="btn  btn-sm btnadmin">débloquer</a>
-                            </td>
-                        </tr>
+                        @foreach($denonciation as $d)
+                            <tr>
+                                <td title="{{ $d->article->titre }}"><b>{{ $d->article->id }}# </b>{{ $d->article->titre }}</td>
+                                <td>{{ $d->motif }}</td>
+                                <td>{{ $d->created_at }}</td>
+                                <td>
+                                    <div class="confirm-switch">
+                                        <input onchange="change{{ $d->id }}()" type="checkbox" id="confirm-switch{{ $d->id }}" @if($d->article->is_active) checked @endif>
+                                        <label for="confirm-switch{{ $d->id }}"></label>
+                                    </div>
+
+                                    <script>
+                                        function change{{ $d->id }}(){
+                                            document.getElementById("changeStateForm{{ $d->id }}").submit();
+                                        }
+                                    </script>
+                                    <form style="display: none;" id="changeStateForm{{ $d->id }}" action="{{ route('enableOrdisableArticle', ['id'=> $d->article->id, 'enable' => $d->article->is_active]) }}" method="post">
+                                        @csrf
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>

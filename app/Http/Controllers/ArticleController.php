@@ -62,23 +62,29 @@ class ArticleController extends Controller
 
     public function annonceSignale()
     {
-        return view('admin.annonce.annonceSignale');
+        return view('admin.annonce.annonceSignale',[
+            'denonciation' => $this->a->getDenonciation()
+        ]);
+    }
+
+    public function waitAnnonce()
+    {
+        return view('admin.annonce.waitAnnonce',[
+            'article' => $this->a->getArticle()
+        ]);
     }
 
     public function validAnnonce(ArticleRequest $request)
     {
         
         $request->img = $request->file('img')->getClientOriginalName();
-        //dd($request->img);
-        //$this->sv->saveImg($request, '/articles', 'img');
+        $this->sv->saveImg($request, '/articles', 'img');
 
 
         //Verifier si user n'est pas admin
         if(!$this->ur->userIsAdmin()){
             $request->paroisse = $this->ur->getUserParoisseId();
-            dd('ok');
         }
-//dd("no");
         $this->a->createArticle($request);
 
         //Mail::send(New NewsletterMail($request));
@@ -113,5 +119,17 @@ class ArticleController extends Controller
 
         $this->a->updateArticle($id, $request);
         return redirect()->back()->with('success',"Vous avez bien modifié une annonce");
+    }
+
+
+    public function validDenonciation($id, Request $request)
+    {   
+        $this->validate($request, [
+            'content' => 'required|min:10|max:300',
+        ]);
+
+        $this->a->denonciateArticle($id, $request);
+        return redirect()->back()->with('success',"Vous avez dénoncé cette annonce. Votre demande sera traitée dans 48h");
+        
     }
 }

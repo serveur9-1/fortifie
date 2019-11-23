@@ -10,6 +10,7 @@ use App\Pub;
 use App\Repository\PubRepository;
 use App\User;
 use App\Visiteur;
+use App\Denonciation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         $dio = new Diocese();
         $vi = new Visiteur();
 
+        $den = new Denonciation();
+
         $dmd = new User();
 
         $pu = new Pub();
@@ -65,7 +68,9 @@ class AppServiceProvider extends ServiceProvider
                 ->whereDate('debut','<=', Carbon::now()->format('Y-m-d'))
                 ->whereDate('fin','>=', Carbon::now()->format('Y-m-d'))->get(),
             'g_partenaire' => Partenaire::all(),
-            'new_account_today' => $dmd->newQuery()->select()->where('is_new',true)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get()
+            'new_account_today' => $dmd->newQuery()->select()->where('is_new',true)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
+            'new_post_today' => $a->newQuery()->select()->where('is_new',true)->where('is_active',false)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
+            'new_denonciation_today' => $den->newQuery()->select()->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
         ]);
     }
 }

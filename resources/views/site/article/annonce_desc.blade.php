@@ -33,7 +33,7 @@
 
                     <ul class="blog_meta list_style" style="display: flex">
 
-                        <li> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/image/blog/author.png') }}" alt="">
+                        <li> <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$article->user->img) }}' alt="ok">
                             <a href="{{ route('paroisse',['id' => $article->paroisse->id]) }}">{{ $article->paroisse->nom }}</a></li>
 
                         <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
@@ -43,7 +43,11 @@
                         <li>{{ $vue }} {{ Str::plural('vue', $article->visiteur->count() ) }} </li>
 
                     </ul>
-                    <h4 class="mt-4"> <i class="fa fa-phone"></i> : +225 {{ $article->contact_telephone }}</h4>
+                    <h4 class="mt-4">
+                        @if(!empty($article->contact_telephone)) <i class="fa fa-phone mr-1"></i>  +225 {{ $article->contact_telephone }} <span class="mr-5"></span> @endif 
+                        @if(!empty($article->contact_fixe)) <i class="fa fa-fax mr-1"></i>  +225 {{ $article->contact_fixe }} <span class="mr-5"></span> @endif
+                        @if(!empty($article->contact_email)) <i class="fa fa-envelope mr-1"></i> {{ $article->contact_email }} <span class="mr-5"></span> @endif
+                    </h4>
 
                 </div>
                 <div style="height: 30px;color: #fff" class="mb-3 col-lg-12 col-md-12" id="desktop">
@@ -115,14 +119,18 @@
                                   </div>
                                   <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
-                                     <form class="row contact_form" style="display: " action="{{ route('sendMail') }}" method="post" id="contactForm">
+                                     <form class="row contact_form"  action="{{ route('denoncer',['id' => $article->id]) }}" method="post" id="contactForm">
+                                        @csrf
                                         <div class="col-md-12 col-lg-12 mt-3">
                                             <div class="form-group">
-                                                <textarea maxlength="500" class="form-control" name="message" id="message" rows="1" placeholder="donner le motif de cette dénonciation"></textarea>
+                                                <textarea maxlength="300"  class="form-control" name="content" id="message" rows="1" placeholder="Pourquoi vous voulez signaler cette annonce ?">{{ old("content") }}</textarea>
+                                                @error('content')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-12 text-right">
-                                            <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Signaler</button>
+                                            <button type="submit" class="btn btn_hover btn_hover_two">Signaler</button>
                                         </div>
                                     </form>
                                     </div>
@@ -174,7 +182,7 @@
         }
 
         .whatsapp:hover{
-            background-color: #00e676;
+            background-color: #28a745;
         }
         .share{
             width: 150px;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Diocese;
+use App\Gallery;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\NewsletterRepository;
@@ -11,6 +12,9 @@ use App\Repository\ParoisseRepository;
 use App\Repository\SubCategoryRepository;
 use App\Repository\UsersRepository;
 use App\Repository\VisiteurRepository;
+use App\Repository\DioceseRepository;
+use App\Repository\PubRepository;
+use App\Repository\GalleryRepository;
 use App\Shared\ArticleViewFormat;
 use App\SubCategory;
 use App\Ville;
@@ -35,6 +39,9 @@ class HomeController extends Controller
         ArticleViewFormat $avf,
         NewsletterRepository $nl,
         ParoisseRepository $p,
+        DioceseRepository $dio,
+        PubRepository $pub,
+        GalleryRepository $ga,
         SubCategoryRepository $sc
     ){
         //$this->middleware('auth');
@@ -50,6 +57,10 @@ class HomeController extends Controller
         $this->p = $p;
 
         $this->sc = $sc;
+        
+        $this->dio = $dio;
+        $this->pub = $pub;
+        $this->ga = $ga;
 
     }
 
@@ -170,13 +181,16 @@ class HomeController extends Controller
     {
 
         //dd($this->visite->getVisitorData()->attributesToArray());
-        $data = $this->visite->getVisitorData();
-
+        $data = $this->visite->getVisitorData();  
         return view('admin.Accueil',[
             'nb_visiteur' => $this->avf->number_format_short($this->visite->getAllVisitors()->count()),
             'nb_article' => $this->avf->number_format_short($this->a->getArticleAdmin()->count()),
             'nb_compte' => $this->avf->number_format_short($this->auth->getUser()->count()),
             'nb_abonne' => $this->avf->number_format_short($this->nl->getNewsletterSuscriber()->count()),
+            'nb_diocese' => $this->avf->number_format_short($this->dio->getDiocese()->count()),
+            'nb_paroisse' => $this->avf->number_format_short($this->p->getParoisse()->count()),
+            'nb_pub' => $this->avf->number_format_short($this->pub->getPub()->count()),
+            'nb_gallery' => $this->avf->number_format_short(Gallery::all()->count()),
             'data_m' => json_encode(array_column($data, 'm'),JSON_NUMERIC_CHECK),
             'data_d' => json_encode(array_column($data, 'd'),JSON_NUMERIC_CHECK),
         ]);

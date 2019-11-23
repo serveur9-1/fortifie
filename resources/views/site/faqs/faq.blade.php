@@ -44,13 +44,9 @@
 
 .accordion {
     position:relative;
-    background-color:#eee;
+    background-color:#5fc6c9;
 }
-.container {
-  max-width:960px;
-  margin:0 auto;
-  padding:2em 0 2em 0;
-}
+
 .accordionTitle,
 .accordion__Heading {
  background-color:#6c2f91; 
