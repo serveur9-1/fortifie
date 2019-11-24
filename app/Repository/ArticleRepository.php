@@ -56,9 +56,13 @@ class ArticleRepository
         $sans_titre = false;
 
         if($array->sans_titre){
+
             $sans_titre = true;
+
         }else{
+
             $sans_titre = false;
+
         }
 
         
@@ -80,22 +84,6 @@ class ArticleRepository
                 'heure_fin' => $array->heure_fin
             ]);
 
-
-        //  ENVOYER MESSAGE A TOUS LES ABONNES DE CETTE CATEGORIE
-        $data = []; 
-        /*$new_cat = new Category();
-        $data = Arr::add($data, 'category', $new_cat->newQuery()->select()->where('id', $array["category"])->get());
-        $data = Arr::add($data,'suscribers', Category::findOrFail($array["category"])->newsletter->get());
-        $data = Arr::add($data,'access_link', url()->route('description',['id' => $new_a->id ])); */
-        // encrypt and decrypt
-        //http://127.0.0.1:8000/unsuscribe?c=1&e=alexis.yoboue%40uvci.edu.ci 
-
-/*        $data = Arr::add($data,'disable_link', url()->route('unsuscribe',['c' => encrypt($new_a->id), 'e' => encrypt('alexis.yoboue%40uvci.edu.ci')]));
-        if($data['suscribers']->count() > 0){
-            Mail::send(new NewsletterMail($array));
-        }else{
-            dd('not send !');
-        }*/
     }
 
 
@@ -126,43 +114,115 @@ class ArticleRepository
             ]);
     }
 
-    public function getArticleAdmin()
+    public function getArticleAdmin($is_active=true)
     {
-        return $this->art->newQuery()
+        if($is_active){
+
+            return $this->art->newQuery()
             ->select()
             ->orderBy('created_at','DESC')->get();
+
+        }else{
+
+            return $this->art->newQuery()
+            ->select()
+            ->where('is_active',$is_active)
+            ->orderBy('created_at','DESC')->get();
+
+        }
+
     }
 
-    public function enableOrDisableArticle($id, $enable, $data)
+    public function enableOrDisableArticle($id, $enable, $data, $is_new = false)
     {
 
         $a = $this->art->newQuery()->select()->where('id',$id);
         $ars = $a->get();
 
 
+        if(!$is_new)
+        {
+            if($enable){
 
-        if($enable){
-
-            $a->update([
-                'is_active' => false
-            ]);
-
-            $data->subject = "Votre annonce est desactivée";
-            $data->is_enable = true;
+                $a->update([
+                    'is_active' => false
+                ]);
+    
+                $data->subject = "Votre annonce est desactivée";
+                $data->is_enable = false;
+    
+            }else{
+    
+                $a->update([
+                    'is_active' => true
+                ]);
+    
+                $data->subject = "Votre annonce est activée";
+                $data->is_enable = true;
+    
+            }
 
         }else{
 
-            $a->update([
-                'is_active' => true
-            ]);
+            if($enable){
 
-            $data->subject = "Votre annonce est activée";
-            $data->is_enable = false;
+                $a->update([
+                    'is_active' => false,
+                    'is_new' => false
+                ]);
+
+                $data->subject = "Votre annonce est bloquée";
+                $data->is_enable = false;
+
+                    
+            }else{
+    
+                $a->update([
+                    'is_active' => true,
+                    'is_new' => false
+                ]);
+                $data->subject = "Votre annonce est publié maintenant";
+                $data->is_enable = true;
+
+                //  ENVOYER MESSAGE A TOUS LES ABONNES DE CETTE CATEGORIE 
+                
+                $new_cat = new Category();
+                $cat = $new_cat->newQuery()->select()->where('id', $ars[0]->category->id)->get();
+                $data["category"] = $cat->toArray();
+
+                $data["id"] = $ars[0]->category->id;
+                
+                $data["suscriber"] = array_column($cat[0]->newsletter->toArray(), 'email');
+                
+                $data["access_link"] = url()->route('description',['id' => $id ]);
+                
+                
+                
+                // encrypt and decrypt
+                //http://127.0.0.1:8000/unsuscribe?c=1&e=alexis.yoboue%40uvci.edu.ci 
+
+                if(count($cat[0]->newsletter->toArray()) > 0){
+
+                    for($i=0; $i < count($cat[0]->newsletter->toArray()) ; $i++)
+                    {
+                        for($i=0; $i < count($data["suscriber"]) ; $i++){
+                                $data["suscribers"] = $data["suscriber"][$i];
+                                //print_r($data);
+                                Mail::send(new NewsletterMail($data));
+                        }
+                    } 
+                    
+                }
+    
+    
+            }
 
         }
 
-        foreach ($ars[0]->paroisse->gestionnaire as $k){
+        //Envoyer MAil au gestionnaire
 
+        foreach ($ars[0]->paroisse->gestionnaire as $k){
+    
             $data->receiver = $k->user->email;
             $data->user = $k->user->name;
 

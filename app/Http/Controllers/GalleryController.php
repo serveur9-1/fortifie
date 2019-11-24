@@ -109,7 +109,6 @@ class GalleryController extends Controller
          {
 
             foreach($request->file('img') as $file)
-
             {
 
                 $name=$file->getClientOriginalName(); 

@@ -26,16 +26,12 @@ class NewsletterController extends Controller
 
     public function unsuscribe(Request $request)
     {
-        //http://127.0.0.1:8000/unsuscribe?c=1&e=alexis.yoboue%40uvci.edu.ci
-
-        // encrypt and decrypt
-
         $email = $request['e'];
         $category_id = $request['c'];
 
         $this->new->unsuscribeTo($email, $category_id);
 
-        return 'ok' /*redirect('/')->with('success','Vous êtes maintenant désabonné à la catégorie.')*/;
+        return redirect('home')->with('success','Vous êtes maintenant désabonné à la catégorie.');
     }
 
     public function newsletterMail()

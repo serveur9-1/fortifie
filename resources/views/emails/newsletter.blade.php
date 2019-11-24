@@ -8,12 +8,13 @@
 
 		<p>Un nouvel évènement a été enregistré sur Fortifie-toi</p>
 
-		<p><a href="https://fortifietoi.ci/annonce-details/{{ $annonce->id }}">Cliquez ici pour visiter les détails de l'annonce </a></p>
+		<p><a href="{{ $access_link }}">Cliquez ici pour visiter les détails de l'annonce </a></p>
 
 		<p>Vous pouvez toujours vous désabonner à la catégorie de cette annonce en cliquant sur ce lien:
 		</p>
 		<p>
-			<a href="https://fortifietoi.ci/annonce-details/{{ $annonce->id }}"> Me désabonner</a>
+			Cliquez sur ce lien si vous ne voulez plus recevoir d'alerte pour cette catégorie 
+			<a href="{{ route('unsuscribe', ['c' => $id, 'e' => $email]) }}">{{ route('unsuscribe', ['c' => $id, 'e' => $email]) }}</a>
 		</p>
 
 		<p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>

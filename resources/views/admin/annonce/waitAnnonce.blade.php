@@ -10,7 +10,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Nos Annonces ({{ $article->count() }})</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Annonces en attente ({{ $article->count() }})</h6>
               <a href="{{ route('addAnnonce') }}" class="btn pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une annonce</a>
             </div>
             <div class="card-body">
@@ -30,7 +30,6 @@
                       <th>paroisse</th>
                       <th>email</th>
                       <th>Date de creation</th>
-                      <th>Etat</th>
                       <th>telephone</th>
 
                       <th>Action</th>
@@ -44,7 +43,6 @@
                       <th>Paroisse</th>
                       <th>Email</th>
                       <th>Date de creation</th>
-                      <th>Etat</th>
                       <th>Telephone</th>
 
                       <th>Action</th>
@@ -60,25 +58,30 @@
                       <td>{{ $a->paroisse->nom }}</td>
                       <td>{{ $a->contact_email }}</td>
                       <td>{{ $a->created_at->format('Y-m-d h:m:s')}}</td>
-                      <td>
-                        <div class="confirm-switch">
-                            <input onchange="change{{ $a->id }}()" type="checkbox" id="confirm-switch{{ $a->id }}" @if($a->is_active) checked @endif>
-                            <label for="confirm-switch{{ $a->id }}"></label>
-                        </div>
-                          <script>
-                              function change{{ $a->id }}(){
-                                  document.getElementById("changeStateForm{{ $a->id }}").submit();
-                              }
-                          </script>
-                          <form style="display: none;" id="changeStateForm{{ $a->id }}" action="{{ route('enableOrdisableArticle', ['id'=> $a->id, 'enable' => $a->is_active]) }}" method="post">
-                              @csrf
-                          </form>
-                      </td>
+            
                       <td>{{ $a->contact_fixe }} {{ $a->contact_telephone }}</td>
 
                       <td>
-                          <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
-                          <a href="{{ route('editAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
+                          <button onclick="active{{ $a->id }}()" class="btn  btn-sm btnad">Accepter</button>
+                          <button onclick="desactive{{ $a->id }}()" class="btn btn-sm btnadmin">Refuser</button>
+                          <script>
+                              function active{{ $a->id }}(){
+                                  //alert("ok");
+                                  document.getElementById("active{{ $a->id }}").submit();
+                              }
+                          </script>
+                          <form style="display: none;" id="active{{ $a->id }}" action="{{ route('enableOrdisableArticle', ['id'=> $a->id, 'enable' => 0, 'is_new' => 1]) }}" method="post">
+                              @csrf
+                          </form>
+
+                          <script>
+                              function desactive{{ $a->id }}(){
+                                  document.getElementById("desactive{{ $a->id }}").submit();
+                              }
+                          </script>
+                          <form style="display: none;" id="desactive{{ $a->id }}" action="{{ route('enableOrdisableArticle', ['id'=> $a->id, 'enable' => 1, 'is_new' => 1]) }}" method="post">
+                              @csrf
+                          </form>
                       </td>
                     </tr>
                   @endforeach

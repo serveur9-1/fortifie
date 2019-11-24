@@ -28,13 +28,15 @@ class NewsletterMail extends Mailable
      */
     public function build()
     {
-/*        return $this->from("contact@fortifietoi.ci", "L'équipe Fortifie toi")
-                    ->subject("Nouvelle annonce publiée")
-                    ->to("ymjm97@gmail.com")
-                    ->markdown('emails.newsletter');*/
 
-
-        return $this->from(explode(",", $this->event->suscribers), "L'équipe Fortifie toi")->subject("Nouvelle annonce récommandée pour vous")->to("ymjm97@gmail.com")
-            ->markdown('emails.newsletter');
+        //dd($this->event["suscribers"]);
+        return $this->from("noreply@fortifietoi.ci", "L'équipe Fortifie toi")
+            ->subject("Nouvelle annonce récommandée pour vous")
+            ->to($this->event["suscribers"])
+            ->markdown('emails.newsletter')->with([
+                'id' => $this->event["id"],
+                'email' => $this->event["suscribers"],
+                'access_link' => $this->event["access_link"]
+            ]);
     }
 }

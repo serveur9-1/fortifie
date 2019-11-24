@@ -34,13 +34,21 @@ class ArticleController extends Controller
 
     public function enableOrdisableArticle($id,$enable, Request $request)
     {
-        $this->a->enableOrDisableArticle($id, $enable, $request);
-
-        if($enable){
-            $state = "désactivé";
+        $this->a->enableOrDisableArticle($id, $enable, $request, $request->is_new);
+        if($request->is_new){
+            if($enable){
+                $state = "refusé";
+            }else{
+                $state = "accepté";
+            }
         }else{
-            $state = "activé";
+            if($enable){
+                $state = "désactivé";
+            }else{
+                $state = "activé";
+            }
         }
+        
 
         return redirect()->back()->with('success',"Vous avez bien $state une annonce");
     }
@@ -70,7 +78,7 @@ class ArticleController extends Controller
     public function waitAnnonce()
     {
         return view('admin.annonce.waitAnnonce',[
-            'article' => $this->a->getArticle()
+            'article' => $this->a->getArticleAdmin($is_active=false)
         ]);
     }
 
@@ -86,8 +94,6 @@ class ArticleController extends Controller
             $request->paroisse = $this->ur->getUserParoisseId();
         }
         $this->a->createArticle($request);
-
-        //Mail::send(New NewsletterMail($request));
 
         return redirect()->back()->with('success',"Vous avez bien ajouté une nouvelle annonce");
     }

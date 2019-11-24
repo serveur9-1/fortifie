@@ -70,6 +70,14 @@ class VisiteurRepository
             ->groupBy("m")
             ->orderBy('m', 'ASC')
             ->get()->toArray();
+            for($i=0 ; $i < count($data); $i++)
+            {
+                
+                $m = $data[$i]["m"];
+                $data[$i]["m"] = Carbon::create("2019-$m-10")->format('F');
+                //dd($data[$i]);
+                //$data[0]['']
+            }
 
         return $data;
 

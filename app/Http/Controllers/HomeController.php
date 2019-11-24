@@ -24,6 +24,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     private $r;
@@ -182,6 +185,16 @@ class HomeController extends Controller
 
         //dd($this->visite->getVisitorData()->attributesToArray());
         $data = $this->visite->getVisitorData();  
+
+        $a = new Article();
+        // SELECT 
+        $batonne = DB::table('articles')
+                        ->join('categories', DB::raw('categories.id'),'=', DB::raw('articles.category_id'))
+                        ->select(DB::raw('categories.libelle as c, count(articles.id) as t'))
+                        ->groupBy('c')
+                        ->orderBy('t','DESC')
+                        ->get()->toArray();
+        //dd($batonne);
         return view('admin.Accueil',[
             'nb_visiteur' => $this->avf->number_format_short($this->visite->getAllVisitors()->count()),
             'nb_article' => $this->avf->number_format_short($this->a->getArticleAdmin()->count()),
@@ -191,8 +204,10 @@ class HomeController extends Controller
             'nb_paroisse' => $this->avf->number_format_short($this->p->getParoisse()->count()),
             'nb_pub' => $this->avf->number_format_short($this->pub->getPub()->count()),
             'nb_gallery' => $this->avf->number_format_short(Gallery::all()->count()),
-            'data_m' => json_encode(array_column($data, 'm'),JSON_NUMERIC_CHECK),
             'data_d' => json_encode(array_column($data, 'd'),JSON_NUMERIC_CHECK),
+            'data_m' => json_encode(array_column($data, 'm'),JSON_NUMERIC_CHECK),
+            'batonne_m' => json_encode(array_column($batonne, 'c'),JSON_NUMERIC_CHECK),
+            'batonne_d' => json_encode(array_column($batonne, 't'),JSON_NUMERIC_CHECK),
         ]);
     }
 
