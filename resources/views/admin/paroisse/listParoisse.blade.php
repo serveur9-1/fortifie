@@ -11,7 +11,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Paroisses ({{ $paroisse->count() }})</h6>
-              <a href="{{ route('addParoisse') }}" class="btn btn-danger pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une paroisse</a>
+              <a href="{{ route('addParoisse') }}" class="btn pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une paroisse</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">

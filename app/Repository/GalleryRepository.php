@@ -21,19 +21,27 @@ class GalleryRepository
         if(!$is_admin)
         {
             return $this->g->newQuery()
+            ->select()
+            ->where('is_active', true)
+            ->where('album_id',$array->folder)
+            ->limit(10)
+            ->orderBy('id','DESC')
+            ->get();
+        }else{
+            if(isset($array->folder)){
+                return $this->g->newQuery()
                 ->select()
-                ->where('is_active', true)
                 ->where('album_id',$array->folder)
                 ->limit(10)
                 ->orderBy('id','DESC')
                 ->get();
-
-        }else{
-            return $this->g->newQuery()
+            }else{
+                return $this->g->newQuery()
                 ->select()
-                ->where('album_id',$array->folder)
+                ->limit(10)
                 ->orderBy('id','DESC')
                 ->get();
+            }
         }
 
 

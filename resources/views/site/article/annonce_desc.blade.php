@@ -33,7 +33,7 @@
 
                     <ul class="blog_meta list_style" style="display: flex">
 
-                        <li> <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$article->user->img) }}' alt="ok">
+                        <li> <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$article->user->img) }}' alt="profil">
                             <a href="{{ route('paroisse',['id' => $article->paroisse->id]) }}">{{ $article->paroisse->nom }}</a></li>
 
                         <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
