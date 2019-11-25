@@ -20,6 +20,8 @@
         AOS.init();
         </script>
 
+        <script src="{{ asset('/dist/js/slick.js') }}"></script>
+        
         <!-- scroll to the top page -->
         <script>
           // When the user scrolls down 20px from the top of the document, show the button
