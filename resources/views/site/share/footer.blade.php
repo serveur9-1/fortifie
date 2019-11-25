@@ -43,6 +43,495 @@
             </section>
 
         </div>
+
+        <!-- LOADING PART ============================== -->
+
+                <!-- LOADING -->
+
+                <style>
+
+.loading{
+    background:#6c3191;
+    position:fixed;
+    z-index:9999;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    display:block;
+    
+
+}
+body{
+    overflow-y:hidden !important;
+}
+
+svg {
+    display: none;
+}
+.blobs {
+    filter: url(#goo);
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 70px;
+    transform-style: preserve-3d;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%)
+}
+.blobs .blob-center {
+    transform-style: preserve-3d;
+    position: absolute;
+    background: #fff200;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    transform-origin: left top;
+    transform: scale(0.9) translate(-50%, -50%);
+    animation: blob-grow linear 3.4s infinite;
+    border-radius: 50%;
+    box-shadow: 0 -10px 40px -5px #fff200;
+}
+.blob {
+    position: absolute;
+    background: #fff200;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: blobs ease-out 3.4s infinite;
+    transform: scale(0.9) translate(-50%, -50%);
+    transform-origin: center top;
+    opacity: 0;
+}
+.blob:nth-child(1) {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -ms-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+.blob:nth-child(2) {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    -ms-animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+.blob:nth-child(3) {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    -ms-animation-delay: 0.6s;
+    -o-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+.blob:nth-child(4) {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    -ms-animation-delay: 0.8s;
+    -o-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+.blob:nth-child(5) {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -ms-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    animation-delay: 1s;
+}
+@-moz-keyframes blobs {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(calc(-330px - 50%), -50%);
+    }
+    1% {
+        opacity: 1;
+    }
+    35%, 65% {
+        opacity: 1;
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(calc(330px - 50%), -50%);
+    }
+}
+
+@-webkit-keyframes blobs {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(calc(-330px - 50%), -50%);
+    }
+    1% {
+        opacity: 1;
+    }
+    35%, 65% {
+        opacity: 1;
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(calc(330px - 50%), -50%);
+    }
+}
+
+@-ms-keyframes blobs {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(calc(-330px - 50%), -50%);
+    }
+    1% {
+        opacity: 1;
+    }
+    35%, 65% {
+        opacity: 1;
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(calc(330px - 50%), -50%);
+    }
+}
+
+@-o-keyframes blobs {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(calc(-330px - 50%), -50%);
+    }
+    1% {
+        opacity: 1;
+    }
+    35%, 65% {
+        opacity: 1;
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(calc(330px - 50%), -50%);
+    }
+}
+
+@keyframes blobs {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(calc(-330px - 50%), -50%);
+    }
+    1% {
+        opacity: 1;
+    }
+    35%, 65% {
+        opacity: 1;
+        transform: scale(0.9) translate(-50%, -50%);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(calc(330px - 50%), -50%);
+    }
+}
+
+
+@-moz-keyframes blob-grow {
+    0%, 39% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+    40%, 42% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    43%, 44% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    45%, 46% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    47%, 48% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    52% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    54% {
+        transform: scale(1.7, 1.6) translate(-50%, -50%);
+    }
+    58% {
+        transform: scale(1.8, 1.7) translate(-50%, -50%);
+    }
+    68%, 70% {
+        transform: scale(1.7, 1.5) translate(-50%, -50%);
+    }
+    78% {
+        transform: scale(1.6, 1.4) translate(-50%, -50%);
+    }
+    80%, 81% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    82%, 83% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    84%, 85% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    86%, 87% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    90%, 91% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    92%, 100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+@-webkit-keyframes blob-grow {
+    0%, 39% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+    40%, 42% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    43%, 44% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    45%, 46% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    47%, 48% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    52% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    54% {
+        transform: scale(1.7, 1.6) translate(-50%, -50%);
+    }
+    58% {
+        transform: scale(1.8, 1.7) translate(-50%, -50%);
+    }
+    68%, 70% {
+        transform: scale(1.7, 1.5) translate(-50%, -50%);
+    }
+    78% {
+        transform: scale(1.6, 1.4) translate(-50%, -50%);
+    }
+    80%, 81% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    82%, 83% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    84%, 85% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    86%, 87% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    90%, 91% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    92%, 100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+@-ms-keyframes blob-grow {
+    0%, 39% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+    40%, 42% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    43%, 44% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    45%, 46% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    47%, 48% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    52% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    54% {
+        transform: scale(1.7, 1.6) translate(-50%, -50%);
+    }
+    58% {
+        transform: scale(1.8, 1.7) translate(-50%, -50%);
+    }
+    68%, 70% {
+        transform: scale(1.7, 1.5) translate(-50%, -50%);
+    }
+    78% {
+        transform: scale(1.6, 1.4) translate(-50%, -50%);
+    }
+    80%, 81% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    82%, 83% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    84%, 85% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    86%, 87% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    90%, 91% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    92%, 100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+@-o-keyframes blob-grow {
+    0%, 39% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+    40%, 42% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    43%, 44% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    45%, 46% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    47%, 48% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    52% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    54% {
+        transform: scale(1.7, 1.6) translate(-50%, -50%);
+    }
+    58% {
+        transform: scale(1.8, 1.7) translate(-50%, -50%);
+    }
+    68%, 70% {
+        transform: scale(1.7, 1.5) translate(-50%, -50%);
+    }
+    78% {
+        transform: scale(1.6, 1.4) translate(-50%, -50%);
+    }
+    80%, 81% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    82%, 83% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    84%, 85% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    86%, 87% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    90%, 91% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    92%, 100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+@keyframes blob-grow {
+    0%, 39% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+    40%, 42% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    43%, 44% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    45%, 46% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    47%, 48% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    52% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    54% {
+        transform: scale(1.7, 1.6) translate(-50%, -50%);
+    }
+    58% {
+        transform: scale(1.8, 1.7) translate(-50%, -50%);
+    }
+    68%, 70% {
+        transform: scale(1.7, 1.5) translate(-50%, -50%);
+    }
+    78% {
+        transform: scale(1.6, 1.4) translate(-50%, -50%);
+    }
+    80%, 81% {
+        transform: scale(1.5, 1.4) translate(-50%, -50%);
+    }
+    82%, 83% {
+        transform: scale(1.4, 1.3) translate(-50%, -50%);
+    }
+    84%, 85% {
+        transform: scale(1.3, 1.2) translate(-50%, -50%);
+    }
+    86%, 87% {
+        transform: scale(1.2, 1.1) translate(-50%, -50%);
+    }
+    90%, 91% {
+        transform: scale(1, 0.9) translate(-50%, -50%);
+    }
+    92%, 100% {
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+</style>
+
+<div class="loading" id="js--loading">
+<div class="blobs">
+    <div class="blob-center"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<defs>
+    <filter id="goo">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+    <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
+</defs>
+</svg>
+</div>
+
+
+
+
         <!--================ start footer Area  =================-->
         <footer class="footer-area section_gap pt-5 pb-5">
             <div class="container">
@@ -82,7 +571,7 @@
                                 <div class="col-12">
                                     <ul class="list_style">
                                         <li><a href="{{ route('faq')}}">Conférence épiscopale de CI</a></li>
-                                        <li><a href="{{ route('galerie')}}">Notre Galérie</a></li>
+                                        <li><a href="{{ route('album')}}">Notre Galérie</a></li>
                                     </ul>
                                 </div>
                             </div>

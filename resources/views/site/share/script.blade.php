@@ -180,3 +180,11 @@
                  
             });
         </script>
+
+
+        <script>
+            $('document').ready( function() { 
+                $("#js--loading").hide();
+                $('body,html').css('overflow','auto');
+            });
+        </script>
