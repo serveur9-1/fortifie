@@ -53,6 +53,7 @@ class ArticleRepository
 
     public function createArticle($array)
     {
+
         $sans_titre = false;
 
         if($array->sans_titre){
@@ -65,6 +66,18 @@ class ArticleRepository
 
         }
 
+        if($array["date_empty"])
+        {
+            $array["debut"] = '0001-01-01';
+            $array["fin"] = '9000-01-01';
+            $array["heure_debut"] = '00:00:00';
+            $array["heure_fin"] = '00:00:00';
+            
+        }else{
+            $array->date_string = null;
+        }
+
+        
         
         $new_a = $this->art->newQuery()
             ->create([
@@ -77,6 +90,7 @@ class ArticleRepository
                 'contact_email' => $array->contact_email,
                 'sans_titre' => $sans_titre,
                 'contact_fixe' => $array->contact_fixe,
+                'date_string' => $array->date_string,
                 'img' => $array->img,
                 'debut' => $array->debut,
                 'heure_debut' => $array->heure_debut,
@@ -91,10 +105,22 @@ class ArticleRepository
     {
         $sans_titre = false;
 
+
         if($array->sans_titre){
             $sans_titre = true;
         }else{
             $sans_titre = false;
+        }
+
+        if($array["date_empty"])
+        {
+            $array["debut"] = '0001-01-01';
+            $array["fin"] = '9000-01-01';
+            $array["heure_debut"] = '00:00:00';
+            $array["heure_fin"] = '00:00:00';
+            
+        }else{
+            $array->date_string = null;
         }
 
         $this->art->newQuery()->findOrFail($id)

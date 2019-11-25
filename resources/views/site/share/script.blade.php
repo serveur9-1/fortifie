@@ -3,6 +3,7 @@
         <script src="{{ asset('/dist/js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ asset('/dist/js/popper.js') }}"></script>
         <script src="{{ asset('/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/dist/js/aos.min.js') }}"></script>
         <script src="{{ asset('/dist/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('/dist/vendors/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
         <script src="{{ asset('/dist/js/jquery.ajaxchimp.min.js') }}"></script>
@@ -13,6 +14,11 @@
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+
+        <script>
+        AOS.init();
+        </script>
 
         <!-- scroll to the top page -->
         <script>

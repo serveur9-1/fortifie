@@ -7,7 +7,7 @@
             <ul class="list_style cat-list">
                 @foreach($category as $c)
                 <li>
-                    <a href="{{ route('categorie', [ 'id' => $c->id]) }}" class="d-flex justify-content-between">
+                    <a data-aos="fade-left" href="{{ route('categorie', [ 'id' => $c->id]) }}" class="d-flex justify-content-between">
                         <p>{{ $c->libelle }}</p>
                         <p>{{ $c->article->count() }}</p>
                     </a>
@@ -20,7 +20,7 @@
         <aside class="single_sidebar_widget popular_post_widget">
             <h3 class="widget_title">Annonces populaires</h3>
                 @foreach($p_article as $a)
-                    <div class="media post_item">
+                    <div class="media post_item" data-aos="fade-left">
                         <div style="width: 100px;height: 60px ;background: url('{{ asset("assets/img/articles") }}/{{ $a->article['img']  }}') no-repeat;background-size: cover;"></div>
                         <div class="media-body">
                             <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>

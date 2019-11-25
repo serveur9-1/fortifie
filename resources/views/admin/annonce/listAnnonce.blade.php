@@ -77,7 +77,7 @@
                       <td>{{ $a->contact_fixe }} {{ $a->contact_telephone }}</td>
 
                       <td>
-                          <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette region ?') "><i class="fa fa-trash"></i></a>
+                          <a href="{{ route('deleteAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette annonce ?') "><i class="fa fa-trash"></i></a>
                           <a href="{{ route('editAnnonce', ['id' => $a->id]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>

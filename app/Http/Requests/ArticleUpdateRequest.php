@@ -31,11 +31,7 @@ class ArticleUpdateRequest extends FormRequest
             'contact_email' => 'nullable | max:50 | email',
             'contact_fixe' => 'nullable | max:8',
             'sans_titre' => 'nullable',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'debut' => 'required',
-            'fin' => 'required',
-            'heure_debut' => 'required',
-            'heure_fin' => 'required'
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 }

@@ -163,7 +163,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Aperçu de visite du site</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Stats de visites par mois</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </a>
@@ -176,11 +176,7 @@
                   </div>
                    <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Annonce par semaine</h6>
-                  <p class="m-0 ml-auto float-right">
-                    <a href="#">Par semaine</a>
-                    <a href="#">Par Mois</a>
-                  </p>
+                  <h6 class="m-0 font-weight-bold text-primary">Stats de posts par catégorie</h6>
                 </div>
                 <div class="card-body">
                   <div class="chart-bar">

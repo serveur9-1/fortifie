@@ -31,7 +31,7 @@
 
 
         <div class="container mb-5" style="margin-top: 100px">
-            <h4>Nos partenaires</h4>
+            <h4 class="text-uppercase">Nos partenaires</h4>
             <section class="customer-logos slider mt-5">
                 @foreach($g_partenaire as $p)
                 <a target="_blank" href="{{ $p->url }}">

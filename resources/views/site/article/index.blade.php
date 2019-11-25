@@ -276,7 +276,7 @@
                                     </div>
                                 </div>
                             </article> -->
-                            <div class="blog-card mb-5" style="height:250px">
+                            <div class="blog-card mb-5" data-aos="fade-up" style="height:250px">
                                 <div class="meta">
                                 <div class="photo" style="background-image: url({{ asset('assets/img/articles/'.$a->img) }})"></div>
                                 <ul class="details">
@@ -284,8 +284,12 @@
                                         <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$a->user->img) }}' alt="profil">
                                         <a href="{{ route('paroisse',['id' => $a->paroisse->id]) }}">{{ $a->paroisse->nom }}</a>
                                     </li>
-                                    <li class="date">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
-                                    <li class="date">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
+                                    @if($a->date_string == null)
+                                        <li class="date">{{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }}</li>
+                                        <li class="date">{{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
+                                    @else
+                                        <li class="date">{{ $a->date_string }}</li>
+                                    @endif
                                 </ul>
                                 </div>
                                 <div class="description">

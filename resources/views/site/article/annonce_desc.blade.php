@@ -20,7 +20,7 @@
 @section('content')
     <div class="col-lg-8 posts-list">
         <div class="single-post row">
-            <div class="col-lg-12">
+            <div data-aos="zoom-in-down" class="col-lg-12">
                 <div class="feature-img">
                     {{--<img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">--}}
                     <div style="width: 100%;height: 300px ;background: url('{{ asset("assets/img/articles/$article->img") }}') no-repeat;background-size: cover;background-position: center"></div>
@@ -35,10 +35,13 @@
 
                         <li> <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$article->user->img) }}' alt="profil">
                             <a href="{{ route('paroisse',['id' => $article->paroisse->id]) }}">{{ $article->paroisse->nom }}</a></li>
-
+                    @if($article->date_string == null)
                         <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
 
                         <li>Au  {{ Carbon\Carbon::create($article->fin)->toFormattedDateString()  }} </li>
+                    @else
+                        <li><i class="fa fa-calendar"></i>  {{ $article->date_string }}</li>
+                    @endif
 
                         <li>{{ $vue }} {{ Str::plural('vue', $article->visiteur->count() ) }} </li>
 
@@ -93,7 +96,7 @@
                     {{ $article->description }}
                 </p>
             </div>
-
+        @if($article->date_string == null)
             <div class="col-lg-12">
                 <div class="quotes">
                     <div id="countdown">
@@ -105,6 +108,7 @@
                     </div>
                 </div>
             </div>
+        @endif
             <div class="col-lg-12">
                <div class="row mt-2">
                     <div class="col-md-12 ml-3">

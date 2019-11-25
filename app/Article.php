@@ -18,6 +18,7 @@ class Article extends Model
         'contact_fixe',
         'img',
         'sans_titre',
+        'date_string',
         'debut',
         'fin',
         'heure_debut',

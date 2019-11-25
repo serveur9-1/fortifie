@@ -85,6 +85,39 @@ class ArticleController extends Controller
     public function validAnnonce(ArticleRequest $request)
     {
         
+        /*
+            'debut' => 'required',
+            'fin' => 'required',
+            'heure_debut' => 'required',
+            'heure_fin' => 'required'
+        */
+
+
+        if($request->debut == null || $request->fin == null || $request->heure_debut == null || $request->heure_fin == null )
+        {
+            $this->validate(request(), [
+                'date_string' => 'required'
+            ]);
+
+            $request["date_empty"] = true;
+        }
+
+        if($request->date_string == null){
+
+            $this->validate(request(), [
+                'debut' => 'required',
+                'fin' => 'required',
+                'heure_debut' => 'required',
+                'heure_fin' => 'required'
+            ]);
+
+            $request["date_empty"] = false;
+
+        }
+
+
+        
+
         $request->img = $request->file('img')->getClientOriginalName();
         $this->sv->saveImg($request, '/articles', 'img');
 
@@ -93,6 +126,7 @@ class ArticleController extends Controller
         if(!$this->ur->userIsAdmin()){
             $request->paroisse = $this->ur->getUserParoisseId();
         }
+        
         $this->a->createArticle($request);
 
         return redirect()->back()->with('success',"Vous avez bien ajouté une nouvelle annonce");

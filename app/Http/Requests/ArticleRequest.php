@@ -32,10 +32,6 @@ class ArticleRequest extends FormRequest
             'contact_fixe' => 'nullable | max:8',
             'sans_titre' => 'nullable',
             'img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'debut' => 'required',
-            'fin' => 'required',
-            'heure_debut' => 'required',
-            'heure_fin' => 'required'
 
         ];
     }

@@ -54,16 +54,19 @@
                                 @error('titre')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                                <input type="text" value="false" name="sans_titre" hidden>
+                                <input type="text" value="0" name="sans_titre" hidden>
                             </div>
-                            <div class="form-group">
-                                <div class="alert alert-primary" style="text-align:center;" role="alert">
-                                    Plus le texte est descriptif, plus l'annonce est comprehensive
+                            @if(!$edit)
+                                <div class="form-group">
+                                    <div class="alert alert-primary" style="text-align:center;" role="alert">
+                                        Plus le texte est descriptif, plus l'annonce est comprehensive
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <center><a href="{{ route('publier.particulier') }}">Votre annonce n'a pas de thème? </a></center>
-                            </div>
+                            
+                                <div class="form-group">
+                                    <center><a href="{{ route('publier.particulier') }}">Votre annonce n'a pas de thème? </a></center>
+                                </div>
+                            @endif
                             <button class="btn nextBtn pull-right stepp mt-3" type="button">Suivant</button>
                         </div>
                     </div>
@@ -101,6 +104,9 @@
                                     <h6> 1- Détails de l'annonce</h6><hr>
                                     <div class="form-group mb-4">
                                         <label for="">Durée de l'annonce</label>
+                                        <div class="alert alert-warning">
+                                            <i class="fa fa-info"></i>&nbsp;<span style="font-weight:bold">Attention&nbsp;</span> Choisissez un seul type de durée
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-12">
                                                <div class="row mt-2">
@@ -109,16 +115,16 @@
                                                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                                         <div class="panel panel-default">
                                                               <div class="panel-heading" role="tab" id="headingTwoo">
-                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo"><label for="">Durée précise </label>
+                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo"><label for="">Durée précise </label><span class="text-dark">&nbsp;(récommandée)</span>
                                                                 </a>
                                                               </div>
                                                               <div id="collapseTwoo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwoo">
                                                                 <div class="panel-body">
-                                                                 <div class="row">
+                                                                 <div class="row ml-2">
 
                                                                     <div class="col-lg-3 col-sm-6">
                                                                         <label for="">Date debut <em style="color:red;">*</em></label>
-                                                                        <input @if($edit) value="{{ $a->debut }}" @else {{ old('debut') }} @endif type="date" id="date_debut" required class="datepicker form-control @error('debut') is-invalid @enderror" name="debut" placeholder="Date debut">
+                                                                        <input @if($edit) @if($a->date_string == null) value="{{ $a->debut }}" @endif @else {{ old('debut') }} @endif type="date" id="date_debut" class="datepicker form-control @error('debut') is-invalid @enderror" name="debut" placeholder="Date debut">
                                                                         @error('debut')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                         @enderror
@@ -126,7 +132,7 @@
 
                                                                     <div class="col-lg-3 col-sm-6">
                                                                         <label for="">Heure debut <em style="color:red;">*</em> </label>
-                                                                        <input @if($edit) value="{{ $a->heure_debut }}" @else {{ old('heure_debut') }} @endif type="time" id="heure_debut" required class="datepicker form-control @error('heure_debut') is-invalid @enderror" name="heure_debut" placeholder="Heure debut">
+                                                                        <input @if($edit) @if($a->date_string == null) value="{{ $a->heure_debut }}" @endif @else {{ old('heure_debut') }} @endif type="time" id="heure_debut" class="datepicker form-control @error('heure_debut') is-invalid @enderror" name="heure_debut" placeholder="Heure debut">
                                                                         @error('heure_debut')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                         @enderror
@@ -134,7 +140,7 @@
 
                                                                     <div class="col-lg-3 col-sm-6">
                                                                         <label for="">Date fin <em style="color:red;">*</em></label>
-                                                                        <input @if($edit) value="{{ $a->fin }}" @else {{ old('fin') }} @endif  type="date" id="date_fin" required class=" form-control @error('fin') is-invalid @enderror" name="fin" placeholder="Heure fin">
+                                                                        <input @if($edit) @if($a->date_string == null) value="{{ $a->fin }}" @endif @else {{ old('fin') }} @endif  type="date" id="date_fin" class=" form-control @error('fin') is-invalid @enderror" name="fin" placeholder="Heure fin">
                                                                         @error('fin')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                         @enderror
@@ -142,7 +148,7 @@
 
                                                                     <div class="col-lg-3 col-sm-6">
                                                                         <label for="">Heure fin <em style="color:red;">*</em></label>
-                                                                        <input @if($edit) value="{{ $a->heure_fin }}" @else {{ old('heure_fin') }} @endif  type="time" id="heure_fin" required class=" form-control @error('heure_fin') is-invalid @enderror" name="heure_fin" placeholder="Heure fin">
+                                                                        <input @if($edit) @if($a->date_string == null) value="{{ $a->heure_fin }}" @endif @else {{ old('heure_fin') }} @endif  type="time" id="heure_fin" class=" form-control @error('heure_fin') is-invalid @enderror" name="heure_fin" placeholder="Heure fin">
                                                                         @error('heure_fin')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                         @enderror
@@ -170,76 +176,12 @@
                                                               </div>
                                                               <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                                                                 <div class="panel-body">
-                                                                 <div class="row text-center">
-                                                                    <h5>Tous les :</h5>
-
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Lundi</p>
-                                                                        <div class="confirm-checkbox ml-0">
-                                                                            <input type="checkbox" id="confirm-checkbox1">
-                                                                            <label for="confirm-checkbox1"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Mardi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox2">
-                                                                            <label for="confirm-checkbox2"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Mercredi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox3">
-                                                                            <label for="confirm-checkbox3"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>jeudi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox4">
-                                                                            <label for="confirm-checkbox4"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Vendredi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox5">
-                                                                            <label for="confirm-checkbox5"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Samedi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox6">
-                                                                            <label for="confirm-checkbox6"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-2 col_sm-2">
-                                                                        <div class="switch-wrap d-flex justify-content-between ">
-                                                                        <p>Samedi</p>
-                                                                        <div class="confirm-checkbox">
-                                                                            <input type="checkbox" id="confirm-checkbox7">
-                                                                            <label for="confirm-checkbox7"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-
-                                                                </div>
+                                                                    <div class="col-lg-12 col-sm-12">
+                                                                        <input @if($edit) value="{{ $a->date_string }}" @else {{ old('date_string') }} @endif type="text"  class="form-control @error('date_string') is-invalid @enderror" name="date_string" placeholder="Ex.: Tous les 1er du mois">
+                                                                        @error('date_string')
+                                                                            <p class="text-danger">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>   
                                                                 </div>
                                                               </div>
                                                         </div>
@@ -250,8 +192,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Description </label>
-                                        <textarea rows="4" id="desc" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Description">@if($edit) {{ $a->description }} @else {{ old('description') }} @endif</textarea>
+                                        <label for="">Description <em style="color:red;">*</em></label>
+                                        <textarea required rows="4" id="desc" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Description">@if($edit){{ $a->description }}@else{{ old('description') }}@endif</textarea>
                                         @error('description')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -272,7 +214,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 @if($edit)
-                                                    <div class="row">
+                                                    <div class="row p-3">
                                                         <img src='{{ asset("assets/img/articles/$a->img") }}' alt="">
                                                     </div>
                                                 @endif

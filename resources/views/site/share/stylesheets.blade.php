@@ -3,6 +3,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('/dist/css/bootstrap-social.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('/dist/css/aos.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/vendors/linericon/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/vendors/owl-carousel/owl.carousel.min.css') }}">

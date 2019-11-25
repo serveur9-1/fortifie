@@ -67,6 +67,7 @@ class VisiteurRepository
         $data = $this->v->newQuery()->select(array(DB::raw("count(ip) as d, MONTH(created_at) AS m")))
             
             ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->where('article_id',"=", null)
             ->groupBy("m")
             ->orderBy('m', 'ASC')
             ->get()->toArray();
