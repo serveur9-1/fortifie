@@ -12,8 +12,8 @@
         <script src="{{ asset('/dist/vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-
+        <script src="{{ asset('/dist/js/slick.js') }}"></script>
+        
         <!-- scroll to the top page -->
         <script>
           // When the user scrolls down 20px from the top of the document, show the button

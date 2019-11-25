@@ -72,5 +72,5 @@ class AppServiceProvider extends ServiceProvider
             'new_post_today' => $a->newQuery()->select()->where('is_new',true)->where('is_active',false)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
             'new_denonciation_today' => $den->newQuery()->select()->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
         ]);
-    }
+     }
 }
