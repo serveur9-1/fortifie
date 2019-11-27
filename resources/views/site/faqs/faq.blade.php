@@ -260,14 +260,12 @@ p{
 .accordion a:hover,
 .accordion a:hover::after {
   content: '\002B';
-  color: #777;
   cursor: pointer;
   color: #03b5d2;
 }
 
 .accordion a:hover::after {
   content: '\002B';
-  color: #777;
   border: 1px solid #6c2f91;
 }
 
@@ -278,7 +276,6 @@ p{
 
 .accordion a::after {
   content: '\002B';
-  color: #777;
   position: absolute;
   float: right;
   right: 1rem;
@@ -296,7 +293,6 @@ p{
 
 .accordion a.active::after {
   content: '\002B';
-  color: #777;
   color: #03b5d2;
   border: 1px solid #03b5d2;
 }
