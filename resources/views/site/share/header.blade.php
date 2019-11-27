@@ -163,6 +163,10 @@
                     #nav_cat{
                         padding: 0px !important
                     }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
+                    }
                 }
 
                 @media (max-width: 600px) {
@@ -174,6 +178,10 @@
                     }
                     #nav_cat{
                         padding: 0px !important
+                    }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
                     }
                 }
 
@@ -187,6 +195,10 @@
                     #nav_cat{
                         padding: 0px !important
                     }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
+                    }
                 }
 
                 @media (max-width: 400px) {
@@ -199,6 +211,10 @@
                     #nav_cat{
                         padding: 0px !important
                     }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
+                    }
                 }
 
                 @media (max-width: 300px) {
@@ -209,7 +225,11 @@
                         display: none !important
                     }
                     #nav_cat{
-                        padding: 0px !important
+                        padding: 0px !important;
+                    }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
                     }
                 }
 
