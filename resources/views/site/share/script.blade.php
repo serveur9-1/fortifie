@@ -1,6 +1,6 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="{{ asset('/dist/js/jquery-3.2.1.min.js') }}"></script>
+        
         <script src="{{ asset('/dist/js/popper.js') }}"></script>
         <script src="{{ asset('/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('/dist/js/aos.min.js') }}"></script>
@@ -182,9 +182,3 @@
         </script>
 
 
-        <script>
-            $('document').ready( function() { 
-                $("#js--loading").hide();
-                $('body,html').css('overflow','auto');
-            });
-        </script>

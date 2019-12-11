@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'communaute' => 'required',
-            'paroisse' => 'required',
+            'paroisse_id' => ['required', 'unique:gestionnaires'],
             'telephone' => 'required|max:8|min:8',
             'email' => 'required|max:255|unique:users',
             'password' => 'required|min:4|confirmed',

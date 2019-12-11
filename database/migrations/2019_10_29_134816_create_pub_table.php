@@ -32,8 +32,6 @@ class CreatePubTable extends Migration
      */
     public function down()
     {
-        Schema::table('pubs', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('pubs');
     }
 }

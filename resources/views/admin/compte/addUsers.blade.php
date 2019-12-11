@@ -50,7 +50,7 @@
                       <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Paroisse rattachée<em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="paroisse" required="required" class="form-control col-md-9 col-xs-12">
+                          <select name="paroisse_id" required="required" class="form-control col-md-9 col-xs-12">
                             <option disabled >Sélectionnez</option>
                               @foreach($paroisse as $p)
                                   @if(false)
@@ -60,7 +60,7 @@
                                   @endif
                               @endforeach
                            </select>
-                            @error('paroisse')
+                            @error('paroisse_id')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

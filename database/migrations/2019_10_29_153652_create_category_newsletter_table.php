@@ -35,8 +35,7 @@ class CreateCategoryNewsletterTable extends Migration
      */
     public function down()
     {
-        Schema::table('categorie_newsletter', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('categorie_newsletter');
+            
     }
 }

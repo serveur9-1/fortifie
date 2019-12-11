@@ -29,8 +29,6 @@ class CreatePartenaireTable extends Migration
      */
     public function down()
     {
-        Schema::table('partenaires', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('partenaires');
     }
 }

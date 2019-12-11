@@ -35,8 +35,7 @@ class CreateParoisseTable extends Migration
      */
     public function down()
     {
-        Schema::table('paroisses', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('paroisses');
+            
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDioceseTable extends Migration
+class CreateDenonciationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDioceseTable extends Migration
      */
     public function up()
     {
-        Schema::create('dioceses', function (Blueprint $table) {
+        Schema::create('denonciations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom',100);
-            $table->bigInteger('ville_id')->unsigned()->index();
-            $table->foreign('ville_id')
+            $table->string('motif', 300);
+            $table->bigInteger('article_id')->unsigned()->index();
+            $table->foreign('article_id')
                 ->references('id')
-                ->on('villes')
+                ->on('articles')
                 ->onDelete('cascade');
 
             $table->timestamps();
@@ -33,7 +33,6 @@ class CreateDioceseTable extends Migration
      */
     public function down()
     {
-            Schema::dropIfExists('dioceses');
-            
+        Schema::dropIfExists('denonciations');
     }
 }

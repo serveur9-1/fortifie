@@ -13,4 +13,6 @@
         <link rel="stylesheet" href="{{ asset('/dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/responsive.css') }}">
 
+        <script src="{{ asset('/dist/js/jquery-3.2.1.min.js') }}"></script>
+
 

@@ -20,7 +20,7 @@ class ConfigRepository
 
     public function getAllConfig()
     {
-        return $this->c->newQuery()->first()->get();
+        return $this->c->newQuery()->select()->get();
     }
 
 

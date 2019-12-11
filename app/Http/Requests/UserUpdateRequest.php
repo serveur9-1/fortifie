@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required',
             'communaute' => 'required',
-            'paroisse' => 'required',
+            'paroisse_id' => 'required',
             'telephone' => 'required|max:8|min:8',
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'password' => 'required|min:4|confirmed',

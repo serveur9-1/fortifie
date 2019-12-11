@@ -28,8 +28,7 @@ class CreateGestionnaireParoisseTable extends Migration
      */
     public function down()
     {
-        Schema::table('gestionnaire_paroisse', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('gestionnaire_paroisse');
+            
     }
 }

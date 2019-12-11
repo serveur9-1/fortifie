@@ -1,5 +1,3 @@
-@extends('layout_right')
-
 @section('content')
     <div class="col-lg-8">
         <div class="blog_left_sidebar">
@@ -7,47 +5,32 @@
                 <div class="col">
                     <div class="panel-heading"><h3 class="panel-title">{{ __('Inscription') }}</h3></div>
                         <div class="alert alert-info mb-5 col-md-8">
-                            <p>Si votre diocèse et/ou paroisse ne figure pas dans la liste, veuillez nous envoyer un message> en precisant le nom de votre diocèse et/ou paroisse dans le message <a href="{{ route('contact') }}">cliquez ici</a>.
+                            <p>Si votre paroisse ne figure pas dans la liste, veuillez nous envoyer un message en precisant le nom de votre diocèse et paroisse dans le message <a href="{{ route('contact') }}">cliquez ici</a>.
                             </p>
                             <b class="text-dark">NB: Ne continuez pas l'inscription.</b>
                         </div>
                         
                             <form method="POST" action="{{ route('validUsers') }}" class="contact_form col-md-8" enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-lg-12 col-sm-12 mt-3 mb-4" style="display: flex;">
-                                    <div class="form-group" style="width: 50%">
-                                        <label for="">{{ __('Diocèse rattaché') }}</label>
-                                        <div class="form-group">
-                                            <select name="diocese" class="form-control" style="width: 100% !important">
-                                                <option disabled>Sélectionnez un diocèse</option>
-                                                @foreach($diocese as $d)
-                                                    <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('diocese')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div><br>
-                                    </div>
+                            @csrf
+                            <style>
+                                .nice-select, .list{ width:100% !important }
+                                
+                            </style>
 
-                                    <div class="form-group" style="width: 50%">
-                                        <label for="">{{ __('Paroisse rattachée') }}</label>
-                                        <div class="form-group">
-                                            <select name="paroisse" class="form-control" style="width: 100% !important">
-                                                <option disabled>Sélectionnez une paroisse</option>
-                                                @foreach($paroisse as $d)
-                                                    <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('paroisse')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div><br>
-                                    </div>
+                                <div class="form-group mb-5">
+                                    <label for="">{{ __('Paroisse rattachée') }}<em style="color:red;">*</em></label>
+                                    <select name="paroisse_id" class="form-control">
+                                        <option disabled>Sélectionnez une paroisse</option>
+                                        @foreach($paroisse as $d)
+                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('paroisse_id')
+                                        <br>
+                                        <span class="text-danger" role="alert">
+                                            <strong>Désolé un compte est déjà associé à cette paroisse.</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-4">
@@ -110,7 +93,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="">Image</label>
+                                    <label for="">Image de profil</label><em style="color:red;">*</em>
                                     <p>Inclure une image de 1000px et au plus de 2000px de haut ou de large.
                                         <br> Cette image sera la photo de couverture de l'église  </p>
                                     <div class="container">
@@ -293,3 +276,6 @@
         </div>
     </div>
 @endsection -->
+
+
+

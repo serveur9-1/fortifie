@@ -102,13 +102,13 @@ class UsersRepository
 
         $n_ges = $this->g->newQuery()->create([
             'communaute' => $array->communaute,
-            'paroisse_id' => $array->paroisse,
+            'paroisse_id' => $array->paroisse_id,
             'telephone' => $array->telephone,
             'user_id' => $n_user->id
         ]);
 
 
-        $n_ges->paroisse()->sync($array->paroisse);
+        $n_ges->paroisse()->sync($array->paroisse_id);
 
     }
 
@@ -126,7 +126,7 @@ class UsersRepository
 
         $us_ges->update([
             'communaute' => $array->communaute,
-            'paroisse_id' => $array->paroisse,
+            'paroisse_id' => $array->paroisse_id,
             'telephone' => $array->telephone,
             'user_id' => $id
         ]);

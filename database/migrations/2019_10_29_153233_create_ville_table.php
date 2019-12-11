@@ -27,8 +27,7 @@ class CreateVilleTable extends Migration
      */
     public function down()
     {
-        Schema::table('villes', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('villes');
+            
     }
 }

@@ -162,10 +162,11 @@
     .blog-card:hover .details {
         left: 0%;
     }
+
  @media (min-width: 640px) {
 	 .blog-card {
 		 flex-direction: row;
-		 max-width: 700px;
+         max-width: 700px;
 	}
 	 .blog-card .meta {
 		 flex-basis: 40%;
@@ -214,7 +215,7 @@
                         @if($p_category->count() > 0)
                             @foreach($p_category as $a)
                             <div class="col-lg-4 mb-4">
-                                <a href="#">
+                                <a href="{{ route('categorie', ['id' => $a->category->id]) }}">
                                     <div class="categories_post text-uppercase card-o article-img" style="color:#fff;height:100px">
                                         <strong>{{ $a->category->libelle }}</strong>
                                     </div>
@@ -276,7 +277,7 @@
                                     </div>
                                 </div>
                             </article> -->
-                            <div class="blog-card mb-5" data-aos="fade-up" style="height:250px">
+                            <div class="blog-card mb-5" data-aos="fade-up">
                                 <div class="meta">
                                 <div class="photo" style="background-image: url({{ asset('assets/img/articles/'.$a->img) }})"></div>
                                 <ul class="details">

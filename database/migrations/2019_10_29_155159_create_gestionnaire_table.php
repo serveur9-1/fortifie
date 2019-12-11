@@ -41,8 +41,7 @@ class CreateGestionnaireTable extends Migration
      */
     public function down()
     {
-        Schema::table('gestionnaires', function (Blueprint $table) {
-            //
-        });
+            Schema::dropIfExists('gestionnaires');
+            
     }
 }

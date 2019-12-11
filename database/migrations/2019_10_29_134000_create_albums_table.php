@@ -28,8 +28,6 @@ class CreateAlbumsTable extends Migration
      */
     public function down()
     {
-        Schema::table('albums', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('albums');
     }
 }
