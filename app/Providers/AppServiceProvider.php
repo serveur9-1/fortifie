@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Validator;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -35,7 +37,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       Schema::defaultStringLength(191);
+        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
+
+        Schema::defaultStringLength(191);
     
         $cat = new Category();
         $a = new Article();
@@ -70,7 +74,7 @@ class AppServiceProvider extends ServiceProvider
             'g_partenaire' => Partenaire::all(),
             'new_account_today' => $dmd->newQuery()->select()->where('is_new',true)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
             'new_post_today' => $a->newQuery()->select()->where('is_new',true)->where('is_active',false)->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
-            /*'new_denonciation_today' => $den->newQuery()->select()->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),*/
+            'new_denonciation_today' => $den->newQuery()->select()->whereDate("created_at", Carbon::now()->format("Y-m-d"))->get(),
         ]);
      }
 }

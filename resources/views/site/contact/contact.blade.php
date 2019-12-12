@@ -90,6 +90,13 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                            @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                <div class="g-recaptcha"
+                                    data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                                </div>
+                            @endif
+                            </div>
                             <div class="col-md-12 text-right">
                                 <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
                             </div>
@@ -101,3 +108,6 @@
         <!--================Contact Area =================-->
 
 @endsection
+
+
+

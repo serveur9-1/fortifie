@@ -15,4 +15,8 @@
 
         <script src="{{ asset('/dist/js/jquery-3.2.1.min.js') }}"></script>
 
+        <!-- For google recaptcha -->
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
