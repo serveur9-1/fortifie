@@ -28,17 +28,14 @@
 </main>
     <hr>
     <div>
-        <p><a target="_blank" href="#">Aide</a></p>
-        <p><a target="_blank" href="#">A propos</a></p>
-        <p><a target="_blank" href="#">Politiques de confidentialité</a></p>
-        <p>Contactez Fortifie-toi</p>
-        <p>©
+        <p><a  style="text-decoration: none" target="_blank" href="www.fortifietoi.ci">www.fortifietoi.ci</a></p>
+        <p>Copyright ©
             @if( date('Y') == 2018 )
                 {{ date('Y')}}
             @else
                 {{ '2018 - ' .date('Y') }}
             @endif
-            Copyright: Fortifie-toi
+             Fortifie-Toi 
         </p>
     </div>
 </body>

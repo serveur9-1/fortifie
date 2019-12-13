@@ -8,7 +8,7 @@
                     <form class="contact_form col-md-8"  method="POST" action="{{ route('login') }}">
                         <div class="panel-heading"><h3 class="panel-title mb-5">{{ __('CONNEXION') }}</h3></div>
                         <div class="alert alert-primary" style="text-align:center;" role="alert">
-                            Vous n'avez pas de compte ? &nbsp;  Cliquez <a href="{{ route('register') }}">ici</a> pour en créer.
+                            Vous n'avez pas de compte ? &nbsp;  Cliquez <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('register') }}">ici</a></b> pour en créer.
                         </div>
                         @csrf
                         <div class="panel-body">

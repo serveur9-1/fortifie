@@ -13,7 +13,8 @@
         <script src="{{ asset('/dist/vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
         <script src="{{ asset('/dist/vendors/lightbox/simpleLightbox.min.js') }}"></script>
         <script src="{{ asset('/dist/js/custom.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+        
 
 
         <script>

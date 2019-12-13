@@ -5,21 +5,45 @@
                 <div class="col">
                     <div class="panel-heading"><h3 class="panel-title">{{ __('Inscription') }}</h3></div>
                         <div class="alert alert-info mb-5 col-md-8">
-                            <p>Si votre paroisse ne figure pas dans la liste, veuillez nous envoyer un message en precisant le nom de votre diocèse et paroisse dans le message <a href="{{ route('contact') }}">cliquez ici</a>.
+                            <p>Si votre paroisse ne figure pas dans la liste, veuillez nous envoyer un message en précisant le diocèse, la ville et le nom de votre paroisse.  Si tel est le cas, <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('contact') }}">cliquez ici</a></b>.
                             </p>
-                            <b class="text-dark">NB: Ne continuez pas l'inscription.</b>
+                            <b class="text-dark">Nb : Ne continuez pas votre inscription s’il vous plait. Veuillez patienter jusqu’à l’ajout des informations adéquates dans un délai de un (1) jour maximum. Cela permettra de retrouver vos annonces facilement.</b>
                         </div>
                         
+
                             <form method="POST" action="{{ route('validUsers') }}" class="contact_form col-md-8" enctype="multipart/form-data">
                             @csrf
                             <style>
                                 .nice-select, .list{ width:100% !important }
+                                .selectpicker{
+                                    background-color: #fff !important;
+                                }
                                 
                             </style>
 
                                 <div class="form-group mb-5">
-                                    <label for="">{{ __('Paroisse rattachée') }}<em style="color:red;">*</em></label>
-                                    <select name="paroisse_id" class="form-control">
+                                    <label for="">{{ __('Diocèse rattaché') }}<em style="color:red;">*</em></label>
+                                    <select name="diocese_id" data-live-search="true" class="form-control selectpicker">
+                                        <option disabled>Sélectionnez un Diocèse</option>
+                                        @foreach($paroisse as $d)
+                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <label for="">{{ __('Ville') }}<em style="color:red;">*</em></label>
+                                    <select name="ville_id" data-live-search="true" class="form-control selectpicker">
+                                        <option disabled>Sélectionnez une ville</option>
+                                        @foreach($paroisse as $d)
+                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <label for="exampleDropdown">{{ __('Paroisse rattachée') }}<em style="color:red;">*</em></label>
+                                    <select name="paroisse_id" data-live-search="true" class="form-control selectpicker">
                                         <option disabled>Sélectionnez une paroisse</option>
                                         @foreach($paroisse as $d)
                                             <option value="{{ $d->id }}">{{ $d->nom }}</option>
@@ -45,7 +69,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="">{{ __('Nom de la communauté') }}</label>
+                                    <label for="">Nom<em style="color:red;">*</em> (Paroisse, Groupe, Communauté, Ministère, Mouvement…)</label>
                                     <input id="name" type="text" class="form-control @error('communaute') is-invalid @enderror" name="communaute" value="{{ old('communaute') }}" required autofocus>
 
                                     @error('communaute')
@@ -95,7 +119,7 @@
                                 <div class="form-group mb-4">
                                     <label for="">Image de profil</label><em style="color:red;">*</em>
                                     <p>Inclure une image de 1000px et au plus de 2000px de haut ou de large.
-                                        <br> Cette image sera la photo de couverture de l'église  </p>
+                                        <br> Cette image représentera la paroisse, le groupe, la communauté, le ministère, le mouvement… </p>
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12 col-sm-12">
@@ -116,11 +140,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-block mt-3 radius" style="background: #5fc6c9; color: #fff" type="submit"> {{ __('Enregistrer') }}</button>
+                                    <button class="btn btn-block mt-3 radius" style="background: #5fc6c9; color: #fff" type="submit"> {{ __('Demande de création de compte') }}</button>
                                 </div>
                             </form>
 
                         </div>
+
                     </div>
                 </div>
             </div>

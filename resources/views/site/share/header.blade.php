@@ -61,9 +61,9 @@
                 <div class="row">
 
                     <div class="row col-lg-11 col-11 col-md-12">
-                        <input style="border-radius: 4px 0 0 4px;" type="text" maxlength="30" minlength="1" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
+                        <input style="border-radius: 4px 0 0 4px;color: black" type="text" maxlength="30" minlength="1" class="col-lg-3 place form-control d-inline-block ml-0 mr-0 col-12" id="name" name="title" placeholder="Entrez le titre">
 
-                        <input style="border-radius: 4px 0 0 4px;" type="date" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12 form_hidden" name="date">
+                        <input style="border-radius: 4px 0 0 4px;color: black" type="date" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12 form_hidden" size="1" name="date">
 
                         <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
                             <select name="category" style="display: none;">
@@ -72,8 +72,8 @@
                                     <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
                                 @endforeach
                             </select>
-                            <div class="nice-select" tabindex="0">
-                                <span class="current">Categorie</span>
+                            <div class="nice-select" tabindex="0" style="border-bottom: 1px solid #ced4da">
+                                <span class="current" style="color: black">Catégorie</span>
                                 <ul class="list">
                                     <li data-value="" class="option">Toutes les catégories</li>
                                     @foreach($category as $cat)
@@ -91,8 +91,8 @@
                                     @endforeach
                                 @endforeach
                             </select>
-                            <div class="nice-select" tabindex="0">
-                                <span class="current" disabled="">Diocèse</span>
+                            <div class="nice-select" tabindex="0" style="border-bottom: 1px solid #ced4da">
+                                <span class="current" disabled="" style="color: black">Diocèse</span>
                                 <ul class="list">
                                     <li data-value="" class="option">Tous les diocèses</li>
                                     @foreach($diocese as $d)
@@ -119,6 +119,7 @@
                     overflow-x: auto;
 
                 }
+
                 li{
                     margin-right: 15px;
                 }
@@ -145,11 +146,31 @@
                     .flex-container {
                         width: 800px;
                     }
+                    .form_hidden{
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
+                    }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
+                    }
                 }
 
                 @media (max-width: 800px) {
                     .flex-container {
                         width: 700px;
+                    }
+                    .form_hidden{
+                        display: none !important
+                    }
+                    #nav_cat{
+                        padding: 0px !important
+                    }
+                    .text_white{
+                        color: #6c2f91 !important;
+                        text-align: center;
                     }
                 }
 

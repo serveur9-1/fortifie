@@ -103,7 +103,7 @@ class UserController extends Controller
         if($standard){
             $msg = 'Vous avez bien crée un nouvel utilisateur.';
         }else{
-            $msg = "Vous compte a bien été crée. Un mail de confirmation de compte vous sera envoyé à l'adresse e-mail renseignée";
+            $msg = "Votre demande a bien été soumise. Un mail d’activation de compte vous sera envoyé à l’adresse mail renseignée après validation.";
         }
 
 

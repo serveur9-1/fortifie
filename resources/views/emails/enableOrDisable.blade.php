@@ -14,7 +14,7 @@
         <p>Titre : {{ $titre }}</p>
         <img src="{{ asset("assets/img/articles/$img") }}" alt="{{ $img }}">
 
-        <p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
 
 
         <p>Cliquez sur ce lien pour voir l'annonce <a href="{{ $url }}">{{ $url }}</a></p>

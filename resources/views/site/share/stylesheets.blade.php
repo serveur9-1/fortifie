@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{{ asset('/dist/vendors/owl-carousel/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/vendors/lightbox/simpleLightbox.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/vendors/nice-select/css/nice-select.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
         <!-- main css -->
         <link rel="stylesheet" href="{{ asset('/dist/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('/dist/css/responsive.css') }}">

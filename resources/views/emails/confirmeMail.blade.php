@@ -10,7 +10,7 @@
         <p><a href="https://fortifietoi.ci/connexion">Cliquez ici pour accéder à la page de connexion.</a></p>
 
         <p>Une fois connecté, vous pourrez gérer vos annonces, vos courriels d'option, vos courriels de notification et plus à partir de la page mon compte de Fortifie-toi</p>
-        <p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
 
     </div>
 @stop

@@ -298,7 +298,7 @@
                                 <h2><a href="{{ route('categorie',['id' => $a->category->id]) }}">{{ $a->category->libelle }}</a></h2>
                                 <p>{{ Str::limit($a->description, 300) }}</p>
                                 <p class="read-more">
-                                    <a href="{{ route('description',['id' => $a->id])}}">Voir details</a>
+                                    <a href="{{ route('description',['id' => $a->id])}}">Voir détails</a>
                                 </p>
                                 </div>
                         </div>

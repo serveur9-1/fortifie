@@ -21,7 +21,7 @@
         <section class="gallery_area section_gap">
             <div class="container">
                 <div class="alert alert-info mb-5 col-md-12 col-lg-12">
-                    <p>Avez-vous des images d'un évènement à partager ? <br> Envoyez nous un message <a href="{{ route('contact') }}"> ici</a> afin que nous rentrons en contact avec vous pour les recuperer et les mettres dans la galerie.
+                    <p>Avez-vous des images d'un évènement à partager ? <br> Envoyez nous un message <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('contact') }}"> ici</a></b> afin que nous rentrons en contact avec vous pour les recuperer et les mettres dans la galerie.
                     </p>
                 </div>
                 @if($album->count() > 0)

@@ -50,7 +50,7 @@
         <!--============= Galerie  ===================-->
         <aside class="single_sidebar_widget popular_post_widget ">
             <h3 class="widget_title">Galérie</h3>
-            <a href="{{ route('album') }}"><div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+           <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
             <div class="single-footer-widget instafeed">
                 <ul class="list_style instafeed d-flex flex-wrap">
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-01.jpg')}}') no-repeat;background-size: cover;"></li>
@@ -64,15 +64,14 @@
                 </ul>
             </div>
         </div>
-        </a> 
             <div class="br"></div>
             
         </aside>
         <!--============= END PUB AREA HERE  ===================-->
         <aside class="single-sidebar-widget newsletter_widget">
-            <h4 class="widget_title">Newsletter</h4>
+            <h4 class="widget_title">Alerte</h4>
             <p>
-                Abonnez-vous à la newsletter pour être informé de toutes les nouvelles informations à tout moment.
+                Abonnez-vous au service Alerte pour être informé de toutes les nouvelles annonces publiées à tout moment.
             </p>
             @error('email')
             <p class="text-warning" role="alert">

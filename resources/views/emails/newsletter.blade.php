@@ -17,7 +17,7 @@
 			<a href="{{ route('unsuscribe', ['c' => $id, 'e' => $email]) }}">{{ route('unsuscribe', ['c' => $id, 'e' => $email]) }}</a>
 		</p>
 
-		<p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+		<p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
 
 	</div>
 @stop

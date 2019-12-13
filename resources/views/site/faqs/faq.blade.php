@@ -7,7 +7,7 @@
         <section class="breadcrumb_area br_image">
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">foire aux questions</h2>
+                    <h2 class="page-cover-tittle">Foire aux questions</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{ route('home') }}">Accueil</a></li>
                         <li class="active">foire aux questions</li>

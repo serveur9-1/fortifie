@@ -543,35 +543,32 @@
         <footer class="footer-area section_gap pt-5 pb-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="col-lg-4  col-md-4 col-sm-4">
                         <div class="single-footer-widget">
-                            <h6 class="footer_title">A propos de FORTIFIE-TOI</h6>
+                            <h6 class="footer_title">FORTIFIE-TOI</h6>
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
                                         <li><a href="{{ route('faq')}}">A propos de nous</a></li>
-                                        <li><a href="{{ route('faq')}}">Avantage de l'inscription</a></li>
-                                        <li><a href="{{ route('contact')}}">Nous contacter</a></li>
+                                        <li><a href="{{ route('contact')}}">Contactez-nous</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Renseignements</h6>
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">
-                                        <li><a href="{{ route('faq')}}">Condition d'utilisation</a></li>
-                                        <li><a href="{{ route('faq')}}">Politique de confidentialité</a></li>
-                                        <li><a href="{{ route('faq')}}">Règle d'affichage</a></li>
+                                        <li><a href="{{ route('faq')}}">Foire aux questions</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Liens utiles</h6>
                             <div class="row">
@@ -584,23 +581,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget instafeed">
-                            <h6 class="footer_title">Soutien</h6>
-                            <div class="row">
-                                <div class="col-12">
-                                    <ul class="list_style">
-                                        <li><a href="{{ route('faq')}}">Centre d'Aide</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="border_line"></div>
+                <div class="border_line mb-0"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
                     <p class="col-lg-8 col-sm-8 footer-text m-0">
-                        Copyright &copy; 2018 - <script>document.write(new Date().getFullYear());</script> Tous droits reservés | Developed by <a href="#" target="_blank">GayaTech</a></p>
+                        Copyright &copy; 2018 - <script>document.write(new Date().getFullYear());</script> Tous droits reservés | Developed by <a href="www.fortifietoi.ci" target="_blank">Fortifie-Toi</a></p>
                 </div>
             </div>
         </footer>

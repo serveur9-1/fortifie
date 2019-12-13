@@ -3,15 +3,16 @@
 @section('content')
     <div style="padding:25px;">
 
-        <h3>Salut {{ $user }},</h3>
+        <h3> Bonjour {{ $user }},</h3>
 
         <p>
-            @if($is_enable) Félicitation @else Oups!!! désolé @endif votre compte vient d'être @if($is_enable) activé. @else désactivé. @endif
+            Votre compte sur le site Fortifie-Toi a bien été @if($is_enable) activé. @else désactivé. @endif
         </p>
 
-        @if(!$is_enable)<p>Veuillez contacter l'administrateur pour savoir le motif</p>@endif
+        @if($is_enable)Vous pouvez à présent soumettre vos annonces en accorde avec nos conditions d’utilisation. @else<p>Nous avons constaté le non-respect de nos conditions d’utilisation, de nos règles et de notre politique.
+		Veuillez nous contacter pour en savoir plus.</p>@endif
 
-        <p>Que le seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
 
     </div>
 @stop

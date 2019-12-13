@@ -25,9 +25,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <blockquote class="generic-blockquote">
-                                    “Pour une quelconque préoccupation vous pouvez nous laisser un message afin que nous remedions a votre preoccupation au plus vite.
-                                    nous sommes disponibles du lundi au vendredi entre 7h et 17h .
-                                    Merci de bien vouloir renseigner se formulaire afin que nous sachons votre preoccuapation.”
+                                    Pour un quelconque besoin, laissez-nous un message. Votre préoccupation sera résolue dans les plus brefs délais. <br>
+                                    Nous sommes disponibles du lundi au vendredi entre 7h et 17h. Merci de bien vouloir renseigner ce formulaire.
                                 </blockquote>
                             </div>
                         </div>
