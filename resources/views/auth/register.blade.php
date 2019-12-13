@@ -140,6 +140,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm"></div>
+                                </div>
+                                <div class="form-group">
                                     <button class="btn btn-block mt-3 radius" style="background: #5fc6c9; color: #fff" type="submit"> {{ __('Demande de création de compte') }}</button>
                                 </div>
                             </form>

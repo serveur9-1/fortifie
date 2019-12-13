@@ -89,16 +89,15 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                            @if(env('GOOGLE_RECAPTCHA_KEY'))
-                                <div class="g-recaptcha"
-                                    data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
-                                </div>
-                            @endif
-                            </div>
-                            <div class="col-md-12 text-right">
+                            <div class="col-md-12" style="display: flex;">
+                                <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm"></div>
+                                
+                                <div class="col-md-6 text-right">
                                 <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
                             </div>
+                                <br/>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
