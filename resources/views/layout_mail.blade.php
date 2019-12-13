@@ -28,7 +28,7 @@
 </main>
     <hr>
     <div>
-        <p><a  style="text-decoration: none" target="_blank" href="www.fortifietoi.ci">www.fortifietoi.ci</a></p>
+        <p><a target="_blank" href="www.fortifietoi.ci">www.fortifietoi.ci</a></p>
         <p>Copyright ©
             @if( date('Y') == 2018 )
                 {{ date('Y')}}
