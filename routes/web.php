@@ -563,6 +563,74 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'HomeController@admin'
                 ]);
 
+                //faqs
+
+
+                Route::get('/faq',[
+                    'as' => 'admin.faq',
+                    'uses' => 'FaqController@index'
+                ]);
+
+                Route::get('/faq/section/{id}/edit',[
+                    'as' => 'editSection',
+                    'uses' => 'FaqController@editSection'
+                ])->where('id','[0-9]+');
+
+                Route::post('/faq/section/valid',[
+                    'as' => 'sectionValid',
+                    'uses' => 'FaqController@createSection'
+                ]);
+
+                Route::get('/faq/section/delete/{id}',[
+                    'as' => 'deleteSection',
+                    'uses' => 'FaqController@deleteSection'
+                ])->where('id','[0-9]+');
+
+
+
+                Route::get('/question',[
+                    'as' => 'admin.question',
+                    'uses' => 'FaqController@question'
+                ]);
+
+                Route::get('/faq/question/{id}/edit',[
+                    'as' => 'editQuestion',
+                    'uses' => 'FaqController@editQuestion'
+                ])->where('id','[0-9]+');
+
+                Route::post('/faq/question/valid',[
+                    'as' => 'questionValid',
+                    'uses' => 'FaqController@createQuestion'
+                ]);
+
+                Route::get('/faq/question/delete/{id}',[
+                    'as' => 'deleteQuestion',
+                    'uses' => 'FaqController@deleteQuestion'
+                ])->where('id','[0-9]+');
+
+
+
+                Route::get('/answer',[
+                    'as' => 'admin.answer',
+                    'uses' => 'FaqController@answer'
+                ]);
+
+                Route::get('/faq/answer/{id}/edit',[
+                    'as' => 'editAnswer',
+                    'uses' => 'FaqController@editAnswer'
+                ])->where('id','[0-9]+');
+
+                Route::post('/faq/answer/valid',[
+                    'as' => 'answerValid',
+                    'uses' => 'FaqController@createAnswer'
+                ]);
+
+                Route::get('/faq/answer/delete/{id}',[
+                    'as' => 'deleteAnswer',
+                    'uses' => 'FaqController@deleteAnswer'
+                ])->where('id','[0-9]+');
+                
+
             });
         });
 
@@ -652,7 +720,7 @@ Route::post('/contact/send',[
 
 Route::get('/faqs',[
     'as' => 'faq',
-    'uses' => 'ContactController@faq'
+    'uses' => 'FaqController@faq'
 ]);
 
 

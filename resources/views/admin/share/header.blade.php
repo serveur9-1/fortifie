@@ -167,6 +167,22 @@
       <span>Abonnés à la newsletter</span></a>
   </li>
 
+  <hr class="sidebar-divider my-0">
+
+  <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse20" aria-expanded="true" aria-controls="collapse20">
+        <i class="fa fa-fw fa-question"></i>
+        <span>FAQs</span>
+      </a>
+      <div id="collapse20" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('admin.faq') }}">Sections</a>
+          <a class="collapse-item" href="{{ route('admin.question') }}">Questions</a>
+          <a class="collapse-item" href="{{ route('admin.answer') }}">Réponses</a>
+        </div>
+      </div>
+    </li>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

@@ -54,12 +54,12 @@
                       </td>
                       <td>
                             @foreach($a->gestionnaire as $g)
-                                {{ $g->paroisse->diocese->nom }}
+                                {{ $g->paroisse[0]->diocese->nom }}
                             @endforeach
                       </td>
                       <td>
                             @foreach($a->gestionnaire as $g)
-                                {{ $g->paroisse->nom }}
+                                {{ $g->paroisse[0]->nom }}
                             @endforeach
                       </td>
                       <td width="150">{{ $a->created_at->format('d-m-Y') }} {{ $a->created_at->format('H:m:s') }}</td>

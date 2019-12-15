@@ -56,11 +56,7 @@
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-01.jpg')}}') no-repeat;background-size: cover;"></li>
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-02.jpg')}}') no-repeat;background-size: cover;"></li>
                     <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-03.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-04.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-05.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-06.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-07.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-08.jpg')}}') no-repeat;background-size: cover;"></li>
+                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-03.jpg')}}') no-repeat;background-size: cover;"></li>
                 </ul>
             </div>
         </div>

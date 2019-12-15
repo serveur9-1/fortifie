@@ -26,7 +26,7 @@ class ContactController extends Controller
         $request->email = "contact@fortifietoi.ci";
         Mail::send(new ContactMail($request));
 
-        return redirect()->back()->with('success','Votre message a bien été envoyé.');
+        return redirect()->back()->with('success','Merci. Votre message a bien été envoyé. Votre demande ou votre préoccupation sera pris en compte dans les plus brefs délais.');
     }
 
 
@@ -35,8 +35,5 @@ class ContactController extends Controller
         return view('emails.contact');
     }
 
-    public function faq()
-    {
-        return view('site.faqs.faq');
-    }
+    
 }
