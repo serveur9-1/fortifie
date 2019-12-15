@@ -51,7 +51,12 @@ class UsersRepository
 
     public function getUser()
     {
-        return $this->u->newQuery()->select()->where('is_admin',false)->orderBy('name','ASC')->get();
+        return $this->u->newQuery()->select()->where('is_admin',1)->orderBy('name','ASC')->get();
+    }
+
+    public function getGestionnaire()
+    {
+        return $this->u->newQuery()->select()->where('is_admin',1)->orWhere('is_staff',true)->orderBy('name','ASC')->get();
     }
 
 
@@ -112,6 +117,33 @@ class UsersRepository
 
     }
 
+    public function createGestionnaire($array)
+    {
+        if($array->role == 1){
+
+            $admin = true;
+            $staff = false;
+
+        }else{
+
+            $admin = false;
+            $staff = true;
+
+        }
+
+        $n_user = $this->u->newQuery()->create([
+            'name' => $array->name,
+            'img' => $array->img,
+            'email' => $array->email,
+            'is_admin' => $admin,
+            'is_staff' => $staff,
+            'is_new' => false,
+            'is_active' => true,
+            'password' => Hash::make($array->password),
+        ]);
+
+    }
+
     public function updateUser($id, $array)
     {
 
@@ -130,6 +162,34 @@ class UsersRepository
             'telephone' => $array->telephone,
             'user_id' => $id
         ]);
+    }
+
+
+    public function updateGestionnaire($id, $array)
+    {
+        if($array->role == 1){
+
+            $admin = true;
+            $staff = false;
+
+        }else{
+
+            $admin = false;
+            $staff = true;
+
+        }
+
+        $n_user = $this->u->newQuery()->findOrFail($id)->update([
+            'name' => $array->name,
+            'img' => $array->img,
+            'email' => $array->email,
+            'is_admin' => $admin,
+            'is_staff' => $staff,
+            'is_active' => true,
+            'is_new' => false,
+            'password' => Hash::make($array->password),
+        ]);
+
     }
 
     public function enableOrDisableUserAccount($id, $enable, $data)

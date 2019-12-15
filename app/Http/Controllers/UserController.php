@@ -27,13 +27,6 @@ class UserController extends Controller
         $this->sv = $sv;
     }
 
-    public function modify()
-    {
-        return view('site.Users.modify',[
-
-        ]);
-    }
-
     //administration
     public function listUsers()
     {
@@ -140,6 +133,99 @@ class UserController extends Controller
 
         return redirect()->back()->with('success','Vous avez bien modifié un utilisateur.');
     }
+
+
+    //GESTIONNAIRE
+
+
+        //administration
+        public function listgestionnaire()
+        {
+            return view('admin.compte.listGestionnaire',[
+                'user' => $this->u->getGestionnaire(),
+                'edit' => false
+            ]);
+        }
+    
+    
+        public function deleteGestionnaire($id, Request $request)
+        {
+            $msg = " supprimé un ";
+    
+            $this->u->deleteUser($id);
+            return redirect()->back()->with('success', "Vous avez bien $msg gestionnaire.");
+            
+        }
+    
+        public function addGestionnaire()
+        {
+            return view('admin.compte.addGestionnaire',[
+                'edit' => false
+            ]);
+        }
+    
+        public function validGestionnaire(Request $request)
+        {
+            //dd($request->all());
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|max:255|unique:users',
+                'password' => 'required|min:4|confirmed',
+                'role' => 'required',
+                'img' => 'required',
+            ]);
+
+            $request->img = $request->file('img')->getClientOriginalName();
+            $this->sv->saveImg($request, '/users', "img");
+            $this->u->createGestionnaire($request);
+    
+            $msg = 'Vous avez bien crée un nouveau gestionnaire.';
+    
+    
+            return redirect()->back()->with('success', $msg);
+        }
+    
+        public function editGestionnaire($id)
+        {
+            return view('admin.compte.addGestionnaire',[
+                'u' => User::findOrFail($id),
+                'edit' => true
+            ]);
+        }
+    
+    
+        public function updateGestionnaire($id, Request $request)
+        {
+
+            $this->validate(request(), [
+                'name' => 'required',
+                'password' => 'required|min:4|confirmed',
+                'role' => 'required',
+            ]);
+
+            if(request('email_old') != request('email')){
+                $this->validate(request(), [
+                    'email' => 'required|email|unique:users',
+                ]);
+            }
+
+            $c_u = User::findOrFail($id);
+            if($c_u->email != request('email')){
+                $this->validate(request(), [
+                    'email' => 'required|email|unique:users',
+                ]);
+            }
+            if(isset($request->img)){
+                $request->img = $request->file('img')->getClientOriginalName();
+                $this->sv->saveImg($request, '/users');
+            }else{
+                $request->img = User::findOrFail($id)->img;
+            }
+    
+            $this->u->updateGestionnaire($id, $request);
+    
+            return redirect()->back()->with('success','Vous avez bien modifié un gestionnaire.');
+        }
 
 
     public function adminLogin()

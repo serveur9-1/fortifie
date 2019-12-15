@@ -38,6 +38,8 @@
       </div>
     </div>
   </li>
+
+  <hr class="sidebar-divider d-none d-md-block">
   <!-- Nav Item - Utilities Collapse Menu -->
  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
@@ -80,21 +82,43 @@
       </div>
     </div>
   </li>
+  <hr class="sidebar-divider d-none d-md-block">
+  <!-- Heading -->
+  <div class="sidebar-heading">
+      COMPTES
+  </div>
    <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5x" aria-expanded="true" aria-controls="collapse5">
       <i class="fa fa-fw fa-user"></i>
-    <span>Compte</span>
+    <span>Compte gestionnaire</span>
     </a>
-    <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapse5x" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
 
-        <a class="collapse-item" href="{{ route('listUsers') }}">liste des comptes</a>
-        <a class="collapse-item" href="{{ route('addUsers') }}">Ajouter comptes</a>
-         <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
+        <a class="collapse-item" href="{{ route('ges.listUsers') }}">liste des comptes</a>
+        <a class="collapse-item" href="{{ route('ges.addUsers') }}">Ajouter comptes</a>
+
       </div>
     </div>
    
   </li>
+
+  <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+        <i class="fa fa-fw fa-user"></i>
+      <span>Compte utilisateur</span>
+      </a>
+      <div id="collapse5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+  
+          <a class="collapse-item" href="{{ route('listUsers') }}">liste des comptes</a>
+          <a class="collapse-item" href="{{ route('addUsers') }}">Ajouter comptes</a>
+           <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
+        </div>
+      </div>
+     
+    </li>
+  <hr class="sidebar-divider d-none d-md-block">
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
       <i class="fa fa-fw fa-bullhorn"></i>

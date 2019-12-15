@@ -310,6 +310,48 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'UserController@editUsers'
                 ])->where('id','[0-9]+');
 
+
+                //GESTIONNAIRE
+
+
+                Route::group(['prefix'=> 'gestionnaire'],function(){
+                    
+                    Route::get('/listUsers',[
+                        'as' => 'ges.listUsers',
+                        'uses' => 'UserController@listGestionnaire'
+                    ]);
+    
+                    Route::get('/addUsers',[
+                        'as' => 'ges.addUsers',
+                        'uses' => 'UserController@addGestionnaire'
+                    ]);
+
+                    Route::post('/validUsers',[
+                        'as' => 'ges.validUsers',
+                        'uses' => 'UserController@validGestionnaire'
+                    ]);
+    
+                    Route::get('/deleteUser/{id}',[
+                        'as' => 'ges.deleteUser',
+                        'uses' => 'UserController@deleteGestionnaire'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/users/edit/{id}',[
+                        'as' => 'ges.editUser',
+                        'uses' => 'UserController@editGestionnaire'
+                    ])->where('id','[0-9]+');
+    
+                    Route::patch('/updateUsers/{id}',[
+                        'as' => 'ges.updateUsers',
+                        'uses' => 'UserController@updateGestionnaire'
+                    ])->where('id','[0-9]+');
+
+                });
+
+
+
+
+
                 //PUB
 
                 Route::get('/listPub',[

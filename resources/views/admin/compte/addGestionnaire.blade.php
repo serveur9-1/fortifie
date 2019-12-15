@@ -1,5 +1,5 @@
 @extends('layout_admin')
-@section('title','Ajouter Utilisateur')
+@section('title','Ajouter Gestionnaire')
 
 @section('content')
  <!-- Begin Page Content -->
@@ -7,7 +7,7 @@
           <div class="x_panel">
            <div class="x_title">
               <h2><small>@if(!$edit) Ajouter @else Modifier @endif un Compte</small></h2>
-              <a href="{{ route('listUsers') }}" class="btn  btn-sm pull-right mb-4 btnadmin" style="float: right;"><i class="fa fa-eye"></i> Liste des Comptes</a>
+              <a href="{{ route('ges.listUsers') }}" class="btn  btn-sm pull-right mb-4 btnadmin" style="float: right;"><i class="fa fa-eye"></i> Liste des gestionnaire</a>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
               <div class="x_content">
-                <form @if(!$edit) action="{{ route('validUsers') }}" @else action="{{ route('updateUsers', ['id'=> $u->id]) }}" @endif method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
+                <form @if(!$edit) action="{{ route('ges.validUsers') }}" @else action="{{ route('ges.updateUsers', ['id'=> $u->id]) }}" @endif method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data">
                     @csrf
                     @if($edit)
                         {{ method_field('patch') }}
@@ -32,54 +32,27 @@
                           @enderror
                       </div>
                   </div>
+
                   <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nom de la communauté<em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Rôle<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                          @if($edit)
-                              <input value="@foreach($u->gestionnaire as $g) {{ $g->communaute }} @endforeach" type="text" id="last-name" name="communaute" required="required" class="form-control col-md-9 col-xs-12">
-                          @else
-                              <input type="text" value="{{ old('communaute') }}" id="last-name" name="communaute" required="required" class="form-control col-md-9 col-xs-12">
-                          @endif
-                          @error('communaute')
-                              <p class="text-danger">{{ $message }}</p>
-                          @enderror
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Paroisse rattachée<em style="color:red;">*</em>
-                      </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="paroisse_id" required="required" class="form-control col-md-9 col-xs-12">
-                            <option disabled >Sélectionnez</option>
-                              @foreach($paroisse as $p)
-                                  @if(false)
-                                    <option @if($p->id == $u->gestionnaire->paroisse->id) selected @endif value="{{ $p->id }}">{{ $p->nom }}</option>
-                                  @else
-                                    <option value="{{ $p->id }}">{{ $p->nom }}</option>
-                                  @endif
-                              @endforeach
-                           </select>
-                            @error('paroisse_id')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                   <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Numero de téléphone<em style="color:red;">*</em>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input @if($edit) value="@foreach($u->gestionnaire as $g) {{ $g->telephone }} @endforeach" @else value="{{ old('telephone') }}" @endif type="text" id="last-name" name="telephone" required="required" class="form-control col-md-9 col-xs-12">
-                          @error('telephone')
+                        <select name="role" class="form-control col-md-9 col-xs-12">
+                          <option @if($edit) @if($u->is_admin == 1) selected @endif @endif value="1">Super admin</option>
+                          <option @if($edit) @if($u->is_staff == 1) selected @endif @endif value="2">Superviseur</option>
+                        </select>
+                          @error('name')
                           <p class="text-danger">{{ $message }}</p>
                           @enderror
                       </div>
-                   </div>
+                  </div>
+
                    <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">E-mail<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                           <input @if($edit) value="{{ $u->email }}" @else value="{{ old('email') }}" @endif type="email" id="last-name" name="email" required="required" class="form-control col-md-9 col-xs-12">
+                          <input hidden @if($edit) value="{{ $u->email }}" @else value="{{ old('email') }}" @endif type="email" id="last-name" name="email_old" class="form-control col-md-9 col-xs-12">
                           @error('email')
                           <p class="text-danger">{{ $message }}</p>
                           @enderror
@@ -108,7 +81,7 @@
                         </div>
                     @endif
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Charger l'image<em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Charger l'image de profil<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-12 col-sm-12 col-lg-6 col-xs-12">
                           <input type="file" id="last-name" name="img" @if(!$edit) required="required" @endif class="form-control col-md-9 col-xs-12">
