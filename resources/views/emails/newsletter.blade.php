@@ -4,7 +4,7 @@
 
 	<div style="padding:25px;">
 
-		<h3 style="color:#6b2f90"> Salut </h3>
+		<h3 style="color:#6b2f90">  Bonjour, </h3>
 
 		<p>Un nouvel évènement a été enregistré sur Fortifie-toi</p>
 

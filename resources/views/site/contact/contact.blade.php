@@ -3,7 +3,7 @@
 @section('content')
 
     <!--================Breadcrumb Area =================-->
-        <section class="breadcrumb_area br_image" style="height: 200px">
+        <section class="breadcrumb_area br_image" style="height: 50px !important ; margin-bottom: 0px !important">
             <div class="container">
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle">Contactez-nous</h2>
@@ -17,7 +17,7 @@
         <!--================Breadcrumb Area =================-->
 
         <!--================Contact Area =================-->
-        <section class="contact_area section_gap">
+        <section class="contact_area section_gap" style="margin-top: 0px !important">
 
             <div class="container">
                 <div class="section-top-border">

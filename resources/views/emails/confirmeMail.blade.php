@@ -3,7 +3,7 @@
 @section('content')
     <div style="padding:25px;">
 
-        <h3 style="color:#6b2f90">Salut {{ $user }},</h3>
+        <h3 style="color:#6b2f90"> Bonjour {{ $user }},</h3>
 
         <p>Félicitations! Votre compte vient d'être activer vous pouvez desormais publier vos annonces sur Fortifie-toi</p>
 

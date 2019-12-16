@@ -3,7 +3,7 @@
 @section('content')
     <div style="padding:25px;">
 
-        <h3>Salut {{ $user }},</h3>
+        <h3> Bonjour {{ $user }},</h3>
 
         <p>
             @if($is_enable) Félicitation @else Oups!!! désolé @endif votre anonnce vient d'être @if($is_enable) activée. @else désactivée. @endif

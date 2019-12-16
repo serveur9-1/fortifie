@@ -3,7 +3,7 @@
 @section('content')
     <div style="padding:25px;">
 
-        <h3>Bonjour, </h3>
+        <h3> Bonjour,</h3>
 
         <p>Nous vous souhaitons la bienvenue sur le service de l’alerte de Fortifie-Toi.</p>
 
