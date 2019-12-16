@@ -174,7 +174,13 @@ class GalleryController extends Controller
 
     public function validAlbum(Request $request)
     {
+        $this->validate(request(), [
+            'libelle' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
 
+        $request->img = $request->file('img')->getClientOriginalName();
+        $this->sv->saveImg($request, '/albums/covers', 'img');
         $this->g->createAlbum($request);
 
         return back()->with('success', "Vous avez bien ajouté un nouvel album");

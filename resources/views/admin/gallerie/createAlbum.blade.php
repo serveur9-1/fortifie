@@ -31,6 +31,19 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-12 col-sm-2 col-xs-12" for="last-name">Photo de couverture <em style="color:red;">*</em>
+                            </label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="file" id="last-name" name="img" required="required" class=" @error('img') is-invalid @enderror form-control col-md-9 col-xs-12">
+
+                                @error('img')
+                                <p class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
                                 <input type="submit" class="btn  btnadmin" value="Enregistrer ">
                                 <input type="reset" class="btn  btnad" value="Effacer le contenu ">

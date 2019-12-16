@@ -8,7 +8,8 @@ class Album extends Model
 {
     protected $fillable = [
         'libelle',
-        'is_active'
+        'is_active',
+        'img'
     ];
     
     public function gallery(){

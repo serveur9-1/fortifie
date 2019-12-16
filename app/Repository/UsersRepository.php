@@ -51,7 +51,7 @@ class UsersRepository
 
     public function getUser()
     {
-        return $this->u->newQuery()->select()->where('is_admin',1)->orderBy('name','ASC')->get();
+        return $this->u->newQuery()->select()->where('is_admin','!=',1)->where('is_staff','!=',1)->where('is_new',false)->orderBy('name','ASC')->get();
     }
 
     public function getGestionnaire()

@@ -11,6 +11,7 @@ use App\Repository\PubRepository;
 use App\User;
 use App\Visiteur;
 use App\Denonciation;
+use App\Album;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         $a = new Article();
         $dio = new Diocese();
         $vi = new Visiteur();
+        $al = new Album();
 
         $den = new Denonciation();
 
@@ -55,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share([
             'category' => $cat->newQuery()->select()->orderBy('libelle')->get(),
             'diocese' => $dio->newQuery()->select()->orderBy('nom')->get(),
+            'g_album' => $al->newQuery()->select()->limit(4)->get(),
             'p_article' => $vi->newQuery()
                 ->select(array(DB::raw('article_id, COUNT(id) as nb')))
                 ->where('article_id','!=', null)

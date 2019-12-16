@@ -29,7 +29,7 @@
                     @foreach($album as $alb)
                         <div class="col-lg-4 mb-4">
                             <div class="categories_post">
-                                <img src="{{ asset('assets/image/im1.jpg') }}" alt="post">
+                                <img src='{{ asset("assets/img/albums/covers/$alb->img") }}' alt="post">
                                 <a href="{{ route('galerie',['folder'=>$alb->id]) }}">
                                     <div class="categories_details">
                                         <div class="categories_text">

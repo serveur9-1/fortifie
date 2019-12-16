@@ -133,7 +133,8 @@ class GalleryRepository
     public function createAlbum($array)
     {
         $this->alb->newQuery()->create([
-            'libelle' => $array->libelle
+            'libelle' => $array->libelle,
+            'img' => $array->img
         ]);
     }
 

@@ -53,10 +53,10 @@
            <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
             <div class="single-footer-widget instafeed">
                 <ul class="list_style instafeed d-flex flex-wrap">
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-01.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-02.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-03.jpg')}}') no-repeat;background-size: cover;"></li>
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset('assets/image/instagram/Image-03.jpg')}}') no-repeat;background-size: cover;"></li>
+                    @foreach($g_album as $al)
+                    {{-- href="{{ route('galerie',['folder'=> $al->id]) }}" --}}
+                    <li style="width: 21%;height: 60px ;background: url('{{ asset("assets/img/albums/covers/$al->img")}}') no-repeat;background-size: cover;"></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
