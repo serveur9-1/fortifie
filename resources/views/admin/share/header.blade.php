@@ -38,6 +38,32 @@
       </div>
     </div>
   </li>
+   <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse0" aria-expanded="true" aria-controls="collapse0">
+      <i class="fa fa-fw fa-hospital-o"></i>
+      <span>Ville</span>
+    </a>
+    <div id="collapse0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+
+        <a class="collapse-item" href="{{ route('listVille') }}">liste des Villes</a>
+        <a class="collapse-item" href="{{ route('addVille') }}">Ajouter une ville</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
+      <i class=" fas fa-church"></i>
+      <span>Paroisse</span>
+    </a>
+    <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+
+        <a class="collapse-item" href="{{ route('listParoisse') }}">liste des Paroisses</a>
+        <a class="collapse-item" href="{{ route('addParoisse') }}">Ajouter une paroisse</a>
+      </div>
+    </div>
+  </li>
 
   <hr class="sidebar-divider d-none d-md-block">
   <!-- Nav Item - Utilities Collapse Menu -->
@@ -145,20 +171,7 @@
       </div>
     </div>
   </li>
-   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse0" aria-expanded="true" aria-controls="collapse0">
-      <i class="fa fa-fw fa-hospital-o"></i>
-      <span>Ville</span>
-    </a>
-    <div id="collapse0" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-
-        <a class="collapse-item" href="{{ route('listVille') }}">liste des Villes</a>
-        <a class="collapse-item" href="{{ route('addVille') }}">Ajouter une ville</a>
-      </div>
-    </div>
-  </li>
-   <li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
       <i class="fa fa-fw fa-picture-o"></i>
       <span>Gallerie</span>
@@ -172,20 +185,7 @@
       </div>
     </div>
   </li>
-   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapse10">
-      <i class="fa fa-fw fa-plus"></i>
-      <span>Paroisse</span>
-    </a>
-    <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-
-        <a class="collapse-item" href="{{ route('listParoisse') }}">liste des Paroisses</a>
-        <a class="collapse-item" href="{{ route('addParoisse') }}">Ajouter une paroisse</a>
-      </div>
-    </div>
-  </li>
-   <li class="nav-item">
+  <li class="nav-item">
         <a class="nav-link" href="{{ route('newsletterAdmin') }}">
       <i class="fa fa-fw fa-envelope-o"></i>
       <span>Abonnés à la newsletter</span></a>

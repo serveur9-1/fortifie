@@ -37,11 +37,13 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
 
-        Schema::defaultStringLength(191);
-    
+    {
+
+       
+      Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
+
+      Schema::defaultStringLength(191);
         $cat = new Category();
         $a = new Article();
         $dio = new Diocese();

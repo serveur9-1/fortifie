@@ -17,315 +17,101 @@
         </section>
         <!--================Breadcrumb Area =================-->
 
-        
-{{-- <style type="text/css">
-    
-.accordion dl,
-.accordion-list {
-   border:1px solid #ddd;
-   &:after {
-       content: "";
-       display:block;
-       height:1em;
-       width:100%;
-       background-color:darken(#fff, 10%);
-     }
-}
-.accordion dd,
-.accordion__panel {
-   background-color:#eee;
-   font-size:1em;
-   line-height:1.5em; 
-}
-.accordion p {
-  padding:1em 2em 1em 2em;
+
+
+
+<style type="text/css">
+  body {
+  color: #6a6c6f;
+  background-color: #f1f3f6;
+  margin-top: 30px;
 }
 
-.accordion {
-    position:relative;
-    background-color:#5fc6c9;
+.container {
+  max-width: 960px;
 }
 
-.accordionTitle,
-.accordion__Heading {
- background-color:#6c2f91; 
-   text-align:center;
-     font-weight:700; 
-     font-size: 20px;
-          padding:1em;
-          display:block;
-          text-decoration:none;
-          color:#fff;
-          transition:background-color 0.5s ease-in-out;
-  border-bottom:1px solid darken(#fff, 5%);
-  &:before {
-   content: "+";
-   font-size:1.5em;
-   line-height:0.5em;
-   float:left; 
-   transition: transform 0.3s ease-in-out;
-  }
-  &:hover {
-    background-color:darken(#fff, 10%);
-  }
-}
-.accordionTitleActive, 
-.accordionTitle.is-expanded {
-   background-color:darken(#fff, 10%);
-    &:before {
-     
-      transform:rotate(-225deg);
-    }
-}
-.accordionItem {
-    height:auto;
-    overflow:hidden; 
-    //SHAME: magic number to allow the accordion to animate
-    
-     max-height:50em;
-    transition:max-height 1s;   
- 
-    
-    @media screen and (min-width:48em) {
-         max-height:15em;
-        transition:max-height 0.5s
-        
-    }
-    
-   
-}
- 
-.accordionItem.is-collapsed {
-    max-height:0;
-}
-.no-js .accordionItem.is-collapsed {
-  max-height: auto;
-}
-.animateIn {
-     animation: accordionIn 0.45s normal ease-in-out both 1; 
-}
-.animateOut {
-     animation: accordionOut 0.45s alternate ease-in-out both 1;
-}
-@keyframes accordionIn {
-  0% {
-    opacity: 0;
-    transform:scale(0.9) rotateX(-60deg);
-    transform-origin: 50% 0;
-  }
-  100% {
-    opacity:1;
-    transform:scale(1);
-  }
+.panel-default>.panel-heading {
+  color: #333;
+  background-color:#f1f3f6;
+  border-color: #e4e5e7;
+  border-bottom: 1px solid #6c2f91;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-@keyframes accordionOut {
-    0% {
-       opacity: 1;
-       transform:scale(1);
-     }
-     100% {
-          opacity:0;
-           transform:scale(0.9) rotateX(-60deg);
-       }
+.panel-default>.panel-heading a {
+  display: block;
+  padding: 10px 15px;
 }
-</style>
-<div class="container mt-4">
-          
-          <div class="accordion">
-            <dl>
-              <dt>
-                <h3 href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Comment s'inscrie sur la plateforme fortifietoi ?</h3>
-              </dt>
-              <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, aspernatur quaerat id ipsum error animi quidem velit saepe fugiat, asperiores corrupti illum accusantium doloribus, nisi quos labore recusandae modi iste?</p>
-              </dd>
-              <dt>
-                <h3 href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">
-                Comment publier une annonce ?</h3>
-              </dt>
-              <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
-                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
-              </dd>
-              <dt>
-                <h3 href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">
-                   Que dit notre Politique de confidentialité ?
-                </h3>
-              </dt>
-              <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
-                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
-              </dd>
-            </dl>
-          </div>
-        </div>
 
-        <script type="text/javascript">
-            //uses classList, setAttribute, and querySelectorAll
-//if you want this to work in IE8/9 youll need to polyfill these
-(function(){
-    var d = document,
-    accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
-    setAria,
-    setAccordionAria,
-    switchAccordion,
-  touchSupported = ('ontouchstart' in window),
-  pointerSupported = ('pointerdown' in window);
-  
-  skipClickDelay = function(e){
-    e.preventDefault();
-    e.target.click();
-  }
+.panel-default>.panel-heading a:after {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  float: right;
+  transition: transform .25s linear;
+  -webkit-transition: -webkit-transform .25s linear;
+}
 
-        setAriaAttr = function(el, ariaType, newProperty){
-        el.setAttribute(ariaType, newProperty);
-    };
-    setAccordionAria = function(el1, el2, expanded){
-        switch(expanded) {
-      case "true":
-        setAriaAttr(el1, 'aria-expanded', 'true');
-        setAriaAttr(el2, 'aria-hidden', 'false');
-        break;
-      case "false":
-        setAriaAttr(el1, 'aria-expanded', 'false');
-        setAriaAttr(el2, 'aria-hidden', 'true');
-        break;
-      default:
-                break;
-        }
-    };
-//function
-switchAccordion = function(e) {
-  console.log("triggered");
-    e.preventDefault();
-    var thisAnswer = e.target.parentNode.nextElementSibling;
-    var thisQuestion = e.target;
-    if(thisAnswer.classList.contains('is-collapsed')) {
-        setAccordionAria(thisQuestion, thisAnswer, 'true');
-    } else {
-        setAccordionAria(thisQuestion, thisAnswer, 'false');
-    }
-    thisQuestion.classList.toggle('is-collapsed');
-    thisQuestion.classList.toggle('is-expanded');
-        thisAnswer.classList.toggle('is-collapsed');
-        thisAnswer.classList.toggle('is-expanded');
-    
-    thisAnswer.classList.toggle('animateIn');
-    };
-    for (var i=0,len=accordionToggles.length; i<len; i++) {
-        if(touchSupported) {
-      accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
-    }
-    if(pointerSupported){
-      accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
-    }
-    accordionToggles[i].addEventListener('click', switchAccordion, false);
-  }
-})();
-        </script> --}}
+.panel-default>.panel-heading a[aria-expanded="true"] {
+  background-color: #f1f3f6;
+}
 
-  <style>
-h2 {
-  font-size: 1.75rem;
-  color: #6c2f91;
-  padding: 1.3rem;
+.panel-default>.panel-heading a[aria-expanded="true"]:after {
+  content: "\2212";
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+}
+
+.panel-default>.panel-heading a[aria-expanded="false"]:after {
+  content: "\002b";
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.accordion-option {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin: 15px 0;
+}
+
+.accordion-option .title {
+  font-size: 20px;
+  font-weight: 400;
+ text-align: center;
+  padding: 0;
   margin: 0;
 }
 
-p{
-  text-align: justify;
-}
-
-.accordion a {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem 3rem 1rem 1rem;
-  color: #7288a2;
-  font-size: 1.15rem;
-  font-weight: 400;
-  border-bottom: 1px solid #6c2f91;
-}
-
-.accordion a:hover,
-.accordion a:hover::after {
-  content: '\002B';
-  cursor: pointer;
-  color: #03b5d2;
-}
-
-.accordion a:hover::after {
-  content: '\002B';
-  border: 1px solid #6c2f91;
-}
-
-.accordion a.active {
-  color: #03b5d2;
-  border-bottom: 2px solid #6c2f91;
-}
-
-.accordion a::after {
-  content: '\002B';
-  position: absolute;
+.accordion-option .toggle-accordion {
   float: right;
-  right: 1rem;
-  font-size: 1rem;
-  color: #7288a2;
-  padding: 5px;
-  width: 30px;
-  height: 30px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  border: 1px solid #7288a2;
-  text-align: center;
+  font-size: 16px;
+  color: #6a6c6f;
+
 }
 
-.accordion a.active::after {
-  content: '\002B';
-  color: #03b5d2;
-  border: 1px solid #03b5d2;
+.accordion-option .toggle-accordion:before {
+  content: "Expand All";
 }
 
-.accordion .content {
-  opacity: 0;
-  padding: 0 1rem;
-  max-height: 0;
-  border-bottom: 1px solid #e5e5e5;
-  overflow: hidden;
-  clear: both;
-  -webkit-transition: all 0.2s ease 0.15s;
-  -o-transition: all 0.2s ease 0.15s;
-  transition: all 0.2s ease 0.15s;
+.accordion-option .toggle-accordion.active:before {
+  content: "Collapse All";
 }
-
-.accordion .content p {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-.accordion .content.active {
-  opacity: 2;
-  padding: 1rem;
-  max-height: 100%;
-  -webkit-transition: all 0.35s ease 0.15s;
-  -o-transition: all 0.35s ease 0.15s;
-  transition: all 0.35s ease 0.15s;
-}
-
-
-  </style>
-
-<div class="container mt-5">
+</style>
+<!-- <div class="container mt-5">
   <div class="container">
     <div class="container">
           <div class="container">
@@ -353,18 +139,72 @@ p{
           </div>
       </div>
     </div>
+</div> -->
+
+
+
+
+
+<div class="container">
+  @if($faq->count() > 0) 
+    @foreach ($faq as $f)   
+      <div class="accordion-option">
+        <h3 class="title ">{{ $f->libelle }}</h3>
+      </div>
+      <div class="clearfix"></div>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+         @foreach($f->question as $q)
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+            <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{ $q->libelle }}
+            </a>
+          </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              @foreach($q->answer as $a)
+                {!! $a->libelle !!}
+              @endforeach
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+      @endforeach
+        @else
+            <div class="col-12 fa fa-question text-muted text-center" style="font-size:200px"></div>
+            @endif
 </div>
 
-    <script>
-        const items = document.querySelectorAll(".accordion a");
 
-        function toggleAccordion(){
-          this.classList.toggle('active');
-          this.nextElementSibling.classList.toggle('active');
-        }
+<script type="text/javascript">
+  $(document).ready(function() {
 
-        items.forEach(item => item.addEventListener('click', toggleAccordion));
-    </script>
+  $(".toggle-accordion").on("click", function() {
+    var accordionId = $(this).attr("accordion-id"),
+      numPanelOpen = $(accordionId + ' .collapse.in').length;
+    
+    $(this).toggleClass("active");
 
+    if (numPanelOpen == 0) {
+      openAllPanels(accordionId);
+    } else {
+      closeAllPanels(accordionId);
+    }
+  })
+
+  openAllPanels = function(aId) {
+    console.log("setAllPanelOpen");
+    $(aId + ' .panel-collapse:not(".in")').collapse('show');
+  }
+  closeAllPanels = function(aId) {
+    console.log("setAllPanelclose");
+    $(aId + ' .panel-collapse.in').collapse('hide');
+  }
+     
+});
+</script>
 
 @endsection
