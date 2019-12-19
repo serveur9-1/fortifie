@@ -54,8 +54,7 @@
             <div class="single-footer-widget instafeed">
                 <ul class="list_style instafeed d-flex flex-wrap">
                     @foreach($g_album as $al)
-                    {{-- href="{{ route('galerie',['folder'=> $al->id]) }}" --}}
-                    <li style="width: 21%;height: 60px ;background: url('{{ asset("assets/img/albums/covers/$al->img")}}') no-repeat;background-size: cover;"></li>
+                    <a href="{{ route('galerie',['folder'=> $al->id]) }}" style="width: 21%;height: 60px;margin-right: 5px ;background: url('{{ asset("assets/img/albums/covers/$al->img")}}') no-repeat;background-size: cover;"></a>
                     @endforeach
                 </ul>
             </div>

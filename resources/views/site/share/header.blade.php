@@ -65,41 +65,21 @@
 
                         <input style="border-radius: 4px 0 0 4px;color: black" type="date" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12 form_hidden" size="1" name="date">
 
-                        <div style="border-radius: 0%; border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
-                            <select name="category" style="display: none;">
-                                <option value="">Toutes les catégories</option>
-                                @foreach($category as $cat)
-                                    <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
-                                @endforeach
-                            </select>
-                            <div class="nice-select" tabindex="0" style="border-bottom: 1px solid #ced4da">
-                                <span class="current" style="color: black">Catégorie</span>
-                                <ul class="list">
-                                    <li data-value="" class="option">Toutes les catégories</li>
+                        <div style="border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
+                            <select name="category"  data-live-search="true" class="form-control selectpicker" style="display: none;">
+                                    <option value="">Toutes les catégories</option>
                                     @foreach($category as $cat)
-                                        <li data-value="{{ $cat->id }}" class="option">{{ $cat->libelle }}</li>
+                                        <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
                                     @endforeach
-                                </ul>
-                            </div>
+                            </select>
                         </div>
                         <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-3 form_hidden" id="default-select2">
-                            <select name="diocese" style="display: none;">
-                                @foreach($diocese as $d)
+                            <select name="diocese" data-live-search="true" class="form-control selectpicker" style="display: none;">
                                     <option value="">Tous les diocèse</option>
                                     @foreach($diocese as $d)
                                         <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                     @endforeach
-                                @endforeach
                             </select>
-                            <div class="nice-select" tabindex="0" style="border-bottom: 1px solid #ced4da">
-                                <span class="current" disabled="" style="color: black">Diocèse</span>
-                                <ul class="list">
-                                    <li data-value="" class="option">Tous les diocèses</li>
-                                    @foreach($diocese as $d)
-                                        <li data-value="{{ $d->id }}" class="option">{{ $d->nom }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="row col-lg-1 col-2">

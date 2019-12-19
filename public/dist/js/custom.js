@@ -79,7 +79,6 @@
     }
     parallaxEffect();
     
-    $('select').niceSelect();
         
     /*----------------------------------------------------*/
     /*  Google map js

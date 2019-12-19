@@ -841,10 +841,11 @@ h3 {
 /*=========== breadcrumb_area css =============*/
 .breadcrumb_area {
   position: relative;
-  padding: 110px 0px 90px;
+  padding: 70px 0px 90px;
   background: #04091e;
   z-index: 1;
   overflow: hidden;
+  height: 100px !important
 }
 
 .br_image {
@@ -3412,6 +3413,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
   padding-left: 20px;
   padding-right: 40px;
+
 }
 
 .default-select .nice-select .list {

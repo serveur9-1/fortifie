@@ -43,7 +43,7 @@
 
                                 <div class="form-group mb-5">
                                     <label for="exampleDropdown">{{ __('Paroisse rattachée') }}<em style="color:red;">*</em></label>
-                                    <select name="paroisse_id" data-live-search="true" class="form-control selectpicker">
+                                    <select name="paroisse_id" data-live-search="true" class="form-control selectpicker" style="background-color: #fff">
                                         <option disabled>Sélectionnez une paroisse</option>
                                         @foreach($paroisse as $d)
                                             <option value="{{ $d->id }}">{{ $d->nom }}</option>
