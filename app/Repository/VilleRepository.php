@@ -20,7 +20,7 @@ class VilleRepository
 
     public function getVille()
     {
-        return $this->v->newQuery()->select()->orderBy('libelle','ASC')->get();
+        return $this->v->newQuery()->select()->distinct()->orderBy('libelle','ASC')->get();
     }
 
 
@@ -36,7 +36,8 @@ class VilleRepository
     public function createVille($array)
     {
         $this->v->newQuery()->create([
-            'libelle' => $array['libelle']
+            'libelle' => $array['libelle'],
+            'diocese_id' => $array['diocese_id']
         ]);
     }
 
@@ -45,7 +46,8 @@ class VilleRepository
         $v = $this->v->newQuery()->findOrFail($id);
 
         $v->update([
-            'libelle' => $array['libelle']
+            'libelle' => $array['libelle'],
+            'diocese_id' => $array['diocese_id']
         ]);
     }
 

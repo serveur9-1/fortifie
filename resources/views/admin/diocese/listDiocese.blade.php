@@ -19,7 +19,7 @@
                   <thead>
                     <tr>
                       <th>Nom</th>
-                      <th>Ville rattachée</th>
+                      <th>Ville</th>
                       <th>Date de création</th>
 
                       <th>Action</th>
@@ -38,7 +38,11 @@
                   @foreach($diocese as $d)
                     <tr>
                       <td>{{ $d->nom }}</td>
-                      <td>{{ $d->ville->libelle }}</td>
+                      <td>
+                        @foreach($d->ville as $v)
+                          <span class="badge badge-dark">{{ $v->libelle }}</span>
+                        @endforeach
+                      </td>
                       <td>{{ $d->created_at->format('d-m-Y h:m:s') }}</td>
 
                       <td>

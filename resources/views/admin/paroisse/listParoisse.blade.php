@@ -47,7 +47,7 @@
                       <td>{{ $p->telephone }}</td>
                       <td>{{ $p->fixe }}</td>
                       <td>{{ $p->email }}</td>
-                      <td>{{ $p->diocese->nom }}</td>
+                      <td>{{ $p->ville->diocese->nom }}</td>
                       <td>{{ $p->created_at->format('d-m-Y') }}</td>
 
                       <td>

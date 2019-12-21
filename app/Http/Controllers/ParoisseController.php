@@ -7,6 +7,7 @@ use App\Paroisse;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\DioceseRepository;
+use App\Repository\VilleRepository;
 use App\Repository\ParoisseRepository;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,12 @@ class ParoisseController extends Controller
 {
     private $p;
 
-    public function __construct(ArticleRepository $r, ParoisseRepository $p, DioceseRepository $d, CategoryRepository $cr)
+    public function __construct(ArticleRepository $r,VilleRepository $v, ParoisseRepository $p, DioceseRepository $d, CategoryRepository $cr)
     {
         $this->a = $r;
         $this->p = $p;
         $this->d = $d;
+        $this->v = $v;
         $this->cr = $cr;
     }
 
@@ -35,7 +37,7 @@ class ParoisseController extends Controller
     public function listParoisse()
     {
         return view('admin.paroisse.listParoisse', [
-            'paroisse' => $this->p->getParoisse()
+            'paroisse' => $this->p->getParoisse(),
         ]);
     }
 
@@ -43,7 +45,8 @@ class ParoisseController extends Controller
     {
         return view('admin.paroisse.addParoisse',[
             'edit' => false,
-            'diocese' => $this->d->getDiocese()
+            'diocese' => $this->d->getDiocese(),
+            'ville' => $this->v->getVille()
         ]);
     }
 
@@ -59,7 +62,8 @@ class ParoisseController extends Controller
         return view('admin.paroisse.addParoisse',[
             'edit' => true,
             'diocese' => $this->d->getDiocese(),
-            'p' => Paroisse::findOrFail($id)
+            'p' => Paroisse::findOrFail($id),
+            'ville' => $this->v->getVille()
         ]);
     }
 

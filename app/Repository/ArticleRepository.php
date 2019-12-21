@@ -7,9 +7,9 @@ namespace App\Repository;
 use App\Article;
 use App\Category;
 use App\Diocese;
+use App\Paroisse;
 use App\Mail\ArticleEnableOrDisableMail;
 use App\Mail\NewsletterMail;
-use App\Paroisse;
 use App\User;
 use App\Denonciation;
 use Carbon\Carbon;
@@ -166,6 +166,7 @@ class ArticleRepository
         $ars = $a->get();
 
 
+
         if(!$is_new)
         {
             if($enable){
@@ -246,21 +247,20 @@ class ArticleRepository
         }
 
         //Envoyer MAil au gestionnaire
-
-        foreach ($ars[0]->paroisse->gestionnaire as $k){
-    
-            $data->receiver = $k->user->email;
-            $data->user = $k->user->name;
-
-
-        }
+        
 
         //dd($ars[0]->paroisse->gestionnaire[0]);
         $data->titre = $ars[0]->titre;
         $data->img = $ars[0]->img;
         $data->url = route('description', ['id' => $id]);
 
-        if($ars[0]->paroisse->gestionnaire[0] != null){
+        if($ars[0]->paroisse->gestionnaire->count() > 0){
+
+            foreach ($ars[0]->paroisse->gestionnaire as $k){
+    
+                $data->receiver = $k->user->email;
+                $data->user = $k->user->name;
+            }
 
             Mail::send(new ArticleEnableOrDisableMail($data));
 
@@ -366,6 +366,11 @@ class ArticleRepository
             ->limit(6)
             ->get();
     }
+
+/*
+ * PAS ENCORE UTILISER
+ *
+ * */
 
 
     //Obtenir des articles en fonc de la paroisse
@@ -496,7 +501,11 @@ class ArticleRepository
 
         }elseif (isset($q) && isset($diocese_id))
         {
-            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
+            $diocese_i = Diocese::findOrFail($diocese_id)->ville;
+            $diocese_i = array_column($diocese_i->toArray(), 'id');
+            
+            $diocese_id = $this->paro->newQuery()->select()->whereIn('ville_id', $diocese_i)->first();
+            $diocese = $diocese_id->id;
 
             $this->query = $this->art->newQuery()
                 ->select()
@@ -507,7 +516,11 @@ class ArticleRepository
 
         }elseif (isset($category_id) && isset($diocese_id))
         {
-            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
+            $diocese_i = Diocese::findOrFail($diocese_id)->ville;
+            $diocese_i = array_column($diocese_i->toArray(), 'id');
+            
+            $diocese_id = $this->paro->newQuery()->select()->whereIn('ville_id', $diocese_i)->first();
+            $diocese = $diocese_id->id;
 
             $this->query = $this->art->newQuery()
                 ->select()
@@ -525,7 +538,12 @@ class ArticleRepository
                 ->paginate($this->perPage);
 
         }elseif (isset($diocese_id)){
-            $diocese_id = Diocese::findOrFail($diocese_id)->paroisse;
+            
+            $diocese_i = Diocese::findOrFail($diocese_id)->ville;
+            $diocese_i = array_column($diocese_i->toArray(), 'id');
+            
+            $diocese_id = $this->paro->newQuery()->select()->whereIn('ville_id', $diocese_i)->first();
+            $diocese = $diocese_id->id;
 
             $this->query = $this->art->newQuery()
                 ->select()

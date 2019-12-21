@@ -28,7 +28,7 @@ class ParoisseRequest extends FormRequest
             'telephone' => 'nullable|max:8|min:8',
             'fixe' => 'nullable|max:8|min:8',
             'email' => 'nullable|email',
-            'diocese' => 'required',
+            'ville_id' => 'required',
         ];
     }
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Ville;
+use App\Paroisse;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -794,6 +797,17 @@ Route::get('/album',[
     'as' => 'album',
     'uses' => 'GalleryController@album'
 ]);
+
+
+Route::get('/api/ville/{id}', function ($id){
+    $v = new Ville();
+    return $v->newQuery()->select()->where('diocese_id', $id)->get();
+});
+
+Route::get('/api/paroisse/{id}', function ($id){
+    $v = new Paroisse();
+    return $v->newQuery()->select()->where('ville_id', $id)->get();
+});
 
 
 

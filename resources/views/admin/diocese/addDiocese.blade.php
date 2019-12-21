@@ -37,27 +37,6 @@
                       </div>
                    </div>
                     <div class="form-group">
-                        <label class="col-md-8 col-sm-8 col-xs-12" for="last-name">Ville<em style="color:red;">*</em>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select name="ville" required="required" class="@error('ville') is-invalid @enderror form-control col-md-12 col-xs-12">
-                                <option selected disabled>Choisir une ville</option>
-                                @foreach($ville as $v)
-                                    @if($edit)
-                                        <option @if($v->id == $diocese->ville_id ) selected @endif value="{{ $v->id }}">{{ $v->libelle }}</option>
-                                    @else
-                                        <option value="{{ $v->id }}">{{ $v->libelle }}</option>
-                                    @endif
-                                    @endforeach
-                            </select>
-                            @error('ville')
-                            <p class="text-danger" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </p>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
                         <input type="submit" class="btn  btnadmin" value="Enregistrer ">
                         <input type="reset" class="btn  btnad" value="Effacer le contenu ">

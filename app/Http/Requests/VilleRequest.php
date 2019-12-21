@@ -24,7 +24,8 @@ class VilleRequest extends FormRequest
     public function rules()
     {
         return [
-            'libelle' => 'required | max:200'
+            'libelle' => 'required | max:200',
+            'diocese_id' => 'required',
         ];
     }
 }

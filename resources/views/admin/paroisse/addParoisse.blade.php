@@ -71,18 +71,18 @@
                       <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Diocese rattaché<em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select name="diocese" required="required" class="form-control col-md-9 col-xs-12">
-                            <option disabled>Sélectionnez un diocèse</option>
-                          @foreach($diocese as $d)
+                          <select name="ville_id" required="required" class="form-control col-md-9 col-xs-12">
+                            <option disabled>Sélectionnez une ville</option>
+                          @foreach($ville as $v)
                               @if($edit)
-                                  <option @if($p->diocese->id == $d->id) selected @endif value="{{ $d->id }}">{{ $d->nom }}</option>
+                                  <option @if($v->id == $p->ville->id ) selected @endif value="{{ $v->id }}">{{ $v->libelle }}</option>
                               @else
-                                  <option value="{{ $d->id }}">{{ $d->nom }}</option>
+                                  <option value="{{ $v->id }}">{{ $v->libelle }}</option>
                               @endif
                           @endforeach
                            </select>
 
-                            @error('diocese')
+                            @error('ville_id')
                                 <p class="text-danger">
                                     {{ $message }}
                                 </p>

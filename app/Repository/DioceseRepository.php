@@ -19,7 +19,7 @@ class DioceseRepository
 
     public function getDiocese()
     {
-        return $this->d->newQuery()->select()->orderBy('nom','ASC')->get();
+        return $this->d->newQuery()->select()->distinct()->orderBy('nom','ASC')->get();
     }
 
 
@@ -34,8 +34,7 @@ class DioceseRepository
     public function createDiocese($array)
     {
         $this->d->newQuery()->create([
-            'nom' => $array['nom'],
-            'ville_id' => $array['ville']
+            'nom' => $array['nom']
         ]);
 
     }
@@ -46,8 +45,7 @@ class DioceseRepository
         $pa = $this->d->newQuery()->findOrFail($id);
 
         $pa->update([
-            'nom' => $array['nom'],
-            'ville_id' => $array['ville']
+            'nom' => $array['nom']
         ]);
     }
 

@@ -19,10 +19,10 @@ class CreateParoisseTable extends Migration
             $table->string('telephone',15)->nullable();
             $table->string('fixe',15)->nullable();
             $table->string('email',50)->nullable();
-            $table->bigInteger('diocese_id')->unsigned()->index();
-            $table->foreign('diocese_id')
+            $table->bigInteger('ville_id')->unsigned()->index();
+            $table->foreign('ville_id')
                 ->references('id')
-                ->on('dioceses')
+                ->on('villes')
                 ->onDelete('cascade');
             $table->timestamps();
         });

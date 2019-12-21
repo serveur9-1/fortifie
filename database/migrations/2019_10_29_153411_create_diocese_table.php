@@ -16,11 +16,6 @@ class CreateDioceseTable extends Migration
         Schema::create('dioceses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom',100);
-            $table->bigInteger('ville_id')->unsigned()->index();
-            $table->foreign('ville_id')
-                ->references('id')
-                ->on('villes')
-                ->onDelete('cascade');
 
             $table->timestamps();
         });

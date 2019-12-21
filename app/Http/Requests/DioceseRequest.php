@@ -24,8 +24,7 @@ class DioceseRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required | max:100',
-            'ville' => 'required'
+            'nom' => 'required | max:100'
         ];
     }
 }

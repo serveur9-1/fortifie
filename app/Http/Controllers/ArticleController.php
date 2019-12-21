@@ -84,14 +84,7 @@ class ArticleController extends Controller
 
     public function validAnnonce(ArticleRequest $request)
     {
-        
-        /*
-            'debut' => 'required',
-            'fin' => 'required',
-            'heure_debut' => 'required',
-            'heure_fin' => 'required'
-        */
-
+    
 
         if($request->debut == null || $request->fin == null || $request->heure_debut == null || $request->heure_fin == null )
         {

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paroisse extends Model
 {
-    protected $fillable = ['nom', 'telephone', 'fixe', 'email', 'diocese_id'];
+    protected $fillable = ['nom', 'telephone', 'fixe', 'email', 'ville_id'];
 
-    public function diocese()
+    public function ville()
     {
-        return $this->belongsTo('App\Diocese');
+        return $this->belongsTo('App\Ville');
     }
 
     public function gestionnaire()

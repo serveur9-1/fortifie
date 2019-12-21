@@ -19,7 +19,7 @@ class ParoisseRepository
 
     public function getParoisse()
     {
-        return $this->p->newQuery()->select()->orderBy('nom','ASC')->get();
+        return $this->p->newQuery()->select()->distinct()->orderBy('nom','ASC')->get();
     }
 
 
@@ -38,7 +38,7 @@ class ParoisseRepository
             'telephone' => $array->telephone,
             'fixe' => $array->fixe,
             'email' => $array->email,
-            'diocese_id' => $array->diocese
+            'ville_id' => $array->ville_id
         ]);
     }
 
@@ -52,13 +52,8 @@ class ParoisseRepository
             'telephone' => $array->telephone,
             'fixe' => $array->fixe,
             'email' => $array->email,
-            'diocese_id' => $array->diocese
+            'ville_id' => $array->ville_id
         ]);
     }
-
-
-
-
-
 
 }

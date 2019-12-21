@@ -88,7 +88,6 @@ class HomeController extends Controller
         return view('site.article.annonce_desc',[
             'article' => $this->a->getArticleWithId($id),
             'vue' => $this->avf->number_format_short($this->a->getArticleWithId($id)->visiteur->count()),
-            'otherArticle' => $this->a->getSomeArticleOf($id, $this->a->getArticleWithId($id)->paroisse->diocese->id, $this->a->getArticleWithId($id)->category->id)
         ]);
     }
 

@@ -16,6 +16,13 @@ class CreateVilleTable extends Migration
         Schema::create('villes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('libelle');
+
+            $table->bigInteger('diocese_id')->unsigned()->index();
+
+            $table->foreign('diocese_id')
+                ->references('id')
+                ->on('dioceses')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

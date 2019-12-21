@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VilleRequest;
 use App\Repository\VilleRepository;
+use App\Repository\DioceseRepository;
 use App\Ville;
 use Illuminate\Http\Request;
 
 class VilleController extends Controller
 {
-    public function __construct(VilleRepository $v)
+    public function __construct(VilleRepository $v, DioceseRepository $d)
     {
         $this->v = $v;
+        $this->d = $d;
     }
 
 
     public function listVille()
     {
         return view('admin.ville.listVille', [
-            'ville' => $this->v->getVille()
+            'ville' => $this->v->getVille(),
+            'diocese' => $this->d->getDiocese()
         ]);
     }
 
