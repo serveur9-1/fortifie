@@ -89,12 +89,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12" style="display: flex;">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="col-lg-12 col-md-12 col-12 g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm">
+                                    
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-6">
+                                    <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
+                                </div>
+                                
+                            </div>
+                            <!-- <div class="col-md-12 recaptcha" style="display: flex;">
                                 <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm"></div>
                                 
                                 <div class="col-md-6 text-right">
                                 <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
-                            </div>
+                            </div> -->
                                 <br/>
                             </div>
                             
