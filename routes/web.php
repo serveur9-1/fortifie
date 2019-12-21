@@ -126,7 +126,8 @@ Route::group(['middleware'=> 'auth'],function(){
         ]);
 
         Route::group(['middleware'=> 'auth'],function(){
-            Route::group(['middleware'=> 'admin'],function(){
+            
+            Route::group(['middleware'=> 'staff'],function(){
 
                 Route::get('/profil',[
                     'as' => 'profilAdmin',
@@ -146,31 +147,6 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'DioceseController@listDiocese'
                 ]);
     
-                Route::get('/addDiocese',[
-                    'as' => 'addDiocese',
-                    'uses' => 'DioceseController@addDiocese'
-                ]);
-    
-                Route::post('/validDiocese',[
-                    'as' => 'validDiocese',
-                    'uses' => 'DioceseController@validDiocese'
-                ]);
-    
-                Route::get('/diocese/edit/{id}',[
-                    'as' => 'editDiocese',
-                    'uses' => 'DioceseController@editDiocese'
-                ])->where('id','[0-9]+');
-    
-                Route::post('/updateDiocese/{id}',[
-                    'as' => 'updateDiocese',
-                    'uses' => 'DioceseController@updateDiocese'
-                ])->where('id','[0-9]+');
-    
-                Route::get('/deleteDiocese/{id}',[
-                    'as' => 'deleteDiocese',
-                    'uses' => 'DioceseController@deleteDiocese'
-                ])->where('id','[0-9]+');
-
 
                 //CATEGORY
 
@@ -179,62 +155,12 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'CategorieController@listCategorie'
                 ]);
     
-                Route::get('/addCategorie',[
-                    'as' => 'addCategorie',
-                    'uses' => 'CategorieController@addCategorie'
-                ]);
-    
-                Route::get('/Categorie/edit/{id}',[
-                    'as' => 'editCategorie',
-                    'uses' => 'CategorieController@editCategorie'
-                ])->where('id','[0-9]+');
-    
-                Route::post('/updateCategorie/{id}',[
-                    'as' => 'updateCategorie',
-                    'uses' => 'CategorieController@updateCategorie'
-                ])->where('id','[0-9]+');
-    
-                Route::get('/deleteCategorie/{id}',[
-                    'as' => 'deleteCategorie',
-                    'uses' => 'CategorieController@deleteCategorie'
-                ])->where('id','[0-9]+');
-    
-                Route::post('/validCategorie',[
-                    'as' => 'validCategorie',
-                    'uses' => 'CategorieController@validCategorie'
-                ]);
     
                 Route::get('/listSousCategorie',[
                     'as' => 'listSousCategorie',
                     'uses' => 'CategorieController@listSousCategorie'
                 ]);
-    
-                Route::get('/addSousCategorie',[
-                    'as' => 'addSousCategorie',
-                    'uses' => 'CategorieController@addSousCategorie'
-                ]);
-    
-                Route::get('/deleteSousCategorie/{id}',[
-                    'as' => 'deleteSousCategorie',
-                    'uses' => 'CategorieController@deleteSousCategorie'
-                ])->where('id','[0-9]+');
-    
-    
-                Route::post('/validSousCategorie',[
-                    'as' => 'validSousCategorie',
-                    'uses' => 'CategorieController@validSousCategorie'
-                ]);
-    
-    
-                Route::get('/sousCategorie/edit/{id}',[
-                    'as' => 'editSousCategorie',
-                    'uses' => 'CategorieController@editSousCategorie'
-                ])->where('id','[0-9]+');
-    
-                Route::post('/updateSousCategorie/{id}',[
-                    'as' => 'updateSousCategorie',
-                    'uses' => 'CategorieController@updateSousCategorie'
-                ])->where('id','[0-9]+');
+
 
 
                 //  ANNONCES
@@ -243,22 +169,6 @@ Route::group(['middleware'=> 'auth'],function(){
                     'as' => 'listAnnonce',
                     'uses' => 'ArticleController@listAnnonce'
                 ]);
-
-                Route::post('/listAnnonce/changeState/{id}/{enable}',[
-                    'as' => 'enableOrdisableArticle',
-                    'uses' => 'ArticleController@enableOrdisableArticle'
-                ])->where('id','[0-9]+');
-
-                Route::get('/addAnnonce',[
-                    'as' => 'addAnnonce',
-                    'uses' => 'ArticleController@addAnnonce'
-                ]);
-
-                Route::get('/annonce/edit/{id}',[
-                    'as' => 'editAnnonce',
-                    'uses' => 'ArticleController@editAnnonce'
-                ])->where('id','[0-9]+');
-
 
                 Route::get('/annonce/signalee',[
                     'as' => 'annonceSignale',
@@ -287,33 +197,6 @@ Route::group(['middleware'=> 'auth'],function(){
                 ]);
 
 
-                Route::get('/ask/accept/{id}',[
-                    'as' => 'acceptUserAsk',
-                    'uses' => 'UserController@acceptUserAsk'
-                ])->where('id','[0-9]+');
-
-                Route::post('/listUser/changeState/{id}/{enable}',[
-                    'as' => 'enableOrdisableUserAccount',
-                    'uses' => 'UserController@enableOrdisableUserAccount'
-                ])->where('id','[0-9]+');
-
-
-                Route::get('/addUsers',[
-                    'as' => 'addUsers',
-                    'uses' => 'UserController@addUsers'
-                ]);
-
-                Route::get('/deleteUser/{id}',[
-                    'as' => 'deleteUser',
-                    'uses' => 'UserController@deleteUser'
-                ])->where('id','[0-9]+');
-
-                Route::get('/users/edit/{id}',[
-                    'as' => 'editUser',
-                    'uses' => 'UserController@editUsers'
-                ])->where('id','[0-9]+');
-
-
                 //GESTIONNAIRE
 
 
@@ -323,74 +206,13 @@ Route::group(['middleware'=> 'auth'],function(){
                         'as' => 'ges.listUsers',
                         'uses' => 'UserController@listGestionnaire'
                     ]);
-    
-                    Route::get('/addUsers',[
-                        'as' => 'ges.addUsers',
-                        'uses' => 'UserController@addGestionnaire'
-                    ]);
-
-                    Route::post('/validUsers',[
-                        'as' => 'ges.validUsers',
-                        'uses' => 'UserController@validGestionnaire'
-                    ]);
-    
-                    Route::get('/deleteUser/{id}',[
-                        'as' => 'ges.deleteUser',
-                        'uses' => 'UserController@deleteGestionnaire'
-                    ])->where('id','[0-9]+');
-    
-                    Route::get('/users/edit/{id}',[
-                        'as' => 'ges.editUser',
-                        'uses' => 'UserController@editGestionnaire'
-                    ])->where('id','[0-9]+');
-    
-                    Route::patch('/updateUsers/{id}',[
-                        'as' => 'ges.updateUsers',
-                        'uses' => 'UserController@updateGestionnaire'
-                    ])->where('id','[0-9]+');
-
                 });
-
-
-
-
 
                 //PUB
 
                 Route::get('/listPub',[
                     'as' => 'listPub',
                     'uses' => 'PubController@listPub'
-                ]);
-
-                Route::post('/listUsers/changeState/{id}/{enable}',[
-                    'as' => 'enableOrdisablePub',
-                    'uses' => 'PubController@enableOrdisablePub'
-                ])->where('id','[0-9]+');
-
-                Route::get('/deletePub/{id}',[
-                    'as' => 'deletePub',
-                    'uses' => 'PubController@deletePub'
-                ])->where('id','[0-9]+');
-
-                Route::get('/pub/edit/{id}',[
-                    'as' => 'editPub',
-                    'uses' => 'PubController@editPub'
-                ])->where('id','[0-9]+');
-
-                Route::post('/updatePub/{id}',[
-                    'as' => 'updatePub',
-                    'uses' => 'PubController@updatePub'
-                ])->where('id','[0-9]+');
-
-
-                Route::get('/addPub',[
-                    'as' => 'addPub',
-                    'uses' => 'PubController@addPub'
-                ]);
-
-                Route::post('/validPub',[
-                    'as' => 'validPub',
-                    'uses' => 'PubController@validPub'
                 ]);
 
 
@@ -401,34 +223,6 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'PartenaireController@listPartner'
                 ]);
 
-
-                Route::get('/deletePartner/{id}',[
-                    'as' => 'deletePartner',
-                    'uses' => 'PartenaireController@deletePartner'
-                ])->where('id','[0-9]+');
-
-                Route::get('/addPartner',[
-                    'as' => 'addPartner',
-                    'uses' => 'PartenaireController@addPartner'
-                ]);
-
-                Route::post('/validPartner',[
-                    'as' => 'validPartner',
-                    'uses' => 'PartenaireController@validPartner'
-                ]);
-
-
-                Route::get('/partner/edit/{id}',[
-                    'as' => 'editPartner',
-                    'uses' => 'PartenaireController@editPartner'
-                ])->where('id','[0-9]+');
-
-                Route::post('/updatePartner/{id}',[
-                    'as' => 'updatePartner',
-                    'uses' => 'PartenaireController@updatePartner'
-                ])->where('id','[0-9]+');
-
-
                 //VILLES
 
                 Route::get('/listVille',[
@@ -436,32 +230,6 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'VilleController@listVille'
                 ]);
 
-                Route::get('/deleteVille/{id}',[
-                    'as' => 'deleteVille',
-                    'uses' => 'VilleController@deleteVille'
-                ])->where('id','[0-9]+');
-
-                Route::get('/addVille',[
-                    'as' => 'addVille',
-                    'uses' => 'VilleController@addVille'
-                ]);
-
-                Route::get('/ville/edit/{id}',[
-                    'as' => 'editVille',
-                    'uses' => 'VilleController@editVille'
-                ])->where('id','[0-9]+');
-
-
-
-                Route::post('/validVille',[
-                    'as' => 'validVille',
-                    'uses' => 'VilleController@validVille'
-                ]);
-
-                Route::post('/updateVille/{id}',[
-                    'as' => 'updateVille',
-                    'uses' => 'VilleController@updateVille'
-                ])->where('id','[0-9]+');
 
                 //GALERIE
 
@@ -475,79 +243,8 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'GalleryController@createAlbum'
                 ]);
 
-                Route::post('/addAlbum',[
-                    'as' => 'addAlbum',
-                    'uses' => 'GalleryController@validAlbum'
-                ]);
 
 
-                Route::get('/listAlbum/changeState/{id}/{enable}',[
-                    'as' => 'enableOrDisableAlbum',
-                    'uses' => 'GalleryController@enableOrDisableAlbum'
-                ])->where('id','[0-9]+');
-
-
-
-                Route::post('/listGallery/changeState/{id}/{enable}',[
-                    'as' => 'enableOrDisableGalleryImage',
-                    'uses' => 'GalleryController@enableOrDisableGalleryImage'
-                ])->where('id','[0-9]+');
-
-                
-
-                Route::get('/deleteGallerie/{id}',[
-                    'as' => 'deleteGallerie',
-                    'uses' => 'GalleryController@deleteGallery'
-                ])->where('id','[0-9]+');
-
-
-                Route::get('/deleteAlbum/{id}',[
-                    'as' => 'deleteAlbum',
-                    'uses' => 'GalleryController@deleteAlbum'
-                ])->where('id','[0-9]+');
-
-
-                Route::get('/addGallerie',[
-                    'as' => 'addGallerie',
-                    'uses' => 'GalleryController@addGalleryAdmin'
-                ]);
-
-                Route::post('/validGallerie',[
-                    'as' => 'validGallerie',
-                    'uses' => 'GalleryController@validGallery'
-                ]);
-
-                Route::get('/gallerie/edit/{id}',[
-                    'as' => 'editGallerie',
-                    'uses' => 'GalleryController@editGallery'
-                ])->where('id','[0-9]+');
-
-                Route::post('/updateGallerie/{id}',[
-                    'as' => 'updateGallerie',
-                    'uses' => 'GalleryController@updateGallery'
-                ])->where('id','[0-9]+');
-
-                Route::get('/galerie/delete/{id}',[
-                    'as' => 'galerie.delete',
-                    'uses' => 'GalleryController@delete'
-                ])->where('id', '[0-9]+');
-                
-                Route::get('/galerie/update/{id}',[
-                    'as' => 'galerie.update',
-                    'uses' => 'GalleryController@update'
-                ])->where('id', '[0-9]+');
-
-                //Pubs
-
-                Route::get('/pub/delete/{id}',[
-                    'as' => 'pub.delete',
-                    'uses' => 'PubController@delete'
-                ])->where('id', '[0-9]+');
-
-                Route::get('/pubcategorie/update/{id}',[
-                    'as' => 'pub.update',
-                    'uses' => 'PubController@update'
-                ])->where('id', '[0-9]+');
 
                 //PAROISSE
 
@@ -555,35 +252,6 @@ Route::group(['middleware'=> 'auth'],function(){
                     'as' => 'listParoisse',
                     'uses' => 'ParoisseController@listParoisse'
                 ]);
-
-                Route::get('/addParoisse',[
-                    'as' => 'addParoisse',
-                    'uses' => 'ParoisseController@addParoisse'
-                ]);
-
-                Route::post('/validParoisse',[
-                    'as' => 'validParoisse',
-                    'uses' => 'ParoisseController@validParoisse'
-                ]);
-
-                Route::get('/deleteParoisse/{id}',[
-                    'as' => 'deleteParoisse',
-                    'uses' => 'ParoisseController@deleteParoisse'
-                ])->where('id','[0-9]+');
-
-
-                Route::get('/editParoisse/{id}',[
-                    'as' => 'editParoisse',
-                    'uses' => 'ParoisseController@editParoisse'
-                ])->where('id','[0-9]+');
-
-                Route::post('/updateParoisse/{id}',[
-                    'as' => 'updateParoisse',
-                    'uses' => 'ParoisseController@updateParoisse'
-                ])->where('id','[0-9]+');
-
-
-
 
                 //NEWSLETTER
 
@@ -616,64 +284,403 @@ Route::group(['middleware'=> 'auth'],function(){
                     'uses' => 'FaqController@index'
                 ]);
 
-                Route::get('/faq/section/{id}/edit',[
-                    'as' => 'editSection',
-                    'uses' => 'FaqController@editSection'
-                ])->where('id','[0-9]+');
-
-                Route::post('/faq/section/valid',[
-                    'as' => 'sectionValid',
-                    'uses' => 'FaqController@createSection'
-                ]);
-
-                Route::get('/faq/section/delete/{id}',[
-                    'as' => 'deleteSection',
-                    'uses' => 'FaqController@deleteSection'
-                ])->where('id','[0-9]+');
-
-
 
                 Route::get('/question',[
                     'as' => 'admin.question',
                     'uses' => 'FaqController@question'
                 ]);
 
-                Route::get('/faq/question/{id}/edit',[
-                    'as' => 'editQuestion',
-                    'uses' => 'FaqController@editQuestion'
-                ])->where('id','[0-9]+');
-
-                Route::post('/faq/question/valid',[
-                    'as' => 'questionValid',
-                    'uses' => 'FaqController@createQuestion'
-                ]);
-
-                Route::get('/faq/question/delete/{id}',[
-                    'as' => 'deleteQuestion',
-                    'uses' => 'FaqController@deleteQuestion'
-                ])->where('id','[0-9]+');
-
-
-
                 Route::get('/answer',[
                     'as' => 'admin.answer',
                     'uses' => 'FaqController@answer'
                 ]);
 
-                Route::get('/faq/answer/{id}/edit',[
-                    'as' => 'editAnswer',
-                    'uses' => 'FaqController@editAnswer'
-                ])->where('id','[0-9]+');
 
-                Route::post('/faq/answer/valid',[
-                    'as' => 'answerValid',
-                    'uses' => 'FaqController@createAnswer'
-                ]);
 
-                Route::get('/faq/answer/delete/{id}',[
-                    'as' => 'deleteAnswer',
-                    'uses' => 'FaqController@deleteAnswer'
-                ])->where('id','[0-9]+');
+
+                Route::group(['middleware'=> 'admin'],function(){
+
+                    Route::get('/addDiocese',[
+                        'as' => 'addDiocese',
+                        'uses' => 'DioceseController@addDiocese'
+                    ]);
+        
+                    Route::post('/validDiocese',[
+                        'as' => 'validDiocese',
+                        'uses' => 'DioceseController@validDiocese'
+                    ]);
+        
+                    Route::get('/diocese/edit/{id}',[
+                        'as' => 'editDiocese',
+                        'uses' => 'DioceseController@editDiocese'
+                    ])->where('id','[0-9]+');
+        
+                    Route::post('/updateDiocese/{id}',[
+                        'as' => 'updateDiocese',
+                        'uses' => 'DioceseController@updateDiocese'
+                    ])->where('id','[0-9]+');
+        
+                    Route::get('/deleteDiocese/{id}',[
+                        'as' => 'deleteDiocese',
+                        'uses' => 'DioceseController@deleteDiocese'
+                    ])->where('id','[0-9]+');
+
+                    Route::get('/addCategorie',[
+                        'as' => 'addCategorie',
+                        'uses' => 'CategorieController@addCategorie'
+                    ]);
+        
+                    Route::get('/Categorie/edit/{id}',[
+                        'as' => 'editCategorie',
+                        'uses' => 'CategorieController@editCategorie'
+                    ])->where('id','[0-9]+');
+        
+                    Route::post('/updateCategorie/{id}',[
+                        'as' => 'updateCategorie',
+                        'uses' => 'CategorieController@updateCategorie'
+                    ])->where('id','[0-9]+');
+        
+                    Route::get('/deleteCategorie/{id}',[
+                        'as' => 'deleteCategorie',
+                        'uses' => 'CategorieController@deleteCategorie'
+                    ])->where('id','[0-9]+');
+        
+                    Route::post('/validCategorie',[
+                        'as' => 'validCategorie',
+                        'uses' => 'CategorieController@validCategorie'
+                    ]);
+
+                    Route::get('/addSousCategorie',[
+                        'as' => 'addSousCategorie',
+                        'uses' => 'CategorieController@addSousCategorie'
+                    ]);
+        
+                    Route::get('/deleteSousCategorie/{id}',[
+                        'as' => 'deleteSousCategorie',
+                        'uses' => 'CategorieController@deleteSousCategorie'
+                    ])->where('id','[0-9]+');
+        
+        
+                    Route::post('/validSousCategorie',[
+                        'as' => 'validSousCategorie',
+                        'uses' => 'CategorieController@validSousCategorie'
+                    ]);
+        
+        
+                    Route::get('/sousCategorie/edit/{id}',[
+                        'as' => 'editSousCategorie',
+                        'uses' => 'CategorieController@editSousCategorie'
+                    ])->where('id','[0-9]+');
+        
+                    Route::post('/updateSousCategorie/{id}',[
+                        'as' => 'updateSousCategorie',
+                        'uses' => 'CategorieController@updateSousCategorie'
+                    ])->where('id','[0-9]+');
+
+                    Route::post('/listAnnonce/changeState/{id}/{enable}',[
+                        'as' => 'enableOrdisableArticle',
+                        'uses' => 'ArticleController@enableOrdisableArticle'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/addAnnonce',[
+                        'as' => 'addAnnonce',
+                        'uses' => 'ArticleController@addAnnonce'
+                    ]);
+    
+                    Route::get('/annonce/edit/{id}',[
+                        'as' => 'editAnnonce',
+                        'uses' => 'ArticleController@editAnnonce'
+                    ])->where('id','[0-9]+');
+
+
+                    Route::get('/ask/accept/{id}',[
+                        'as' => 'acceptUserAsk',
+                        'uses' => 'UserController@acceptUserAsk'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/listUser/changeState/{id}/{enable}',[
+                        'as' => 'enableOrdisableUserAccount',
+                        'uses' => 'UserController@enableOrdisableUserAccount'
+                    ])->where('id','[0-9]+');
+    
+    
+                    Route::get('/addUsers',[
+                        'as' => 'addUsers',
+                        'uses' => 'UserController@addUsers'
+                    ]);
+    
+                    Route::get('/deleteUser/{id}',[
+                        'as' => 'deleteUser',
+                        'uses' => 'UserController@deleteUser'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/users/edit/{id}',[
+                        'as' => 'editUser',
+                        'uses' => 'UserController@editUsers'
+                    ])->where('id','[0-9]+');
+
+                    Route::group(['prefix'=> 'gestionnaire'],function(){
+                    
+                        Route::get('/addUsers',[
+                            'as' => 'ges.addUsers',
+                            'uses' => 'UserController@addGestionnaire'
+                        ]);
+    
+                        Route::post('/validUsers',[
+                            'as' => 'ges.validUsers',
+                            'uses' => 'UserController@validGestionnaire'
+                        ]);
+        
+                        Route::get('/deleteUser/{id}',[
+                            'as' => 'ges.deleteUser',
+                            'uses' => 'UserController@deleteGestionnaire'
+                        ])->where('id','[0-9]+');
+        
+                        Route::get('/users/edit/{id}',[
+                            'as' => 'ges.editUser',
+                            'uses' => 'UserController@editGestionnaire'
+                        ])->where('id','[0-9]+');
+        
+                        Route::patch('/updateUsers/{id}',[
+                            'as' => 'ges.updateUsers',
+                            'uses' => 'UserController@updateGestionnaire'
+                        ])->where('id','[0-9]+');
+    
+                    });
+
+
+                    Route::post('/listUsers/changeState/{id}/{enable}',[
+                        'as' => 'enableOrdisablePub',
+                        'uses' => 'PubController@enableOrdisablePub'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/deletePub/{id}',[
+                        'as' => 'deletePub',
+                        'uses' => 'PubController@deletePub'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/pub/edit/{id}',[
+                        'as' => 'editPub',
+                        'uses' => 'PubController@editPub'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/updatePub/{id}',[
+                        'as' => 'updatePub',
+                        'uses' => 'PubController@updatePub'
+                    ])->where('id','[0-9]+');
+    
+    
+                    Route::get('/addPub',[
+                        'as' => 'addPub',
+                        'uses' => 'PubController@addPub'
+                    ]);
+    
+                    Route::post('/validPub',[
+                        'as' => 'validPub',
+                        'uses' => 'PubController@validPub'
+                    ]);
+
+                    Route::get('/deletePartner/{id}',[
+                        'as' => 'deletePartner',
+                        'uses' => 'PartenaireController@deletePartner'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/addPartner',[
+                        'as' => 'addPartner',
+                        'uses' => 'PartenaireController@addPartner'
+                    ]);
+    
+                    Route::post('/validPartner',[
+                        'as' => 'validPartner',
+                        'uses' => 'PartenaireController@validPartner'
+                    ]);
+    
+    
+                    Route::get('/partner/edit/{id}',[
+                        'as' => 'editPartner',
+                        'uses' => 'PartenaireController@editPartner'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/updatePartner/{id}',[
+                        'as' => 'updatePartner',
+                        'uses' => 'PartenaireController@updatePartner'
+                    ])->where('id','[0-9]+');                    
+
+                    Route::get('/deleteVille/{id}',[
+                        'as' => 'deleteVille',
+                        'uses' => 'VilleController@deleteVille'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/addVille',[
+                        'as' => 'addVille',
+                        'uses' => 'VilleController@addVille'
+                    ]);
+    
+                    Route::get('/ville/edit/{id}',[
+                        'as' => 'editVille',
+                        'uses' => 'VilleController@editVille'
+                    ])->where('id','[0-9]+');
+    
+    
+    
+                    Route::post('/validVille',[
+                        'as' => 'validVille',
+                        'uses' => 'VilleController@validVille'
+                    ]);
+    
+                    Route::post('/updateVille/{id}',[
+                        'as' => 'updateVille',
+                        'uses' => 'VilleController@updateVille'
+                    ])->where('id','[0-9]+');
+
+                    Route::post('/addAlbum',[
+                        'as' => 'addAlbum',
+                        'uses' => 'GalleryController@validAlbum'
+                    ]);
+    
+    
+                    Route::get('/listAlbum/changeState/{id}/{enable}',[
+                        'as' => 'enableOrDisableAlbum',
+                        'uses' => 'GalleryController@enableOrDisableAlbum'
+                    ])->where('id','[0-9]+');
+    
+    
+    
+                    Route::post('/listGallery/changeState/{id}/{enable}',[
+                        'as' => 'enableOrDisableGalleryImage',
+                        'uses' => 'GalleryController@enableOrDisableGalleryImage'
+                    ])->where('id','[0-9]+');
+    
+                    
+    
+                    Route::get('/deleteGallerie/{id}',[
+                        'as' => 'deleteGallerie',
+                        'uses' => 'GalleryController@deleteGallery'
+                    ])->where('id','[0-9]+');
+    
+    
+                    Route::get('/deleteAlbum/{id}',[
+                        'as' => 'deleteAlbum',
+                        'uses' => 'GalleryController@deleteAlbum'
+                    ])->where('id','[0-9]+');
+    
+    
+                    Route::get('/addGallerie',[
+                        'as' => 'addGallerie',
+                        'uses' => 'GalleryController@addGalleryAdmin'
+                    ]);
+    
+                    Route::post('/validGallerie',[
+                        'as' => 'validGallerie',
+                        'uses' => 'GalleryController@validGallery'
+                    ]);
+
+                    Route::get('/gallerie/edit/{id}',[
+                        'as' => 'editGallerie',
+                        'uses' => 'GalleryController@editGallery'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/updateGallerie/{id}',[
+                        'as' => 'updateGallerie',
+                        'uses' => 'GalleryController@updateGallery'
+                    ])->where('id','[0-9]+');
+    
+                    Route::get('/galerie/delete/{id}',[
+                        'as' => 'galerie.delete',
+                        'uses' => 'GalleryController@delete'
+                    ])->where('id', '[0-9]+');
+                    
+                    Route::get('/galerie/update/{id}',[
+                        'as' => 'galerie.update',
+                        'uses' => 'GalleryController@update'
+                    ])->where('id', '[0-9]+');
+
+
+
+                    //Pubs
+
+                    Route::get('/pub/delete/{id}',[
+                        'as' => 'pub.delete',
+                        'uses' => 'PubController@delete'
+                    ])->where('id', '[0-9]+');
+
+                    Route::get('/pubcategorie/update/{id}',[
+                        'as' => 'pub.update',
+                        'uses' => 'PubController@update'
+                    ])->where('id', '[0-9]+');
+
+
+                    Route::get('/addParoisse',[
+                        'as' => 'addParoisse',
+                        'uses' => 'ParoisseController@addParoisse'
+                    ]);
+
+                    Route::post('/validParoisse',[
+                        'as' => 'validParoisse',
+                        'uses' => 'ParoisseController@validParoisse'
+                    ]);
+
+                    Route::get('/deleteParoisse/{id}',[
+                        'as' => 'deleteParoisse',
+                        'uses' => 'ParoisseController@deleteParoisse'
+                    ])->where('id','[0-9]+');
+
+
+                    Route::get('/editParoisse/{id}',[
+                        'as' => 'editParoisse',
+                        'uses' => 'ParoisseController@editParoisse'
+                    ])->where('id','[0-9]+');
+
+                    Route::post('/updateParoisse/{id}',[
+                        'as' => 'updateParoisse',
+                        'uses' => 'ParoisseController@updateParoisse'
+                    ])->where('id','[0-9]+');
+
+                    Route::get('/faq/section/{id}/edit',[
+                        'as' => 'editSection',
+                        'uses' => 'FaqController@editSection'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/faq/section/valid',[
+                        'as' => 'sectionValid',
+                        'uses' => 'FaqController@createSection'
+                    ]);
+    
+                    Route::get('/faq/section/delete/{id}',[
+                        'as' => 'deleteSection',
+                        'uses' => 'FaqController@deleteSection'
+                    ])->where('id','[0-9]+');
+
+                    Route::get('/faq/question/{id}/edit',[
+                        'as' => 'editQuestion',
+                        'uses' => 'FaqController@editQuestion'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/faq/question/valid',[
+                        'as' => 'questionValid',
+                        'uses' => 'FaqController@createQuestion'
+                    ]);
+    
+                    Route::get('/faq/question/delete/{id}',[
+                        'as' => 'deleteQuestion',
+                        'uses' => 'FaqController@deleteQuestion'
+                    ])->where('id','[0-9]+');
+
+                    Route::get('/faq/answer/{id}/edit',[
+                        'as' => 'editAnswer',
+                        'uses' => 'FaqController@editAnswer'
+                    ])->where('id','[0-9]+');
+    
+                    Route::post('/faq/answer/valid',[
+                        'as' => 'answerValid',
+                        'uses' => 'FaqController@createAnswer'
+                    ]);
+    
+                    Route::get('/faq/answer/delete/{id}',[
+                        'as' => 'deleteAnswer',
+                        'uses' => 'FaqController@deleteAnswer'
+                    ])->where('id','[0-9]+');
+                });
                 
 
             });

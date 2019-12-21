@@ -23,7 +23,7 @@
                     <div class="msg">OH!<span class="triangle"></span></div>
                 </div>
                 <h2 class="h1">Désolé! accès interdit</h2>
-                <h3><a href="{{ route('home') }}">Aller vers la page d'accueil</a></h3>
+                <h3><a href="{{ url()->previous() }}">Go back!</a></h3>
             </div>
         </div>
     </div>

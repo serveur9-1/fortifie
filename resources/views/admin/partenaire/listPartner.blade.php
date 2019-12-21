@@ -11,7 +11,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Partenaires ({{ $partenaire->count() }})</h6>
+              @if(@auth()->user()->is_admin)
               <a href="{{ route('addPartner') }}" class="btn pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter un partenaire</a>
+              @endif
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -23,8 +25,9 @@
 
                         <th>Site du partenaire</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </thead>
                   <tfoot>
@@ -34,8 +37,9 @@
 
                         <th>Site du partenaire</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </tfoot>
                   <tbody>
@@ -47,11 +51,13 @@
                         <td>{{ $p->nom }}</td>
                         <td><a target="_blank" href="{{ $p->url }}">{{ $p->url }}</a></td>
                       <td>{{ $p->created_at->format('d-m-Y') }}</td>
-
+                      @if(@auth()->user()->is_admin)
                       <td>
                           <a href="{{ route('deletePartner', ['id' => $p->id]) }}" class="btn btn-danger btn-sm btnad" onclick="return confirm('Vraiment supprimer cet partenaire ?') "><i class="fa fa-trash"></i></a>
                           <a href="{{ route('editPartner', ['id' => $p->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                       </td>
+                      @endif
+                      
                     </tr>
                   @endforeach
                   </tbody>

@@ -34,7 +34,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listDiocese') }}">liste des diocèses</a>
-        <a class="collapse-item" href="{{ route('addDiocese') }}">Ajouter un diocèse</a>
+        @if(@auth()->user()->is_admin)
+          <a class="collapse-item" href="{{ route('addDiocese') }}">Ajouter un diocèse</a>
+        @endif
       </div>
     </div>
   </li>
@@ -47,7 +49,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listVille') }}">liste des Villes</a>
-        <a class="collapse-item" href="{{ route('addVille') }}">Ajouter une ville</a>
+        @if(@auth()->user()->is_admin)
+          <a class="collapse-item" href="{{ route('addVille') }}">Ajouter une ville</a>
+        @endif
       </div>
     </div>
   </li>
@@ -60,7 +64,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listParoisse') }}">liste des Paroisses</a>
-        <a class="collapse-item" href="{{ route('addParoisse') }}">Ajouter une paroisse</a>
+        @if(@auth()->user()->is_admin)
+          <a class="collapse-item" href="{{ route('addParoisse') }}">Ajouter une paroisse</a>
+        @endif
       </div>
     </div>
   </li>
@@ -76,7 +82,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listCategorie') }}">liste des catégories</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('addCategorie') }}">Ajouter une catégorie</a>
+        @endif
       </div>
     </div>
   </li>
@@ -89,7 +97,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
 
                 <a class="collapse-item" href="{{ route('listSousCategorie') }}">liste des sous catégories</a>
+                @if(@auth()->user()->is_admin)
                 <a class="collapse-item" href="{{ route('addSousCategorie') }}">Ajouter une sous catégorie</a>
+                @endif
             </div>
         </div>
     </li>
@@ -102,9 +112,11 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listAnnonce') }}">liste des Annonces</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('addAnnonce') }}">Ajouter une annonce</a>
-          <a class="collapse-item" href="{{ route('annonceSignale') }}">Annonces signalées</a>
-          <a class="collapse-item" href="{{ route('waitAnnonce') }}"> En Attentes de Publication</a>
+        @endif
+        <a class="collapse-item" href="{{ route('annonceSignale') }}">Annonces signalées</a>
+        <a class="collapse-item" href="{{ route('waitAnnonce') }}"> En Attentes de Publication</a>
       </div>
     </div>
   </li>
@@ -129,6 +141,7 @@
    
   </li>
 
+  @if(@auth()->user()->is_admin)
   <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
         <i class="fa fa-fw fa-user"></i>
@@ -138,12 +151,16 @@
         <div class="bg-white py-2 collapse-inner rounded">
   
           <a class="collapse-item" href="{{ route('listUsers') }}">liste des comptes</a>
+          @if(@auth()->user()->is_admin)
           <a class="collapse-item" href="{{ route('addUsers') }}">Ajouter comptes</a>
+          @endif
            <a class="collapse-item" href="{{ route('askList') }}">Liste des demandes</a>
         </div>
       </div>
      
-    </li>
+  </li>
+  @endif
+  
   <hr class="sidebar-divider d-none d-md-block">
    <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
@@ -154,7 +171,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listPub') }}">liste des publicités</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('addPub') }}">Ajouter une publicité</a>
+        @endif
       </div>
     </div>
   </li>
@@ -167,7 +186,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listPartner') }}">liste des Partenaires</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('addPartner') }}">Ajouter un partenaire</a>
+        @endif
       </div>
     </div>
   </li>
@@ -180,8 +201,10 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('listGallerie') }}">liste des Images</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('addGallerie') }}">Ajouter une image</a>
         <a class="collapse-item" href="{{ route('createAlbum') }}">Créer Album</a>
+        @endif
       </div>
     </div>
   </li>
@@ -192,7 +215,7 @@
   </li>
 
   <hr class="sidebar-divider my-0">
-
+  @if(@auth()->user()->is_admin)
   <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse20" aria-expanded="true" aria-controls="collapse20">
         <i class="fa fa-fw fa-question"></i>
@@ -206,6 +229,7 @@
         </div>
       </div>
     </li>
+  @endif
 
 
   <!-- Divider -->
@@ -217,6 +241,3 @@
   </div>
 
 </ul>
-<style type="text/css">
-
-</style>

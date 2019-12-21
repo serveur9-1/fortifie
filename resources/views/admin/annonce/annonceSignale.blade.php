@@ -51,7 +51,7 @@
                                         <input onchange="change{{ $d->id }}()" type="checkbox" id="confirm-switch{{ $d->id }}" @if($d->article->is_active) checked @endif>
                                         <label for="confirm-switch{{ $d->id }}"></label>
                                     </div>
-
+                                    @if(@auth()->user()->is_admin)
                                     <script>
                                         function change{{ $d->id }}(){
                                             document.getElementById("changeStateForm{{ $d->id }}").submit();
@@ -60,6 +60,7 @@
                                     <form style="display: none;" id="changeStateForm{{ $d->id }}" action="{{ route('enableOrdisableArticle', ['id'=> $d->article->id, 'enable' => $d->article->is_active]) }}" method="post">
                                         @csrf
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -11,7 +11,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">{{ $gallery->count() }} image(s)</h6>
+              @if(@auth()->user()->is_admin)
               <a href="{{ route('addGallerie') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une image</a>
+              @endif
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -22,8 +24,9 @@
 
                         <th>Activée</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </thead>
                   <tfoot>
@@ -32,8 +35,9 @@
 
                       <th>Activée</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </tfoot>
                   <tbody>
@@ -57,11 +61,13 @@
                             </form>
                       </td>
                       <td>{{ $g->created_at->format('d-m-Y') }}</td>
-
+                      @if(@auth()->user()->is_admin)
                       <td>
                           <a href="{{ route('deleteGallerie', ['id' => $g->id]) }}" class="btn btn-sm btnad" onclick="return confirm('Vraiment supprimer cette image ?') "><i class="fa fa-trash"></i></a>
                           <!-- <a href="{{ route('editGallerie', ['id' => $g->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a> -->
                       </td>
+                      @endif
+                      
                     </tr>
                   @endforeach
                   </tbody>

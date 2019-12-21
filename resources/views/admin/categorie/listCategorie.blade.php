@@ -11,7 +11,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Catégories ({{ $category->count() }})</h6>
+              @if(@auth()->user()->is_admin)
               <a href="{{ route('addCategorie') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une Catégorie</a>
+              @endif
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -20,16 +22,18 @@
                     <tr>
                       <th>Nom de la categorie</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Nom de la categorie</th>
                       <th>Date d'ajout</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </tfoot>
                   <tbody>
@@ -37,12 +41,14 @@
                         <tr>
                           <td>{{ $c->libelle }}</td>
                           <td>{{ $c->created_at->format('d-m-Y h:m:s') }}</td>
+                          @if(@auth()->user()->is_admin)
                           <td>
                               <a href="{{ route('deleteCategorie', ['id' => $c->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette CAtégorie ?') ">
                                   <i class="fa fa-trash"></i>
                               </a>
                               <a href="{{ route('editCategorie', ['id' => $c->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                           </td>
+                          @endif
                         </tr>
                     @endforeach
                   </tbody>

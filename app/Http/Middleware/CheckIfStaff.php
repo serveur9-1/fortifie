@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckIfGestionnaire
+class CheckIfStaff
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class CheckIfGestionnaire
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->is_admin || auth()->user()->is_staff){
+        if(!auth()->user()->is_admin && !auth()->user()->is_staff){
             abort(403);
         }
         return $next($request);

@@ -11,7 +11,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Nos Comptes ({{ $user->count() }})</h6>
+              @if(@auth()->user()->is_admin)
               <a href="{{ route('ges.addUsers') }}" class="btn  pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter un gestionnaire</a>
+              @endif
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -23,8 +25,9 @@
                       <th>Image</th>
                       <th>Rôle</th>
                       <th>Date d'ajout</th>
-
-                    <th width="100">Action</th>
+                      @if(@auth()->user()->is_admin)
+                      <th width="100">Action</th>
+                      @endif
                     </tr>
                   </thead>
                   <tbody>
@@ -42,11 +45,12 @@
                               </div>
                           </td>
                           <td>{{ $u->created_at->format('d-m-Y') }}</td>
-
+                          @if(@auth()->user()->is_admin)
                           <td>
                               <a href="{{ route("ges.deleteUser", ["id" => $u->id ]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer ce gestionnaire ?') "><i class="fa fa-trash"></i></a>
                               <a href="{{ route("ges.editUser", ["id" => $u->id ]) }}" class="btn  btn-sm btnadmin"><i class="fa fa-edit"></i></a>
                           </td>
+                          @endif
                         </tr>
                       @endif
                   @endforeach

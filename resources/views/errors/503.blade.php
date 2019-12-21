@@ -23,7 +23,7 @@
                     <div class="msg">OH!<span class="triangle"></span></div>
                 </div>
                 <h2 class="h1">Désolé! service indisponible</h2>
-                <h3><a href="{{ route('home') }}">Aller vers la page d'accueil</a></h3>
+                <p>Veuillez réessayer plutard. Merci de votre compréhension !</p>
             </div>
         </div>
     </div>

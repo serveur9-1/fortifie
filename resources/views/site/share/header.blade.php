@@ -13,7 +13,7 @@
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 
                         @auth
-                        @if(!auth()->user()->is_admin)
+                        @if(!auth()->user()->is_admin && !auth()->user()->is_staff)
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li  class="dropdown nav-item">
                                   <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>

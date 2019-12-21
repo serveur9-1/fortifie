@@ -11,7 +11,9 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Annonces en attente ({{ $article->count() }})</h6>
+              @if(@auth()->user()->is_admin)
               <a href="{{ route('addAnnonce') }}" class="btn pull-right btnadmin" style="float: right;"><i class="fa fa-plus"></i> Ajouter une annonce</a>
+              @endif
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
@@ -31,8 +33,9 @@
                       <th>email</th>
                       <th>Date de creation</th>
                       <th>telephone</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </thead>
                   <tfoot>
@@ -44,8 +47,9 @@
                       <th>Email</th>
                       <th>Date de creation</th>
                       <th>Telephone</th>
-
+                      @if(@auth()->user()->is_admin)
                       <th>Action</th>
+                      @endif
                     </tr>
                   </tfoot>
                   <tbody>
@@ -60,7 +64,7 @@
                       <td>{{ $a->created_at->format('Y-m-d h:m:s')}}</td>
             
                       <td>{{ $a->contact_fixe }} {{ $a->contact_telephone }}</td>
-
+                      @if(@auth()->user()->is_admin)
                       <td>
                           <button onclick="active{{ $a->id }}()" class="btn  btn-sm btnad">Accepter</button>
                           <button onclick="desactive{{ $a->id }}()" class="btn btn-sm btnadmin">Refuser</button>
@@ -83,6 +87,7 @@
                               @csrf
                           </form>
                       </td>
+                      @endif
                     </tr>
                   @endforeach
                   </tbody>
