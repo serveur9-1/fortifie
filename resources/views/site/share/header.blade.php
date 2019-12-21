@@ -67,7 +67,7 @@
 
                         <div style="border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
                             <select name="category"  data-live-search="true" class="form-control selectpicker" style="display: none;">
-                                    <option value="">Toutes les catégories</option>
+                                    <option disabled>Toutes les catégories</option>
                                     @foreach($category as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
                                     @endforeach
@@ -75,7 +75,7 @@
                         </div>
                         <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-3 form_hidden" id="default-select2">
                             <select name="diocese" data-live-search="true" class="form-control selectpicker" style="display: none;">
-                                    <option value="">Tous les diocèse</option>
+                                    <option disabled>Tous les diocèse</option>
                                     @foreach($diocese as $d)
                                         <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                     @endforeach
