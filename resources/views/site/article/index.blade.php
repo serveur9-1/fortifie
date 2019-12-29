@@ -9,7 +9,7 @@
     </div>
 
     <style>
-        .card-o{
+        /* .card-o{
             border-bottom-left-radius: 4px;
             border-bottom-right-radius: 4px;
             align-items: center;
@@ -198,6 +198,104 @@
 		 padding-left: 25px;
 	}
 }
+
+
+ */
+
+
+#ads {
+    margin: 30px 0 30px 0;
+   
+}
+
+#ads .card-notify-badge {
+        position: absolute;
+        left: -10px;
+        top: -20px;
+        background: #f2d900;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px; 
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;
+
+    }
+
+#ads .card-notify-year {
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        background: #ff4444;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;      
+        font-size: 14px;      
+        width: 50px;
+        height: 50px;    
+        padding: 15px 0 0 0;
+}
+
+
+#ads .card-detail-badge {      
+        background: #f2d900;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;        
+    }
+
+   
+
+#ads .card:hover {
+            background: #fff;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+#ads .card-image-overlay {
+        font-size: 20px;
+        
+    }
+
+
+#ads .card-image-overlay span {
+            display: inline-block;              
+        }
+
+
+#ads .ad-btn {
+        text-transform: uppercase;
+        width: 150px;
+        height: 40px;
+        border-radius: 80px;
+        font-size: 16px;
+        line-height: 35px;
+        text-align: center;
+        border: 3px solid #e6de08;
+        display: block;
+        text-decoration: none;
+        margin: 20px auto 1px auto;
+        color: #000;
+        overflow: hidden;        
+        position: relative;
+        background-color: #e6de08;
+    }
+
+#ads .ad-btn:hover {
+            background-color: #e6de08;
+            color: #1e1717;
+            border: 2px solid #e6de08;
+            background: transparent;
+            transition: all 0.3s ease;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+        }
+
+#ads .ad-title h5 {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
  
         
     </style>
@@ -250,34 +348,8 @@
                             transition: all .5s;
                         }
                     </style>
-                    @if($article->count() > 0)
-                        @foreach($article as $a)
-                            <!-- <article class="row blog_item" style="background: #fff">
-                                <div class="col-md-12">
-                                    <div class="blog_post">
-                                        <div class="article-img" style="width: 100%;height:300px ;background: url('{{ asset("assets/img/articles/$a->img") }}') no-repeat;background-size: cover; background-position: center"></div>
-                                        <div class="blog_details">
-                                            <a href="{{ route('description',['id' => $a->id])}}"><h2>{{ $a->category->libelle }} : <span>{{ $a->titre }}</span></h2></a>
-                                            {{--{!!
-                                                Share::page('http://jorenvanhocht.be', 'Share title', ['class' => 'text_danger'])
-                                                ->facebook()
-                                                ->twitter()
-                                                ->linkedin('Extra linkedin summary can be passed here')
-                                                ->whatsapp();
-                                            !!}--}}
-                                            <ul class="col-12 blog_meta list_style mb-4 d-block">
-                                                <li class="col-sm-4"><a href="{{ route('paroisse',['id' => $a->paroisse->id]) }}"> <img style="width: 30px" class="author_img rounded-circle" src="{{ asset('/assets/img/users/'.$a->user->img) }}" alt="">&nbsp;{{ $a->paroisse->nom }}</a></li>
-                                                <li class="col-sm-8"><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($a->debut)->toFormattedDateString()  }} Au  {{ Carbon\Carbon::create($a->fin)->toFormattedDateString()  }}</li>
-                                            </ul>
-                                            <p>
-                                                {{ Str::limit($a->description, 300) }}
-                                            </p>
-                                            <a href="{{ route('description',['id' => $a->id])}}" class="view_btn button_hover btn btn-primary mb-4">VOIR DETAILS</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article> -->
-                            <div class="blog-card mb-5" data-aos="fade-up">
+                    
+                            {{-- <div class="blog-card mb-5" data-aos="fade-up">
                                 <div class="meta">
                                 <div class="photo" style="background-image: url({{ asset('assets/img/articles/'.$a->img) }})"></div>
                                 <ul class="details">
@@ -301,19 +373,42 @@
                                     <a href="{{ route('description',['id' => $a->id])}}">Voir détails</a>
                                 </p>
                                 </div>
-                        </div>
-                        @endforeach
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            {{ $article->links() }}
-                        </nav>
-                    @else
-                        <div class="col-12">
-                            <div class="qutes" style="text-align: center; font-size: 30px;opacity: 0.3">
-                                <span class="fa fa-copy mb-4" style="font-size: 80px "></span><br>
-                                Aucune annonce trouvée
+                            </div> --}}
+                            <div class="contaier">
+                                <div class="row" id="ads">
+                                @if($article->count() > 0)
+                                    @foreach($article as $a)
+                                    <div class="col-md-6" data-aos="fade-up">
+                                        <div class="card rounded">
+                                            <div class="card-image">
+                                                <span class="card-notify-badge">{{ $a->category->libelle }}</span>
+                                                <span class="card-notify-year">New</span>
+                                                <img class="img-fluid" src="{{ asset('assets/img/articles/'.$a->img) }}" alt="Alternate Text" />
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="ad-title m-auto">
+                                                    <h5 class="text-left">{{ $a->titre }}</h5>
+                                                    <p style="line-height: 1.2;word-spacing:-0.1px" class="text-justify">{{ Str::limit($a->description, 200) }}</p>
+                                                </div>
+                                                <a class="ad-btn" href="{{ route('description',['id' => $a->id])}}">Plus d'info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    <nav class="blog-pagination justify-content-center d-flex">
+                                        {{ $article->links() }}
+                                    </nav>
+                                @else
+                                    <div class="col-12">
+                                        <div class="qutes" style="text-align: center; font-size: 30px;opacity: 0.3">
+                                            <span class="fa fa-copy mb-4" style="font-size: 80px "></span><br>
+                                            Aucune annonce trouvée
+                                        </div>
+                                   </div>
+                                @endif
+                                </div>
                             </div>
-                       </div>
-                    @endif
+
                 </div>
                 <!--================End Blog Post Area =================-->
         </div>

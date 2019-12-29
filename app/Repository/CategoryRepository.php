@@ -37,7 +37,7 @@ class CategoryRepository
     public function getCategory()
     {
         return $this->c->newQuery()
-            ->select()
+            ->distinct()
             ->orderBy('libelle','ASC')
             ->get();
 

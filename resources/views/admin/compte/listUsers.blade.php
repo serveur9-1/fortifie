@@ -20,10 +20,9 @@
                     <tr>
                       <th>Utilisateur</th>
                       <th>Communauté</th>
-                      <th>téléphone</th>
-                      <th>email</th>
+                      <th>Téléphone</th>
+                      <th>E-mail</th>
                       <th>Paroisse</th>
-                      <th>Diocèse</th>
                       <th>Image</th>
                       <th>Activé</th>
                       <th>Date d'ajout</th>
@@ -35,10 +34,9 @@
                     <tr>
                       <th>Utilisateur</th>
                       <th>Communauté</th>
-                      <th>téléphone</th>
-                      <th>email</th>
+                      <th>Téléphone</th>
+                      <th>E-mail</th>
                       <th>Paroisse</th>
-                      <th>Diocèse</th>
                       <th>Image</th>
                       <th>Activé</th>
                       <th>Date d'ajout</th>
@@ -66,11 +64,6 @@
                     <td>
                         @foreach($u->gestionnaire as $g)
                             {{ $g->paroisse[0]->nom }}
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach($u->gestionnaire as $g)
-                            {{ $g->paroisse[0]->diocese->nom }}
                         @endforeach
                     </td>
                       <td>

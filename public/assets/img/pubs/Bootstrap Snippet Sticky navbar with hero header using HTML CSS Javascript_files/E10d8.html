@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://s.bootsnipp.com/iframe/E10d8 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Sticky navbar with hero header - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./bootstrap.min(1).css" rel="stylesheet" id="bootstrap-css">
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Gothic+A1|Kaushan+Script|Libre+Baskerville|Lobster');
+.body{
+	font-family: 'Gothic A1', sans-serif;
+	font-size:16px;
+	}
+	p{
+	color:#6c6c6f;
+	font-size:1em;
+	}
+	h1,h2,h3,h4,h5,h6{color:#323233;text-transform:uppercase;}
+.navbar-brand  span{
+	color: #fed136;
+	font-size:25px;font-weight:700;letter-spacing:0.1em;
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+.navbar-brand {
+	color: #fff;
+	font-size:25px;
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+	font-weight:700;
+	letter-spacing:0.1em;
+}
+
+.navbar-nav .nav-item .nav-link{
+	padding: 1.1em 1em!important;
+	font-size: 120%;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #fff;
+   font-family: 'Gothic A1', sans-serif;
+}
+.navbar-nav .nav-item .nav-link:hover{color:#fed136;}
+.navbar-expand-md .navbar-nav .dropdown-menu{
+	border-top:3px solid #fed136;
+}
+.dropdown-item:hover{background-color:#fed136;color:#fff;}
+nav{-webkit-transition: padding-top .3s,padding-bottom .3s;
+    -moz-transition: padding-top .3s,padding-bottom .3s;
+    transition: padding-top .3s,padding-bottom .3s;
+    border: none;
+	}
+	
+ .shrink {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #212529;
+}
+.banner{
+	background-image:url('http://www.hd-freewallpapers.com/latest-wallpapers/abstract-website-backgrounds.jpg');
+	text-align: center;
+    color: #fff;
+   
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.banner-text{
+	padding:200px 0 150px 0;
+}
+.banner-heading{
+	font-family: 'Lobster', cursive;
+	font-size: 75px;
+    font-weight: 700;
+    line-height: 100px;
+    margin-bottom: 30px;
+	color:#fff;
+}
+.banner-sub-heading{
+	font-family: 'Libre Baskerville', serif;
+	font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 50px;
+	color:#fff;
+}
+
+.btn-banner{
+	padding:5px 20px;
+	border-radius:10px;
+	font-weight:700;
+	line-height:1.5;
+	text-align:center;
+	color:#fff;
+	text-transform:uppercase;
+}
+.text-intro{
+	width:90%;
+	margin:auto;
+	text-align:center;
+	padding-top:30px;
+}
+
+
+/* mobile view */
+@media (max-width:500px)
+{
+	.navbar-nav{
+		background-color:#000;
+		border-top:3px solid #fed136;
+		color:#fff;
+		z-index:1;
+		margin-top:5px;
+		}
+	.navbar-nav .nav-item .nav-link{
+	padding: 0.7em 1em!important;
+	font-size: 100%;
+    font-weight: 500;
+    }
+	.banner-text{
+	padding:150px 0 150px 0;
+}
+.banner-heading{
+	font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+.banner-sub-heading{
+	font-size: 10px;
+    font-weight: 200;
+    line-height: 10px;
+    margin-bottom: 40px;
+}
+
+}
+
+@media (max-width:768px){
+	.banner-text{
+	padding:150px 0 150px 0;
+}
+	.banner-sub-heading{
+	font-size: 23px;
+    font-weight: 200;
+    line-height: 23px;
+    margin-bottom: 40px;
+}
+}
+ 
+    </style>
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min(2).js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+            else $('head > link').filter(':first').replaceWith(defaultCSS); 
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height()); 
+          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top shrink" id="banner">
+	<div class="container">
+  <!-- Brand -->
+  <a class="navbar-brand" href="https://s.bootsnipp.com/iframe/E10d8#"><span>Logo</span>&nbsp;Here</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://s.bootsnipp.com/iframe/E10d8#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://s.bootsnipp.com/iframe/E10d8#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://s.bootsnipp.com/iframe/E10d8#">Link</a>
+      </li> 
+	   <!-- Dropdown -->
+    <li class="nav-item dropdown show">
+      <a class="nav-link dropdown-toggle" href="https://s.bootsnipp.com/iframe/E10d8#" id="navbardrop" data-toggle="dropdown" aria-expanded="true">
+        Dropdown link
+      </a>
+      <div class="dropdown-menu show">
+        <a class="dropdown-item" href="https://s.bootsnipp.com/iframe/E10d8#">Link 1</a>
+        <a class="dropdown-item" href="https://s.bootsnipp.com/iframe/E10d8#">Link 2</a>
+        <a class="dropdown-item" href="https://s.bootsnipp.com/iframe/E10d8#">Link 3</a>
+      </div>
+    </li>
+    </ul>
+  </div>
+	</div>
+</nav>
+
+<div class="banner">
+	<div class="container">
+	<div class="banner-text">
+	<div class="banner-heading">
+	Glad to see you here !
+	</div>
+	<div class="banner-sub-heading">
+	Here goes the secondary heading on hero banner
+	</div>
+	<button type="button" class="btn btn-warning text-dark btn-banner">Get started</button>
+	</div>
+	</div>
+</div>
+<section id="about">
+<div class="container">
+	<div class="text-intro">
+	<h2>About Us</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+	</div>
+</div>
+</section>
+	<script type="text/javascript">
+	
+	$(document).on("scroll", function(){
+		if
+      ($(document).scrollTop() > 86){
+		  $("#banner").addClass("shrink");
+		}
+		else
+		{
+			$("#banner").removeClass("shrink");
+		}
+	});	</script>
+
+
+</body></html>

@@ -25,7 +25,6 @@
                     <tr>
                       <th>Email</th>
                       <th>Téléphone</th>
-                      <th>Diocèse</th>
                       <th>Paroisse</th>
                       <th>Date de demande</th>
 
@@ -36,7 +35,6 @@
                       <tr>
                           <th>Email</th>
                           <th>Téléphone</th>
-                          <th>Diocèse</th>
                           <th>Paroisse</th>
                           <th>Date de demande</th>
 
@@ -51,11 +49,6 @@
                           @foreach($a->gestionnaire as $g)
                               {{ $g->telephone }}
                           @endforeach
-                      </td>
-                      <td>
-                            @foreach($a->gestionnaire as $g)
-                                {{ $g->paroisse[0]->diocese->nom }}
-                            @endforeach
                       </td>
                       <td>
                             @foreach($a->gestionnaire as $g)

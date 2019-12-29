@@ -43,7 +43,7 @@
                           <td>{{ $c->created_at->format('d-m-Y h:m:s') }}</td>
                           @if(@auth()->user()->is_admin)
                           <td>
-                              <a href="{{ route('deleteCategorie', ['id' => $c->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette CAtégorie ?') ">
+                              <a href="{{ route('deleteCategorie', ['id' => $c->id]) }}" class="btn  btn-sm btnad" onclick="return confirm('Vraiment supprimer cette catégorie ?') ">
                                   <i class="fa fa-trash"></i>
                               </a>
                               <a href="{{ route('editCategorie', ['id' => $c->id]) }}" class="btn btn-primary btn-sm btnadmin"><i class="fa fa-edit"></i></a>

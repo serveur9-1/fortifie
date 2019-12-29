@@ -18,7 +18,7 @@ class SubCategoryRepository
 
     public function getSubCategory()
     {
-        return $this->subC->newQuery()->select()->orderBy('libelle','ASC')->get();
+        return $this->subC->newQuery()->distinct("category_id")->orderBy('libelle','ASC')->get();
     }
 
 
@@ -38,7 +38,6 @@ class SubCategoryRepository
             'category_id' => $array['category']
         ]);
     }
-
 
     public function updateSubCategory($id, $array)
     {

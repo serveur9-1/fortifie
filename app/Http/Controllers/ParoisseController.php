@@ -32,6 +32,13 @@ class ParoisseController extends Controller
         ]);
     }
 
+    public function paroisses()
+    {
+        return view('site.paroisse.paroisses', [
+            'paroisse' => $this->p->getParoisses(),
+        ]);
+    }
+
 
     //administatration
     public function listParoisse()

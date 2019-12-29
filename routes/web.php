@@ -2,6 +2,7 @@
 
 use App\Ville;
 use App\Paroisse;
+use App\SubCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -806,6 +807,12 @@ Route::get('/album',[
 ]);
 
 
+Route::get('/paroisse/all',[
+    'as' => 'all.paroisse',
+    'uses' => 'ParoisseController@paroisses'
+]);
+
+
 Route::get('/api/ville/{id}', function ($id){
     $v = new Ville();
     return $v->newQuery()->select()->where('diocese_id', $id)->get();
@@ -814,6 +821,12 @@ Route::get('/api/ville/{id}', function ($id){
 Route::get('/api/paroisse/{id}', function ($id){
     $v = new Paroisse();
     return $v->newQuery()->select()->where('ville_id', $id)->get();
+});
+
+
+Route::get('/api/souscat/{id}', function ($id){
+    $ss = new SubCategory();
+    return $ss->newQuery()->select()->where('category_id', $id)->get();
 });
 
 

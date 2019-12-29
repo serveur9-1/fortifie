@@ -50,15 +50,18 @@
                         </div>
                         <div class="panel-body">
                             <div id="list-example" class="list-group">
+                                @if($subCategory->count() > 0)
                                 @foreach($subCategory as $c)
                                     <div class="list-group-item list-group-item-action">{{ $c->category->libelle }}
-                                        <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                            <input value="{{ $c->id }}" class="js--categorie" categorie="{{ $c->libelle }}" type="radio" id="{{ $c->id }}" name="category" @if($edit)  @if($c->id == $a->category->id) checked @endif @endif >
+                                        <div id="cat" class="primary-radio" style="float: right;background-color: #5fc6c9">
+                                            <input value="{{ $c->category_id }}" class="js--categorie" categorie="{{ $c->libelle }}" type="radio" id="{{ $c->id }}" name="category" @if($edit)  @if($c->id == $a->category->id) checked @endif @endif >
                                             <label for="{{ $c->id }}"></label>
                                         </div>
                                     </div>
                                 @endforeach
-
+                                @else 
+                                <p class="text-center text-danger">Aucune catégorie trouvé</p>
+                                @endif
                                 <input type="text" value="1" name="sans_titre" hidden>
 
                                 @error('category')
@@ -75,18 +78,8 @@
                              <h3 class="panel-title">Sous catégories <span style="color: red">*</span></h3>
                         </div>
                         <div class="panel-body">
-                            <div id="list-example" class="list-group">
-                                @foreach($subCategory as $c)
-                                    <div class="list-group-item list-group-item-action">{{ $c->libelle }}
-                                        <div class="primary-radio" style="float: right;background-color: #5fc6c9">
-                                            <input value="{{ $c->libelle }}" class="js--subcategorie" subcategorie="{{ $c->libelle }}" @if($edit)  @if($c->libelle == $a->titre) checked @endif @endif type="radio" id="{{ $c->libelle }}" name="titre">
-                                            <label for="{{ $c->libelle }}"></label>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                @error('titre')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                            <div id="list-example" class="list-group sousCat">
+                                {{-- Js here !!! --}}
                             </div>
                             <button class="btn stepp nextBtn pull-right mt-3" type="button">Suivant</button>
                         </div>
@@ -393,5 +386,34 @@
                 color: #ffffff;
             }
         </style>
+
+
+<script>
+        $("#cat input").click((e)=>{
+    
+            fetch("http://127.0.0.1:8000/api/souscat/"+e.target.value) // Call the fetch function passing the url of the API as a parameter
+            .then(resp => resp.json())
+            .then( data =>{
+                $('.sousCat').html(' ');
+                    console.log(data);
+                    data.forEach(i => {
+                        $('.sousCat').append(`
+                        <div class="list-group-item list-group-item-action">${i.libelle}
+                            <div class="primary-radio" style="float: right;background-color: #5fc6c9">
+                                <input value="${i.libelle}" class="js--subcategorie" subcategorie="${i.libelle}" type="radio" id="${i.libelle}" name="titre">
+                                <label for="${i.libelle}"></label>
+                            </div>
+                        </div>
+                        `);
+                    });
+    
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    
+        })
+    </script>
+
 
 @endsection

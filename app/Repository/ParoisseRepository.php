@@ -23,6 +23,12 @@ class ParoisseRepository
     }
 
 
+    public function getParoisses()
+    {
+        return $this->p->newQuery()->select()->distinct()->orderBy('nom','ASC')->paginate(15);
+    }
+
+
     public function deleteParoisse($id)
     {
         $paroisse = $this->p->newQuery()->findOrFail($id);
