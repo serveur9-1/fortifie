@@ -1,4 +1,5 @@
 @extends('layout_right')
+@section('title','Inscription')
 @section('content')
     <div class="col-lg-8">
         <div class="blog_left_sidebar">

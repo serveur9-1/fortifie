@@ -65,22 +65,39 @@
 
                         <input style="border-radius: 4px 0 0 4px;color: black" type="date" class="col-lg-3  form-control d-inline-block ml-0 mr-0 col-12 form_hidden" size="1" name="date">
 
-                        <div style="border:1px solid #ced4da" class="col-lg-3 form-select d-inline-block ml-0 mr-0 form_hidden" id="default-select2">
-                            <select name="category"  data-live-search="true" class="form-control selectpicker" style="display: none;">
+                           <!--  <select name="category"  data-live-search="true" class="form-control selectpicker" style="display: none;">
                                     <option disabled>Toutes les catégories</option>
                                     @foreach($category as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
                                     @endforeach
+                            </select> -->
+                        <div class=" col-lg-3 place form-control form-select d-inline-block ml-0 mr-0 form_hidden" style="padding: 0px !important">
+
+                             <select name="category"  class="form-control form-select">
+                                    <option selected="disabled">Toutes les catégories</option>
+                                    @foreach($category as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
+                                    @endforeach
                             </select>
+
+                        </div><!-- 
+                        <div class="autocomplete col-lg-3 place form-control d-inline-block ml-0 mr-0 form_hidden" style="padding: 0px !important">
+
+                            <input  style="padding: 0px !important;border: 0px;width: 100%;height: 100%;text-align: center;border-radius: 4px 0 0 4px;color: black" type="text" name="myCountry" placeholder="Selectionner une catégorie">
+
+                        </div> -->
+
+                        <div class="autocomplete col-lg-3 place form-control d-inline-block ml-0 mr-0 form_hidden" style="padding: 0px !important">
+
+                            <input id="myInput" style="padding: 0px !important;border: 0px;width: 100%;height: 100%;text-align: center" type="text" name="myCountry" placeholder="Selectionner un lieu">
+
                         </div>
-                        <div style=" border-radius: 0; border:1px solid #ced4da" class="form-select d-inline-block ml-0 mr-0 col-lg-3 form_hidden" id="default-select2">
-                            <select name="diocese" data-live-search="true" class="form-control selectpicker" style="display: none;">
+                            <!-- <select name="diocese" data-live-search="true" class="form-control selectpicker" style="display: none;">
                                     <option disabled>Tous les diocèse</option>
                                     @foreach($diocese as $d)
                                         <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                     @endforeach
-                            </select>
-                        </div>
+                            </select> -->
                     </div>
                     <div class="row col-lg-1 col-2">
                         <button style="border-radius:0 4px 4px 0; background-color: #5fc6c9;
@@ -233,57 +250,38 @@
                         text-align: center;
                     }
                 }
-                div.searchable {
-    width: 300px;
-    float: left;
-    margin: 0 15px;
-}
+                /*the container must be positioned relative:*/
+                .autocomplete {
+                  position: relative;
+                  display: inline-block;
+                }
 
-.searchable input {
-    width: 100%;
-    height: 50px;
-    font-size: 18px;
-    padding: 10px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
-    display: block;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center/8px 10px;
-}
 
-.searchable ul {
-    display: none;
-    list-style-type: none;
-    background-color: #fff;
-    border-radius: 0 0 5px 5px;
-    border: 1px solid #add8e6;
-    border-top: none;
-    max-height: 180px;
-    margin: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 0;
-}
+                .autocomplete-items {
+                  position: absolute;
+                  border-bottom: none;
+                  border-top: none;
+                  z-index: 99;
+                  /*position the autocomplete items to be the same width as the container:*/
+                  left: 0;
+                  right: 0;
+                }
 
-.searchable ul li {
-    padding: 7px 9px;
-    border-bottom: 1px solid #e1e1e1;
-    cursor: pointer;
-    color: #6e6e6e;
-}
+                .autocomplete-items div {
+                  cursor: pointer;
+                  background-color: #fff; 
+                }
 
-.searchable ul li.selected {
-    background-color: #e8e8e8;
-    color: #333;
-}
+                /*when hovering an item:*/
+                .autocomplete-items div:hover {
+                  background-color: #e9e9e9; 
+                }
+
+                /*when navigating through the items using the arrow keys:*/
+                .autocomplete-active {
+                  background-color: DodgerBlue !important; 
+                  color: #ffffff; 
+                }
 
             </style>
             <nav class="navbar navbar-expand-lg navbar-light" id="nav_cat" style="height: 30px ; overflow: hidden;padding-top: 15px;border-bottom: 2px solid #8e5bac">

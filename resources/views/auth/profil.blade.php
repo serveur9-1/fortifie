@@ -1,5 +1,5 @@
 @extends('layout_right')
-
+@section('title','Mon profil')
 @section('content')
 
     <div class="col-lg-8">

@@ -1,5 +1,5 @@
 @extends('layout_right')
-
+@section('title','Connexion')
 @section('content')
  <div class="col-lg-8">
         <div class="blog_left_sidebar">
