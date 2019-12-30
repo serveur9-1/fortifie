@@ -1,14 +1,205 @@
 @extends('layout_right')
-@section('title','Accueil Fortifietoi')
+@section('title','Accueil FortifieToi')
+
+
 
 @section('content')
-    <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
+
+
+<section>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://pbs.twimg.com/media/EGHYvttU4AAYKb7?format=jpg&name=large" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pbs.twimg.com/media/EGHYvtkUcAAuc8T?format=jpg&name=large" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pbs.twimg.com/media/EGHYvtjU0AAO8w1?format=jpg&name=large" class="d-block w-100" alt="...">
+                </div>
+                <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+    <section class="search-sec">
+        <div class="container">
+            <form action="#" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <input type="text" class="form-control search-slt" placeholder="Entrer un mot clé...">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <input type="text" id="datepicker" autocomplete="off" class="form-control search-slt" placeholder="Entrer la date">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <select class="form-control search-slt" id="exampleFormControlSelect1">
+                                    <option selected disabled>Selectionner une Catégorie</option>
+                                    <option>Example one</option>
+                                    <option>Example one</option>
+                                    <option>Example one</option>
+                                    <option>Example one</option>
+                                    <option>Example one</option>
+                                    <option>Example one</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 bg-light p-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iusto ullam ad sunt iste sint commodi, dolor eveniet cum praesentium, sequi eligendi vel doloribus ab animi! Explicabo reiciendis suscipit fuga?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iusto ullam ad sunt iste sint commodi, dolor eveniet cum praesentium, sequi eligendi vel doloribus ab animi! Explicabo reiciendis suscipit fuga?
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    {{-- <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
         <a href="#">
             <img src="{{ asset('/assets/image/blog/main-blog/m-blog-2.jpg') }}" style="height: 110px;width: 100%">
         </a>
-    </div>
+    </div> --}}
 
     <style>
+        .search-sec{
+            padding: 2rem;
+        }
+        .search-slt{
+            display: block;
+            width: 100%;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #55595c;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            height: calc(3rem + 2px) !important;
+            border-radius:0;
+        }
+        .wrn-btn{
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            height: calc(3rem + 2px) !important;
+            border-radius:0;
+        }
+        @media (min-width: 992px){
+            .search-sec{
+                position: relative;
+                top: -114px;
+                background: rgba(26, 70, 104, 0.51);
+            }
+        }
+
+        @media (max-width: 992px){
+            .search-sec{
+                background: #1A4668;
+            }
+        }
+
+
+        /* DATEPICKER */
+
+        input:focus {outline: none;}
+        #ui-datepicker-div {
+            display: none;
+            background-color: #fff;
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+            margin-top: 0.25rem;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .ui-datepicker-calendar thead th {
+            padding: 0.25rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #78909C;
+        }
+        .ui-datepicker-calendar tbody td {
+            width: 2.5rem;
+            text-align: center;
+            padding: 0;
+        }
+        .ui-datepicker-calendar tbody td a {
+            display: block;
+            border-radius: 0.25rem;
+            line-height: 2rem;
+            transition: 0.3s all;
+            color: #546E7A;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+        .ui-datepicker-calendar tbody td a:hover {	
+            background-color: #E0F2F1;
+        }
+        .ui-datepicker-calendar tbody td a.ui-state-active {
+            background-color: #009688;
+            color: white;
+        }
+        .ui-datepicker-header a.ui-corner-all {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            margin: 0.5rem;
+            border-radius: 0.25rem;
+            transition: 0.3s all;
+        }
+        .ui-datepicker-header a.ui-corner-all:hover {
+            background-color: #ECEFF1;
+        }
+        .ui-datepicker-header a.ui-datepicker-prev {	
+            left: 0;	
+            background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+            background-repeat: no-repeat;
+            background-size: 0.5rem;
+            background-position: 50%;
+            transform: rotate(180deg);
+        }
+        .ui-datepicker-header a.ui-datepicker-next {
+            right: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==');
+            background-repeat: no-repeat;
+            background-size: 10px;
+            background-position: 50%;
+        }
+        .ui-datepicker-header a>span {
+            display: none;
+        }
+        .ui-datepicker-title {
+            text-align: center;
+            line-height: 2rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding-bottom: 0.25rem;
+        }
+        .ui-datepicker-week-col {
+            color: #78909C;
+            font-weight: 400;
+            font-size: 0.75rem;
+        }
+
         /* .card-o{
             border-bottom-left-radius: 4px;
             border-bottom-right-radius: 4px;
@@ -412,4 +603,12 @@
                 </div>
                 <!--================End Blog Post Area =================-->
         </div>
+        <script>
+            $( function() {
+                $( "#datepicker" ).datepicker({
+                    dateFormat: "dd-mm-yy"
+                    ,	duration: "fast"
+                });
+            } );
+        </script>
 @endsection

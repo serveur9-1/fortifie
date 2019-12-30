@@ -56,7 +56,7 @@
                         </div>
                     </div>
             </nav>
-            <div class="container" id="dispa1" style="background: #ffffff !important">
+            {{-- <div class="container" id="dispa1" style="background: #ffffff !important">
                 <form class="contact_form" action="{{ route('query') }}" method="get">
                 <div class="row">
 
@@ -106,7 +106,7 @@
 
                 </div>
                 </form>
-            </div>
+            </div> --}}
             <style>
                 .flex-container {
                     display: flex;
