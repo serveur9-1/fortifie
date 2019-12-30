@@ -834,4 +834,7 @@ Route::get('/api/souscat/{id}', function ($id){
 
 
 
-
+Route::get('/config',[
+    'as' => 'config',
+    'uses' => 'ConfigController@configuration'
+]);

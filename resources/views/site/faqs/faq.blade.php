@@ -21,15 +21,6 @@
 
 
 <style type="text/css">
-  body {
-  color: #6a6c6f;
-  background-color: #f1f3f6;
-  margin-top: 30px;
-}
-
-.container {
-  max-width: 960px;
-}
 
 .panel-default>.panel-heading {
   color: #333;

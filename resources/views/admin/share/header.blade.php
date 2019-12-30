@@ -230,7 +230,16 @@
       </div>
     </li>
   @endif
-
+  
+  <hr class="sidebar-divider d-none d-md-block">
+  <div class="sidebar-heading">
+      CONFIGURATION
+  </div>
+  <li class="nav-item">
+        <a class="nav-link" href="{{ route('config') }}">
+      <i class="fa fa-fw fa-cog"></i>
+      <span>Coordonnées du site</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
