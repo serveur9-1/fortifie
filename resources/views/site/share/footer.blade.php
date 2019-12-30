@@ -571,7 +571,7 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="single-footer-widget">
-                            <h6 class="footer_title">Liens utiles</h6>
+                            <h6 class="footer_title">Liens utiles {{ route('home') }}/users</h6>
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list_style">

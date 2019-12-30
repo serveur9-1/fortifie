@@ -10,7 +10,7 @@
                     <h2 class="page-cover-tittle">Foire aux questions</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li class="active">foire aux questions</li>
+                        <li class="active">Foire aux questions</li>
                     </ol>
                 </div>
             </div>
@@ -164,7 +164,12 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
+            
               @foreach($q->answer as $a)
+                <i>
+                    Dernière modification : <strong> &nbsp;{{ Carbon\Carbon::create($a->updated_at->format('d-M-Y'))->isoFormat('d MMMM Y') }}</strong>
+                </i>
+                <br>
                 {!! $a->libelle !!}
               @endforeach
             </div>
