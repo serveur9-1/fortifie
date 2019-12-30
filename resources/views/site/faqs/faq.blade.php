@@ -111,41 +111,8 @@
   content: "Collapse All";
 }
 </style>
-<!-- <div class="container mt-5">
-  <div class="container">
-    <div class="container">
-          <div class="container">
-            @if($faq->count() > 0)
 
-              @foreach ($faq as $f)
-                  <h2 class="text-center">{{ $f->libelle }}</h2>
-                  <div class="accordion">
-                    @foreach($f->question as $q)
-                      <div class="accordion-item">
-                        <a>{{ $q->libelle }}</a>
-                        <div class="content">
-                            @foreach($q->answer as $a)
-                            {!! $a->libelle !!}
-                            @endforeach
-                        </div>
-                      </div>
-                    @endforeach
-                  </div>
-              @endforeach
-            @else
-            <div class="col-12 fa fa-question text-muted text-center" style="font-size:200px"></div>
-            @endif
-        
-          </div>
-      </div>
-    </div>
-</div> -->
-
-
-
-
-
-<div class="container">
+<div class="container mt-5">
   @if($faq->count() > 0) 
     @foreach ($faq as $f)   
       <div class="accordion-option">
@@ -155,15 +122,15 @@
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
          @foreach($f->question as $q)
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
+          <div class="panel-heading" role="tab" id="heading{{$q->id}}">
             <h4 class="panel-title">
-            <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{$q->id}}" aria-expanded="true" aria-controls="collapse{{$q->id}}">
               {{ $q->libelle }}
             </a>
           </h4>
           </div>
-          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
+        <div id="collapse{{$q->id}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$q->id}}">
+            <div class="panel-body bg-light p-3">
             
               @foreach($q->answer as $a)
                 <i>
