@@ -30,20 +30,20 @@
             </a>
         </div>
     </section>
-    <section class="search-sec">
+    <section class="search-sec col-lg-12">
         <div class="container">
             <form action="#" method="post" novalidate="novalidate">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="text" class="form-control search-slt" placeholder="Entrer un mot clé...">
+                                <input id="js--search-input-word" type="text" class="form-control search-slt" placeholder="Entrer un mot clé...">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                 <input type="text" id="datepicker" autocomplete="off" class="form-control search-slt" placeholder="Entrer la date">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <select class="form-control search-slt" id="exampleFormControlSelect1">
+                                <select class="form-control search-slt" id="js--search-category">
                                     <option selected disabled>Selectionner une Catégorie</option>
                                     <option>Example one</option>
                                     <option>Example one</option>
@@ -58,9 +58,50 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 bg-light p-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iusto ullam ad sunt iste sint commodi, dolor eveniet cum praesentium, sequi eligendi vel doloribus ab animi! Explicabo reiciendis suscipit fuga?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iusto ullam ad sunt iste sint commodi, dolor eveniet cum praesentium, sequi eligendi vel doloribus ab animi! Explicabo reiciendis suscipit fuga?
+                    <div id="js--search-content" class="col-lg-12 p-4" style="background:#fff;display:none">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <a href="#" style="text-decoration:none">
+                                    <div class="card mb-3" style="max-width: 540px;max-height: 70px;">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-4" style='max-height: 70px;
+                                            background:url("http://127.0.0.1:8000/assets/img/articles/blog3.jpg");
+                                            background-size:contain'>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title m-0">Card title</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <span class="d-block text-muted mt-2 float-right">
+                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
+                                </span>
+                                
+                            </div>
+                            <div class="col-lg-3">
+                                <a class="d-block" href="#" style="text-decoration:none !important">
+                                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi
+                                </a>
+                                <span class="d-block text-muted mt-2 float-right">
+                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
+                                </span>
+                            </div>
+                            <div class="col-lg-3">
+                                <a class="d-block" href="#" style="text-decoration:none !important">
+                                    <i class="fa fa-building"></i>&nbsp;&nbsp;Diocèse - Koumassi
+                                </a>
+                                <span class="d-block text-muted mt-2 float-right">
+                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                        {{-- LOADING --}}
+                        <div class="d-flex justify-content-center">
+                            <img class="img-fluid"  src="{{ asset('/assets/img/loading.gif') }}" alt="">
+                        </div>
                     </div>
                 </div>
             </form>
@@ -610,5 +651,27 @@
                     ,	duration: "fast"
                 });
             } );
+        </script>
+
+
+
+        <script>
+            $(document).ready(function(){
+
+                $('#js--search-input-word').on('keyup', (e)=>{
+                    
+                    if(e.target.value.length > 4)
+                    {
+                        console.log(e.target.value);
+
+                        $('#js--search-content').show();
+                    }else{
+
+                        $('#js--search-content').hide();
+                    }
+
+                });
+
+            });
         </script>
 @endsection
