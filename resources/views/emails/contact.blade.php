@@ -11,7 +11,7 @@
         <p>{{ $message }}</p>
 
         <p>Que le Seigneur vous bénisse,<br>
-            L'équipe de Fortifie-toi.</p>
+            L'équipe de Fortifie-Toi.</p>
 
         <p>NB : Nous nous réservons le droit de supprimer les annonces qui ne respecte pas nos politiques.</p>
     </div>

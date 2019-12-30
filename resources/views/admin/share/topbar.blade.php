@@ -10,7 +10,7 @@
           <ul class="navbar-nav ml-auto">
 
               <!-- notification annonces signalées -->
-              <li class="nav-item dropdown no-arrow mx-1">
+              <li class="nav-item dropdown no-arrow mx-1" title="compte en attente">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-bell fa-fw"></i>
                       <!-- Counter - Alerts -->
@@ -37,7 +37,7 @@
               
 
               <!-- notification annonces signalées -->
-              <li class="nav-item dropdown no-arrow mx-1">
+              <li class="nav-item dropdown no-arrow mx-1" title="Annonces en attente">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-bullhorn fa-fw"></i>
                       <!-- Counter - Alerts -->
@@ -63,7 +63,7 @@
               </li>
 
               <!-- notification annonces signalées -->
-              <li class="nav-item dropdown no-arrow mx-1">
+              <li class="nav-item dropdown no-arrow mx-1" title="denonciations">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-balance-scale fa-fw"></i>
                       <!-- Counter - Alerts -->

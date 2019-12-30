@@ -89,15 +89,16 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="col-lg-12 col-md-12 col-12 g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm">
                                     
                                 </div>
-                                <div class="col-md-6 col-lg-6 col-6">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-6">
                                     <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Envoyer</button>
                                 </div>
-                                
-                            </div>
                             <!-- <div class="col-md-12 recaptcha" style="display: flex;">
                                 <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm"></div>
                                 
@@ -108,6 +109,25 @@
                             </div>
                             
                         </form>
+                    </div>
+                    <div class="searchable">
+                        <input type="text" placeholder="search countries" onkeyup="filterFunction(this,event)">
+                        <ul>
+                            <li>Algeria</li>
+                            <li>Bulgaria</li>
+                            <li>Canada</li>
+                            <li>Egypt</li>
+                            <li>Fiji</li>
+                            <li>India</li>
+                            <li>Japan</li>
+                            <li>Iran (Islamic Republic of)</li>
+                            <li>Lao People's Democratic Republic</li>
+                            <li>Micronesia (Federated States of)</li>
+                            <li>Nicaragua</li>
+                            <li>Senegal</li>
+                            <li>Tajikistan</li>
+                            <li>Yemen</li>
+                        </ul>
                     </div>
                 </div>
             </div>

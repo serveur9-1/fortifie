@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#6c3191">
     <meta name="author" content="GAYATECH +225 77832982">
     <link rel="icon" href="{{{ asset('assets/image/favicon.png')}}}">
-    <title>Fortifie-toi </title>
+    <title>Fortifie-Toi </title>
     <!-- Bootstrap core CSS -->
     @include('site.share.stylesheets')
 </head>

@@ -16,7 +16,7 @@
 
         @if(!$is_enable)<p>Veuillez contacter l'administrateur pour savoir le motif Cliquez sur ce lien <a href="{{ route('contact') }}">{{ route('contact') }}</a></p>@endif
 
-        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-Toi</p>
 
     </div>
 @stop

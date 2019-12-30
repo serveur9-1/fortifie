@@ -563,6 +563,7 @@
                                 <div class="col-12">
                                     <ul class="list_style">
                                         <li><a href="{{ route('faq')}}">Foire aux questions</a></li>
+                                        <li><a href="{{ route('faq')}}">Répertoire des paroisses</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -585,7 +586,7 @@
                 <div class="border_line mb-0"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
                     <p class="col-lg-8 col-sm-8 footer-text m-0">
-                        Copyright &copy; 2018 - <script>document.write(new Date().getFullYear());</script> Tous droits reservés | Developed by <a href="www.fortifietoi.ci" target="_blank">Fortifie-Toi</a></p>
+                        Copyright &copy; 2018 - <script>document.write(new Date().getFullYear());</script> Tous droits reservés | <a href="www.fortifietoi.ci" target="_blank">Fortifie-Toi</a></p>
                 </div>
             </div>
         </footer>

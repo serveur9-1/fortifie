@@ -63,6 +63,7 @@
                                 <div class="form-group" id="dioc">
                                     Diocese
                                     <select name="" class="">
+                                         <option selected="disabled">Diocese</option>
                                         @foreach($diocese as $d)
                                             <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                         @endforeach
@@ -73,6 +74,7 @@
                                 <div class="form-group" id="vil">
                                     ville
                                     <select name="" class="">
+                                         <option selected="disabled">ville</option>
                                         @foreach($diocese as $d)
                                         @endforeach
                                     </select>
@@ -82,6 +84,7 @@
                                 <div class="form-group" id="paro" >
                                     paroisse
                                     <select name=""class="">
+                                         <option selected="disabled">paroisse</option>
                                         @foreach($diocese as $d)
                                         @endforeach
                                     </select>
@@ -163,8 +166,8 @@
                                     <label for="">Image de profil</label><em style="color:red;">*</em>
                                     <p>Inclure une image de 1000px et au plus de 2000px de haut ou de large.
                                         <br> Cette image représentera la paroisse, le groupe, la communauté, le ministère, le mouvement… </p>
-                                    <div class="container">
-                                        <div class="row">
+                                    <div class="container pl-0">
+                                        <div class="row pl-0">
                                             <div class="col-lg-12 col-sm-12">
                                                 <div class="card">
                                                     <div class="card-body">

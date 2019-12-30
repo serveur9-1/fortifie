@@ -162,7 +162,7 @@ class ArticleController extends Controller
         ]);
 
         $this->a->denonciateArticle($id, $request);
-        return redirect()->back()->with('success',"Vous avez dénoncé cette annonce. Votre demande sera traitée dans 48h");
+        return redirect()->back()->with('success',"Vous avez dénoncé cette annonce.Votre demande sera traitée dans 48h");
         
     }
 }

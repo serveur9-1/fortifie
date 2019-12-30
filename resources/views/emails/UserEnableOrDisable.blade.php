@@ -12,7 +12,7 @@
         @if($is_enable)Vous pouvez à présent soumettre vos annonces en accorde avec nos conditions d’utilisation. @else<p>Nous avons constaté le non-respect de nos conditions d’utilisation, de nos règles et de notre politique.
 		Veuillez nous contacter pour en savoir plus.</p>@endif
 
-        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifieo-Toi</p>
 
     </div>
 @stop

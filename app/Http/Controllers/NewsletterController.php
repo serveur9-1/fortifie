@@ -20,7 +20,7 @@ class NewsletterController extends Controller
     {
         $this->new->suscribeTo($request);
 
-        return redirect()->back()->with('success','Vous êtes maintenant abonné à la newsletter.');
+        return redirect()->back()->with('success','Vous venez de vous inscrire au service Alerte.');
         //dd($request['email']);
     }
 

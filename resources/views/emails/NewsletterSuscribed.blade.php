@@ -12,7 +12,7 @@
 
         <p>Votre adresse e-mail : <strong>{{ $user }}</strong></p>
 
-        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-Toi</p>
 
     </div>
 @stop

@@ -9,6 +9,6 @@
 
         <p>Une fois votre compte confirmée par l'administration vous récévrerez un message de confirmation, ainsi vous pourez vous connecter pour gérer vos annonces, vos courriels
             d'option, vos courriels de notification et plus à partir de la page mon compte de Fortifie-toi</p>
-        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-toi</p>
+        <p>Que le Seigneur vous bénisse,<br> L'équipe Fortifie-Toi</p>
     </div>
 @stop

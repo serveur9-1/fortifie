@@ -68,7 +68,7 @@
                       </div>
                    </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Diocese rattaché<em style="color:red;">*</em>
+                      <label class="control-label col-md-3 col-sm-2 col-xs-12" for="last-name">Ville rattaché<em style="color:red;">*</em>
                       </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select name="ville_id" required="required" class="form-control col-md-9 col-xs-12">
