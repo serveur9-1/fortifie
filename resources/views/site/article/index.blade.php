@@ -1,8 +1,5 @@
 @extends('layout_right')
 @section('title','Accueil FortifieToi')
-
-
-
 @section('content')
 
 
