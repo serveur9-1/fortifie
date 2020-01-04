@@ -11,6 +11,8 @@ use App\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Notifications\MailResetPasswordNotification;
+
 
 class UsersRepository
 {
