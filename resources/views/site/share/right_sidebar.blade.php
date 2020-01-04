@@ -23,7 +23,7 @@
                     <div class="media post_item" data-aos="fade-left">
                         <div style="width: 100px;height: 60px ;background: url('{{ asset("assets/img/articles") }}/{{ $a->article['img']  }}') no-repeat;background-size: cover;"></div>
                         <div class="media-body">
-                            <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ $a->article['titre'] }}</h3></a>
+                            <a href="{{ route('description', ['id' => $a->article['id'] ]) }}"><h3>{{ Str::limit($a->article['titre'], 40) }}</h3></a>
                             <p>{{ Carbon\Carbon::now()->diffForHumans($a->article['created_at']) }}</p>
                         </div>
                     </div>
@@ -35,8 +35,8 @@
         <!--============= PUB AREA HERE  ===================-->
         @if($g_pub->count() > 0)
             @foreach($g_pub as $p)
-                <aside class="single_sidebar_widget ads_widget">
-                    <a target="_blank" href="{{ $p->url }}"><img class="img-fluid" src="{{ asset("/assets/img/pubs/$p->img") }}" alt=""></a>
+                <aside class="single_sidebar_widget ads_widget col-md-12">
+                    <a class="col-md-12" target="_blank" href="{{ $p->url }}"><img class="img-fluid" src="{{ asset("/assets/img/pubs/$p->img") }}" alt=""></a>
                     <div class="br"></div>
                 </aside>
             @endforeach
@@ -54,7 +54,7 @@
             <div class="single-footer-widget instafeed">
                 <ul class="list_style instafeed d-flex flex-wrap">
                     @foreach($g_album as $al)
-                    <a href="{{ route('galerie',['folder'=> $al->id]) }}" style="width: 21%;height: 60px;margin-right: 5px ;background: url('{{ asset("assets/img/albums/covers/$al->img")}}') no-repeat;background-size: cover;"></a>
+                        <a href="{{ route('galerie',['folder'=> $al->id]) }}" style="width: 21%;height: 60px;margin-right: 5px ;background: url('{{ asset("assets/img/albums/covers/$al->img")}}') no-repeat;background-size: cover;"></a>
                     @endforeach
                 </ul>
             </div>
@@ -80,11 +80,15 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                         </div>
-                        <input name="email" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrer email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer email'">
+                        <input name="email_suscriber" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Entrer email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer email'">
                     </div>
-                    <button type="submit" href="#" class="btn bbtns">S'abonner</button>
+                    <button type="submit" class="btn bbtns">S'abonner</button>
                 </form>
+                
             </div>
+            @error("email_suscriber")
+        <p><small >{{ $message }}</small></p>
+            @enderror
             <div class="br"></div>
         </aside>
 

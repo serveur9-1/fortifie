@@ -5,10 +5,12 @@
     <div class="col-lg-8">
         <div class="blog_left_sidebar">
             <div class="container">
-                <div class="panel-heading"><h3 class="panel-title mb-5">{{ __('MON PROFIL') }}</h3></div>
                 <div class="panel panel-primary">
-                    <form class="contact_form col-md-8" method="POST" action="{{ route('updateGestionnaireProfil') }}" enctype="multipart/form-data">
-
+                    <form class="contact_form col-md-10" method="POST" action="{{ route('updateGestionnaireProfil') }}" enctype="multipart/form-data">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ __('MON PROFIL') }}</h3>
+                            <small><i>(Dernière modification: {{ auth()->user()->updated_at->format('d/M/Y') }})</i></small>
+                        </div>
                         @csrf
                         <div class="panel-body">
                             <div class="form-group mt-3">
@@ -69,7 +71,6 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label for="">Image <em style="color:red;">*</em></label>
-                                <p>Inclure une image de 1000px et au plus de 2000px de haut ou de large.
                                     <br> Cette image sera la photo de couverture de l'église  </p>
                                 <div class="container">
                                     <div class="row">

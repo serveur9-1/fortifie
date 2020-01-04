@@ -35,7 +35,7 @@ class ParoisseController extends Controller
     public function paroisses()
     {
         return view('site.paroisse.paroisses', [
-            'paroisse' => $this->p->getParoisses(),
+            'paroisse' => $this->p->getCommunity(),
         ]);
     }
 

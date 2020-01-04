@@ -21,6 +21,14 @@
         #bouton_haut:hover {
           background-color: #6b2f90;
         }
+
+        .partners{
+            filter: grayscale(100%)
+        }
+
+        .partners:hover{
+            filter: grayscale(0%)
+        }
       </style>
         <div class="container">
             <button onclick="topFunction()" id="bouton_haut" title="Vers le haut">
@@ -35,7 +43,7 @@
             <section class="customer-logos slider mt-5">
                 @foreach($g_partenaire as $p)
                 <a target="_blank" href="{{ $p->url }}">
-                    <div class="slide"
+                    <div class="slide partners"
                         style='height: 60px ;background: url({{ asset("/assets/img/partenaires/$p->logo") }}); background-repeat: no-repeat; background-position: center; background-size: contain'>
                     </div>
                 </a>

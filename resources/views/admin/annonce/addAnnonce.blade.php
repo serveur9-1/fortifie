@@ -111,7 +111,7 @@
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Ajoutez une image<em style="color:red;">*</em>
                       </label>
                       <div class="col-md-12 col-sm-12 col-lg-6 col-xs-12">
-                          <input @if(isset($article->img)) required="required" @endif value="{{ old('img') }}" type="file" id="" name="img" class="form-control col-md-9 col-xs-12">
+                          <input @if(!isset($article->img)) required="required" @endif value="{{ old('img') }}" type="file" id="" name="img" class="form-control col-md-9 col-xs-12">
                           @error('img')
                           <p class="text-danger">{{ $message }}</p>
                           @enderror

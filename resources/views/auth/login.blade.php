@@ -5,7 +5,7 @@
         <div class="blog_left_sidebar">
             <div class="container">
                 <div class="panel panel-primary">
-                    <form class="contact_form col-md-8"  method="POST" action="{{ route('login') }}">
+                    <form class="contact_form col-md-10"  method="POST" action="{{ route('login') }}">
                         <div class="panel-heading"><h3 class="panel-title mb-5">{{ __('CONNEXION') }}</h3></div>
                         <div class="alert alert-primary" style="text-align:center;" role="alert">
                             Vous n'avez pas de compte ? &nbsp;  Cliquez <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('register') }}">ici</a></b> pour en créer.
@@ -45,11 +45,11 @@
                             <div class="form-group">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Mot de passe oublié') }}
+                                        {{ __('Mot de passe oublié ?') }}
                                     </a>
                                 @endif
                             </div>
-                            <button class="btn btn-block mt-3 radius" style="background: #5fc6c9; color: #fff" type="submit">{{ __('Connexion') }}</button>
+                            <button class="btn btn-block mt-3 radius text-uppercase" style="background: #5fc6c9; color: #fff" type="submit">{{ __('Connexion') }}</button>
                         </div>
                     </form>
                 </div>

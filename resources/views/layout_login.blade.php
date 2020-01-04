@@ -105,8 +105,6 @@
         <div id="content">
 
             <!-- Topbar -->
-
-
             @include('site.share.alert')
 
             @yield('content')

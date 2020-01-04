@@ -5,107 +5,47 @@
         <div class="blog_left_sidebar">
             <div class="container">
                 <div class="col">
-                    <div class="panel-heading"><h3 class="panel-title">{{ __('Inscription') }}</h3></div>
-                        <div class="alert alert-info mb-5 col-md-8">
-                            <p>Si votre paroisse ne figure pas dans la liste, veuillez nous envoyer un message en précisant le diocèse, la ville et le nom de votre paroisse.  Si tel est le cas, <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('contact') }}">cliquez ici</a></b>.
-                            </p>
-                            <b class="text-dark">Nb : Ne continuez pas votre inscription s’il vous plait. Veuillez patienter jusqu’à l’ajout des informations adéquates dans un délai de un (1) jour maximum. Cela permettra de retrouver vos annonces facilement.</b>
-                        </div>
-                        
-
-                            <form method="POST" action="{{ route('validUsers') }}" class="contact_form col-md-8" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('validUsers') }}" class="contact_form col-md-10" enctype="multipart/form-data">
+                            <div class="panel-heading"><h3 class="panel-title text-uppercase mb-5">{{ __('Inscription') }}</h3></div>
+                            <div class="alert alert-info mb-5 col-md-12">
+                                <p>Si votre paroisse ne figure pas dans la liste, veuillez nous envoyer un message en précisant le diocèse, la ville et le nom de votre paroisse.  Si tel est le cas, <b><a style="font-weight: bold;color: #6c2f91" href="{{ route('contact') }}">cliquez ici</a></b>.
+                                </p>
+                                <b class="text-dark">Nb : Ne continuez pas votre inscription s’il vous plait. Veuillez patienter jusqu’à l’ajout des informations adéquates dans un délai de un (1) jour maximum. Cela permettra de retrouver vos annonces facilement.</b>
+                            </div>
                             @csrf
-                            <style>
-                                .nice-select, .list{ width:100% !important }
-                                .selectpicker{
-                                    background-color: #fff !important;
-                                }
-                                
-                            </style>
 
-                                <div class="form-group mb-5">
-                                    <label for="">{{ __('Diocèse rattaché') }}<em style="color:red;">*</em></label>
-                                    <select  name="diocese_id" data-live-search="true" class="form-control selectpicker">
-                                        <option disabled>Sélectionnez un Diocèse</option>
+                                <div class="form-group mb-4" id="dioc">
+                                    <label for="">{{ __('Diocèse associé') }}<em style="color:red;">*</em></label>
+                                    <select class="form-control" name="diocese_id" class="">
+                                        <option selected disabled>Sélectionner un diocese</option>
                                         @foreach($diocese as $d)
                                             <option value="{{ $d->id }}">{{ $d->nom }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-5">
+                                <div class="form-group mb-4" id="vil">
                                     <label for="">{{ __('Ville') }}<em style="color:red;">*</em></label>
-                                    <select name="ville_id" data-live-search="true" class="form-control selectpicker">
-                                        <option disabled>Sélectionnez une ville</option>
-                                        @foreach($paroisse as $d)
-                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                        @endforeach
+                                    <select name="ville_id" class="form-control">
+                                        <option selected disabled>Sélectionner une ville</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-5">
-                                    <label for="exampleDropdown">{{ __('Paroisse rattachée') }}<em style="color:red;">*</em></label>
-                                    <select name="paroisse_id" data-live-search="true" class="form-control selectpicker" style="background-color: #fff">
-                                        <option disabled>Sélectionnez une paroisse</option>
-                                        @foreach($paroisse as $d)
-                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                        @endforeach
+                                <div class="form-group mb-4" id="paro">
+                                    <label for="exampleDropdown">{{ __('Paroisse associée') }}<em style="color:red;">*</em></label>
+                                    <select name="paroisse_id" class="form-control" style="background-color: #fff">
+                                        <option selected disabled>Sélectionner une paroisse</option>
                                     </select>
                                     @error('paroisse_id')
                                         <br>
                                         <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
 
-
-
-                                <div class="form-group" id="dioc">
-                                    Diocese
-                                    <select name="" class="">
-                                         <option selected="disabled">Diocese</option>
-                                        @foreach($diocese as $d)
-                                            <option value="{{ $d->id }}">{{ $d->nom }}</option>
-                                        @endforeach
-                                    </select>
-                                    
-                                </div>
-
-                                <div class="form-group" id="vil">
-                                    ville
-                                    <select name="" class="">
-                                         <option selected="disabled">ville</option>
-                                        @foreach($diocese as $d)
-                                        @endforeach
-                                    </select>
-                                    <span></span>
-                                </div>
-
-                                <div class="form-group" id="paro" >
-                                    paroisse
-                                    <select name=""class="">
-                                         <option selected="disabled">paroisse</option>
-                                        @foreach($diocese as $d)
-                                        @endforeach
-                                    </select>
-                                    <span></span>
-                                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="form-group mb-4">
-                                    <label for="">{{ __('Nom d\'utilisateur') }}</label>
+                                    <label for="">{{ __('Nom d\'utilisateur') }}<em style="color:red;">*</em></label>
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @error('name')
@@ -165,8 +105,7 @@
 
                                 <div class="form-group mb-4">
                                     <label for="">Image de profil</label><em style="color:red;">*</em>
-                                    <p>Inclure une image de 1000px et au plus de 2000px de haut ou de large.
-                                        <br> Cette image représentera la paroisse, le groupe, la communauté, le ministère, le mouvement… </p>
+                                    <p>Cette image représentera la paroisse, le groupe, la communauté, le ministère, le mouvement… </p>
                                     <div class="container pl-0">
                                         <div class="row pl-0">
                                             <div class="col-lg-12 col-sm-12">
@@ -189,8 +128,8 @@
                                 <div class="form-group">
                                     <div class="g-recaptcha" data-sitekey="6LeghscUAAAAAElX3NC_isG2fhQkMwWeyLEomeYm"></div>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-block mt-3 radius" style="background: #5fc6c9; color: #fff" type="submit"> {{ __('Demande de création de compte') }}</button>
+                                <div class="form-group mt-2">
+                                    <button class="btn btn-block mt-3 radius text-uppercase" style="background: #5fc6c9; color: #fff" type="submit"> {{ __('Demande de création de compte') }}</button>
                                 </div>
                             </form>
 
@@ -208,16 +147,14 @@
             $('#vil span').html('<small>Loading...</small>');
             $('#vil select').html(``);
             $('#paro select').html(`<option></option>`);
-            fetch("http://127.0.0.1:8000/api/ville/"+$('#dioc select').val()) // Call the fetch function passing the url of the API as a parameter
+            fetch("{{ route('home') }}/api/ville/"+$('#dioc select').val()) // Call the fetch function passing the url of the API as a parameter
             .then(resp => resp.json())
             .then( data =>{
-                setTimeout(()=>{
-                    $('#vil span').html(' ');
-                    console.log(data);
-                    data.forEach(i => {
-                        $('#vil select').append(`<option value="${i.id}">${i.libelle}</option>`);
-                    });
-                },2000);
+                $('#vil span').html(' ');
+                console.log(data);
+                data.forEach(i => {
+                    $('#vil select').append(`<option value="${i.id}">${i.libelle}</option>`);
+                });
                 
             })
             .catch(err => {
@@ -231,16 +168,14 @@
         $('#vil select').on('change', (e) => {
             $('#paro span').html('<small>Loading...</small>');
             $('#paro select').html(``);
-            fetch("http://127.0.0.1:8000/api/paroisse/"+$('#vil select').val()) // Call the fetch function passing the url of the API as a parameter
+            fetch("{{ route('home') }}/api/paroisse/"+$('#vil select').val()) // Call the fetch function passing the url of the API as a parameter
             .then(resp => resp.json())
             .then( data =>{
-                setTimeout(()=>{
-                    $('#paro span').html(' ');
-                    console.log(data);
-                    data.forEach(i => {
-                        $('#paro select').append(`<option value="${i.id}">${i.nom}</option>`);
-                    });
-                },2000);
+                $('#paro span').html(' ');
+                console.log(data);
+                data.forEach(i => {
+                    $('#paro select').append(`<option value="${i.id}">${i.nom}</option>`);
+                });
             })
             .catch(err => {
                 console.log(err);

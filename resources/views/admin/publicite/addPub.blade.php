@@ -66,6 +66,11 @@
                    </div>
                    <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                          <input @if($edit) @if($p->is_banner) checked  @endif  @endif type="checkbox" style="width:30px" name="is_banner">&nbsp;<span class="text-danger">Une bannière ?</span>
+                      </div>
+                    </div>
+                   <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
                           <input type="submit" class="btn  btnadmin" value="Enregistrer">
                           <input type="reset" class="btn btnad" value="Effacer le contenu">
                       </div>

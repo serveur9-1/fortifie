@@ -24,7 +24,7 @@ class NewsletterRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:newsletters']
+            'email_suscriber' => ['required', 'string', 'email', 'max:255', 'unique:newsletters']
         ];
     }
 }

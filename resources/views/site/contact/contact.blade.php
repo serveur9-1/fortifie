@@ -25,8 +25,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <blockquote class="generic-blockquote">
-                                    Pour un quelconque besoin, laissez-nous un message. Votre préoccupation sera résolue dans les plus brefs délais. <br>
-                                    Nous sommes disponibles du lundi au vendredi entre 7h et 17h. Merci de bien vouloir renseigner ce formulaire.
+                                    {!! $config[0]->description !!}
                                 </blockquote>
                             </div>
                         </div>
@@ -41,7 +40,7 @@
                             </div>
                             <div class="info_item mb-2">
                                 <i class="lnr lnr-phone-handset"></i>
-                                <h6><a href="#">(+255) {{ $c->telephone }}</a></h6>
+                                <h6><a href="#">(+225) {{ $c->telephone }}</a></h6>
                             </div>
                             <div class="info_item mb-2">
                                 <i class="lnr lnr-envelope"></i>

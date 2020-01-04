@@ -134,8 +134,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="{{ route('ges.listUsers') }}">liste des comptes</a>
+        @if(@auth()->user()->is_admin)
         <a class="collapse-item" href="{{ route('ges.addUsers') }}">Ajouter comptes</a>
-
+        @endif
       </div>
     </div>
    

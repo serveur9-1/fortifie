@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Album')
+@section('title','Notre répertoire')
 @section('content')
 
 
@@ -18,143 +18,35 @@
         <!--================Breadcrumb Area =================-->
 
         <div class="container mt-5" id="tourpackages-carousel">
+            <div class=" pl-0 pr-0 pb-5 pt-5 mb-2">
+                <h4 class="float-left text-left text-uppercase">Notre répertoire</h4>
+            </div>
           <div class="row">
-            <div class="col-lg-12 mb-4"><h1>Notre répertoire</h1></div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
+            @if($paroisse->count() > 0)
+                @foreach($paroisse as $p)
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <div class='col-lg-12 well well-add-card pt-2'>
+                                    <h5 title="{{ $p->communaute }}" class="text-uppercase mb-0">{{ Str::limit($p->communaute, 30) }} &nbsp;<i class="fa fa-certificate text-secondary"></i></h5>
+                                <small class="mt-0"><i>Inscrit depuis {{ $p->created_at->format('d M Y') }}</i></small>
+                                </div>
+                                <div class='col-lg-12 text-muted'>
+                                    <p><i class="fa fa-building"></i>&nbsp;&nbsp;{{ $p->paroisse[0]->nom }}</p>
+                                    <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{ $p->paroisse[0]->ville->libelle }}</p>
+                                    <p><i class="fa fa-phone"></i>&nbsp;&nbsp;(+225) {{ $p->telephone }}</p>
+                                    <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;{{ $p->paroisse[0]->email }}</p>
+                                </div>
+                                <div class='col-lg-12 text-center mt-4'>
+                                    <a href="{{ route('paroisse', ['id' => $p->paroisse[0]->id]) }}" @if($p->paroisse[0]->article->count() < 1) disabled @endif class="btn btn-danger btn-md col-md-12"><strong>@if($p->paroisse[0]->article->count() > 0) Voir plus de @else Pas d' @endif @if($p->paroisse[0]->article->count() > 0) {{ $p->paroisse[0]->article->count() }} @endif {{ Str::plural('annonce', $p->paroisse[0]->article->count()) }}</strong></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
-                    </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
-                    </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
+                @endforeach
+            @endif
 
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
-                    </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
-                    </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="thumbnail">
-                  <div class="caption">
-                    <div class='col-lg-12'>
-                        <span class="glyphicon glyphicon-credit-card"></span>
-                        <span class="glyphicon glyphicon-trash pull-right text-primary"></span>
-                    </div>
-                    <div class='col-lg-12 well well-add-card'>
-                        <h4>Groupement des jeunes de koumassi</h4>
-                    </div>
-                    <div class='col-lg-12'>
-                        <p>4111xxxxxxxx3265</p>
-                        <p>Francksande@live.ca</p>
-                        <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi</p>
-                        <a class="d-block" href="#" style="text-decoration:none !important">Paroisse notre dame de koumassi
-                        </a>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Voir leurs annonces</button>
-                    <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
-                </div>
-              </div>
-            </div>
+
           </div><!-- End row -->
         </div>
 

@@ -14,12 +14,18 @@
 
                         @auth
                         @if(!auth()->user()->is_admin && !auth()->user()->is_staff)
-                            <ul class="nav navbar-nav menu_nav ml-auto">
+                            
+                            <ul class="nav navbar-nav navbar-right ml-auto">
+                                <li class="nav-item">
+                                    <a href="{{ route('publier') }}" class="genric-btn radius" style="background: #5fc6c9"><strong class="text-white">Publier</strong></a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav menu_nav col-md-1 ml-2">
                                 <li  class="dropdown nav-item">
-                                  <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5"  aria-hidden="true"></span><span class="caret ml-0"></span>
+                                    <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false"><span class="fa fa-user w-5 fa-2x"  aria-hidden="true"></span><span class="caret ml-0"></span>
 
-                                  </a>
-                                  <ul class="dropdown-menu" role="menu">
+                                    </a>
+                                    <ul class="dropdown-menu col-md-11" role="menu">
                                     <li class="dropdown-item">
                                         <a href="{{ route('myAnnonce') }}">Mes annonces </a>
                                     </li>
@@ -28,20 +34,15 @@
                                     </li>
                                     <li class="dropdown-divider"></li>
                                     <li class="dropdown-item">
-                                      <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Déconnexion
-                                      </a>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        <strong>Déconnexion</strong>
+                                        </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     </li>
-                                  </ul>
-                                </li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="nav-item">
-                                    <a href="{{ route('publier') }}" class="genric-btn radius" style="background: #5fc6c9"><strong class="text-white">Publier</strong></a>
+                                    </ul>
                                 </li>
                             </ul>
                         @endif

@@ -74,6 +74,7 @@ class AppServiceProvider extends ServiceProvider
                 ->get(),
             'g_pub' => $pu->newQuery()->select()
                 ->where('is_active',true)
+                ->where('is_banner',false)
                 ->whereDate('debut','<=', Carbon::now()->format('Y-m-d'))
                 ->whereDate('fin','>=', Carbon::now()->format('Y-m-d'))->get(),
             'g_partenaire' => Partenaire::all(),

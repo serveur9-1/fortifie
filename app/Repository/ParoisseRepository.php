@@ -5,15 +5,17 @@ namespace App\Repository;
 
 
 use App\Paroisse;
+use App\Gestionnaire;
 use Illuminate\Auth\AuthManager;
 
 class ParoisseRepository
 {
     private $p;
 
-    public function __construct(Paroisse $p)
+    public function __construct(Paroisse $p, Gestionnaire $g)
     {
         $this->p = $p;
+        $this->g = $g;
     }
 
 
@@ -23,9 +25,9 @@ class ParoisseRepository
     }
 
 
-    public function getParoisses()
+    public function getCommunity()
     {
-        return $this->p->newQuery()->select()->distinct()->orderBy('nom','ASC')->paginate(15);
+        return $this->g->newQuery()->select()->distinct("communaute")->orderBy('communaute','ASC')->paginate(12);
     }
 
 

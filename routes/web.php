@@ -2,6 +2,8 @@
 
 use App\Ville;
 use App\Paroisse;
+use App\Diocese;
+use App\Article;
 use App\SubCategory;
 
 /*
@@ -129,6 +131,19 @@ Route::group(['middleware'=> 'auth'],function(){
         Route::group(['middleware'=> 'auth'],function(){
             
             Route::group(['middleware'=> 'staff'],function(){
+
+
+                Route::get('/configuration',[
+                    'as' => 'config',
+                    'uses' => 'ConfigController@configuration'
+                ]);
+
+                Route::post('/config/valid',[
+                    'as' => 'config.valid',
+                    'uses' => 'ConfigController@valid'
+                ]);
+                
+                
 
                 Route::get('/profil',[
                     'as' => 'profilAdmin',
@@ -830,11 +845,51 @@ Route::get('/api/souscat/{id}', function ($id){
 });
 
 
-
-
-
-
-Route::get('/config',[
-    'as' => 'config',
-    'uses' => 'ConfigController@configuration'
+Route::get('/api/query',[
+    'as' => 'apiQuery',
+    'uses' => 'HomeController@apiQuery'
 ]);
+
+
+Route::get('/api/villes/{q}', function ($q){
+    $v = new Ville();
+    $vi = $v->newQuery()->select()->where('libelle','LIKE',"%$q%")->limit(4)->get()->toArray();
+
+    for ($i=0; $i < count($vi); $i++) { 
+
+        $s = $v->newQuery()->select()->where('libelle','LIKE',"%$q%")->limit(4)->get()[$i]->diocese()->get()->toArray();
+        $vi[$i]['diocese'] = $s;
+    }
+
+    
+    return $vi ;
+});
+
+
+Route::get('/api/diocese/{q}', function ($q){
+    $d =new Diocese();
+    $di = $d->newQuery()->select()->where('nom','LIKE',"%$q%")->limit(4)->get()->toArray();
+
+    return $di ;
+});
+
+
+Route::get('/api/annonce/{q}', function ($q){
+    $a =new Article();
+    $ar = $a->newQuery()->select()
+            ->where('is_active',true)
+            ->where('titre','LIKE',"%$q%")
+            ->limit(4)->get()->toArray();
+
+    return $ar ;
+});
+
+
+
+
+
+
+
+
+
+

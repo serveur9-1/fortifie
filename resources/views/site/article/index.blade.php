@@ -1,21 +1,25 @@
 @extends('layout_right')
 @section('title','Accueil FortifieToi')
+
+
+
+
 @section('content')
 
 
-<section>
+<section class="col-md-12" style="padding:0px">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://pbs.twimg.com/media/EGHYvttU4AAYKb7?format=jpg&name=large" class="d-block w-100" alt="...">
+            @foreach($p_article as $a)
+                <div class="carousel-item @if($loop->first) active @endif">
+                    <div data-aos="slide-left" class="bold-title-section">
+                        <span class="bold-title-cat">{{ $a->article["category"]->libelle}}</span>
+                        <h1 class="bold-title">{{ $a->article["titre"]}}</h1>
+                        <a class="mt-5" href="{{ route('description', ['id' => $a->article["id"]]) }}">Lire</a>
+                    </div>
+                    <img style="padding:0px" src='{{ asset("assets/img/articles") }}/{{ $a->article['img']  }}' class="img-fluid d-block col-md-12" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="https://pbs.twimg.com/media/EGHYvtkUcAAuc8T?format=jpg&name=large" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://pbs.twimg.com/media/EGHYvtjU0AAO8w1?format=jpg&name=large" class="d-block w-100" alt="...">
-                </div>
-                <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
+            @endforeach
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,91 +31,118 @@
             </a>
         </div>
     </section>
-    <section class="search-sec col-lg-12">
+    <section class="search-sec col-lg-12 pb-0 mb-0">
         <div class="container">
-            <form action="#" method="post" novalidate="novalidate">
+            <form action="{{ route('query') }}" method="get">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input id="js--search-input-word" type="text" class="form-control search-slt" placeholder="Entrer un mot clé...">
+                                <input id="js--search-input-word" type="text" name="title" class="form-control search-slt" placeholder="Entrer un mot clé...">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="text" id="datepicker" autocomplete="off" class="form-control search-slt" placeholder="Entrer la date">
+                                <input name="date" type="text" id="datepicker" autocomplete="off" class="form-control search-slt" placeholder="Entrer la date">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <select class="form-control search-slt" id="js--search-category">
-                                    <option selected disabled>Selectionner une Catégorie</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
+                                <select name="category"  class="form-control search-slt" id="js--search-category">
+                                    <option disabled selected>Toutes les catégories</option>
+                                    @foreach($category as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->libelle }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                                <button type="submit" class="btn btn-danger wrn-btn">Rechercher</button>
                             </div>
                         </div>
                     </div>
-                    <div id="js--search-content" class="col-lg-12 p-4" style="background:#fff;display:none">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" style="text-decoration:none">
-                                    <div class="card mb-3" style="max-width: 540px;max-height: 70px;">
-                                        <div class="row no-gutters">
-                                            <div class="col-md-4" style='max-height: 70px;
-                                            background:url("http://127.0.0.1:8000/assets/img/articles/blog3.jpg");
-                                            background-size:contain'>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title m-0">Card title</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <span class="d-block text-muted mt-2 float-right">
-                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
-                                </span>
-                                
-                            </div>
-                            <div class="col-lg-3">
-                                <a class="d-block" href="#" style="text-decoration:none !important">
-                                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ville - Koumassi
-                                </a>
-                                <span class="d-block text-muted mt-2 float-right">
-                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
-                                </span>
-                            </div>
-                            <div class="col-lg-3">
-                                <a class="d-block" href="#" style="text-decoration:none !important">
-                                    <i class="fa fa-building"></i>&nbsp;&nbsp;Diocèse - Koumassi
-                                </a>
-                                <span class="d-block text-muted mt-2 float-right">
-                                    <a href="#">Voir plus <i style="font-size:10px" class="fa fa-chevron-right"></i></a>
-                                </span>
-                            </div>
+                    <div id="js--search-content" class="col-lg-9 col-md-9 col-sm-12" style="background:#fff;display:block;padding:0px !important">
+                        <div id="js--search-result" class="row bg-danger">
+                            {{-- Ajax here!!! --}}
                         </div>
                         {{-- LOADING --}}
-                        <div class="d-flex justify-content-center">
-                            <img class="img-fluid"  src="{{ asset('/assets/img/loading.gif') }}" alt="">
-                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-
-    {{-- <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
-        <a href="#">
-            <img src="{{ asset('/assets/image/blog/main-blog/m-blog-2.jpg') }}" style="height: 110px;width: 100%">
-        </a>
-    </div> --}}
+    <div class="col-md-12 mb-2" style="background: #fff">
+        @if($banner_pub->count() > 0)
+            @foreach ($banner_pub as $item)
+                <a target="_blank" href="{{ $item->url }}">
+                    <img class="img-fluid" src='{{ asset("/assets/img/pubs/$item->img") }}'>
+                </a>
+            @endforeach
+        @else
+            <p class="text-center text-muted">PLACEZ VOUS ICI !!!</p>
+        @endif
+    </div>
 
     <style>
+        .bold-title-section{
+            font-size: 3rem;
+            position: absolute;
+            top: 30%;
+            padding:2px 8px;
+            left:10%;
+            text-align: left;
+            z-index: 9999;
+        }
+        .bold-title{
+            font-size: 73%;
+            background: #fff;
+            padding: 3px 14px;
+            text-align: justify;
+            width: 90%;
+            text-transform: uppercase;
+            line-height: 42px;
+        }
+        .bold-title-cat{
+            font-size: 1rem;
+            background: #ff4444;
+            padding:3px 7px;
+            color: #fff;
+        }
+        .bold-title-section a{
+            text-transform: uppercase;
+            width: 150px;
+            height: 40px;
+            border-radius: 80px;
+            font-size: 16px;
+            line-height: 35px;
+            text-align: center;
+            border: 3px solid #e6de08;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            overflow: hidden;        
+            position: relative;
+            background-color: #e6de08;
+        }
+        .s-card{
+            color: #000;
+            font-size: 1rem;
+        }
+        #js--search-content{
+            max-height: 200px;
+            overflow-y: scroll;
+            
+        }
+        #js--search-result a{
+            text-decoration: none !important;
+            padding: 0px !important;
+        }
+        #js--search-result a:hover{
+            text-decoration: none !important;
+            padding: none !important;
+        }
+        .s-card i{
+            opacity: 0.4;
+            font-size: 1.1rem;
+        }
+        .s-card:hover{
+            background: #f2f2f2;
+        }
         .search-sec{
             padding: 2rem;
         }
@@ -607,7 +638,7 @@
                                 <div class="row" id="ads">
                                 @if($article->count() > 0)
                                     @foreach($article as $a)
-                                    <div class="col-md-6" data-aos="fade-up">
+                                    <div class="col-md-6 mb-5" data-aos="fade-up">
                                         <div class="card rounded">
                                             <div class="card-image">
                                                 <span class="card-notify-badge">{{ $a->category->libelle }}</span>
@@ -616,7 +647,8 @@
                                             </div>
                                             <div class="card-body text-center">
                                                 <div class="ad-title m-auto">
-                                                    <h5 class="text-left">{{ $a->titre }}</h5>
+                                                    <h5 style="font-size:96%" class="text-left">{{ Str::limit($a->titre, 26) }}</h5>
+                                                    <p style="margin-top:-10px" class="text-left"><small><i class="text-muted text-left">Publié le {{ $a->created_at->format('d M Y') }}</i></small></p>
                                                     <p style="line-height: 1.2;word-spacing:-0.1px" class="text-justify">{{ Str::limit($a->description, 200) }}</p>
                                                 </div>
                                                 <a class="ad-btn" href="{{ route('description',['id' => $a->id])}}">Plus d'info</a>
@@ -655,13 +687,99 @@
         <script>
             $(document).ready(function(){
 
+                var diocese = [];
+
+                var article = [];
+
                 $('#js--search-input-word').on('keyup', (e)=>{
                     
-                    if(e.target.value.length > 4)
+                    if(e.target.value.length > 1)
                     {
                         console.log(e.target.value);
 
                         $('#js--search-content').show();
+
+
+                        $('#js--search-content').text('');
+
+                        fetch(`{{route('home')}}/api/villes/${e.target.value}`) // Call the fetch function passing the url of the API as a parameter
+                        .then(resp => { 
+                            $('#js--search-content').append(`
+                                <div class="d-flex justify-content-center">
+                                    <img class="img-fluid"  src="{{ asset('/assets/img/loading.gif') }}" alt="">
+                                </div>
+                            `);
+                            return resp.json();
+                        })
+                        .then( data =>{
+                            console.log(data);
+                            $('#js--search-content').text('');
+
+                            //Request for diocese
+                            fetch(`{{route('home')}}/api/diocese/${e.target.value}`)
+                            .then(dio => {
+                                return dio.json()
+                            })
+                            .then(dio => {
+                                diocese = dio;
+
+                                    //Request for Annonce
+                                    fetch(`{{route('home')}}/api/annonce/${e.target.value}`)
+                                    .then(article => {
+                                        return article.json()
+                                    })
+                                    .then(articl => {
+                                        article = articl;
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    })
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                            data.forEach( i => {
+                                //add villes
+                                $('#js--search-content').append(`
+                                    <a class="col-md-12" href="{{ route('home') }}{{ "/query?diocese="}}${i.diocese[0].id}" style="padding: 0px !important;">
+                                        <div class="s-card col-lg-12 col-md-12 col-sm-12 item-1 pt-3 pb-3 pl-4">
+                                            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;${i.libelle}, ${i.libelle}, ${i.diocese[0].nom}
+                                        </div>
+                                    </a>
+                                `);
+                            });
+
+
+                            diocese.forEach( i => {
+                                console.log(i)
+                                //add diocese
+                                $('#js--search-content').append(`
+                                    <a class="col-md-12" href="{{ route('home') }}{{ "/query?diocese="}}${i.id}" style="padding: 0px !important;">
+                                        <div class="s-card col-lg-12 col-md-12 col-sm-12 item-1 pt-3 pb-3 pl-4">
+                                            <i class="fa fa-bank"></i>&nbsp;&nbsp;Diocèse, ${i.nom}
+                                        </div>
+                                    </a>
+                                `);
+                            });
+
+                            article.forEach( i => {
+                                console.log("okk");
+                                console.log(i);
+                                //add article
+                                $('#js--search-content').append(`
+                                    <a class="col-md-12" href="{{ route('home') }}{{ "/description/"}}${i.id}" style="padding: 0px !important;">
+                                        <div class="s-card col-lg-12 col-md-12 col-sm-12 item-1 pt-3 pb-3 pl-4">
+                                            <i class="fa fa-copy"></i>&nbsp;&nbsp;Annonce, ${i.titre}
+                                        </div>
+                                    </a>
+                                `);
+                            });
+                            
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+
                     }else{
 
                         $('#js--search-content').hide();

@@ -74,7 +74,8 @@ class HomeController extends Controller
 
         return view('site.article.index',[
             'article' => $this->a->getArticle(),
-            'popcategory' => $this->r->getMostPopulateCategory()
+            'popcategory' => $this->r->getMostPopulateCategory(),
+            'banner_pub' => $this->pub->getBannerPub()
         ]);
 
     }
@@ -169,8 +170,15 @@ class HomeController extends Controller
     {
 
         return view('site.article.index',[
-            'article' => $this->a->search($request['title'], $request['category'], $request->diocese, $request->date )
+            'article' => $this->a->search($request['title'], $request['category'], $request->diocese, $request->date ),
+            'banner_pub' => $this->pub->getBannerPub()
         ]);
+    }
+
+
+    public function apiQuery(Request $request)
+    {
+        return $this->a->search($request['title'], $request['category'], $request->diocese, $request->date );
     }
 
     // Recherche my annonce

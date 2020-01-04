@@ -19,26 +19,32 @@
 @endsection
 @section('content')
     <div class="col-lg-8 posts-list">
-        <div class="single-post row">
+        <div class="single-post row" style="background:#fff">
             <div data-aos="zoom-in-down" class="col-lg-12">
                 <div class="feature-img">
                     {{--<img class="img-fluid" src="{{ asset('/assets/image/blog/feature-img1.jpg') }}" alt="">--}}
                     <div style="width: 100%;height: 300px ;background: url('{{ asset("assets/img/articles/$article->img") }}') no-repeat;background-size: cover;background-position: center"></div>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-12 blog_details">
+            <div class="col-lg-12 col-md-12 blog_details" >
+                <a href="{{ route('categorie', ['id' => $article->category->id ]) }}">
+                    <span class="badge badge-danger p-1">
+                        {{ $article->category->libelle }}
+                    </span>
+                </a>
                 <h2 class="text-uppercase">{{ $article->titre }}</h2>
-                <h5 class="text-uppercase">Catégorie: <a href="{{ route('categorie', ['id' => $article->category->id ]) }}">{{ $article->category->libelle }}</a></h5>
+                <p style="margin-top:-10px" class="text-left"><small><i class="text-muted text-left">Publié le {{ $article->created_at->format('d M Y') }}</i></small></p>
+
                 <div class="post_tag mb-4">
 
-                    <ul class="blog_meta list_style" style="display: flex">
+                    <ul class="blog_meta list_style text-uppercase d-flex">
 
                         <li> <img style="width: 30px" class="author_img rounded-circle" src='{{ asset("/assets/img/users/".$article->user->img) }}' alt="profil">
-                            <a href="{{ route('paroisse',['id' => $article->paroisse->id]) }}">{{ $article->paroisse->nom }}</a></li>
+                            <a @if($article->user->is_admin) href="#" @else href="{{ route('paroisse',['id' => $article->paroisse->id]) }}" @endif>@if($article->user->is_admin) Admin @else{{ $article->user->gestionnaire[0]->communaute }}@endif</a></li>
                     @if($article->date_string == null)
-                        <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->toFormattedDateString()  }}</li>
+                        <li><i class="fa fa-calendar"></i> :   Du {{ Carbon\Carbon::create($article->debut)->format('d M Y')  }}</li>
 
-                        <li>Au  {{ Carbon\Carbon::create($article->fin)->toFormattedDateString()  }} </li>
+                        <li>Au  {{ Carbon\Carbon::create($article->fin)->format('d M Y')  }} </li>
                     @else
                         <li><i class="fa fa-calendar"></i>  {{ $article->date_string }}</li>
                     @endif
@@ -47,14 +53,14 @@
 
                     </ul>
                     <h4 class="mt-4">
-                        @if(!empty($article->contact_telephone)) <i class="fa fa-phone mr-1"></i>  +225 {{ $article->contact_telephone }} <span class="mr-5"></span> @endif 
-                        @if(!empty($article->contact_fixe)) <i class="fa fa-fax mr-1"></i>  +225 {{ $article->contact_fixe }} <span class="mr-5"></span> @endif
+                        @if(!empty($article->contact_telephone)) <i class="fa fa-phone mr-1"></i>  (+225) {{ $article->contact_telephone }} <span class="mr-5"></span> @endif 
+                        @if(!empty($article->contact_fixe)) <i class="fa fa-fax mr-1"></i>  (+225) {{ $article->contact_fixe }} <span class="mr-5"></span> @endif
                         @if(!empty($article->contact_email)) <i class="fa fa-envelope mr-1"></i> {{ $article->contact_email }} <span class="mr-5"></span> @endif
                     </h4>
 
                 </div>
                 <div style="height: 30px;color: #fff" class="mb-3 col-lg-12 col-md-12" id="desktop">
-                    <div class=" row col-sm-12">
+                    <div class="row col-sm-12">
                         <div class="col-lg-3 col-md-3 col-sm-3 share">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('description',['id' => $article->id]) }}" class="btn btn-block btn-social btn-facebook">
                                 <i class="fa fa-facebook-f"></i>
@@ -97,7 +103,7 @@
                 </p>
             </div>
         @if($article->date_string == null)
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <div class="quotes">
                     <div id="countdown">
                         <strong>Temps restant</strong> :
@@ -117,7 +123,7 @@
                             <div class="panel panel-default">
                                   <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Signaler cette annonce
+                                    <a class="collapsed btn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Signaler cette annonce
                                     </a>
                                   </h4>
                                   </div>

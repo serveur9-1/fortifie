@@ -15,9 +15,12 @@ class CreateConfigTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('telephone')->default('09004930');
+            $table->string('telephone')->default("84615009");
             $table->string('email')->default('contact@fortifietoi.ci');
-            $table->string('localite')->default('Abidjan, Treichville')->nullable();
+            $table->string('localite')->default("Côte d'Ivoire, Grand Bassam")->nullable();
+            $table->longText('description')->default('Pour un quelconque besoin, laissez-nous un message. Votre préoccupation sera résolue dans les plus brefs délais. <br>
+            Nous sommes disponibles du lundi au vendredi entre 7h et 17h. Merci de bien vouloir renseigner ce formulaire.');
+            $table->timestamps();
         });
     }
 

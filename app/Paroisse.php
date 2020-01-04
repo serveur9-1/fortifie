@@ -17,4 +17,10 @@ class Paroisse extends Model
     {
         return $this->belongsToMany('App\Gestionnaire');
     }
+
+
+    public function article()
+    {
+        return $this->hasMany('App\Article');
+    }
 }
