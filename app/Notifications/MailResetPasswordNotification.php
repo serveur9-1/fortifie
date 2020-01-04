@@ -51,11 +51,7 @@ class MailResetPasswordNotification extends Notification
                     ->action('Réinitialiser le mot de passe', url(config('app.url').route('password.reset.token', $this->token, false)))
 
                     ->line('Si vous n\'avez pas demandé de réinitialisation de mot de passe, aucune
-                        autre action n\'est requise.')
-
-                    ->salutation('Si vous ne parvenez pas à cliquer sur le bouton "Réinitialiser le mot de passe", copiez et collez l\'URL ci-dessous dans votre navigateur Web :')
-
-                    ->line( url(config('app.url').route('password.reset.token', $this->token, false)))
+                        autre action n\'est requise.', url(config('app.url').route('password.reset.token', $this->token, false)))
     }
 
     /**
