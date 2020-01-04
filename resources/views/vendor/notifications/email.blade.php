@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Hello!')
+# @lang('Bonjour,')
 @endif
 @endif
 
@@ -51,10 +51,9 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "Si vous ne parvenez pas à cliquer sur le bouton  \":actionText\", copy and paste the URL below\n".
-    'into your web browser: [:actionURL](:actionURL)',
+    "Si vous ne parvenez pas à cliquer sur le bouton  \":actionText\", copiez et collez l'URL ci-dessous dans votre navigateur Web : [:actionURL](:actionURL)',
     [
-        <!-- 'actionText' => $actionText, -->
+        'actionText' => $actionText,
         'actionURL' => $actionUrl,
     ]
 )

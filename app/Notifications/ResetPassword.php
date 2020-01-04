@@ -7,18 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class MailResetPasswordNotification extends Notification
+class ResetPassword extends Notification
 {
     use Queueable;
+
+    public $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -41,17 +43,14 @@ class MailResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-
-                     ->subject('Réinitialisation du mot de passe')
-
                     ->greeting('Bonjour,')
-
-                    ->line('Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.')
-
-                    ->action('Réinitialiser le mot de passe', url(config('app.url').route('password.reset.token', $this->token, false)))
-
+                    ->line('Vous recevez cet e-mail, car nous avons reçu une demande de
+                        réinitialisation du mot de passe pour votre compte.')
+                    ->action('Réinitialiser le mot de
+                        passe', url('/'))
+                    ->line('Ce lien de réinitialisation de mot de passe expirera dans 60 minutes.');
                     ->line('Si vous n\'avez pas demandé de réinitialisation de mot de passe, aucune
-                        autre action n\'est requise.', url(config('app.url').route('password.reset.token', $this->token, false)))
+                        autre action n\'est requise.');
     }
 
     /**
