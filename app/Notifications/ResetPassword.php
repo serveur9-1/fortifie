@@ -43,7 +43,6 @@ class ResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Bonjour,')
                     ->line('Vous recevez cet e-mail, car nous avons reçu une demande de
                         réinitialisation du mot de passe pour votre compte.')
                     ->action('Réinitialiser le mot de
