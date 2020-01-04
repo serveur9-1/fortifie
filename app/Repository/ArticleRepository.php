@@ -219,7 +219,7 @@ class ArticleRepository
 
                 $data["id"] = $ars[0]->category->id;
                 
-                $data["suscriber"] = array_column($cat[0]->newsletter->toArray(), 'email');
+                $data["suscriber"] = array_column($cat[0]->newsletter->toArray(), 'email_suscriber');
                 
                 $data["access_link"] = url()->route('description',['id' => $id ]);
                 

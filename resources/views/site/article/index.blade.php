@@ -642,7 +642,7 @@
                                         <div class="card rounded">
                                             <div class="card-image">
                                                 <span class="card-notify-badge">{{ $a->category->libelle }}</span>
-                                                <span class="card-notify-year">New</span>
+                                                {{-- <span class="card-notify-year">New</span> --}}
                                                 <img class="img-fluid" src="{{ asset('assets/img/articles/'.$a->img) }}" alt="Alternate Text" />
                                             </div>
                                             <div class="card-body text-center">

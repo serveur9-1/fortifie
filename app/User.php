@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Notifications\ResetPassword as ResetPasswordNotification;
+
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -40,6 +43,12 @@ class User extends Authenticatable
     public function gestionnaire()
     {
         return $this->hasMany('App\Gestionnaire');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        // Your your own implementation.
+        $this->notify(new ResetPasswordNotification($token));
     }
 
 }

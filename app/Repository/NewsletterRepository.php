@@ -33,7 +33,7 @@ class NewsletterRepository
         //dd(Arr::flatten($cat->toArray()));
         $s = $this->n->newQuery()
             ->create([
-                'email' => $data->email
+                'email_suscriber' => $data->email_suscriber
             ]);
         //A REVOIR PLUTARD ====================================
 
@@ -42,8 +42,8 @@ class NewsletterRepository
 
         //Send Mail
 
-        $data->subject ="Abonné à la newsletter";
-        $data->receiver = $data->email;
+        $data->subject ="Abonné au service Alerte";
+        $data->receiver = $data->email_suscriber;
 
         Mail::send(new NewsletterSuscribedMail($data));
         
@@ -56,7 +56,7 @@ class NewsletterRepository
         $n = new Newsletter();
 
         $newsletter = $n->newQuery()
-            ->select()->where('email',$email)->first();
+            ->select()->where('email_suscriber',$email)->first();
         //dd($newsletter);
 
         $newsletter->category()->detach($category_id);

@@ -6,15 +6,12 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Hello!')
+# @lang('Bonjour, ')
 @endif
 @endif
 
 {{-- Intro Lines --}}
-@foreach ($introLines as $line)
-{{ $line }}
-
-@endforeach
+<p>Vous recevez cet e-mail, car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.</p>
 
 {{-- Action Button --}}
 @isset($actionText)
@@ -29,23 +26,14 @@
     }
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-{{ $actionText }}
+Réinitialiser le mot de passe
 @endcomponent
+
+<p>Ce lien de réinitialisation de mot de passe expire dans 60 minutes.</p>
+
+<p>Si vous n'avez pas demandé de réinitialisation de mot de passe, aucune autre action n'est réquise.</p>
+
 @endisset
-
-{{-- Outro Lines --}}
-@foreach ($outroLines as $line)
-{{ $line }}
-
-@endforeach
-
-{{-- Salutation --}}
-@if (! empty($salutation))
-{{ $salutation }}
-@else
-@lang('Regards'),<br>
-{{ config('app.name') }}
-@endif
 
 {{-- Subcopy --}}
 @isset($actionText)

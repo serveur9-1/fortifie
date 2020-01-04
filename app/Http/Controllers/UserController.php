@@ -19,12 +19,13 @@ use App\Mail\AcceptOrRefuseMail;
 
 class UserController extends Controller
 {
-    public function __construct(UsersRepository $u, ParoisseRepository $p, DioceseRepository $d, SaveImg $sv)
+    public function __construct(Gestionnaire $g, UsersRepository $u, ParoisseRepository $p, DioceseRepository $d, SaveImg $sv)
     {
         $this->u = $u;
         $this->p = $p;
         $this->d = $d;
         $this->sv = $sv;
+        $this->g = $g;
     }
 
     //administration
@@ -89,18 +90,35 @@ class UserController extends Controller
 
     public function validUsers(UserRequest $request, $standard=false)
     {
-        $request->img = $request->file('img')->getClientOriginalName();
-        $this->sv->saveImg($request, '/users', "img");
-        $this->u->createUser($request, $standard);
+        $q = $request->communaute;
 
-        if($standard){
-            $msg = 'Vous avez bien crée un nouvel utilisateur.';
+        $gt = $this->g->newQuery()
+                    ->select()
+                    ->where("paroisse_id", $request->paroisse_id)
+                    ->where("communaute",'LIKE',"%$q%")
+                    ->get();
+
+        if($gt->count() > 0)
+        {
+            $request->session()->flash('only', "Désolé cette communauté est déjà enregistré.");
+            return redirect()->back();
+
         }else{
-            $msg = "Votre demande a bien été soumise. Un mail d’activation de compte vous sera envoyé à l’adresse mail renseignée après validation.";
+
+            $request->img = $request->file('img')->getClientOriginalName();
+            $this->sv->saveImg($request, '/users', "img");
+            $this->u->createUser($request, $standard);
+    
+            if($standard){
+                $msg = 'Vous avez bien crée un nouvel utilisateur.';
+            }else{
+                $msg = "Votre demande a bien été soumise. Un mail d’activation de compte vous sera envoyé à l’adresse mail renseignée après validation.";
+            }
+    
+    
+            return redirect()->back()->with('success', $msg);
         }
 
-
-        return redirect()->back()->with('success', $msg);
     }
 
     public function editUsers($id)
@@ -116,22 +134,36 @@ class UserController extends Controller
 
     public function updateUsers($id, UserUpdateRequest $request)
     {
-        $c_u = User::findOrFail($id);
-        if($c_u->email != request('email')){
-            $this->validate(request(), [
-                'email' => 'required|email|unique:users',
-            ]);
-        }
-        if(isset($request->img)){
-            $request->img = $request->file('img')->getClientOriginalName();
-            $this->sv->saveImg($request, '/users');
+        $q = $request->communaute;
+
+        $gt = $this->g->newQuery()
+                    ->select()
+                    ->where("paroisse_id", $request->paroisse_id)
+                    ->where("communaute",'LIKE',"%$q%")
+                    ->get();
+
+        if($gt->count() > 0)
+        {
+            return redirect()->back()->with('only', "Désolé cette communauté est déjà enregistré.");
+
         }else{
-            $request->img = User::findOrFail($id)->img;
+            $c_u = User::findOrFail($id);
+            if($c_u->email != request('email')){
+                $this->validate(request(), [
+                    'email' => 'required|email|unique:users',
+                ]);
+            }
+            if(isset($request->img)){
+                $request->img = $request->file('img')->getClientOriginalName();
+                $this->sv->saveImg($request, '/users');
+            }else{
+                $request->img = User::findOrFail($id)->img;
+            }
+
+            $this->u->updateUser($id, $request);
+
+            return redirect()->back()->with('success','Vous avez bien modifié un utilisateur.');
         }
-
-        $this->u->updateUser($id, $request);
-
-        return redirect()->back()->with('success','Vous avez bien modifié un utilisateur.');
     }
 
 

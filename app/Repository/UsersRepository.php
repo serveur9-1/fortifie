@@ -100,6 +100,8 @@ class UsersRepository
 
     public function createUser($array)
     {
+
+        
         $n_user = $this->u->newQuery()->create([
             'name' => $array->name,
             'img' => $array->img,
@@ -108,7 +110,7 @@ class UsersRepository
         ]);
 
         $n_ges = $this->g->newQuery()->create([
-            'communaute' => $array->communaute,
+            'communaute' => Str::lower($array->communaute),
             'paroisse_id' => $array->paroisse_id,
             'telephone' => $array->telephone,
             'user_id' => $n_user->id
@@ -159,7 +161,7 @@ class UsersRepository
         $us_ges = $this->g->newQuery()->select()->where('user_id', $id);
 
         $us_ges->update([
-            'communaute' => $array->communaute,
+            'communaute' => Str::lower($array->communaute),
             'paroisse_id' => $array->paroisse_id,
             'telephone' => $array->telephone,
             'user_id' => $id

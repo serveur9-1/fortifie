@@ -30,7 +30,7 @@ class NewsletterMail extends Mailable
     {
 
         //dd($this->event["suscribers"]);
-        return $this->from("noreply@fortifietoi.ci", "L'équipe Fortifie toi")
+        return $this->from("noreply@fortifietoi.ci", "L'équipe Fortifie-Toi")
             ->subject("Nouvelle annonce récommandée pour vous")
             ->to($this->event["suscribers"])
             ->markdown('emails.newsletter')->with([

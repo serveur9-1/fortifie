@@ -68,11 +68,6 @@
             <p>
                 Abonnez-vous au service Alerte pour être informé de toutes les nouvelles annonces publiées à tout moment.
             </p>
-            @error('email')
-            <p class="text-warning" role="alert">
-                <strong>{{ $message }}</strong>
-            </p>
-            @enderror
             <div class="form-group d-flex flex-row">
                 <form action="{{ route('newsletter') }}" method="post" class="col-12 d-inline-flex">
                     @csrf
@@ -87,7 +82,7 @@
                 
             </div>
             @error("email_suscriber")
-        <p><small >{{ $message }}</small></p>
+                <p class="text-danger"><small >{{ $message }}</small></p>
             @enderror
             <div class="br"></div>
         </aside>

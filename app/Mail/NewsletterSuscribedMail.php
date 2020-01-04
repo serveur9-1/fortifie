@@ -28,7 +28,7 @@ class NewsletterSuscribedMail extends Mailable
      */
     public function build()
     {
-        return $this->from("contact@fortifietoi.ci", "Administrateur Fortifie toi")
+        return $this->from("noreply@fortifietoi.ci", "L'équipe Fortifie-Toi")
             ->subject($this->event->subject)
             ->to($this->event->receiver)
             ->markdown('emails.NewsletterSuscribed')->with([
