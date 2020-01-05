@@ -7,6 +7,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\SousCategoryRequest;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\PubRepository;
 use App\Repository\SubCategoryRepository;
 use App\SubCategory;
 use Illuminate\Http\Request;
@@ -15,17 +16,19 @@ class CategorieController extends Controller
 {
     private $a;
 
-    public function __construct(ArticleRepository $a, CategoryRepository $c, SubCategoryRepository $sc)
+    public function __construct(PubRepository $pub, ArticleRepository $a, CategoryRepository $c, SubCategoryRepository $sc)
     {
         $this->a = $a;
         $this->c = $c;
         $this->sc = $sc;
+        $this->pub = $pub;
     }
 
     public function categorie($id)
     {
         return view('site.article.index',[
             'article' => $this->a->getArticleByCategory($id),
+            'banner_pub' => $this->pub->getBannerPub()
         ]);
     }
 

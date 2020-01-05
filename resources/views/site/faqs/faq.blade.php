@@ -120,8 +120,8 @@
             </a>
           </h4>
           </div>
-        <div id="collapse{{$q->id}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$q->id}}">
-            <div class="panel-body bg-light p-3">
+        <div style="background:#fff" id="collapse{{$q->id}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$q->id}}">
+            <div class="panel-body  p-3">
             
               @foreach($q->answer as $a)
                 <i>

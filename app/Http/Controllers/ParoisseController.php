@@ -9,18 +9,20 @@ use App\Repository\CategoryRepository;
 use App\Repository\DioceseRepository;
 use App\Repository\VilleRepository;
 use App\Repository\ParoisseRepository;
+use App\Repository\PubRepository;
 use Illuminate\Http\Request;
 
 class ParoisseController extends Controller
 {
     private $p;
 
-    public function __construct(ArticleRepository $r,VilleRepository $v, ParoisseRepository $p, DioceseRepository $d, CategoryRepository $cr)
+    public function __construct(PubRepository $pub, ArticleRepository $r,VilleRepository $v, ParoisseRepository $p, DioceseRepository $d, CategoryRepository $cr)
     {
         $this->a = $r;
         $this->p = $p;
         $this->d = $d;
         $this->v = $v;
+        $this->pub = $pub;
         $this->cr = $cr;
     }
 
@@ -28,7 +30,8 @@ class ParoisseController extends Controller
     {
         return view('site.article.index',[
             'article' => $this->a->getArticleByParoisse($id),
-            'popcategory' => $this->cr->getMostPopulateCategory()
+            'popcategory' => $this->cr->getMostPopulateCategory(),
+            'banner_pub' => $this->pub->getBannerPub()
         ]);
     }
 

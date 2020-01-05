@@ -151,26 +151,16 @@
                 </div>
             </div>
 
-            <!-- <div class="col-lg-12">
-                <div class="col-md-12 col-lg-12">
-                     <a href="#" class="btn_hover btn_hover_two" onclick="denoncer()">Dénoncer cette annonce</a>
-                </div>
-                <form class="row contact_form" style="display: " action="{{ route('sendMail') }}" method="post" id="contactForm">
-                    <div class="col-md-12 col-lg-12 mt-3">
-                        <div class="form-group">
-                            <textarea maxlength="500" class="form-control" name="message" id="message" rows="1" placeholder="donner le motif de cette dénonciation"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-right">
-                        <button type="submit" value="submit" class="btn btn_hover btn_hover_two">Dénoncer</button>
-                    </div>
-                </form>
-            </div> -->
-
-            <div class="mb-5 mt-5" style="height: 110px;background: #fff;width: 100%">
-                <a href="#">
-                    <img src="{{ asset('/assets/image/blog/main-blog/m-blog-2.jpg') }}" style="height: 110px;width: 100%">
-                </a>
+            <div class="col-md-12 mb-5 mt-5" >
+                @if($banner_pub->count() > 0)
+                    @foreach ($banner_pub as $item)
+                        <a target="_blank" href="{{ $item->url }}">
+                            <img class="img-fluid" src='{{ asset("/assets/img/pubs/$item->img") }}'>
+                        </a>
+                    @endforeach
+                @else
+                    <p class="text-center text-muted">PLACEZ VOUS ICI !!!</p>
+                @endif
             </div>
         </div>
 
